@@ -17,7 +17,7 @@ include('includes/header.php');
 									<i class="material-icons">store</i>
 								</div>
 								<div class="card-content">
-									<p class="category">Nu</p>
+									<p class="category">Nueva</p>
 									<h3 class="title"><a href="../clientes/solicitud/formulario.php">Solicitud</a></h3>
 								</div>
 								<? /*<div class="card-footer">
