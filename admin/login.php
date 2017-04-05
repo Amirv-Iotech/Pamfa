@@ -1,8 +1,4 @@
 
-
-
-
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -39,7 +35,7 @@
           <div class="row">
               <div class="col-md-12 text-center">
                   <div class="about_title">
-                      <h2>Inicia sesión</h2>
+                      <h2>INICIA SESIÓN</h2>
                       
                   </div>
               </div>

@@ -86,134 +86,145 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
     <table >
     <tr>
     <td width="20%">
-    <h3>Fecha de solicitud </h3></td><td width="10%"> <h3><? if(isset($row_solicitud['fecha'])){ echo date('d/m/y',$row_solicitud['fecha']);}else{ echo date('d/m/y',time());}?> </h3></td><td width="40%">  <h3>   Nombre de la persona que llena la solicitud: </h3></td><td width="30%"><h3><input onchange="this.form.submit()" name="persona" type="text" placeholder="escriba aquí"  class="form-control" title="Nombre " value="<? echo $row_solicitud['persona'];?>" class="form-control" /></h3></td></tr><tr><td colspan="4">
+    <h3>Fecha de solicitud </h3></td><td width="10%"> <h3><? if(isset($row_solicitud['fecha'])){ echo date('d/m/y',$row_solicitud['fecha']);}else{ echo date('d/m/y',time());}?> </h3></td><td width="40%">  <h3>   Nombre de la persona que llena la solicitud: </h3></td><td width="30%"><h3><input onchange="this.form.submit()" name="persona" type="text" placeholder=""  class="form-control" title="Nombre " value="<? echo $row_solicitud['persona'];?>" class="form-control" /></h3></td></tr><tr><td colspan="4">
     
     <h3>Estimado cliente, favor de llenar los datos en los espacios requeridos, esta información es necesaria para completar el proceso de certificación de acuerdo al esquema de certificación que usted solicita.</h3>
     </td></tr></table>
 	<fieldset>
     <a name="seccion1"></a>
     
-    
-	<legend><table width="100%" ><tr><td width="100%" bgcolor="#00CC33">INFORMACIÓN DEL CLIENTEe (Entidad legal y persona de contacto)</td></tr></table></legend>
-		
-		<div class="form-group col-lg-6 col-md-6">
-    	<label for="nombre_legal" class="form-label col-lg-4">Nombre de la entidad legal (empresa o persona):</label>
-        
-    	<div class="form-group col-lg-8">
-    	<input placeholder="escribe aquí"   class="form-control" onchange="this.form.submit()" name="nombre_legal" type="text" 			title="Nombre completo " value="<? echo $row_operador['nombre_legal'];?>"  />
-	    </div>
-		</div>
+    <div class="row">
+        <div class="col-md-12" style="text-align: center; background-color:#6bc35d">
+          <label>INFORMACIÓN DEL CLIENTE (Entidad legal y persona de contacto)</label>
+        </div>
+    		
+    		<div class="form-group col-lg-6 col-md-6">
+        	<label for="nombre_legal" class="form-label col-lg-4">Nombre de la entidad legal (empresa o persona):</label>
+            
+        	<div class="form-group col-lg-8">
+        	<input placeholder=""   class="form-control" onchange="this.form.submit()" name="nombre_legal" type="text" 			title="Nombre completo " value="<? echo $row_operador['nombre_legal'];?>"  />
+    	    </div>
+    		</div>
 
-		<div class="form-group col-lg-6 col-md-6">
-    	<label for="nombre_representante" class="form-label col-lg-4">Nombre del representante legal:</label>
-    	<div class="col-lg-8">
-    	<input placeholder="escribe aquí" class="form-control"  onchange="this.form.submit()" name="nombre_representante" value="<? echo $row_operador['nombre_representante'];?>"  title="Nombre " />
-    	</div>
-		</div>
-		<div class="form-group col-lg-12 col-md-12">
-    	<label for="direccion" class="form-label col-lg-2">Dirección de la entidad legal: calle y número:</label>
-    	<div class="col-lg-10">
-    	<input placeholder="escribe aquí" class="form-control" onchange="this.form.submit()" name="direccion" value="<? echo $row_operador['direccion'];?>"  title="Dirección"  />
-    	</div>
-    	</div>
-        <div class="form-group col-lg-12 col-md-12">
-    	<label for="coordenadas" class="form-label col-lg-2">Coordenadas de la entidad legal</label>
-    	<div class="col-lg-10">
-    	<input placeholder="escribe aquí" class="form-control" onchange="this.form.submit()" name="coordenadas" value="<? echo $row_operador['coordenadas'];?>"  title="Coordenadas"  />
-    	</div>
-    	</div>
-        
-        <div class=" form-group col-lg-2 col-md-2">
-    	<label for="cp" class="form-label col-lg-4">C.P.:</label>
-    	<div class="col-lg-8">
-    	<input placeholder="escribe aquí" class="form-control" onchange="this.form.submit()" name="cp" type="text"  			title="Codigo postal " value="<? echo $row_operador['cp'];?>"  />
-	    </div>
-		</div>
+    		<div class="form-group col-lg-6 col-md-6">
+        	<label for="nombre_representante" class="form-label col-lg-4">Nombre del representante legal:</label>
+        	<div class="col-lg-8">
+        	<input placeholder="" class="form-control"  onchange="this.form.submit()" name="nombre_representante" value="<? echo $row_operador['nombre_representante'];?>"  title="Nombre " />
+        	</div>
+    		</div>
+    		<div class="form-group col-lg-12 col-md-12">
+        	<label for="direccion" class="form-label col-lg-2">Dirección de la entidad legal: calle y número:</label>
+        	<div class="col-lg-10">
+        	<input placeholder="" class="form-control" onchange="this.form.submit()" name="direccion" value="<? echo $row_operador['direccion'];?>"  title="Dirección"  />
+        	</div>
+        	</div>
+            <div class="form-group col-lg-12 col-md-12">
+        	<label for="coordenadas" class="form-label col-lg-2">Coordenadas de la entidad legal</label>
+        	<div class="col-lg-10">
+        	<input placeholder="" class="form-control" onchange="this.form.submit()" name="coordenadas" value="<? echo $row_operador['coordenadas'];?>"  title="Coordenadas"  />
+        	</div>
+        	</div>
+            
+            <div class=" form-group col-lg-2 col-md-2">
+        	<label for="cp" class="form-label col-lg-4">C.P.:</label>
+        	<div class="col-lg-8">
+        	<input placeholder="" class="form-control" onchange="this.form.submit()" name="cp" type="text"  			title="Codigo postal " value="<? echo $row_operador['cp'];?>"  />
+    	    </div>
+    		  </div>
 
-		<div class="form-group col-lg-4 col-md-4">
-    	<label for="colonia" class="form-label col-lg-4">Colonia:</label>
-    	<div class="col-lg-8">
-    	<input placeholder="escribe aquí" class="form-control"  onchange="this.form.submit()" name="colonia" value="<? echo $row_operador['colonia'];?>"  title="Colonia " />
-    	</div>
-		</div>
-        <div class="form-group col-lg-3 col-md-3">
-    	<label for="estado" class="form-label col-lg-4">Estado:</label>
-    	<div class="col-lg-8">
-    	<input placeholder="escribe aquí" class="form-control" onchange="this.form.submit()" name="estado" type="text"  			title="Estado " value="<? echo $row_operador['estado'];?>" />
-	    </div>
-		</div>
+    		<div class="form-group col-lg-4 col-md-4">
+        	<label for="colonia" class="form-label col-lg-4">Colonia:</label>
+        	<div class="col-lg-8">
+        	<input placeholder="" class="form-control"  onchange="this.form.submit()" name="colonia" value="<? echo $row_operador['colonia'];?>"  title="Colonia " />
+        	</div>
+    		</div>
+            <div class="form-group col-lg-3 col-md-3">
+        	<label for="estado" class="form-label col-lg-4">Estado:</label>
+        	<div class="col-lg-8">
+        	<input placeholder="" class="form-control" onchange="this.form.submit()" name="estado" type="text"  			title="Estado " value="<? echo $row_operador['estado'];?>" />
+    	    </div>
+    		</div>
 
-		<div class="form-group col-lg-4 col-md-4">
-    	<label for="pais" class="form-label col-lg-4">Pais:</label>
-    	<div class="col-lg-8">
-    	<input placeholder="escribe aquí" class="form-control" onchange="this.form.submit()" name="pais" value="<? echo $row_operador['pais'];?>" id="email" title="Pais "  />
-    	</div>
-		</div>
-      
-		<div class=" form-group col-lg-4 col-md-4">
-    	<label for="email" class="form-label col-lg-4">Correo Electrónico:</label>
-    	<div class="col-lg-8">
-    	<input placeholder="escribe aquí" class="form-control" onchange="this.form.submit()" name="email" value="<? echo $row_operador['email'];?>" id="email" title="Email " />
-    	</div>
-		</div>
-        <div class="form-group col-lg-5 col-md-5">
-    	<label for="telefono" class="form-label col-lg-8">Número de telefono(oficina o personal):</label>
-    	<div class="col-lg-4">
-    	<input placeholder="escribe aquí" class="form-control" onchange="this.form.submit()" name="telefono" type="text" 			title="Telefono " value="<? echo $row_operador['telefono'];?>"  />
-	    </div>
-		</div>
+    		<div class="form-group col-lg-4 col-md-4">
+        	<label for="pais" class="form-label col-lg-4">Pais:</label>
+        	<div class="col-lg-8">
+        	<input placeholder="escribe aquí" class="form-control" onchange="this.form.submit()" name="pais" value="<? echo $row_operador['pais'];?>" id="email" title="Pais "  />
+        	</div>
+    		</div>
+          
+    		<div class=" form-group col-lg-4 col-md-4">
+        	<label for="email" class="form-label col-lg-4">Correo Electrónico:</label>
+        	<div class="col-lg-8">
+        	<input placeholder="" class="form-control" onchange="this.form.submit()" name="email" value="<? echo $row_operador['email'];?>" id="email" title="Email " />
+        	</div>
+    		</div>
+            <div class="form-group col-lg-5 col-md-5">
+        	<label for="telefono" class="form-label col-lg-8">Número de telefono(oficina o personal):</label>
+        	<div class="col-lg-4">
+        	<input placeholder="" class="form-control" onchange="this.form.submit()" name="telefono" type="text" 			title="Telefono " value="<? echo $row_operador['telefono'];?>"  />
+    	    </div>
+    		</div>
 
-		<div class="form-group col-lg-3 col-md-3">
-        
-    	<label for="fax" class="form-label col-lg-4">Fax:</label>
-    	<div class="col-lg-8">
-    	<input placeholder="escribe aquí" class="form-control"  onchange="this.form.submit()" name="fax" value="<? echo $row_operador['fax'];?>" title="Fax "  />
-    	</div>
-		</div>
+    		<div class="form-group col-lg-3 col-md-3">
+            
+        	<label for="fax" class="form-label col-lg-4">Fax:</label>
+        	<div class="col-lg-8">
+        	<input placeholder="" class="form-control"  onchange="this.form.submit()" name="fax" value="<? echo $row_operador['fax'];?>" title="Fax "  />
+        	</div>
+    		</div>
+      </div> <!-- /ROW-->
     </fieldset>	
+
 <input type="hidden" name="idoperador" value="<? echo $row_operador['idoperador']; ?>" />
 <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
   <input type="hidden" name="seccion" value="1" />
   <input type="hidden" name="fecha" value="<? echo time();?>" />
-
 </form>
+
 <form id="myform" action="#seccion2" method="post" class="form-horizontal" enctype="multipart/form-data">
 <fieldset>
     <a name="seccion2">
-    
-    
 	<legend>Sección 2</legend>
-		<table cellpadding="20" cellspacing="50"  ><tbody>
-        <tr>
-        <th  bgcolor="#00CC33"><strong>GGN</strong> (GLOBALG.A.P NUMBER, obligatorio si estuvieron certificados anteriormente con GLOBALG.A.P):
-    	</th>
-        <th  bgcolor="#00CC33">
-        <strong>GLN</strong> (Global Localization Number, obligatorio si fue solicitado a GS1):
-        </th>
-        <th  bgcolor="#00CC33">
-       <strong>CoC número</strong> (CoC NUMBER, obligatorio si estuvieron certificados anteriormente con GLOBALG.A.P):
-        </th>
-        <th  bgcolor="#00CC33">
-        <strong>Número de registro México Calidad Suprema</strong> (, obligatorio si ya esta registrado):
-        </th>
-       </tr></tbody></table>
-        <div class=" form-group col-lg-12 col-md-12">
-       <div class=" col-lg-3 col-md-3">
-    	<input placeholder="escribe aquí"  class="form-control" onchange="this.form.submit()" name="num_ggn" type="text" 			title="Número " value="<? echo $row_solicitud['num_ggn'];?>" />
-        </div>
-    	<div class="col-lg-3">
-    	<input placeholder="escribe aquí" class="form-control"  onchange="this.form.submit()" name="num_gln" value="<? echo $row_solicitud['num_gln'];?>"  title="Número "  />
-	    </div>
-       
-         <div class="col-lg-3">
-    <input placeholder="escribe aquí" class="form-control" onchange="this.form.submit()" name="num_coc" value="<? echo $row_solicitud['num_coc'];?>"  title="Número"  />
-	    
-		</div>
-         <div class="col-lg-3">
-    <input placeholder="escribe aquí" class="form-control" onchange="this.form.submit()" name="num_mex_cal_sup" value="<? echo $row_solicitud['num_mex_cal_sup'];?>"  title="Número"  />
-	    
-		</div>
-        </div>
+
+<div class="row">
+  <div class=" form-group col-md-12">
+    <div class="col-md-3 col-sm-6">
+      <div class="col-md-12" style="background-color:#6bc35d">
+          <b>GGN </b> (GLOBALG.A.P NUMBER, obligatorio si estuvieron certificados anteriormente con GLOBALG.A.P):
+      </div>
+      <div class="col-md-12">
+            <input placeholder=" "  class="form-control" onchange="this.form.submit()" name="num_ggn" type="text"      title="Número " value="<? echo $row_solicitud['num_ggn'];?>" />
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="col-md-12" style="background-color:#6bc35d">
+      <b>GLN</b>(Global Localization Number, obligatorio si fue solicitado a GS1):
+      </div>
+      <div class="col-md-12">
+       <input placeholder=" " class="form-control"  onchange="this.form.submit()" name="num_gln" value="<? echo $row_solicitud['num_gln'];?>"  title="Número "  />
+      </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6">
+      <div class="col-md-12" style="background-color:#6bc35d">
+          <b>CoC</b>número (CoC NUMBER, obligatorio si estuvieron certificados anteriormente con GLOBALG.A.P):
+      </div>
+      <div class="col-md-12">
+              <input placeholder=" " class="form-control" onchange="this.form.submit()" name="num_coc" value="<? echo $row_solicitud['num_coc'];?>"  title="Número"  />
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="col-md-12" style="background-color:#6bc35d">
+      <b>Número de registro México Calidad Suprema</b> (obligatorio si ya esta registrado):
+      </div>
+      <div class="col-md-12">
+              <input placeholder="" class="form-control" onchange="this.form.submit()" name="num_mex_cal_sup" value="<? echo $row_solicitud['num_mex_cal_sup'];?>"  title="Número"  />
+      </div>
+    </div>
+  </div>
+</div>
+
+
     	
 	 <table width="100%"  cellpadding="20" cellspacing="50">
      <tbody>
