@@ -1,0 +1,120 @@
+
+  
+    <fieldset>
+    <legend>Sección 6</legend>
+     <a name="seccion6">
+     <form method="post" action="#seccion6"><br />
+     <table width="100%"><tbody><tr><th  bgcolor="#00CC33">
+    <h3>Agenda de trabajo general:</h3>
+    
+    
+   </th></tr></tbody></table>
+   <table width="100%"><tbody><tr>
+   <th  colspan="1" >Fecha</th>
+   <th  colspan="1" >Horaro</th>
+   <th  colspan="3" >Área /actividad (se deberá indicar detalladamente las actividades o documentos a revisar por áreas, rubros o secciones)</th>
+   <th  colspan="3" >Responsable por parte del cliente</th>
+   <th  colspan="3" >Auditor</th>
+   </tr>
+   <tr>
+   <th colspan="1" >
+ <input placeholder="escribe aquí"  class="form-control"  name="fecha"  			title="Fecha " type="date" value=""  />
+   </th>
+   
+   <th colspan="1" >
+ <input placeholder="escribe aquí"  class="form-control"  name="horario"  			title="Horario " type="text" value=""  />
+   </th>
+   
+   <th colspan="3" >
+ <input placeholder="escribe aquí"  class="form-control"  name="actividad"  			title="Actividad " type="text" value=""  />
+   </th>
+    
+   <th colspan="3" >
+ <input placeholder="escribe aquí"  class="form-control"  name="responsable"  			title="Responsable " type="text" value=""  />
+   </th>
+    
+   <th colspan="3" >
+<select name="auditor" class="form-control" >
+<option value="">Selecciona una opción...</option>
+<?php 
+$query_vista1 = "SELECT * FROM plan_auditoria_equipo where idplan_auditoria='".$_POST['idplan_auditoria']."' ";
+$vista1 = mysql_query($query_vista1,  $inforgan_pamfa) or die(mysql_error());
+while($row_vista1 = mysql_fetch_assoc($vista1)){
+?>
+<option  value="<?php echo $row_vista1['nombre'];?>"><?php echo $row_vista1['nombre'];?></option>
+<?php }?>
+</select>
+   </th>
+   <th>
+<input type="hidden" name="idplan_auditoria" value="<? echo $_POST['idplan_auditoria']; ?>" />
+    
+<input type="hidden" name="insertar" value="1" />
+  <input type="hidden" name="seccion" value="7" />
+<input type="submit" value="Agregar"  /></th>
+
+  
+</tr></tbody></table>
+  
+      </form>   
+       <form method="post" action="#seccion6">  
+       <? $query_agenda = sprintf("SELECT * FROM agenda where idplan_auditoria='".$_POST['idplan_auditoria']."'");
+$agenda = mysql_query($query_agenda, $inforgan_pamfa) or die(mysql_error());
+?>
+<br />
+
+      <table width="100%" ><tbody>
+      <tr>
+      <th colspan="1">Fecha
+      </th>
+      <th colspan="1" >Horario
+      </th>
+      <th colspan="3">Actividad
+      </th>
+      <th colspan="2">Responsable
+      </th>
+      <th colspan="2">Auditor
+      </th>
+      </tr>
+      
+      <?
+      while($row_agenda= mysql_fetch_assoc($agenda))
+{
+	?>
+   <tr>
+   <th colspan="1" >
+<? echo $row_agenda['fecha'];?>
+   </th>
+    <th colspan="1" >
+<? echo $row_agenda['horario'];?>
+   </th>
+    <th colspan="3" >
+ <? echo $row_agenda['actividad'];?>
+   </th>
+    <th colspan="2" >
+ <? echo $row_agenda['responsable'];?>" 
+   </th>
+    <th colspan="2" >
+ <? echo $row_agenda['auditor'];?>" 
+   </th>
+    <th width="1" ><form id="form3" name="form3" method="post" action="">
+    <input type="hidden" name="eliminar" value="1" />
+    <input type="hidden" name="idplan_auditoria" value="<? echo $_POST['idplan_auditoria']; ?>" />
+     <input type="hidden" name="idagenda" value="<? echo $row_agenda['idagenda']; ?>" />
+    
+
+  <input type="hidden" name="seccion" value="7" />
+    <input type="image" name="imageField3" id="imageField3" src="../../images/delete.png" title="REMOVER" width="30" height="30" />
+    </form></th>
+   </tr>
+   <? }?>
+   
+   </tbody></table>
+   
+   
+      
+    
+      </form>
+    
+    </fieldset>
+   
+	
