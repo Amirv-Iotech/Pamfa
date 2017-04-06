@@ -172,8 +172,8 @@ $row_user= mysql_fetch_assoc($user );
 
 
 
-  $insertSQL = sprintf("INSERT INTO plan_auditoria_equipo (nombre,puesto,email,tel,idplan_auditoria) VALUES (%s,%s,%s,%s,%s)",
-             GetSQLValueString($row_user['nombre']." ".$row_user['apellidos'], "text"),
+  $insertSQL = sprintf("INSERT INTO plan_auditoria_equipo (idauditor,puesto,email,tel,idplan_auditoria) VALUES (%s,%s,%s,%s,%s)",
+             GetSQLValueString($cad, "text"),
 			 GetSQLValueString($p, "text"),
 			 GetSQLValueString($row_user['email'], "text"),
 			 GetSQLValueString($row_user['tel'], "text"),
