@@ -40,7 +40,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
 mysql_select_db($database_pamfa, $inforgan_pamfa);
 
-if ($_POST['firma']==1) {
+if (isset($_POST['firma'])) {
 		
 $f=date('d/m/y',time());
 	$insertSQL = sprintf("update plan_auditoria_equipo set firmado=%s,fecha_firmado=%s WHERE idplan_auditoria=%s and idauditor=%s",
@@ -72,14 +72,11 @@ $total_aud_firma = mysql_num_rows($plan_aud_firma);
 			 GetSQLValueString($f, "text"),
 	GetSQLValueString($_POST['idplan_auditoria'], "int"));
 	 $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
-	  
-  $insertSQL = sprintf("INSERT INTO informe_hallazgos (idplan_auditoria) VALUES (%s)",
-             GetSQLValueString($_POST['idplan_auditoria'], "text"));
-			 $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
-			 
+	 
+	
   }
 }
-if ($_POST['desautorizar']==1) {
+if (isset($_POST['desautorizar'])) {
 	
 	
 $f=date('d/m/y',time());
@@ -180,6 +177,6 @@ $row_cliente= mysql_fetch_assoc($cliente);
 	            </div>
 	        </div>
 
-	<? include("includes/header.php");?>      
+	<? include("includes/footer.php");?>      
 
 </html>
