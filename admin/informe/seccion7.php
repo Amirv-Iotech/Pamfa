@@ -30,7 +30,7 @@
     
   
    <th colspan="3">
-<input type="hidden" name="idplan_auditoria" value="<? echo $_POST['idplan_auditoria']; ?>" />
+<input type="hidden" name="idinforme" value="<? echo $_POST['idinforme']; ?>" />
     
 <input type="hidden" name="insertar" value="1" />
   <input type="hidden" name="seccion" value="7" />
@@ -41,7 +41,7 @@
   
       </form>   
        <form method="post" action="#seccion7">  
-       <? $query_informe = sprintf("SELECT * FROM informe_hallazgos where idplan_auditoria='".$_POST['idplan_auditoria']."'");
+       <? $query_informe = sprintf("SELECT * FROM informe_hallazgos where idinforme='".$_POST['idinforme']."'");
 $informe = mysql_query($query_informe, $inforgan_pamfa) or die(mysql_error());
 ?>
 <br />
@@ -69,7 +69,7 @@ $informe = mysql_query($query_informe, $inforgan_pamfa) or die(mysql_error());
    </th>
     <th width="1" ><form id="form3" name="form3" method="post" action="">
     <input type="hidden" name="eliminar" value="1" />
-    <input type="hidden" name="idplan_auditoria" value="<? echo $_POST['idplan_auditoria']; ?>" />
+    <input type="hidden" name="idid_informe_hallazgo" value="<? echo  $row_informe['idinforme_hallazgo']; ?>" />
      <input type="hidden" name="idinforme" value="<? echo $row_informe['idinforme']; ?>" />
     
 

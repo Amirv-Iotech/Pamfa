@@ -1,4 +1,4 @@
-<?php require_once('../../Connections/inforgan_pamfa.php'); ?>
+<?php require_once('../../Connection/inforgan_pamfa.php'); ?>
 <?php
 error_reporting(0);
 mysql_select_db($database_pamfa, $nforgan_pamfa);
@@ -40,16 +40,16 @@ if ($_POST['seccion']==7) {
 if($_POST['insertar'])
 {
 
-  $insertSQL = sprintf("INSERT INTO informe_hallazgos(num_incumplimiento,requisito,hallazgo,idplan_auditoria) VALUES (%s,%s, %s,  %s)",
-             GetSQLValueString($_POST['num_incumplimiento'], "text"),
+  $insertSQL = sprintf("INSERT INTO informe_hallazgos(idinforme,num_incumplimiento,requisito,hallazgo) VALUES (%s,%s, %s,  %s)",
+             GetSQLValueString($_POST['idinforme'], "text"),
+			 GetSQLValueString($_POST['num_incumplimiento'], "text"),
              GetSQLValueString($_POST['requisito'], "text"),
-			 GetSQLValueString($_POST['hallazgo'], "text"),
-			 GetSQLValueString($_POST['idplan_auditoria'], "text"));
+			 GetSQLValueString($_POST['hallazgo'], "text"));
 						 
 }
 else if($_POST['eliminar']){
 	
-	$insertSQL = sprintf("delete from informe_hallazgos where idinforme=%s and idplan_auditoria=%s ",
+	$insertSQL = sprintf("delete from informe_hallazgos where idinforme=%s and idinforme_hallazgo=%s ",
  GetSQLValueString($_POST['idinforme'], "text"),
             
 			 GetSQLValueString($_POST['idplan_auditoria'], "int"));

@@ -97,7 +97,7 @@
 	                    </a>
 	                </li>
 					<li class="active-pro">
-	                    <a href="../../../Connections/salir.php">
+	                    <a href="../../Connections/salir.php">
 	                        <i class="material-icons">unarchive</i>
 	                        <p>Salir</p>
 	                    </a>

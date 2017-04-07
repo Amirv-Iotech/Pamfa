@@ -1,6 +1,6 @@
 <?php
 session_start();
-include ("../../../Connections/inforgan_pamfa.php");
+include ("../Connection/inforgan_pamfa.php");
 mysql_select_db($database_pamfa, $inforgan_pamfa);
 
 if (!function_exists("GetSQLValueString")) {

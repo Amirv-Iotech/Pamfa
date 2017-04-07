@@ -1,7 +1,7 @@
 <?php
 // *** Validate request to login to this site.
-	require_once("../../../Connections/sesion.php");
-  require_once("../../../Connections/inforgan_pamfa.php");
+	require_once("../../Connections/sesion.php");
+  require_once("../../../Connection/inforgan_pamfa.php");
 
 include('../../includes/header.php');    
 ?>

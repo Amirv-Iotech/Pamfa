@@ -1,4 +1,4 @@
-<? require_once('../../Connections/inforgan_pamfa.php');
+<? require_once('../../Connection/inforgan_pamfa.php');
 if(!session_start())
 {
 	session_start();

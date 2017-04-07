@@ -1,4 +1,4 @@
-<? require_once('../../Connections/inforgan_pamfa.php');
+<? require_once('../../Connection/inforgan_pamfa.php');
 if(!session_start())
 {
 	session_start();
@@ -45,7 +45,7 @@ mysql_select_db($database_pamfa, $inforgan_pamfa);
   include("cerebro.php");?>
 <?
 
-$query_operador = sprintf("SELECT * FROM operador WHERE idoperador=%s", GetSQLValueString( $_SESSION["idoperador"], "int"));
+$query_operador = sprintf("SELECT * FROM operador WHERE idoperador=(select idoperador from solicitud where idsolicitud=%s)", GetSQLValueString( $_POST['idsolicitud'], "int"));
 $operador = mysql_query($query_operador, $inforgan_pamfa) or die(mysql_error());
 $row_operador= mysql_fetch_assoc($operador);
 

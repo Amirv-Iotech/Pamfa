@@ -57,7 +57,7 @@
             </div>
           </div>
           <div class="col-lg-6">
-              <form id="frm_administrador"  action="../Connections/autentificar.php" method="POST" >
+              <form id="frm_administrador"  action="Connections/autentificar.php" method="POST" >
 
                 <div class="col-md-12">
                   <h3 class="text-center"> Administrador</h3>
