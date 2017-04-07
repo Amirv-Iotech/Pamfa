@@ -40,23 +40,43 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
 mysql_select_db($database_pamfa, $inforgan_pamfa);
 
-if ($_POST['firma']==1) {
+if (isset($_POST['firma'])) {
 		
 $f=date('d/m/y',time());
-	$insertSQL = sprintf("update plan_auditoria set firma=%s,nombre_firma=%s,fecha_firma=%s WHERE idplan_auditoria=%s",
+	$insertSQL = sprintf("update informe_firma set firma=%s,fecha_firma=%s WHERE idinforme=%s and idauditor=%s",
 
              GetSQLValueString(1, "text"),
-			 GetSQLValueString($_SESSION["idusuario"], "text"),
-			 GetSQLValueString($f, "text"),
-	GetSQLValueString($_POST['idplan_auditoria'], "int"));
+			  GetSQLValueString($f, "text"),
+			 
+			
+	GetSQLValueString($_POST['idinforme'], "int"),
+	GetSQLValueString($_SESSION["idusuario"], "text"));
 
   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
   
-  $insertSQL = sprintf("INSERT INTO informe_hallazgos (idplan_auditoria) VALUES (%s)",
-             GetSQLValueString($_POST['idplan_auditoria'], "text"));
-			 $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
+   $query_informe = "SELECT * FROM informe_firma where idinforme='".$_POST['idinforme']."'";
+$informe  = mysql_query($query_informe , $inforgan_pamfa) or die(mysql_error());
+$total_informe = mysql_num_rows($informe);
+  
+ $query_informe_firma = "SELECT * FROM informe_firma where idinforme='".$_POST['idinforme']."' and firma=1";
+$informe_firma  = mysql_query($query_informe_firma , $inforgan_pamfa) or die(mysql_error());
+$total_informe_firma = mysql_num_rows($informe_firma);
+  if($total_informe== $total_informe_firma)
+  {
+ 
+ $insertSQL = sprintf("update informe set firma_auditor=%s,fecha_firma_auditor=%s WHERE idinforme=%s ",
+
+             GetSQLValueString(1, "text"),
+			  GetSQLValueString($f, "text"),
+			 
+			
+	GetSQLValueString($_POST['idinforme'], "int"));
+
+  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
+			
+  }
 }
-if ($_POST['desautorizar']==1) {
+if (isset($_POST['desautorizar'])) {
 	
 	
 $f=date('d/m/y',time());
@@ -70,10 +90,10 @@ $f=date('d/m/y',time());
 }
 ///////fin
 
-$query_plan_auditoria = "SELECT idsolicitud,idplan_auditoria,firma FROM plan_auditoria where firma=1 ORDER BY idsolicitud DESC";
-$plan_auditoria  = mysql_query($query_plan_auditoria , $inforgan_pamfa) or die(mysql_error());
 
 
+$query_informe = "SELECT * FROM informe_firma where idinforme in(SELECT idinforme FROM informe) and idauditor='".$_SESSION['idusuario']."' ORDER BY idinforme DESC";
+$informe  = mysql_query($query_informe , $inforgan_pamfa) or die(mysql_error());
 
 
  include("includes/header.php");
@@ -102,10 +122,11 @@ $plan_auditoria  = mysql_query($query_plan_auditoria , $inforgan_pamfa) or die(m
 											
 	                                    </thead>
 	                                    <tbody>
-                                        <? while( $row_plan_auditoria= mysql_fetch_assoc($plan_auditoria))
+                                        <? while( $row_informe= mysql_fetch_assoc($informe))
 										{
+																		
 											
-											$query_solicitud = "SELECT idoperador,idsolicitud FROM solicitud where idsolicitud='".$row_plan_auditoria['idsolicitud']."' ";
+											$query_solicitud = "SELECT idoperador,idsolicitud FROM solicitud where idsolicitud=(select idsolicitud from plan_auditoria where idplan_auditoria=(select idplan_auditoria from informe where idinforme='".$row_informe['idinforme']."')) ";
 $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error());
 $row_solicitud= mysql_fetch_assoc($solicitud);
 
@@ -115,21 +136,21 @@ $cliente = mysql_query($query_cliente, $inforgan_pamfa) or die(mysql_error());
 $row_cliente= mysql_fetch_assoc($cliente);
 											?>
 	                                        <tr>
-	                                        	<td><? echo $row_plan_auditoria['idsolicitud'];?></td>
+	                                        	<td><? echo $row_solicitud['idsolicitud'];?></td>
 	                                        	<td><? echo $row_cliente['nombre_legal'];?></td>
 	                                        	
                                                 <td>
                                                 <form action="formulario.php" method="post">
                                                  <button type="submit" name="Ver"  value="1"class="btn btn-success">Ver</button>
                                                  <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
-                                                   <input type="hidden" name="idplan_auditoria" value="<? echo $row_plan_auditoria['idplan_auditoria']; ?>" />
+                                                   <input type="hidden" name="idinforme" value="<? echo $row_informe['idinforme']; ?>" />
 </form></td>
-<? if($row_plan_auditoria['firma']!=1)
+<? if($row_informe['firma']!=1)
 {?>
  <td>
                                                 <form action="" method="post">
                                                  <button type="submit" name="firma"  value="1"class="btn btn-danger">Firmar</button>
-                                                 <input type="hidden" name="idplan_auditoria" value="<? echo $row_plan_auditoria['idplan_auditoria']; ?>" />
+                                                 <input type="hidden" name="idinforme" value="<? echo $row_informe['idinforme']; ?>" />
                                                  
 </form></td><? } else {?>
 
@@ -158,6 +179,6 @@ $row_cliente= mysql_fetch_assoc($cliente);
 	            </div>
 	        </div>
 
-	<? include("includes/header.php");?>      
+	<? include("includes/footer.php");?>      
 
 </html>

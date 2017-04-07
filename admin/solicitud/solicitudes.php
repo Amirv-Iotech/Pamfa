@@ -40,7 +40,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
 mysql_select_db($database_pamfa, $inforgan_pamfa);
 
-if ($_POST['autorizar']==1) {
+if (isset($_POST['autorizar'])) {
 	
 	
 $f=date('d/m/y',time());
@@ -59,7 +59,7 @@ $f=date('d/m/y',time());
              GetSQLValueString($_POST['idsolicitud'], "text"));
 			 $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
 }
-if ($_POST['desautorizar']==1) {
+if (isset($_POST['desautorizar'])) {
 	
 	
 $f=date('d/m/y',time());

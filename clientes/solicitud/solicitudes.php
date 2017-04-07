@@ -47,7 +47,7 @@ $row_cliente= mysql_fetch_assoc($cliente);
 
 $query_solicitud = "SELECT idsolicitud,fecha FROM solicitud where idoperador='".$row_cliente['idoperador']."' and terminada=1 ORDER BY idsolicitud DESC";
 $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error());
-echo $query_solicitud;
+
 
 
 
@@ -109,6 +109,6 @@ echo $query_solicitud;
 	            </div>
 	        </div>
 
-	<? include("includes/header.php");?>      
+	<? include("includes/footer.php");?>      
 
 </html>

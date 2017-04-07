@@ -72,6 +72,7 @@ if(isset($_POST['username'])){
         $_SESSION["autentificado"] = true;
         $_SESSION["nombre"] = $loginStrGroup['nombre'];
         $_SESSION["clase_usuario"] = $_POST['clase_usuario'];
+		 $_SESSION["tipo"] = 'admin';
         //$_SESSION["email"] = $loginStrGroup['email'];
 
         if (isset($_SESSION['PrevUrl']) && false) {
@@ -119,6 +120,7 @@ if(isset($_POST['username'])){
         $_SESSION["autentificado"] = true;
         $_SESSION["nombre"] = $loginStrGroup['nombre'];
         $_SESSION["clase_usuario"] = $_POST['clase_usuario'];
+		 $_SESSION["tipo"] = 'auditor';
         //$_SESSION["email"] = $loginStrGroup['email'];
 
         if (isset($_SESSION['PrevUrl']) && false) {
@@ -166,11 +168,12 @@ if(isset($_POST['username'])){
       session_start();
 	   $_SESSION["autentificado"] = false;
         $_SESSION["idoperador"] = $loginStrGroup['idoperador'];
-       
+        $_SESSION["idusuario"] = $loginStrGroup['idoperador'];
         $_SESSION['username'] = $loginUsername;     
         $_SESSION["autentificado"] = true;
         $_SESSION["nombre"] = $loginStrGroup['nombre'];
         $_SESSION["mun"] = $loginStrGroup['municipio'];
+		 $_SESSION["tipo"] = 'clientes';
         //$_SESSION["email"] = $loginStrGroup['email'];
 
         if (isset($_SESSION['PrevUrl']) && false) {
