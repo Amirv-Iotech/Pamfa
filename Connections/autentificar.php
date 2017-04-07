@@ -136,7 +136,7 @@ if(isset($_POST['username'])){
 
 
 
-  // LOGIN ADMINISTRADOR
+  // LOGIN cliente
   if($_POST['clase_usuario'] == "cliente"){
     $loginUsername=$_POST['username'];
     $password=$_POST['password'];
