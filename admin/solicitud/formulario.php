@@ -87,7 +87,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
     <table >
     <tr>
     <td width="20%">
-    <h3>Fecha de solicitud </h3></td><td width="10%"> <h3><? if(isset($row_solicitud['fecha'])){ echo date('d/m/y',$row_solicitud['fecha']);}else{ echo date('d/m/y',time());}?> </h3></td><td width="40%">  <h3>   Nombre de la persona que llena la solicitud: </h3></td><td width="30%"><h3><input onchange="this.form.submit()" name="persona" type="text" placeholder="escriba aquí"  class="form-control" title="Nombre " value="<? echo $row_solicitud['persona'];?>" class="form-control" /></h3></td></tr><tr><td colspan="4">
+    <h3>Fecha de solicitud </h3></td><td width="10%"> <h3><? if(isset($row_solicitud['fecha'])){ echo date('d/m/y',$row_solicitud['fecha']);}else{ echo date('d/m/y',time());}?> </h3></td><td width="40%">  <h3>   Nombre de la persona que llena la solicitud: </h3></td><td width="30%"><h3><input onchange="this.form.submit()" name="persona" type="text" placeholder="escriba aquí"  class="form-control" title="Nombres " value="<?php echo "$row_solicitud[persona]";?>" class="form-control" /></h3></td></tr><tr><td colspan="4">
     
     <h3>Estimado cliente, favor de llenar los datos en los espacios requeridos, esta información es necesaria para completar el proceso de certificación de acuerdo al esquema de certificación que usted solicita.</h3>
     </td></tr></table>
