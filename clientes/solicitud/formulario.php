@@ -83,20 +83,23 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 		<div class="col-lg-12">
 			<p style="font-size:25px; text-align:center;">Solicitud de certificación de producto</p>
 			</br>
-		</div>
-		<div class="col-lg-2 col-md-2 col-xs-6">
-			<p class="solicitud">Fecha de solicitud </p>
+      </br>
 		</div>
 		<div class="col-lg-2 col-md-2 col-xs-6 fechas">
+			<p class="solicitud">Fecha de solicitud </p>
+		</div>
+		<div class="col-lg-2 col-md-2 col-xs-6 fechas" style="border-bottom:solid 1px #AAAAAA;">
 			<p class="solicitud"><?php if(isset($row_solicitud['fecha'])){ echo date('d/m/y',$row_solicitud['fecha']);}else{ echo date('d/m/y',time());}?> </p>
 		</div>
-		<div class="col-lg-5 col-md-5 col-xs-6">
+
+		<div class="col-lg-5 col-md-5 col-xs-6 fechas">
 			<p class="solicitud">   Nombre de la persona que llena la solicitud: </p>
 		</div>
-		<div class="col-lg-3 col-md-3 col-xs-6">
-			<p class="solicitud"> <input id="persona" onchange="loadLog()" name="persona" type="text" placeholder=""  class="form-control" title="Nombre " value="<?php echo $row_solicitud['persona'];?>" class="form-control" /></p>
+		<div class="col-lg-3 col-md-3 col-xs-6 fechas">
+			<p class="solicitud"> <input id="persona" onchange="loadLog()" name="persona" type="text" placeholder=""  class="form-control" title="Nombre " value="<?php echo $row_solicitud['persona'];?>" class="form-control"  style="font-size: 18px; text-align:center;"/></p>
 		</div>
 		<div class="col-lg-12 col-xs-12">
+    </br>
 			<p class="solicitud" >Estimado cliente, favor de llenar los datos en los espacios requeridos, esta información es necesaria para completar el proceso de certificación de acuerdo al esquema de certificación que usted solicita.</p>
 		</div>
 	</div>
@@ -111,29 +114,34 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 	<fieldset>
     <a name="seccion1"></a>
     
-    <div class="row">
+    <div class="row" style="border: solid 1px #AAAAAA;"">
         <div class="col-md-12" style="text-align: center; background-color:#6bc35d">
-          <label>INFORMACIÓN DEL CLIENTE (Entidad legal y persona de contacto)</label>
+          <label class="solicitud">INFORMACIÓN DEL CLIENTE (Entidad legal y persona de contacto)</label>
         </div>
-    		
-    		<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
-        	<label for="nombre_legal" class="form-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Nombre de la entidad legal (empresa o persona):</label>
-			<div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
-        	<input placeholder=""   class="form-control" onchange="this.form.submit()" name="nombre_legal" type="text" 	title="Nombre completo " value="<?php echo $row_operador['nombre_legal'];?>"  />
-    	    </div>
-			</div>
-    		<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
-        	<label for="nombre_representante" class="form-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Nombre del representante legal:</label>
-        	<div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
-        	<input placeholder="" class="form-control"  onchange="this.form.submit()" name="nombre_representante" value="<?php echo $row_operador['nombre_representante'];?>"  title="Nombre " />
+    		<div class="col-lg-12 col-ms-12" style="border-top: solid 1px #AAAAAA; border-bottom: solid 1px #AAAAAA;">
+      		<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6 campos" style="border-right: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
+            <label for="nombre_legal" class="form-label col-lg-12 col-md-12 col-sm-12 col-xs-12">Nombre de la entidad legal (empresa o persona):</label>
+  			  <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          	<input placeholder=""   class="inputsf form-control" onchange="this.form.submit()" name="nombre_legal" type="text" 	title="Nombre completo " value="<?php echo $row_operador['nombre_legal'];?>"  />
+      	   </div>
+  			 </div>
+
+      		<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6 campos" style="margin-right: 0px; margin-left: 0px;">
+          	<label for="nombre_representante" class="form-label col-lg-12 col-md-12 col-sm-12 col-xs-12">Nombre del representante legal:</label>
+          	<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          	<input  placeholder="" class="inputsf form-control"  onchange="this.form.submit()" name="nombre_representante" value="<?php echo $row_operador['nombre_representante'];?>"  title="Nombre " />
         	</div>
-    		</div>
-    		<div class="form-group col-lg-12 col-md-12">
-        	<label for="direccion" class="form-label col-lg-4 col-md-4 col-sm-4">Dirección de la entidad legal: calle y número:</label>
-        	<div class=" form-group col-lg-8">
+    		  </div>
+        </div>
+
+    		<div class="form-group col-lg-12 col-md-12 campos" style="border-bottom: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
+          <div class="col-lg-4 col-sm-4">
+        	  <label for="direccion" class="form-label">Dirección de la entidad legal: calle y número:</label>
+          </div>
+        	<div class=" form-group col-lg-8 campos">
         	<input placeholder="" class="form-control" onchange="this.form.submit()" name="direccion" value="<?php echo $row_operador['direccion'];?>"  title="Dirección"  />
         	</div>
-        	</div>
+        </div>
             <div class="form-group col-lg-12 col-md-12">
         	<label for="coordenadas" class="form-label col-lg-2">Coordenadas de la entidad legal</label>
         	<div class="col-lg-10">

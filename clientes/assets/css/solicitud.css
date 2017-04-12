@@ -1,11 +1,16 @@
 .solicitud {
-	font-size:20px;
+	font-size:18px;
 	
 }
 .fechas {
 vertical-align: bottom;
-bottom: -8px;
-border-bottom: solid 1px green;
+/*border-bottom: solid 1px green;*/
 display: inline-block;
-	
+}
+.inputsf{
+	text-align: center;
+}
+.campos{
+	padding-bottom: 0px;
+	margin: 0px 0px 0px 0px;
 }
