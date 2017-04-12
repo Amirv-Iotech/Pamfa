@@ -114,21 +114,21 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 	<fieldset>
     <a name="seccion1"></a>
     
-    <div class="row" style="border: solid 1px #AAAAAA;"">
-        <div class="col-md-12" style="text-align: center; background-color:#6bc35d">
+    <div id="seccion1" class="row" style="border: solid 1px #AAAAAA; background-color: #ecfbe7">
+        <div class="col-md-12" style="text-align: center; background-color:#dbf573e6">
           <label class="solicitud">INFORMACIÓN DEL CLIENTE (Entidad legal y persona de contacto)</label>
         </div>
-    		<div class="col-lg-12 col-ms-12" style="border-top: solid 1px #AAAAAA; border-bottom: solid 1px #AAAAAA;">
+    		<div class="col-lg-12 col-ms-12 campos" style="border-top: solid 1px #AAAAAA; border-bottom: solid 1px #AAAAAA;">
       		<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6 campos" style="border-right: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
             <label for="nombre_legal" class="form-label col-lg-12 col-md-12 col-sm-12 col-xs-12">Nombre de la entidad legal (empresa o persona):</label>
-  			  <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+  			  <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 campos">
           	<input placeholder=""   class="inputsf form-control" onchange="this.form.submit()" name="nombre_legal" type="text" 	title="Nombre completo " value="<?php echo $row_operador['nombre_legal'];?>"  />
       	   </div>
   			 </div>
 
-      		<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6 campos" style="margin-right: 0px; margin-left: 0px;">
+      	 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6 campos" style="margin-right: 0px; margin-left: 0px;">
           	<label for="nombre_representante" class="form-label col-lg-12 col-md-12 col-sm-12 col-xs-12">Nombre del representante legal:</label>
-          	<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          	<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 campos">
           	<input  placeholder="" class="inputsf form-control"  onchange="this.form.submit()" name="nombre_representante" value="<?php echo $row_operador['nombre_representante'];?>"  title="Nombre " />
         	</div>
     		  </div>
@@ -136,66 +136,72 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 
     		<div class="form-group col-lg-12 col-md-12 campos" style="border-bottom: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
           <div class="col-lg-4 col-sm-4">
-        	  <label for="direccion" class="form-label">Dirección de la entidad legal: calle y número:</label>
+        	  <label for="direccion" class="form-label" style="padding-top:5px;">Dirección de la entidad legal: calle y número:</label>
           </div>
         	<div class=" form-group col-lg-8 campos">
-        	<input placeholder="" class="form-control" onchange="this.form.submit()" name="direccion" value="<?php echo $row_operador['direccion'];?>"  title="Dirección"  />
+        	<input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="direccion" value="<?php echo $row_operador['direccion'];?>"  title="Dirección"  />
         	</div>
         </div>
-            <div class="form-group col-lg-12 col-md-12">
-        	<label for="coordenadas" class="form-label col-lg-2">Coordenadas de la entidad legal</label>
-        	<div class="col-lg-10">
-        	<input placeholder="" class="form-control" onchange="this.form.submit()" name="coordenadas" value="<?php echo $row_operador['coordenadas'];?>"  title="Coordenadas"  />
+            <div class="form-group col-lg-12 col-md-12 campos" style="border-bottom: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
+            <div class="col-lg-4 col-sm-4">
+        	   <label for="coordenadas" class="form-label">Coordenadas de la entidad legal</label>
+            </div>
+        	<div class="col-lg-8 campos">
+        	<input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="coordenadas" value="<?php echo $row_operador['coordenadas'];?>"  title="Coordenadas"  />
         	</div>
         	</div>
-            
-            <div class=" form-group col-lg-2 col-md-2">
-        	<label for="cp" class="form-label col-lg-4">C.P.:</label>
-        	<div class="col-lg-8">
-        	<input placeholder="" class="form-control" onchange="this.form.submit()" name="cp" type="text" title="Codigo postal " value="<?php echo $row_operador['cp'];?>"  />
-    	    </div>
+
+          <div class="col-lg-12 col-sm-12 campos" style="border-bottom: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
+            <div class=" form-group col-lg-2 col-md-2 campos" style="border-right: solid 1px #AAAAAA;margin-right: 0px; margin-left: 0px;" >
+            	<label for="cp" class="form-label col-lg-4 col-sm-4">C.P.:</label>
+            	<div class="col-lg-8 col-sm-8">
+            	<input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="cp" type="text" title="Codigo postal " value="<?php echo $row_operador['cp'];?>"  />
+      	     </div>
     		  </div>
-
-    		<div class="form-group col-lg-4 col-md-4">
-        	<label for="colonia" class="form-label col-lg-4">Colonia:</label>
-        	<div class="col-lg-8">
-        	<input placeholder="" class="form-control"  onchange="this.form.submit()" name="colonia" value="<?php echo $row_operador['colonia'];?>"  title="Colonia " />
+    		<div class="form-group col-lg-4 col-md-4 col-sm-4 campos" style="border-right: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;" >
+        	<label for="colonia" class="form-label col-lg-4 col-sm-4">Colonia:</label>
+        	<div class="col-lg-8 col-sm-4">
+        	<input placeholder="" class="form-control inputsf"  onchange="this.form.submit()" name="colonia" value="<?php echo $row_operador['colonia'];?>"  title="Colonia " />
         	</div>
     		</div>
-            <div class="form-group col-lg-3 col-md-3">
+            <div class="form-group col-lg-3 col-md-3 col-sm-3 campos" style="border-right: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
         	<label for="estado" class="form-label col-lg-4">Estado:</label>
-        	<div class="col-lg-8">
-        	<input placeholder="" class="form-control" onchange="this.form.submit()" name="estado" type="text"  			title="Estado " value="<?php echo $row_operador['estado'];?>" />
+        	<div class="col-lg-8 col-sm-8">
+        	<input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="estado" type="text"  			title="Estado " value="<?php echo $row_operador['estado'];?>" />
     	    </div>
     		</div>
 
-    		<div class="form-group col-lg-4 col-md-4">
-        	<label for="pais" class="form-label col-lg-4">Pais:</label>
-        	<div class="col-lg-8">
-        	<input placeholder="" class="form-control" onchange="this.form.submit()" name="pais" value="<?php echo  $row_operador['pais'];?>" id="email" title="Pais "  />
+    		<div class="form-group col-lg-3 col-md-3 col-sm-3 campos" style="border-right: solid 0px #AAAAAA; margin-right: 0px; margin-left: 0px;">
+        	<label for="pais" class="form-label col-lg-4 col-sm-4">Pais:</label>
+        	<div class="col-lg-8 col-sm-8">
+        	<input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="pais" value="<?php echo  $row_operador['pais'];?>" id="email" title="Pais "  />
         	</div>
     		</div>
-          
-    		<div class=" form-group col-lg-4 col-md-4">
-        	<label for="email" class="form-label col-lg-4">Correo Electrónico:</label>
+      </div>
+
+      <div class="col-lg-12 col-sm-12 campos" style="margin-right: 0px; margin-left: 0px; margin-right: 0px; margin-left: 0px;">
+    		<div class=" form-group col-lg-4 col-md-4 col-sm-4 campos" style="border-right: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
+        	<label for="email" class="form-label col-lg-4 col-sm-4">Correo Electrónico:</label>
         	<div class="col-lg-8">
-        	<input placeholder="" class="form-control" onchange="this.form.submit()" name="email" value="<?php echo  $row_operador['email'];?>" id="email" title="Email " />
+        	<input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="email" value="<?php echo  $row_operador['email'];?>" id="email" title="Email " />
         	</div>
     		</div>
-            <div class="form-group col-lg-5 col-md-5">
-        	<label for="telefono" class="form-label col-lg-8">Número de telefono(oficina o personal):</label>
-        	<div class="col-lg-4">
-        	<input placeholder="" class="form-control" onchange="this.form.submit()" name="telefono" type="text" 			title="Telefono " value="<?php echo  $row_operador['telefono'];?>"  />
+
+        <div class="form-group col-lg-5 col-md-5 col-sm-5 campos" style="border-right: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
+        	<label for="telefono" class="form-label col-lg-8 col-sm-8">Número de telefono(oficina o personal):</label>
+        	<div class="col-lg-4 col-sm-4">
+        	<input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="telefono" type="text" 			title="Telefono " value="<?php echo  $row_operador['telefono'];?>"  />
     	    </div>
     		</div>
 
-    		<div class="form-group col-lg-3 col-md-3">
-            
-        	<label for="fax" class="form-label col-lg-4">Fax:</label>
-        	<div class="col-lg-8">
-        	<input placeholder="" class="form-control"  onchange="this.form.submit()" name="fax" value="<?php echo  $row_operador['fax'];?>" title="Fax "  />
+        <div class="form-group col-lg-3 col-md-3 col-sm-3 campos" style="border-right: solid 0px #AAAAAA; margin-right: 0px; margin-left: 0px;">
+        <div class="col-lg-4 col-sm-4 campos">
+        	<label for="fax" class="form-label">Fax:</label></div>
+        	<div class="col-lg-8 col-sm-8 campos">
+        	<input placeholder="" class="form-control inputsf"  onchange="this.form.submit()" name="fax" value="<?php echo  $row_operador['fax'];?>" title="Fax "  />
         	</div>
     		</div>
+        </div>
       </div> <!-- /ROW-->
     </fieldset>	
 
@@ -210,46 +216,63 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
     <a name="seccion2">
 	<legend>Sección 2</legend>
 
-<div class="row">
-  <div class=" form-group col-md-12">
-    <div class="col-md-3 col-sm-6">
-      <div class="col-md-12" style="background-color:#6bc35d; height:150px; overflow: hidden; text-overflow:ellipsis;">
+<div id="seccion2" class="row" style="background-color: #ecfbe7; border: solid 1px #AAAAAA;">
+  <div class=" form-group col-md-12 campos2" style="margin:0px;">
+    <div class="col-md-3 col-sm-6" style="padding: 0px 0px; border: solid 1px #AAAAAA;">
+      <div class="col-md-12" style="background-color:#dbf573e6; height:120px; overflow: hidden; text-overflow:ellipsis;">
           <b>GGN </b><span style="text-align:justify; height:100%;" >GLOBALG.A.P NUMBER, obligatorio si estuvieron certificados anteriormente con GLOBALG.A.P):</span>
       </div>
       <div class="col-md-12" style="height:20%;">
-            <input placeholder="" class="form-control" onchange="this.form.submit()" name="num_ggn" type="text" title="Número" value="<?php echo $row_solicitud['num_ggn'];?>" />
+            <input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="num_ggn" type="text" title="Número" value="<?php echo $row_solicitud['num_ggn'];?>" />
       </div>
     </div>
-    <div class="col-md-3 col-sm-6">
-      <div class="col-md-12" style="background-color:#6bc35d; height:150px; overflow: hidden; text-overflow:ellipsis;">
+    <div class="col-md-3 col-sm-6" style="padding: 0px 0px; border:solid 1px #AAAAAA;">
+      <div class="col-md-12" style="background-color:#dbf573e6; height:120px; overflow: hidden; text-overflow:ellipsis;">
       <b>GLN</b> (Global Localization Number, obligatorio si fue solicitado a GS1):
       </div>
       <div class="col-md-12">
-       <input placeholder="" class="form-control"  onchange="this.form.submit()" name="num_gln" value="<?php echo $row_solicitud['num_gln'];?>"  title="Número "  />
+       <input placeholder="" class="form-control inputsf"  onchange="this.form.submit()" name="num_gln" value="<?php echo $row_solicitud['num_gln'];?>"  title="Número "  />
       </div>
     </div>
 
-    <div class="col-md-3 col-sm-6" style="height:100%;">
-      <div class="col-md-12" style="background-color:#6bc35d; height:150px;overflow: hidden; text-overflow:ellipsis;">
+    <div class="col-md-3 col-sm-6" style="height:100%; padding: 0px 0px; border:solid 1px #AAAAAA;">
+      <div class="col-md-12" style="background-color:#dbf573e6; height:120px;overflow: hidden; text-overflow:ellipsis;">
           <b>CoC</b> número (CoC NUMBER, obligatorio si estuvieron certificados anteriormente con GLOBALG.A.P):
       </div>
       <div class="col-md-12">
-              <input placeholder="" class="form-control" onchange="this.form.submit()" name="num_coc" value="<?php echo $row_solicitud['num_coc'];?>"  title="Número"  />
+              <input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="num_coc" value="<?php echo $row_solicitud['num_coc'];?>"  title="Número"  />
       </div>
     </div>
-    <div class="col-md-3 col-sm-6" style="height:100%;">
-      <div class="col-md-12" style="background-color:#6bc35d; height:150px; overflow: hidden; text-overflow:ellipsis;">
+
+    <div class="col-md-3 col-sm-6" style="height:100%; padding: 0px 0px; border:solid 1px #AAAAAA;">
+      <div class="col-md-12" style="background-color:#dbf573e6; height:120px; overflow: hidden; text-overflow:ellipsis;">
       <b>Número de registro México Calidad Suprema</b> (obligatorio si ya esta registrado):
       </div>
       <div class="col-md-12">
-              <input placeholder="" class="form-control" onchange="this.form.submit()" name="num_mex_cal_sup" value="<?php echo $row_solicitud['num_mex_cal_sup'];?>"  title="Número"  />
+              <input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="num_mex_cal_sup" value="<?php echo $row_solicitud['num_mex_cal_sup'];?>"  title="Número"  />
       </div>
     </div>
+
   </div>
-</div>
+    <div class="col-lg-12 col-sm-12" style="padding: 0px 0px; border:solid 1px #AAAAAA;">
+      <div class="col-lg-6 col-sm-6" style="padding: 0px 0px; border:solid 1px #AAAAAA;">
+        <div class="col-lg-12 col-ms-12" style="background-color:#dbf573e6;">
+        <strong>Número PrimusGFS:</strong> ,<span> obligatorio si estuvieron certificados anteriormente en el esquema PrimusGFS:</span>
+        </div>
+        <div class="col-lg-12 col-sm-12">
+          <input placeholder="" class="form-control" onchange="this.form.submit()" name="num_primus" type="text"        title="Número " value="<?php echo $row_solicitud['num_primus'];?>"  />
+        </div>
+      </div>
 
-
-    	
+      <div class="col-lg-6 col-sm-6" style="padding: 0px 0px; border:solid 1px #AAAAAA;">
+        <div class="col-lg-12 col-sm-12" style="background-color:#dbf573e6;">
+          <strong>Número de  registro de SENASICA:</strong> <span> obligatorio si se registró con SENASICA:</span>
+        </div>
+        <div class="col-lg-12 col-sm-12">
+          <input placeholder="" class="form-control" onchange="this.form.submit()" name="num_senasica" type="text"        title="Número " value="<?php echo $row_solicitud['num_senasica'];?>"  />
+        </div>
+      </div>
+    </div>
 	 <table width="100%"  cellpadding="20" cellspacing="50">
      <tbody>
      <tr>
@@ -260,7 +283,9 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
         <strong>Número de  registro de SENASICA:</strong> , obligatorio si se registró con SENASICA:
         </th>
         </tr>
-        </tbody></table>
+        </tbody>
+
+        </table>
       <div class="col-lg-12 col-md-12">
        <div class=" col-lg-6 col-md-6">
     	<input placeholder="" class="form-control" onchange="this.form.submit()" name="num_primus" type="text"  			title="Número " value="<?php echo $row_solicitud['num_primus'];?>"  />
@@ -287,6 +312,8 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
         </div>
         </div>
         </div>
+
+</div>
     	
     </fieldset>	
     

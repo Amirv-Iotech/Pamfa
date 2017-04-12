@@ -11,6 +11,23 @@ display: inline-block;
 	text-align: center;
 }
 .campos{
+	padding-top: 5px;
 	padding-bottom: 0px;
 	margin: 0px 0px 0px 0px;
+}
+.campos2{
+	padding: 5px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+}
+#seccion1 input{
+	padding-top:10px; 
+	background-color: #ccefb4;
+	background-image: none;
+	border-radius: 5px;
+}
+#seccion2 input{
+	padding-top:10px; 
+	background-color: #ccefb4;
+	background-image: none;
+	border-radius: 5px;
 }
