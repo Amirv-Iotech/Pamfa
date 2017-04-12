@@ -1,11 +1,10 @@
-<? require_once('../../Connections/inforgan_pamfa.php');
+<?php require_once('../../Connections/inforgan_pamfa.php');
 if(!session_start())
 {
 	session_start();
 }
 ?>
-
-<? 
+<?php 
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
@@ -40,10 +39,9 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
 
 mysql_select_db($database_pamfa, $inforgan_pamfa);
-
  include("includes/header.php");
-  include("cerebro.php");?>
-<?
+ include("cerebro.php");?>
+<?php
 
 $query_operador = sprintf("SELECT * FROM operador WHERE idoperador=%s", GetSQLValueString( $_SESSION["idoperador"], "int"));
 $operador = mysql_query($query_operador, $inforgan_pamfa) or die(mysql_error());
@@ -51,7 +49,7 @@ $row_operador= mysql_fetch_assoc($operador);
 
 
 	
-	$query_solicitud = sprintf("SELECT * FROM solicitud WHERE idoperador=%s and terminada is NULL order by idsolicitud asc limit 1", GetSQLValueString( $_SESSION["idoperador"], "int"));
+$query_solicitud = sprintf("SELECT * FROM solicitud WHERE idoperador=%s and terminada is NULL order by idsolicitud asc limit 1", GetSQLValueString( $_SESSION["idoperador"], "int"));
 $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error());
 $row_solicitud= mysql_fetch_assoc($solicitud);
 
@@ -83,13 +81,34 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 	<form id="myform" action="#seccion1" method="post" class="form-horizontal" enctype="multipart/form-data">
 	<h3 align="center">Solicitud de certificación de producto</h3>
     <br><br>
+	<div class="row">
+		<div class="col-lg-12">
+			<h3 align="center">Solicitud de certificación de producto</h3>
+		</div>
+		<div class="col-lg-2 col-md-2 col-xs-6">
+			<h3>Fecha de solicitud </h3>
+		</div>
+		<div class="col-lg-2 col-md-2 col-xs-6">
+			<h3><?php if(isset($row_solicitud['fecha'])){ echo date('d/m/y',$row_solicitud['fecha']);}else{ echo date('d/m/y',time());}?> </h3>
+		</div>
+		<div class="col-lg-5 col-md-5 col-xs-6">
+			<h3>   Nombre de la persona que llena la solicitud: </h3>
+		</div>
+		<div class="col-lg-3 col-md-3 col-xs-6">
+			<h3> <input onchange="this.form.submit()" name="persona" type="text" placeholder=""  class="form-control" title="Nombre " value="<?php echo $row_solicitud['persona'];?>" class="form-control" /></h3>
+		</div>
+		<div class="col-lg-12 col-xs-12">
+			<h3>Estimado cliente, favor de llenar los datos en los espacios requeridos, esta información es necesaria para completar el proceso de certificación de acuerdo al esquema de certificación que usted solicita.</h3>
+		</div>
+	</div>
+	<!--
     <table >
     <tr>
     <td width="20%">
-    <h3>Fecha de solicitud </h3></td><td width="10%"> <h3><? if(isset($row_solicitud['fecha'])){ echo date('d/m/y',$row_solicitud['fecha']);}else{ echo date('d/m/y',time());}?> </h3></td><td width="40%">  <h3>   Nombre de la persona que llena la solicitud: </h3></td><td width="30%"><h3><input onchange="this.form.submit()" name="persona" type="text" placeholder=""  class="form-control" title="Nombre " value="<? echo $row_solicitud['persona'];?>" class="form-control" /></h3></td></tr><tr><td colspan="4">
+    <h3>Fecha de solicitud </h3></td><td width="10%"> <h3><?php if(isset($row_solicitud['fecha'])){ echo date('d/m/y',$row_solicitud['fecha']);}else{ echo date('d/m/y',time());}?> </h3></td><td width="40%">  <h3>   Nombre de la persona que llena la solicitud: </h3></td><td width="30%"><h3><input onchange="this.form.submit()" name="persona" type="text" placeholder=""  class="form-control" title="Nombre " value="<?php echo $row_solicitud['persona'];?>" class="form-control" /></h3></td></tr><tr><td colspan="4">
     
     <h3>Estimado cliente, favor de llenar los datos en los espacios requeridos, esta información es necesaria para completar el proceso de certificación de acuerdo al esquema de certificación que usted solicita.</h3>
-    </td></tr></table>
+    </td></tr></table> -->
 	<fieldset>
     <a name="seccion1"></a>
     
@@ -98,70 +117,68 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
           <label>INFORMACIÓN DEL CLIENTE (Entidad legal y persona de contacto)</label>
         </div>
     		
-    		<div class="form-group col-lg-6 col-md-6">
-        	<label for="nombre_legal" class="form-label col-lg-4">Nombre de la entidad legal (empresa o persona):</label>
-            
-        	<div class="form-group col-lg-8">
-        	<input placeholder=""   class="form-control" onchange="this.form.submit()" name="nombre_legal" type="text" 			title="Nombre completo " value="<? echo $row_operador['nombre_legal'];?>"  />
+    		<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        	<label for="nombre_legal" class="form-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Nombre de la entidad legal (empresa o persona):</label>
+			<div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+        	<input placeholder=""   class="form-control" onchange="this.form.submit()" name="nombre_legal" type="text" 	title="Nombre completo " value="<?php echo $row_operador['nombre_legal'];?>"  />
     	    </div>
-    		</div>
-
-    		<div class="form-group col-lg-6 col-md-6">
-        	<label for="nombre_representante" class="form-label col-lg-4">Nombre del representante legal:</label>
-        	<div class="col-lg-8">
-        	<input placeholder="" class="form-control"  onchange="this.form.submit()" name="nombre_representante" value="<? echo $row_operador['nombre_representante'];?>"  title="Nombre " />
+			</div>
+    		<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        	<label for="nombre_representante" class="form-label col-lg-4 col-md-4 col-sm-4 col-xs-12">Nombre del representante legal:</label>
+        	<div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+        	<input placeholder="" class="form-control"  onchange="this.form.submit()" name="nombre_representante" value="<?php echo $row_operador['nombre_representante'];?>"  title="Nombre " />
         	</div>
     		</div>
     		<div class="form-group col-lg-12 col-md-12">
-        	<label for="direccion" class="form-label col-lg-2">Dirección de la entidad legal: calle y número:</label>
-        	<div class="col-lg-10">
-        	<input placeholder="" class="form-control" onchange="this.form.submit()" name="direccion" value="<? echo $row_operador['direccion'];?>"  title="Dirección"  />
+        	<label for="direccion" class="form-label col-lg-4 col-md-4 col-sm-4">Dirección de la entidad legal: calle y número:</label>
+        	<div class=" form-group col-lg-8">
+        	<input placeholder="" class="form-control" onchange="this.form.submit()" name="direccion" value="<?php echo $row_operador['direccion'];?>"  title="Dirección"  />
         	</div>
         	</div>
             <div class="form-group col-lg-12 col-md-12">
         	<label for="coordenadas" class="form-label col-lg-2">Coordenadas de la entidad legal</label>
         	<div class="col-lg-10">
-        	<input placeholder="" class="form-control" onchange="this.form.submit()" name="coordenadas" value="<? echo $row_operador['coordenadas'];?>"  title="Coordenadas"  />
+        	<input placeholder="" class="form-control" onchange="this.form.submit()" name="coordenadas" value="<?php echo $row_operador['coordenadas'];?>"  title="Coordenadas"  />
         	</div>
         	</div>
             
             <div class=" form-group col-lg-2 col-md-2">
         	<label for="cp" class="form-label col-lg-4">C.P.:</label>
         	<div class="col-lg-8">
-        	<input placeholder="" class="form-control" onchange="this.form.submit()" name="cp" type="text"  			title="Codigo postal " value="<? echo $row_operador['cp'];?>"  />
+        	<input placeholder="" class="form-control" onchange="this.form.submit()" name="cp" type="text" title="Codigo postal " value="<?php echo $row_operador['cp'];?>"  />
     	    </div>
     		  </div>
 
     		<div class="form-group col-lg-4 col-md-4">
         	<label for="colonia" class="form-label col-lg-4">Colonia:</label>
         	<div class="col-lg-8">
-        	<input placeholder="" class="form-control"  onchange="this.form.submit()" name="colonia" value="<? echo $row_operador['colonia'];?>"  title="Colonia " />
+        	<input placeholder="" class="form-control"  onchange="this.form.submit()" name="colonia" value="<?php echo $row_operador['colonia'];?>"  title="Colonia " />
         	</div>
     		</div>
             <div class="form-group col-lg-3 col-md-3">
         	<label for="estado" class="form-label col-lg-4">Estado:</label>
         	<div class="col-lg-8">
-        	<input placeholder="" class="form-control" onchange="this.form.submit()" name="estado" type="text"  			title="Estado " value="<? echo $row_operador['estado'];?>" />
+        	<input placeholder="" class="form-control" onchange="this.form.submit()" name="estado" type="text"  			title="Estado " value="<?php echo $row_operador['estado'];?>" />
     	    </div>
     		</div>
 
     		<div class="form-group col-lg-4 col-md-4">
         	<label for="pais" class="form-label col-lg-4">Pais:</label>
         	<div class="col-lg-8">
-        	<input placeholder="escribe aquí" class="form-control" onchange="this.form.submit()" name="pais" value="<? echo $row_operador['pais'];?>" id="email" title="Pais "  />
+        	<input placeholder="" class="form-control" onchange="this.form.submit()" name="pais" value="<?php echo  $row_operador['pais'];?>" id="email" title="Pais "  />
         	</div>
     		</div>
           
     		<div class=" form-group col-lg-4 col-md-4">
         	<label for="email" class="form-label col-lg-4">Correo Electrónico:</label>
         	<div class="col-lg-8">
-        	<input placeholder="" class="form-control" onchange="this.form.submit()" name="email" value="<? echo $row_operador['email'];?>" id="email" title="Email " />
+        	<input placeholder="" class="form-control" onchange="this.form.submit()" name="email" value="<?php echo  $row_operador['email'];?>" id="email" title="Email " />
         	</div>
     		</div>
             <div class="form-group col-lg-5 col-md-5">
         	<label for="telefono" class="form-label col-lg-8">Número de telefono(oficina o personal):</label>
         	<div class="col-lg-4">
-        	<input placeholder="" class="form-control" onchange="this.form.submit()" name="telefono" type="text" 			title="Telefono " value="<? echo $row_operador['telefono'];?>"  />
+        	<input placeholder="" class="form-control" onchange="this.form.submit()" name="telefono" type="text" 			title="Telefono " value="<?php echo  $row_operador['telefono'];?>"  />
     	    </div>
     		</div>
 
@@ -169,16 +186,16 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
             
         	<label for="fax" class="form-label col-lg-4">Fax:</label>
         	<div class="col-lg-8">
-        	<input placeholder="" class="form-control"  onchange="this.form.submit()" name="fax" value="<? echo $row_operador['fax'];?>" title="Fax "  />
+        	<input placeholder="" class="form-control"  onchange="this.form.submit()" name="fax" value="<?php echo  $row_operador['fax'];?>" title="Fax "  />
         	</div>
     		</div>
       </div> <!-- /ROW-->
     </fieldset>	
 
-<input type="hidden" name="idoperador" value="<? echo $row_operador['idoperador']; ?>" />
-<input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+<input type="hidden" name="idoperador" value="<?php echo  $row_operador['idoperador']; ?>" />
+<input type="hidden" name="idsolicitud" value="<?php echo  $row_solicitud['idsolicitud']; ?>" />
   <input type="hidden" name="seccion" value="1" />
-  <input type="hidden" name="fecha" value="<? echo time();?>" />
+  <input type="hidden" name="fecha" value="<?php echo time();?>" />
 </form>
 
 <form id="myform" action="#seccion2" method="post" class="form-horizontal" enctype="multipart/form-data">
@@ -189,36 +206,36 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 <div class="row">
   <div class=" form-group col-md-12">
     <div class="col-md-3 col-sm-6">
-      <div class="col-md-12" style="background-color:#6bc35d">
-          <b>GGN </b> (GLOBALG.A.P NUMBER, obligatorio si estuvieron certificados anteriormente con GLOBALG.A.P):
+      <div class="col-md-12" style="background-color:#6bc35d; height:150px; overflow: hidden; text-overflow:ellipsis;">
+          <b>GGN </b><span style="text-align:justify; height:100%;" >GLOBALG.A.P NUMBER, obligatorio si estuvieron certificados anteriormente con GLOBALG.A.P):</span>
       </div>
-      <div class="col-md-12">
-            <input placeholder=" "  class="form-control" onchange="this.form.submit()" name="num_ggn" type="text"      title="Número " value="<? echo $row_solicitud['num_ggn'];?>" />
+      <div class="col-md-12" style="height:20%;">
+            <input placeholder="" class="form-control" onchange="this.form.submit()" name="num_ggn" type="text" title="Número" value="<?php echo $row_solicitud['num_ggn'];?>" />
       </div>
     </div>
     <div class="col-md-3 col-sm-6">
-      <div class="col-md-12" style="background-color:#6bc35d">
-      <b>GLN</b>(Global Localization Number, obligatorio si fue solicitado a GS1):
+      <div class="col-md-12" style="background-color:#6bc35d; height:150px; overflow: hidden; text-overflow:ellipsis;">
+      <b>GLN</b> (Global Localization Number, obligatorio si fue solicitado a GS1):
       </div>
       <div class="col-md-12">
-       <input placeholder=" " class="form-control"  onchange="this.form.submit()" name="num_gln" value="<? echo $row_solicitud['num_gln'];?>"  title="Número "  />
+       <input placeholder="" class="form-control"  onchange="this.form.submit()" name="num_gln" value="<?php echo $row_solicitud['num_gln'];?>"  title="Número "  />
       </div>
     </div>
 
-    <div class="col-md-3 col-sm-6">
-      <div class="col-md-12" style="background-color:#6bc35d">
-          <b>CoC</b>número (CoC NUMBER, obligatorio si estuvieron certificados anteriormente con GLOBALG.A.P):
+    <div class="col-md-3 col-sm-6" style="height:100%;">
+      <div class="col-md-12" style="background-color:#6bc35d; height:150px;overflow: hidden; text-overflow:ellipsis;">
+          <b>CoC</b> número (CoC NUMBER, obligatorio si estuvieron certificados anteriormente con GLOBALG.A.P):
       </div>
       <div class="col-md-12">
-              <input placeholder=" " class="form-control" onchange="this.form.submit()" name="num_coc" value="<? echo $row_solicitud['num_coc'];?>"  title="Número"  />
+              <input placeholder="" class="form-control" onchange="this.form.submit()" name="num_coc" value="<?php echo $row_solicitud['num_coc'];?>"  title="Número"  />
       </div>
     </div>
-    <div class="col-md-3 col-sm-6">
-      <div class="col-md-12" style="background-color:#6bc35d">
+    <div class="col-md-3 col-sm-6" style="height:100%;">
+      <div class="col-md-12" style="background-color:#6bc35d; height:150px; overflow: hidden; text-overflow:ellipsis;">
       <b>Número de registro México Calidad Suprema</b> (obligatorio si ya esta registrado):
       </div>
       <div class="col-md-12">
-              <input placeholder="" class="form-control" onchange="this.form.submit()" name="num_mex_cal_sup" value="<? echo $row_solicitud['num_mex_cal_sup'];?>"  title="Número"  />
+              <input placeholder="" class="form-control" onchange="this.form.submit()" name="num_mex_cal_sup" value="<?php echo $row_solicitud['num_mex_cal_sup'];?>"  title="Número"  />
       </div>
     </div>
   </div>
@@ -239,12 +256,12 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
         </tbody></table>
       <div class="col-lg-12 col-md-12">
        <div class=" col-lg-6 col-md-6">
-    	<input placeholder="escribe aquí" class="form-control" onchange="this.form.submit()" name="num_primus" type="text"  			title="Número " value="<? echo $row_solicitud['num_primus'];?>"  />
+    	<input placeholder="" class="form-control" onchange="this.form.submit()" name="num_primus" type="text"  			title="Número " value="<?php echo $row_solicitud['num_primus'];?>"  />
         </div>
         <div class="col-lg-1">
         </div>
     	<div class="col-lg-5">
-    	<input placeholder="escribe aquí" class="form-control" onchange="this.form.submit()" name="num_senasica" type="text"  			title="Número " value="<? echo $row_solicitud['num_senasica'];?>"  />
+    	<input placeholder="" class="form-control" onchange="this.form.submit()" name="num_senasica" type="text"  			title="Número " value="<?php echo $row_solicitud['num_senasica'];?>"  />
 	    </div>
     </div>
 	  <div class="col-lg-12 col-md-12">
@@ -252,14 +269,14 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
     	<label  class="form-label col-lg-6" for="reponsable" >Nombre del responsable de la aplicación de la norma en la entidad legal:</label>
         
          <div class="col-lg-6">
-    	<input placeholder="escribe aquí" class="form-control"  onchange="this.form.submit()" name="responsable" value="<? echo $row_solicitud['responsable'];?>"  title="Responsable "  />
+    	<input placeholder="" class="form-control"  onchange="this.form.submit()" name="responsable" value="<?php echo $row_solicitud['responsable'];?>"  title="Responsable "  />
         </div>
         </div>
     	<div class=" col-lg-6">
     	<label  class="form-label col-lg-6"  for="personal" >Nombre del personal que realizó la autoevaluación/auditoria interna en la entidad legal:</label>
         
          <div class="col-lg-6">
-    	<input placeholder="escribe aquí" class="form-control"  onchange="this.form.submit()" name="personal" value="<? echo $row_solicitud['personal'];?>"  title="Personal "/>
+    	<input placeholder="" class="form-control"  onchange="this.form.submit()" name="personal" value="<?php echo $row_solicitud['personal'];?>"  title="Personal "/>
         </div>
         </div>
         </div>
@@ -267,8 +284,8 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
     </fieldset>	
     
 
- <input type="hidden" name="idoperador" value="<? echo $row_operador['idoperador']; ?>" />
-<input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+ <input type="hidden" name="idoperador" value="<?php echo $row_operador['idoperador']; ?>" />
+<input type="hidden" name="idsolicitud" value="<?php echo $row_solicitud['idsolicitud']; ?>" />
   <input type="hidden" name="seccion" value="2" />
  
 </form>
