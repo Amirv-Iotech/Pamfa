@@ -78,7 +78,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 <div class="panel-heading clearfix"><br>
 
 
-	<form id="myform" action="#seccion1" method="post" class="form-horizontal" enctype="multipart/form-data">
+<form id="myform" action="#seccion1" method="post" class="form-horizontal" enctype="multipart/form-data">
 	<h3 align="center">Solicitud de certificación de producto</h3>
     <br><br>
 	<div class="row">
@@ -95,7 +95,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 			<h3>   Nombre de la persona que llena la solicitud: </h3>
 		</div>
 		<div class="col-lg-3 col-md-3 col-xs-6">
-			<h3> <input onchange="this.form.submit()" name="persona" type="text" placeholder=""  class="form-control" title="Nombre " value="<?php echo $row_solicitud['persona'];?>" class="form-control" /></h3>
+			<h3> <input id="persona" onchange="loadLog()" name="persona" type="text" placeholder=""  class="form-control" title="Nombre " value="<?php echo $row_solicitud['persona'];?>" class="form-control" /></h3>
 		</div>
 		<div class="col-lg-12 col-xs-12">
 			<h3>Estimado cliente, favor de llenar los datos en los espacios requeridos, esta información es necesaria para completar el proceso de certificación de acuerdo al esquema de certificación que usted solicita.</h3>
@@ -192,10 +192,10 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
       </div> <!-- /ROW-->
     </fieldset>	
 
-<input type="hidden" name="idoperador" value="<?php echo  $row_operador['idoperador']; ?>" />
-<input type="hidden" name="idsolicitud" value="<?php echo  $row_solicitud['idsolicitud']; ?>" />
-  <input type="hidden" name="seccion" value="1" />
-  <input type="hidden" name="fecha" value="<?php echo time();?>" />
+	<input type="hidden" id="idoperador" name="idoperador" value="<?php echo  $row_operador['idoperador']; ?>" />
+	<input type="hidden" id="idsolicitud" name="idsolicitud" value="<?php echo  $row_solicitud['idsolicitud']; ?>" />
+	<input type="hidden" id="seccion" name="seccion" value="1" />
+	<input type="hidden" id="fecha" name="fecha" value="<?php echo time();?>" />
 </form>
 
 <form id="myform" action="#seccion2" method="post" class="form-horizontal" enctype="multipart/form-data">
@@ -289,6 +289,9 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
   <input type="hidden" name="seccion" value="2" />
  
 </form>
+
+
+
 <?php include("seccion3.php");?>
 <?php include("seccion4.php");?>
 <?php include("seccion5.php");?>
@@ -311,7 +314,19 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 </div>
 </div>
  
-
+<script>
+function loadLog() {
+	var idoperador= document.getElementById('idoperador').value;
+	var idsolicitud= document.getElementById('idsolicitud').value;
+    var nombre= document.getElementById('persona').value;
+	var fecha= document.getElementById('fecha').value;
+	var seccion= document.getElementById('seccion').value;
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "cerebro.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("persona="+nombre+"&seccion="+seccion+"&idoperador="+idoperador+"&idsolicitud="+idsolicitud+"&fecha="+fecha+"");
+}
+</script>
 
 <?php include("includes/footer.php");?>
 </html>
