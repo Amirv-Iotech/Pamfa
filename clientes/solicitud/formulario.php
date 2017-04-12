@@ -79,26 +79,25 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 
 
 <form id="myform" action="#seccion1" method="post" class="form-horizontal" enctype="multipart/form-data">
-	<h3 align="center">Solicitud de certificación de producto</h3>
-    <br><br>
 	<div class="row">
 		<div class="col-lg-12">
-			<h3 align="center">Solicitud de certificación de producto</h3>
+			<p style="font-size:25px; text-align:center;">Solicitud de certificación de producto</p>
+			</br>
 		</div>
 		<div class="col-lg-2 col-md-2 col-xs-6">
-			<h3>Fecha de solicitud </h3>
+			<p class="solicitud">Fecha de solicitud </p>
 		</div>
-		<div class="col-lg-2 col-md-2 col-xs-6">
-			<h3><?php if(isset($row_solicitud['fecha'])){ echo date('d/m/y',$row_solicitud['fecha']);}else{ echo date('d/m/y',time());}?> </h3>
+		<div class="col-lg-2 col-md-2 col-xs-6 fechas">
+			<p class="solicitud"><?php if(isset($row_solicitud['fecha'])){ echo date('d/m/y',$row_solicitud['fecha']);}else{ echo date('d/m/y',time());}?> </p>
 		</div>
 		<div class="col-lg-5 col-md-5 col-xs-6">
-			<h3>   Nombre de la persona que llena la solicitud: </h3>
+			<p class="solicitud">   Nombre de la persona que llena la solicitud: </p>
 		</div>
 		<div class="col-lg-3 col-md-3 col-xs-6">
-			<h3> <input id="persona" onchange="loadLog()" name="persona" type="text" placeholder=""  class="form-control" title="Nombre " value="<?php echo $row_solicitud['persona'];?>" class="form-control" /></h3>
+			<p class="solicitud"> <input id="persona" onchange="loadLog()" name="persona" type="text" placeholder=""  class="form-control" title="Nombre " value="<?php echo $row_solicitud['persona'];?>" class="form-control" /></p>
 		</div>
 		<div class="col-lg-12 col-xs-12">
-			<h3>Estimado cliente, favor de llenar los datos en los espacios requeridos, esta información es necesaria para completar el proceso de certificación de acuerdo al esquema de certificación que usted solicita.</h3>
+			<p class="solicitud" >Estimado cliente, favor de llenar los datos en los espacios requeridos, esta información es necesaria para completar el proceso de certificación de acuerdo al esquema de certificación que usted solicita.</p>
 		</div>
 	</div>
 	<!--

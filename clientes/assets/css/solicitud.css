@@ -1,0 +1,11 @@
+.solicitud {
+	font-size:20px;
+	
+}
+.fechas {
+vertical-align: bottom;
+bottom: -8px;
+border-bottom: solid 1px green;
+display: inline-block;
+	
+}
