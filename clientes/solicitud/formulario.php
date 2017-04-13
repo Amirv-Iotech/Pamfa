@@ -38,6 +38,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
 
 
+
 mysql_select_db($database_pamfa, $inforgan_pamfa);
  include("includes/header.php");
  include("cerebro.php");?>
