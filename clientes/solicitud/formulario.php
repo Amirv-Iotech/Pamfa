@@ -214,105 +214,94 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 
 <form id="myform" action="#seccion2" method="post" class="form-horizontal" enctype="multipart/form-data">
 <fieldset>
-    <a name="seccion2">
-	<legend>Sección 2</legend>
+    <a name="seccion2"></a>
+	<legend></legend>
 
-<div id="seccion2" class="row" style="background-color: #ecfbe7; border: solid 1px #AAAAAA;">
-  <div class=" form-group col-md-12 campos2" style="margin:0px;">
-    <div class="col-md-3 col-sm-6" style="padding: 0px 0px; border: solid 1px #AAAAAA;">
-      <div class="col-md-12" style="background-color:#dbf573e6; height:120px; overflow: hidden; text-overflow:ellipsis;">
-          <b>GGN </b><span style="text-align:justify; height:100%;" >GLOBALG.A.P NUMBER, obligatorio si estuvieron certificados anteriormente con GLOBALG.A.P):</span>
-      </div>
-      <div class="col-md-12" style="height:20%;">
-            <input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="num_ggn" type="text" title="Número" value="<?php echo $row_solicitud['num_ggn'];?>" />
-      </div>
-    </div>
-    <div class="col-md-3 col-sm-6" style="padding: 0px 0px; border:solid 1px #AAAAAA;">
-      <div class="col-md-12" style="background-color:#dbf573e6; height:120px; overflow: hidden; text-overflow:ellipsis;">
-      <b>GLN</b> (Global Localization Number, obligatorio si fue solicitado a GS1):
-      </div>
-      <div class="col-md-12">
-       <input placeholder="" class="form-control inputsf"  onchange="this.form.submit()" name="num_gln" value="<?php echo $row_solicitud['num_gln'];?>"  title="Número "  />
-      </div>
-    </div>
+	<div id="seccion2" class="row" style="background-color: #ecfbe7; border: solid 1px #AAAAAA;">
+	<div class=" form-group col-md-12 campos2" style="margin:0px;">
+		<div class="col-md-3 col-sm-6" style="padding: 0px 0px; border: solid 1px #AAAAAA;">
+		  <div class="col-md-12" style="background-color:#dbf573e6; height:120px; overflow: hidden; text-overflow:ellipsis;">
+			  <b>GGN </b><span style="text-align:justify; height:100%;" >GLOBALG.A.P NUMBER, obligatorio si estuvieron certificados anteriormente con GLOBALG.A.P):</span>
+		  </div>
+		  <div class="col-md-12 campos" style="height:20%;">
+				<input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="num_ggn" type="text" title="Número" value="<?php echo $row_solicitud['num_ggn'];?>" />
+		  </div>
+		</div>
+		<div class="col-md-3 col-sm-6" style="padding: 0px 0px; border:solid 1px #AAAAAA;">
+		  <div class="col-md-12" style="background-color:#dbf573e6; height:120px; overflow: hidden; text-overflow:ellipsis;">
+		  <b>GLN</b> (Global Localization Number, obligatorio si fue solicitado a GS1):
+		  </div>
+		  <div class="col-md-12 campos">
+		   <input placeholder="" class="form-control inputsf"  onchange="this.form.submit()" name="num_gln" value="<?php echo $row_solicitud['num_gln'];?>"  title="Número "  />
+		  </div>
+		</div>
 
-    <div class="col-md-3 col-sm-6" style="height:100%; padding: 0px 0px; border:solid 1px #AAAAAA;">
-      <div class="col-md-12" style="background-color:#dbf573e6; height:120px;overflow: hidden; text-overflow:ellipsis;">
-          <b>CoC</b> número (CoC NUMBER, obligatorio si estuvieron certificados anteriormente con GLOBALG.A.P):
-      </div>
-      <div class="col-md-12">
-              <input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="num_coc" value="<?php echo $row_solicitud['num_coc'];?>"  title="Número"  />
-      </div>
-    </div>
+		<div class="col-md-3 col-sm-6" style="height:100%; padding: 0px 0px; border:solid 1px #AAAAAA;">
+		  <div class="col-md-12" style="background-color:#dbf573e6; height:120px;overflow: hidden; text-overflow:ellipsis;">
+			  <b>CoC</b> número (CoC NUMBER, obligatorio si estuvieron certificados anteriormente con GLOBALG.A.P):
+		  </div>
+		  <div class="col-md-12 campos">
+				  <input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="num_coc" value="<?php echo $row_solicitud['num_coc'];?>"  title="Número"  />
+		  </div>
+		</div>
 
-    <div class="col-md-3 col-sm-6" style="height:100%; padding: 0px 0px; border:solid 1px #AAAAAA;">
-      <div class="col-md-12" style="background-color:#dbf573e6; height:120px; overflow: hidden; text-overflow:ellipsis;">
-      <b>Número de registro México Calidad Suprema</b> (obligatorio si ya esta registrado):
+		<div class="col-md-3 col-sm-6" style="height:100%; padding: 0px 0px; border:solid 1px #AAAAAA;">
+		  <div class="col-md-12" style="background-color:#dbf573e6; height:120px; overflow: hidden; text-overflow:ellipsis;">
+		  <b>Número de registro México Calidad Suprema</b> (obligatorio si ya esta registrado):
+		  </div>
+		  <div class="col-md-12 campos">
+				  <input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="num_mex_cal_sup" value="<?php echo $row_solicitud['num_mex_cal_sup'];?>"  title="Número"  />
+		  </div>
+		</div>
+	</div>
+  
+  
+	<div class=" form-group col-md-12 campos2" style="margin:0px;">
+		<div class="col-md-6 col-sm-6" style="padding: 0px 0px; border: solid 1px #AAAAAA;">
+		  <div class="col-md-12" style="background-color:#dbf573e6; height:70px; overflow: hidden; text-overflow:ellipsis;">
+			  <b>Número PrimusGFS:</b><span style="text-align:justify; height:100%;" >obligatorio si estuvieron certificados anteriormente en el esquema PrimusGFS:</span>
+		  </div>
+		  <div class="col-md-12 campos" style="height:20%;">
+			  <input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="num_primus" type="text" title="Número " value="<?php echo $row_solicitud['num_primus'];?>"  />
+		  </div>
+		</div>
+		<div class="col-md-6 col-sm-6" style="padding: 0px 0px; border:solid 1px #AAAAAA;">
+		  <div class="col-md-12" style="background-color:#dbf573e6; height:70px; overflow: hidden; text-overflow:ellipsis;">
+		  <b>Número de  registro de SENASICA:</b> <span>obligatorio si se registró con SENASICA:</span>
+		  </div>
+		  <div class="col-md-12 campos">
+			  <input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="num_senasica" type="text"        title="Número " value="<?php echo $row_solicitud['num_senasica'];?>"  />
+		  </div>
+		</div>
+	</div>
+      <!-- <div class="col-lg-12 col-md-12">
+       // <div class=" col-lg-6 col-md-6">
+    	// <input placeholder="" class="form-control" onchange="this.form.submit()" name="num_primus" type="text"  			title="Número " value="<?php echo $row_solicitud['num_primus'];?>"  />
+        // </div>
+        // <div class="col-lg-1">
+        // </div>
+    	// <div class="col-lg-5">
+    	// <input placeholder="" class="form-control" onchange="this.form.submit()" name="num_senasica" type="text"  			title="Número " value="<?php echo $row_solicitud['num_senasica'];?>"  />
+	    // </div>
+    // </div>-->
+	  <div class="col-lg-12 col-md-12 campos2" style="margin:0px;">
+		<div class="col-lg-6 col-md-6" style= "padding: 0px 0px;border:solid 1px #AAAAAA;">
+			<div class="col-lg-12 col-md-12 campos">
+				<label  class="form-label" for="reponsable" >Nombre del responsable de la aplicación de la norma en la entidad legal:</label>
+			</div>
+			<div class="col-lg-12 col-md-12 campos">
+				<input placeholder="" class="form-control inputsf"  onchange="this.form.submit()" name="responsable" value="<?php echo $row_solicitud['responsable'];?>"  title="Responsable "  />
+			</div>
+        </div>
+		<div class="col-lg-6 col-md-6" style="padding: 0px 0px; border:solid 1px #AAAAAA;">
+			<div class=" col-lg-12 col-md-12 campos">
+				<label  class="form-label"  for="personal" >Nombre del personal que realizó la autoevaluación/auditoria interna en la entidad legal:</label>
+			</div>
+			<div class="col-lg-12 col-md-12 campos">
+				<input placeholder="" class="form-control inputsf"  onchange="this.form.submit()" name="personal" value="<?php echo $row_solicitud['personal'];?>"  title="Personal "/>
+			</div>
+        </div>
       </div>
-      <div class="col-md-12">
-              <input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="num_mex_cal_sup" value="<?php echo $row_solicitud['num_mex_cal_sup'];?>"  title="Número"  />
-      </div>
-    </div>
-
-  </div>
-    <div class="col-lg-12 col-sm-12" style="padding: 0px 0px; border:solid 1px #AAAAAA;">
-      <div class="col-lg-6 col-sm-6" style="padding: 0px 0px; border:solid 1px #AAAAAA;">
-        <div class="col-lg-12 col-ms-12" style="background-color:#dbf573e6;">
-        <strong>Número PrimusGFS:</strong> ,<span> obligatorio si estuvieron certificados anteriormente en el esquema PrimusGFS:</span>
-        </div>
-        <div class="col-lg-12 col-sm-12">
-          <input placeholder="" class="form-control" onchange="this.form.submit()" name="num_primus" type="text"        title="Número " value="<?php echo $row_solicitud['num_primus'];?>"  />
-        </div>
-      </div>
-
-      <div class="col-lg-6 col-sm-6" style="padding: 0px 0px; border:solid 1px #AAAAAA;">
-        <div class="col-lg-12 col-sm-12" style="background-color:#dbf573e6;">
-          <strong>Número de  registro de SENASICA:</strong> <span> obligatorio si se registró con SENASICA:</span>
-        </div>
-        <div class="col-lg-12 col-sm-12">
-          <input placeholder="" class="form-control" onchange="this.form.submit()" name="num_senasica" type="text"        title="Número " value="<?php echo $row_solicitud['num_senasica'];?>"  />
-        </div>
-      </div>
-    </div>
-	 <table width="100%"  cellpadding="20" cellspacing="50">
-     <tbody>
-     <tr>
-     <th bgcolor="#00CC33">
-     	<strong>Número PrimusGFS:</strong> , obligatorio si estuvieron certificados anteriormente en el esquema PrimusGFS:
-    	</th>
-        <th  bgcolor="#00CC33">
-        <strong>Número de  registro de SENASICA:</strong> , obligatorio si se registró con SENASICA:
-        </th>
-        </tr>
-        </tbody>
-
-        </table>
-      <div class="col-lg-12 col-md-12">
-       <div class=" col-lg-6 col-md-6">
-    	<input placeholder="" class="form-control" onchange="this.form.submit()" name="num_primus" type="text"  			title="Número " value="<?php echo $row_solicitud['num_primus'];?>"  />
-        </div>
-        <div class="col-lg-1">
-        </div>
-    	<div class="col-lg-5">
-    	<input placeholder="" class="form-control" onchange="this.form.submit()" name="num_senasica" type="text"  			title="Número " value="<?php echo $row_solicitud['num_senasica'];?>"  />
-	    </div>
-    </div>
-	  <div class="col-lg-12 col-md-12">
-    <div class="col-lg-6">
-    	<label  class="form-label col-lg-6" for="reponsable" >Nombre del responsable de la aplicación de la norma en la entidad legal:</label>
-        
-         <div class="col-lg-6">
-    	<input placeholder="" class="form-control"  onchange="this.form.submit()" name="responsable" value="<?php echo $row_solicitud['responsable'];?>"  title="Responsable "  />
-        </div>
-        </div>
-    	<div class=" col-lg-6">
-    	<label  class="form-label col-lg-6"  for="personal" >Nombre del personal que realizó la autoevaluación/auditoria interna en la entidad legal:</label>
-        
-         <div class="col-lg-6">
-    	<input placeholder="" class="form-control"  onchange="this.form.submit()" name="personal" value="<?php echo $row_solicitud['personal'];?>"  title="Personal "/>
-        </div>
-        </div>
-        </div>
 
 </div>
     	

@@ -16,7 +16,7 @@ display: inline-block;
 	margin: 0px 0px 0px 0px;
 }
 .campos2{
-	padding: 5px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
 	margin: 0px 0px 0px 0px;
 }
 #seccion1 input{
@@ -30,4 +30,27 @@ display: inline-block;
 	background-color: #ccefb4;
 	background-image: none;
 	border-radius: 5px;
+}
+#seccion3 input{
+	padding-top:10px; 
+	background-color: #ccefb4;
+	background-image: none;
+	border-radius: 5px;
+}
+#seccion4 input{
+	padding-top:10px; 
+	background-color: #ccefb4;
+	background-image: none;
+	border-radius: 5px;
+}
+/*Ubica div al fondo (para los inputs */
+#seccion4 .div4{ 
+	right:2%;
+	left:2%;
+	position:absolute;
+	bottom:1px;
+	text-align:center;
+}
+#seccion5 label{
+	font-size:12px;
 }
