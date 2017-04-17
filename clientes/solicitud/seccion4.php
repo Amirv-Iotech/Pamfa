@@ -68,6 +68,10 @@
 				</div>
 			</div>
 		</div>
+		<input type="hidden" name="seccion4" value="1" />
+ 
+  <input type="hidden" name="idsolicitud" value="<?php echo $_POST['idsolicitud'];?>" />
+     
 		</form>
 	</div>
 </fieldset>

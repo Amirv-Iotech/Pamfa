@@ -43,14 +43,28 @@ display: inline-block;
 	background-image: none;
 	border-radius: 5px;
 }
+
 /*Ubica div al fondo (para los inputs */
-#seccion4 .div4{ 
+.div4{ 
 	right:2%;
 	left:2%;
 	position:absolute;
 	bottom:1px;
 	text-align:center;
 }
+
+#seccion5 input{
+	padding-top:10px; 
+	background-color: #ccefb4;
+	background-image: none;
+	border-radius: 5px;
+}
 #seccion5 label{
 	font-size:12px;
+}
+#seccion8 input{
+	padding-top:10px; 
+	background-color: #ccefb4;
+	background-image: none;
+	border-radius: 5px;
 }
