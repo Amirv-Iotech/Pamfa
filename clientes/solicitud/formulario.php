@@ -90,14 +90,14 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 			<p class="solicitud">Fecha de solicitud </p>
 		</div>
 		<div class="col-lg-2 col-md-2 col-xs-6 fechas" style="border-bottom:solid 1px #AAAAAA;">
-			<p class="solicitud"><?php if(isset($row_solicitud['fecha'])){ echo date('d/m/y',$row_solicitud['fecha']);}else{ echo date('d/m/y',time());}?> </p>
+			<p class="solicitud"><? if(isset($row_solicitud['fecha'])){ echo date('d/m/y',$row_solicitud['fecha']);}else{ echo date('d/m/y',time());}?> </p>
 		</div>
 
 		<div class="col-lg-5 col-md-5 col-xs-6 fechas">
 			<p class="solicitud">   Nombre de la persona que llena la solicitud: </p>
 		</div>
 		<div class="col-lg-3 col-md-3 col-xs-6 fechas">
-			<p class="solicitud"> <input id="persona" onchange="loadLog()" name="persona" type="text" placeholder=""  class="form-control" title="Nombre " value="<?php echo $row_solicitud['persona'];?>" class="form-control"  style="font-size: 18px; text-align:center;"/></p>
+			<p class="solicitud"> <input id="persona" onchange="loadLog()" name="persona" type="text" placeholder=""  class="form-control" title="Nombre " value="<? echo $row_solicitud['persona'];?>" class="form-control"  style="font-size: 18px; text-align:center;"/></p>
 		</div>
 		<div class="col-lg-12 col-xs-12">
     </br>
@@ -123,14 +123,14 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
       		<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6 campos" style="border-right: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
             <label for="nombre_legal" class="form-label col-lg-12 col-md-12 col-sm-12 col-xs-12">Nombre de la entidad legal (empresa o persona):</label>
   			  <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 campos">
-          	<input placeholder=""   class="inputsf form-control" onchange="this.form.submit()" name="nombre_legal" type="text" 	title="Nombre completo " value="<?php echo $row_operador['nombre_legal'];?>"  />
+          	<input placeholder=""   class="inputsf form-control" onchange="this.form.submit()" name="nombre_legal" type="text" 	title="Nombre completo " value="<? echo $row_operador['nombre_legal'];?>"  />
       	   </div>
   			 </div>
 
       	 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6 campos" style="margin-right: 0px; margin-left: 0px;">
           	<label for="nombre_representante" class="form-label col-lg-12 col-md-12 col-sm-12 col-xs-12">Nombre del representante legal:</label>
           	<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 campos">
-          	<input  placeholder="" class="inputsf form-control"  onchange="this.form.submit()" name="nombre_representante" value="<?php echo $row_operador['nombre_representante'];?>"  title="Nombre " />
+          	<input  placeholder="" class="inputsf form-control"  onchange="this.form.submit()" name="nombre_representante" value="<? echo $row_operador['nombre_representante'];?>"  title="Nombre " />
         	</div>
     		  </div>
         </div>
@@ -140,7 +140,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
         	  <label for="direccion" class="form-label" style="padding-top:5px;">Dirección de la entidad legal: calle y número:</label>
           </div>
         	<div class=" form-group col-lg-8 campos">
-        	<input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="direccion" value="<?php echo $row_operador['direccion'];?>"  title="Dirección"  />
+        	<input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="direccion" value="<? echo $row_operador['direccion'];?>"  title="Dirección"  />
         	</div>
         </div>
             <div class="form-group col-lg-12 col-md-12 campos" style="border-bottom: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
@@ -148,7 +148,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
         	   <label for="coordenadas" class="form-label">Coordenadas de la entidad legal</label>
             </div>
         	<div class="col-lg-8 campos">
-        	<input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="coordenadas" value="<?php echo $row_operador['coordenadas'];?>"  title="Coordenadas"  />
+        	<input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="coordenadas" value="<? echo $row_operador['coordenadas'];?>"  title="Coordenadas"  />
         	</div>
         	</div>
 
@@ -168,14 +168,14 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
             <div class="form-group col-lg-3 col-md-3 col-sm-3 campos" style="border-right: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
         	<label for="estado" class="form-label col-lg-4">Estado:</label>
         	<div class="col-lg-8 col-sm-8">
-        	<input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="estado" type="text"  			title="Estado " value="<?php echo $row_operador['estado'];?>" />
+        	<input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="estado" type="text"  			title="Estado " value="<? echo $row_operador['estado'];?>" />
     	    </div>
     		</div>
 
     		<div class="form-group col-lg-3 col-md-3 col-sm-3 campos" style="border-right: solid 0px #AAAAAA; margin-right: 0px; margin-left: 0px;">
         	<label for="pais" class="form-label col-lg-4 col-sm-4">Pais:</label>
         	<div class="col-lg-8 col-sm-8">
-        	<input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="pais" value="<?php echo  $row_operador['pais'];?>" id="email" title="Pais "  />
+        	<input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="pais" value="<? echo  $row_operador['pais'];?>" id="email" title="Pais "  />
         	</div>
     		</div>
       </div>
@@ -184,14 +184,14 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
     		<div class=" form-group col-lg-4 col-md-4 col-sm-4 campos" style="border-right: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
         	<label for="email" class="form-label col-lg-4 col-sm-4">Correo Electrónico:</label>
         	<div class="col-lg-8">
-        	<input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="email" value="<?php echo  $row_operador['email'];?>" id="email" title="Email " />
+        	<input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="email" value="<? echo  $row_operador['email'];?>" id="email" title="Email " />
         	</div>
     		</div>
 
         <div class="form-group col-lg-5 col-md-5 col-sm-5 campos" style="border-right: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
         	<label for="telefono" class="form-label col-lg-8 col-sm-8">Número de telefono(oficina o personal):</label>
         	<div class="col-lg-4 col-sm-4">
-        	<input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="telefono" type="text" 			title="Telefono " value="<?php echo  $row_operador['telefono'];?>"  />
+        	<input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="telefono" type="text" 			title="Telefono " value="<? echo  $row_operador['telefono'];?>"  />
     	    </div>
     		</div>
 
@@ -199,17 +199,17 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
         <div class="col-lg-4 col-sm-4 campos">
         	<label for="fax" class="form-label">Fax:</label></div>
         	<div class="col-lg-8 col-sm-8 campos">
-        	<input placeholder="" class="form-control inputsf"  onchange="this.form.submit()" name="fax" value="<?php echo  $row_operador['fax'];?>" title="Fax "  />
+        	<input placeholder="" class="form-control inputsf"  onchange="this.form.submit()" name="fax" value="<? echo  $row_operador['fax'];?>" title="Fax "  />
         	</div>
     		</div>
         </div>
       </div> <!-- /ROW-->
     </fieldset>	
 
-	<input type="hidden" id="idoperador" name="idoperador" value="<?php echo  $row_operador['idoperador']; ?>" />
-	<input type="hidden" id="idsolicitud" name="idsolicitud" value="<?php echo  $row_solicitud['idsolicitud']; ?>" />
+	<input type="hidden" id="idoperador" name="idoperador" value="<? echo  $row_operador['idoperador']; ?>" />
+	<input type="hidden" id="idsolicitud" name="idsolicitud" value="<? echo  $row_solicitud['idsolicitud']; ?>" />
 	<input type="hidden" id="seccion" name="seccion" value="1" />
-	<input type="hidden" id="fecha" name="fecha" value="<?php echo time();?>" />
+	<input type="hidden" id="fecha" name="fecha" value="<? echo time();?>" />
 </form>
 
 <form id="myform" action="#seccion2" method="post" class="form-horizontal" enctype="multipart/form-data">
@@ -224,7 +224,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 			  <b>GGN </b><span style="text-align:justify; height:100%;" >GLOBALG.A.P NUMBER, obligatorio si estuvieron certificados anteriormente con GLOBALG.A.P):</span>
 		  </div>
 		  <div class="col-md-12 campos" style="height:20%;">
-				<input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="num_ggn" type="text" title="Número" value="<?php echo $row_solicitud['num_ggn'];?>" />
+				<input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="num_ggn" type="text" title="Número" value="<? echo $row_solicitud['num_ggn'];?>" />
 		  </div>
 		</div>
 		<div class="col-md-3 col-sm-6" style="padding: 0px 0px; border:solid 1px #AAAAAA;">
@@ -232,7 +232,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 		  <b>GLN</b> (Global Localization Number, obligatorio si fue solicitado a GS1):
 		  </div>
 		  <div class="col-md-12 campos">
-		   <input placeholder="" class="form-control inputsf"  onchange="this.form.submit()" name="num_gln" value="<?php echo $row_solicitud['num_gln'];?>"  title="Número "  />
+		   <input placeholder="" class="form-control inputsf"  onchange="this.form.submit()" name="num_gln" value="<? echo $row_solicitud['num_gln'];?>"  title="Número "  />
 		  </div>
 		</div>
 
@@ -241,7 +241,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 			  <b>CoC</b> número (CoC NUMBER, obligatorio si estuvieron certificados anteriormente con GLOBALG.A.P):
 		  </div>
 		  <div class="col-md-12 campos">
-				  <input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="num_coc" value="<?php echo $row_solicitud['num_coc'];?>"  title="Número"  />
+				  <input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="num_coc" value="<? echo $row_solicitud['num_coc'];?>"  title="Número"  />
 		  </div>
 		</div>
 
@@ -250,7 +250,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 		  <b>Número de registro México Calidad Suprema</b> (obligatorio si ya esta registrado):
 		  </div>
 		  <div class="col-md-12 campos">
-				  <input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="num_mex_cal_sup" value="<?php echo $row_solicitud['num_mex_cal_sup'];?>"  title="Número"  />
+				  <input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="num_mex_cal_sup" value="<? echo $row_solicitud['num_mex_cal_sup'];?>"  title="Número"  />
 		  </div>
 		</div>
 	</div>
@@ -262,7 +262,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 			  <b>Número PrimusGFS:</b><span style="text-align:justify; height:100%;" >obligatorio si estuvieron certificados anteriormente en el esquema PrimusGFS:</span>
 		  </div>
 		  <div class="col-md-12 campos" style="height:20%;">
-			  <input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="num_primus" type="text" title="Número " value="<?php echo $row_solicitud['num_primus'];?>"  />
+			  <input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="num_primus" type="text" title="Número " value="<? echo $row_solicitud['num_primus'];?>"  />
 		  </div>
 		</div>
 		<div class="col-md-6 col-sm-6" style="padding: 0px 0px; border:solid 1px #AAAAAA;">
@@ -270,7 +270,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 		  <b>Número de  registro de SENASICA:</b> <span>obligatorio si se registró con SENASICA:</span>
 		  </div>
 		  <div class="col-md-12 campos">
-			  <input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="num_senasica" type="text"        title="Número " value="<?php echo $row_solicitud['num_senasica'];?>"  />
+			  <input placeholder="" class="form-control inputsf" onchange="this.form.submit()" name="num_senasica" type="text"        title="Número " value="<? echo $row_solicitud['num_senasica'];?>"  />
 		  </div>
 		</div>
 	</div>
@@ -290,7 +290,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 				<label  class="form-label" for="reponsable" >Nombre del responsable de la aplicación de la norma en la entidad legal:</label>
 			</div>
 			<div class="col-lg-12 col-md-12 campos">
-				<input placeholder="" class="form-control inputsf"  onchange="this.form.submit()" name="responsable" value="<?php echo $row_solicitud['responsable'];?>"  title="Responsable "  />
+				<input placeholder="" class="form-control inputsf"  onchange="this.form.submit()" name="responsable" value="<? echo $row_solicitud['responsable'];?>"  title="Responsable "  />
 			</div>
         </div>
 		<div class="col-lg-6 col-md-6" style="padding: 0px 0px; border:solid 1px #AAAAAA;">
@@ -298,7 +298,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 				<label  class="form-label"  for="personal" >Nombre del personal que realizó la autoevaluación/auditoria interna en la entidad legal:</label>
 			</div>
 			<div class="col-lg-12 col-md-12 campos">
-				<input placeholder="" class="form-control inputsf"  onchange="this.form.submit()" name="personal" value="<?php echo $row_solicitud['personal'];?>"  title="Personal "/>
+				<input placeholder="" class="form-control inputsf"  onchange="this.form.submit()" name="personal" value="<? echo $row_solicitud['personal'];?>"  title="Personal "/>
 			</div>
         </div>
       </div>
@@ -308,8 +308,8 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
     </fieldset>	
     
 
- <input type="hidden" name="idoperador" value="<?php echo $row_operador['idoperador']; ?>" />
-<input type="hidden" name="idsolicitud" value="<?php echo $row_solicitud['idsolicitud']; ?>" />
+ <input type="hidden" name="idoperador" value="<? echo $row_operador['idoperador']; ?>" />
+<input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
   <input type="hidden" name="seccion" value="2" />
  
 </form>

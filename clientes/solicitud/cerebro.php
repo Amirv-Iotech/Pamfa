@@ -36,9 +36,9 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
 /////////////////inser seccion1
 
-if (isset($_POST['seccion'])==1) {
+if ($_POST['seccion']==1) {
 	
-$query_solicitud = sprintf("SELECT * FROM solicitud where idsolicitud=%s ",GetSQLValueString($_POST['idsolicitud'], "text"));
+	$query_solicitud = sprintf("SELECT * FROM solicitud where idsolicitud=%s ",GetSQLValueString($_POST['idsolicitud'], "text"));
 $solicitud  = mysql_query($query_solicitud , $inforgan_pamfa) or die(mysql_error());
 $row_solicitud = mysql_fetch_assoc($solicitud );
 $total_solicitud = mysql_num_rows($solicitud);
@@ -57,6 +57,7 @@ else{
  GetSQLValueString($_POST['fecha'], "text"),
              GetSQLValueString($_POST['persona'], "text"),
 						 GetSQLValueString($_POST['idoperador'], "text"),
+						 
 	GetSQLValueString($_POST['idsolicitud'], "int"));
 }
   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
