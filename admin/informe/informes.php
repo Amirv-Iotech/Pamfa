@@ -103,7 +103,7 @@ $informe  = mysql_query($query_informe , $inforgan_pamfa) or die(mysql_error());
                                         <? while( $row_informe= mysql_fetch_assoc($informe))
 										{
 											
-											$query_solicitud = "SELECT idoperador,idsolicitud FROM solicitud where idsolicitud=(select idsolicitud from plan_auditoria where idplan_auditoria=(select idplan_auditoria from informe where idinforme='".$row_informe['idinforme']."')) ";
+											$query_solicitud = "SELECT * FROM solicitud where idsolicitud=(select idsolicitud from plan_auditoria where idplan_auditoria=(select idplan_auditoria from informe where idinforme='".$row_informe['idinforme']."')) ";
 $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error());
 $row_solicitud= mysql_fetch_assoc($solicitud);
 
@@ -129,27 +129,82 @@ $row_cliente= mysql_fetch_assoc($cliente);
                                                  <button type="submit" name="firma" disabled  value="1"class="btn btn-danger">Por firmar</button>
                                                  <input type="hidden" name="idinforme" value="<? echo $row_informe['idinforme'];  ?>" />
                                                  
-</form></td><? } else {?>
+</form></td><? }?>
 
  <td>
                                                 
                                                  <button type="button" name="firmada" disabled  value="1"class="btn btn-info">Firmada</button>
                                                  
 </form></td>
-<? if($row_informe['firma_cliente']==1 && $row_informe['firma_auditor']==1)
-{?>
+
  <td>
-                                  <form action="" method="post">              
-                                                 <button type="submit" name="aprobar"  value="1"class="btn btn-danger">Aprobar</button>
-                                                 <input type="hidden" name="idplan_auditoria" value="<? echo $row_informe['idplan_auditoria']; ?>" />
-                                                 
-</form></td>
-<? }else {?>
-	<td>
-	 <button type="button" name="aprobar"  value="1"class="btn btn-info">Aprobada</button>
-	</td>
-	<? } 
-}?>
+ <table>
+ <tr>
+ <td>
+ <button type="button" name="aprobar"  value="1"<? if($row_informe['dictamen_ifa']=='rechazo'){?>class="btn btn-danger"<? }else {?> class="btn btn-info" <? }?>><? echo ucwords( $row_informe['dictamen_ifa']);?></button>
+                                </td>
+                                 <td>
+ <form action="../certificado/formulario_ifa.php" method="post">
+                                                 <button type="submit" name="Config"  value="1"class="btn btn-success">Config</button>
+                                                 <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+                                                   <input type="hidden" name="idinforme" value="<? echo $row_informe['idinforme']; ?>" />
+</form>
+                                </td>
+                                 <td>
+                                 <form action="../../docs/certificado_ifa.php" method="post" target="_blank" >
+      
+      <input type="submit" value="Ver certificado"  />
+            <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+          
+            <input type="hidden" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
+            </form> 
+                                </td>
+</tr>
+<tr>
+ <td>
+ <button type="button" name="aprobar"  value="1"<? if($row_informe['dictamen_coc']=='rechazo'){?>class="btn btn-danger"<? }else {?> class="btn btn-info" <? }?>><? echo ucwords( $row_informe['dictamen_coc']);?></button>
+                                </td>
+                                 <td>
+ <form action="../certificado/formulario_coc.php" method="post">
+                                                 <button type="submit" name="Config"  value="1"class="btn btn-success">Config</button>
+                                                 <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+                                                   <input type="hidden" name="idinforme" value="<? echo $row_informe['idinforme']; ?>" />
+</form>
+                                </td>
+                                <td>
+                                 <form action="../../docs/certificado_coc.php" method="post" target="_blank" >
+      
+      <input type="submit" value="Ver certificado"  />
+            <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+          
+            <input type="hidden" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
+            </form> 
+                                </td>
+</tr>
+<tr>
+ <td>
+ <button type="button" name="aprobar"  value="1"<? if($row_informe['dictamen_mexcalsup']=='rechazo'){?>class="btn btn-danger"<? }else {?> class="btn btn-info" <? }?>><? echo ucwords( $row_informe['dictamen_mexcalsup']);?></button>
+                                </td>
+                                 <td>
+ <form action="../certificado/formulario_mexcalsup.php" method="post">
+                                                 <button type="submit" name="Config"  value="1"class="btn btn-success">Config</button>
+                                                 <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+                                                   <input type="hidden" name="idinforme" value="<? echo $row_informe['idinforme']; ?>" />
+</form>
+                                </td>
+                                 <td>
+                                 <form action="../../docs/certificado_mexcalsup.php" method="post" target="_blank" >
+      
+      <input type="submit" value="Ver certificado"  />
+            <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+          
+            <input type="hidden" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
+            </form> 
+                                </td>
+</tr>
+
+</table></td>
+	
 												
 	                                        </tr>
 										<? }?>

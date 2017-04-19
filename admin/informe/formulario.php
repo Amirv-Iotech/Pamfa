@@ -81,6 +81,10 @@ $query_alcance = sprintf("SELECT descripcion FROM mex_cal_sup WHERE idmex_cal_su
 $alcance = mysql_query($query_alcance, $inforgan_pamfa) or die(mysql_error());
 $row_alcance= mysql_fetch_assoc($alcance);
 
+$query_inf = sprintf("SELECT * FROM informe WHERE idinforme=%s ", GetSQLValueString( $_POST["idinforme"], "int"));
+$inf= mysql_query($query_inf, $inforgan_pamfa) or die(mysql_error());
+$row_inf= mysql_fetch_assoc($inf);
+
 
 ////////
 ?>
