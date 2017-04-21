@@ -40,20 +40,19 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
 mysql_select_db($database_pamfa, $inforgan_pamfa);
 
-if (isset($_POST['firma'])) {
+if (isset($_POST['aprobar'])) {
 		
 $f=date('d/m/y',time());
-	$insertSQL = sprintf("update informe set firma_cliente=%s,fecha_firma_cliente=%s WHERE idinforme=%s",
+	$insertSQL = sprintf("update informe set aprobado=%s,idaprobado=%s,fecha_aprobado=%s WHERE idplan_auditoria=%s",
 
              GetSQLValueString(1, "text"),
-			  GetSQLValueString($f, "text"),
-			 
-			
-	GetSQLValueString($_POST['idinforme'], "int"));
+			 GetSQLValueString($_SESSION["idusuario"], "text"),
+			 GetSQLValueString($f, "text"),
+	GetSQLValueString($_POST['idplan_auditoria'], "int"));
 
   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
   
-  
+ 
 }
 if (isset($_POST['desautorizar'])) {
 	
@@ -69,12 +68,12 @@ $f=date('d/m/y',time());
 }
 ///////fin
 
-
-
-$query_informe = "select * from informe where idplan_auditoria in(select idplan_auditoria from plan_auditoria where idsolicitud in(select idsolicitud from solicitud where idoperador='".$_SESSION['idusuario']."')) ORDER BY idinforme DESC";
+$query_informe = "SELECT * FROM informe  ORDER BY idinforme DESC";
 $informe  = mysql_query($query_informe , $inforgan_pamfa) or die(mysql_error());
 
-echo $query_informe;
+
+
+
  include("includes/header.php");
  
  ?>
@@ -103,9 +102,8 @@ echo $query_informe;
 	                                    <tbody>
                                         <? while( $row_informe= mysql_fetch_assoc($informe))
 										{
-																		
 											
-											$query_solicitud = "SELECT idoperador,idsolicitud FROM solicitud where idsolicitud=(select idsolicitud from plan_auditoria where idplan_auditoria=(select idplan_auditoria from informe where idinforme='".$row_informe['idinforme']."')) ";
+											$query_solicitud = "SELECT * FROM solicitud where idsolicitud=(select idsolicitud from plan_auditoria where idplan_auditoria=(select idplan_auditoria from informe where idinforme='".$row_informe['idinforme']."')) ";
 $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error());
 $row_solicitud= mysql_fetch_assoc($solicitud);
 
@@ -124,25 +122,77 @@ $row_cliente= mysql_fetch_assoc($cliente);
                                                  <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
                                                    <input type="hidden" name="idinforme" value="<? echo $row_informe['idinforme']; ?>" />
 </form></td>
-<? if($row_informe['firma_cliente']!=1)
+<? if($row_informe['firma_auditor']==NULL || $row_informe['firma_cliente']==NULL)
 {?>
  <td>
                                                 <form action="" method="post">
-                                                 <button type="submit" name="firma"  value="1"class="btn btn-danger">Firmar</button>
-                                                 <input type="hidden" name="idinforme" value="<? echo $row_informe['idinforme']; ?>" />
+                                                 <button type="submit" name="firma" disabled  value="1"class="btn btn-danger">Por firmar</button>
+                                                 <input type="hidden" name="idinforme" value="<? echo $row_informe['idinforme'];  ?>" />
                                                  
-</form></td><? } else {?>
+</form></td><? }?>
 
  <td>
                                                 
-                                                 <button type="button" name="firmada"  value="1"class="btn btn-info">Firmada</button>
+                                                 <button type="button" name="firmada" disabled  value="1"class="btn btn-info">Firmada</button>
                                                  
-</form></td><? }?>
+</form></td>
+
+ <td>
+ <table>
+ <tr>
+ <td>
+ <button type="button" name="aprobar"  value="1"<? if($row_informe['dictamen_ifa']=='rechazo'){?>class="btn btn-danger"<? }else {?> class="btn btn-info" <? }?>><? echo ucwords( $row_informe['dictamen_ifa']);?></button>
+                                </td>
+                                
+                                 <td>
+                                 <form action="../../docs/certificado_ifa.php" method="post" target="_blank" >
+      
+      <input type="submit" value="Ver certificado"  />
+            <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+          
+            <input type="hidden" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
+            <input type="hidden" name="cliente" value="1" />
+            </form> 
+                                </td>
+</tr>
+<tr>
+ <td>
+ <button type="button" name="aprobar"  value="1"<? if($row_informe['dictamen_coc']=='rechazo'){?>class="btn btn-danger"<? }else {?> class="btn btn-info" <? }?>><? echo ucwords( $row_informe['dictamen_coc']);?></button>
+                                </td>
+                                
+                                <td>
+                                 <form action="../../docs/certificado_coc.php" method="post" target="_blank" >
+      
+      <input type="submit" value="Ver certificado"  />
+            <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+          
+            <input type="hidden" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />  <input type="hidden" name="cliente" value="1" />
+            </form> 
+                                </td>
+</tr>
+<tr>
+ <td>
+ <button type="button" name="aprobar"  value="1"<? if($row_informe['dictamen_mexcalsup']=='rechazo'){?>class="btn btn-danger"<? }else {?> class="btn btn-info" <? }?>><? echo ucwords( $row_informe['dictamen_mexcalsup']);?></button>
+                                </td>
+                                
+                                 <td>
+                                 <form action="../../docs/certificado_mexcalsup.php" method="post" target="_blank" >
+      
+      <input type="submit" value="Ver certificado"  />
+            <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+          
+            <input type="hidden" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />  <input type="hidden" name="cliente" value="1" />
+            </form> 
+                                </td>
+</tr>
+
+</table></td>
+	
 												
-	                                       
+	                                        </tr>
 										<? }?>
 	                                        
-	                                        </tr>
+	                                       
 	                                    </tbody>
 	                                </table>
 

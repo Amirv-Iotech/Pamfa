@@ -37,11 +37,11 @@
 <select name="auditor" class="form-control" >
 <option value="">Selecciona una opción...</option>
 <?php 
-$query_vista1 = "SELECT * FROM plan_auditoria_equipo where idplan_auditoria='".$_POST['idplan_auditoria']."' ";
+$query_vista1 = "select nombre,apellidos from usuario where idusuario=(SELECT idauditor FROM plan_auditoria_equipo where idplan_auditoria='".$_POST['idplan_auditoria']."') ";
 $vista1 = mysql_query($query_vista1,  $inforgan_pamfa) or die(mysql_error());
 while($row_vista1 = mysql_fetch_assoc($vista1)){
 ?>
-<option  value="<?php echo $row_vista1['nombre'];?>"><?php echo $row_vista1['nombre'];?></option>
+<option  value="<?php echo $row_vista1['idauditor'];?>"><?php echo $row_vista1['nombre']." ".$row_vista1['apellidos'];?></option>
 <?php }?>
 </select>
    </th>
@@ -79,6 +79,9 @@ $agenda = mysql_query($query_agenda, $inforgan_pamfa) or die(mysql_error());
       <?
       while($row_agenda= mysql_fetch_assoc($agenda))
 {
+	$query_vista1 = "select nombre,apellidos from usuario where idusuario=(SELECT idauditor FROM plan_auditoria_equipo where idplan_auditoria='".$row_agenda['idplan_auditoria']."') ";
+$vista1 = mysql_query($query_vista1,  $inforgan_pamfa) or die(mysql_error());
+$row_vista1= mysql_fetch_assoc($vista1);
 	?>
    <tr>
    <th colspan="1" >
@@ -94,7 +97,7 @@ $agenda = mysql_query($query_agenda, $inforgan_pamfa) or die(mysql_error());
  <? echo $row_agenda['responsable'];?>" 
    </th>
     <th colspan="2" >
- <? echo $row_agenda['auditor'];?>" 
+ <? echo $row_vista1['nombre']." ". $row_vista1['apellidos'];?>" 
    </th>
     <th width="1" ><form id="form3" name="form3" method="post" action="">
     <input type="hidden" name="eliminar" value="1" />

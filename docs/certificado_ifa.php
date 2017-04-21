@@ -85,7 +85,12 @@ $row_solicitud_esq= mysql_fetch_assoc($solicitud_esq);
 
 <? include('mpdf.php');
 $mpdf=new mPDF('','Letter-L', 0, '', 2, 0, 0,0, 0, 0);
+if(isset($_POST['cliente']))
+{
+$mpdf->SetWatermarkImage('../images/borrador.png');
 
+$mpdf->showWatermarkImage = true;
+}
 $mpdf->WriteHTML('
 <table border="0">
   <tr>

@@ -40,28 +40,146 @@ if ($_POST['seccion']==7) {
 if($_POST['insertar'])
 {
 
-  $insertSQL = sprintf("INSERT INTO informe_hallazgos(idinforme,num_incumplimiento,requisito,hallazgo) VALUES (%s,%s, %s,  %s)",
-             
-			 GetSQLValueString($_POST['idinforme'], "text"),
-			 GetSQLValueString($_POST['num_incumplimiento'], "text"),
-             GetSQLValueString($_POST['requisito'], "text"),
-			 GetSQLValueString($_POST['hallazgo'], "text")
-			 );
+  $insertSQL = sprintf("INSERT INTO informe_hallazgos(idinforme,num_incumplimiento_ifa,requisito_ifa,hallazgo_ifa,num_incumplimiento_coc,requisito_coc,hallazgo_coc,num_incumplimiento_mexcalsup,requisito_mexcalsup,hallazgo_mexcalsup) VALUES (%s,%s, %s,  %s,%s,%s, %s,%s,%s, %s)",
+  GetSQLValueString($_POST['idinforme'], "text"),
+             GetSQLValueString($_POST['num_incumplimiento_ifa'], "text"),
+             GetSQLValueString($_POST['requisito_ifa'], "text"),
+			 GetSQLValueString($_POST['hallazgo_ifa'], "text"),
+			 GetSQLValueString($_POST['num_incumplimiento_coc'], "text"),
+             GetSQLValueString($_POST['requisito_coc'], "text"),
+			 GetSQLValueString($_POST['hallazgo_coc'], "text"),
+			 GetSQLValueString($_POST['num_incumplimiento_mexcalsup'], "text"),
+             GetSQLValueString($_POST['requisito_mexcalsup'], "text"),
+			 GetSQLValueString($_POST['hallazgo_mexcalsup'], "text"));
 						 
 }
 else if($_POST['eliminar']){
 	
-	$insertSQL = sprintf("delete from informe_hallazgos where idinforme=%s and idplan_auditoria=%s ",
- GetSQLValueString($_POST['idinforme'], "text"),
-            
-			 GetSQLValueString($_POST['idplan_auditoria'], "int"));
+	$insertSQL = sprintf("delete from informe_hallazgos where idinforme_hallazgo=%s  ",
+ GetSQLValueString($_POST['idinforme_hallazgo'], "text"));
 }
 echo $insertSQL;
   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
 
+
+
+
 }
 ///////fin
+if($_POST['insertar2'])
+{
+$f=time();
+  $insertSQL = sprintf("Update informe set observacion_ifa=%s,dictamen_ifa=%s,fecha_dictamen_ifa=%s,nombre_dictamen_ifa=%s where idinforme=%s",
+ 
+             GetSQLValueString($_POST['observacion_ifa'], "text"),
+             GetSQLValueString($_POST['dictamen_ifa'], "text"),
+			 GetSQLValueString($f, "text"),
+			 GetSQLValueString($_SESSION['idusuario'], "text"),
+			  GetSQLValueString($_POST['idinforme'], "text"));
+			 
+			   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
+if($_POST['dictamen_ifa']=="aprobado")
+{
+	$query_certificado= sprintf("select *from certificado where idinforme=%s ", GetSQLValueString($_POST["idinforme"], "int"));
+$certificado = mysql_query($query_certificado, $inforgan_pamfa) or die(mysql_error());
+$total_certificado = mysql_num_rows($certificado);
+if($total_certificado<1)
+{
 
+				$insertSQL = sprintf("INSERT INTO certificado(idinforme,certificado_tipo1) VALUES (%s,%s)",
+  GetSQLValueString($_POST['idinforme'], "text"),
+  GetSQLValueString(1, "text"));	
+			  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
+}
+else
+{
+	 $insertSQL = sprintf("Update certificado set certificado_tipo1=%s where idinforme=%s",
+ 
+            GetSQLValueString(1, "int"),
+			  GetSQLValueString($_POST['idinforme'], "text"));
+			 
+			   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
+}
+
+}
+}
+if($_POST['insertar3'])
+{
+$f=time();
+  $insertSQL = sprintf("Update informe set observacion_coc=%s,dictamen_coc=%s,fecha_dictamen_coc=%s,nombre_dictamen_coc=%s where idinforme=%s",
+ 
+             GetSQLValueString($_POST['observacion_coc'], "text"),
+             GetSQLValueString($_POST['dictamen_coc'], "text"),
+			 GetSQLValueString($f, "text"),
+			 GetSQLValueString($_SESSION['idusuario'], "text"),
+			  GetSQLValueString($_POST['idinforme'], "text"));
+			  echo $insertSQL;
+			   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
+			  if($_POST['dictamen_coc']=="aprobado")
+{
+	$query_certificado= sprintf("select *from certificado where idinforme=%s ", GetSQLValueString($_POST["idinforme"], "int"));
+$certificado = mysql_query($query_certificado, $inforgan_pamfa) or die(mysql_error());
+$total_certificado = mysql_num_rows($certificado);
+if($total_certificado<1)
+{
+
+				$insertSQL = sprintf("INSERT INTO certificado(idinforme,certificado_tipo2) VALUES (%s,%s)",
+  GetSQLValueString($_POST['idinforme'], "text"),
+  GetSQLValueString(1, "text"));	
+			  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
+}
+else
+{
+	 $insertSQL = sprintf("Update certificado set certificado_tipo2=%s where idinforme=%s",
+ 
+             GetSQLValueString(1, "int"),
+			  GetSQLValueString($_POST['idinforme'], "text"));
+			 
+			   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
+}
+
+}
+						 
+}
+if($_POST['insertar4'])
+{
+$f=time();
+  $insertSQL = sprintf("Update informe set observacion_mexcalsup=%s,dictamen_mexcalsup=%s,fecha_dictamen_mexcalsup=%s,nombre_dictamen_mexcalsup=%s where idinforme=%s",
+ 
+             GetSQLValueString($_POST['observacion_mexcalsup'], "text"),
+             GetSQLValueString($_POST['dictamen_mexcalsup'], "text"),
+			 GetSQLValueString($f, "text"),
+			 GetSQLValueString($_SESSION['idusuario'], "text"),
+			  GetSQLValueString($_POST['idinforme'], "text"));
+			  echo $insertSQL;
+			   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
+if($_POST['dictamen_mexcalsup']=="aprobado")
+{
+	$query_certificado= sprintf("select *from certificado where idinforme=%s ", GetSQLValueString($_POST["idinforme"], "int"));
+$certificado = mysql_query($query_certificado, $inforgan_pamfa) or die(mysql_error());
+$total_certificado = mysql_num_rows($certificado);
+if($total_certificado<1)
+{
+
+				$insertSQL = sprintf("INSERT INTO certificado(idinforme,certificado_tipo3) VALUES (%s,%s)",
+  GetSQLValueString($_POST['idinforme'], "text"),
+  GetSQLValueString(1, "text"));	
+			  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
+}
+else
+{
+	 $insertSQL = sprintf("Update certificado set certificado_tipo3=%s where idinforme=%s",
+ 
+             GetSQLValueString(1, "int"),
+			  GetSQLValueString($_POST['idinforme'], "text"));
+			 
+			   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
+}
+
+}
+			
+						 
+}
 
 
 ///////fin

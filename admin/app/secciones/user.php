@@ -33,7 +33,21 @@ if (!function_exists("GetSQLValueString")) {
     return $theValue;
   }
 }
+if(isset($_POST['update']))
+{
+	$insertSQL = sprintf("Update usuario SET username=%s,password=%s,email=%s,nombre=%s,apellidos=%s WHERE idusuario=%s",
+ GetSQLValueString($_POST['username'], "text"),
+ GetSQLValueString($_POST['password'], "text"),
+ GetSQLValueString($_POST['email'], "text"),
+ GetSQLValueString($_POST['nombre'], "text"),
+ GetSQLValueString($_POST['apellidos'], "text"),
+  GetSQLValueString($_POST['idusuario'], "text"));
 
+
+
+
+  $Result1= mysql_query($insertSQL ,$inforgan_pamfa) or die(mysql_error());
+}
  $query_usuario=sprintf("SELECT * FROM usuario WHERE idusuario=%s",
       GetSQLValueString($_SESSION["idusuario"], "text")); 
 	
@@ -53,25 +67,25 @@ if (!function_exists("GetSQLValueString")) {
 	                            </div>
 	                            <div class="card-content">
                                 
-	                                <form>
+	                                <form action="" method="post">
 	                                    <div class="row">
 	                                        
 	                                        <div class="col-md-3">
 												<div class="form-group label-floating">
-													<label class="control-label">Username</label>
-													<input type="text" class="form-control" value="<? echo $row_usuario['username'];?>" >
+													<label class="control-label">Usuario</label>
+													<input name="username" type="text" class="form-control" value="<? echo $row_usuario['username'];?>" >
 												</div>
 	                                        </div>
                                              <div class="col-md-3">
 												<div class="form-group label-floating">
-													<label class="control-label">Username</label>
-													<input type="text" class="form-control" value="<? echo $row_usuario['password'];?>" >
+													<label class="control-label">Password</label>
+													<input name="password"type="text" class="form-control" value="<? echo $row_usuario['password'];?>" >
 												</div>
 	                                        </div>
 	                                        <div class="col-md-4">
 												<div class="form-group label-floating">
-													<label class="control-label">Email address</label>
-													<input type="email" class="form-control" value="<? echo $row_usuario['email'];?>">
+													<label class="control-label">Email</label>
+													<input name="email" type="email" class="form-control" value="<? echo $row_usuario['email'];?>">
 												</div>
 	                                        </div>
 	                                    </div>
@@ -79,19 +93,20 @@ if (!function_exists("GetSQLValueString")) {
 	                                    <div class="row">
 	                                        <div class="col-md-6">
 												<div class="form-group label-floating">
-													<label class="control-label">Fist Name</label>
-													<input type="text" class="form-control" value="<? echo $row_usuario['nombre'];?>">
+													<label class="control-label">Nombre</label>
+													<input name="nombre" type="text" class="form-control" value="<? echo $row_usuario['nombre'];?>">
 												</div>
 	                                        </div>
 	                                        <div class="col-md-6">
 												<div class="form-group label-floating">
-													<label class="control-label">Last Name</label>
-													<input type="text" class="form-control" value="<? echo $row_usuario['apellidos'];?>">
+													<label class="control-label">Apellidos</label>
+													<input name="apellidos" type="text" class="form-control" value="<? echo $row_usuario['apellidos'];?>">
 												</div>
 	                                        </div>
 	                                    </div>
 
-	                                    <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+	                                  <button type="submit" class="btn btn-primary pull-right" name="update">Update Profile</button>
+                                        <input type="hidden" name="idusuario" value="<? echo $_SESSION['idusuario']; ?>" />
 	                                    <div class="clearfix"></div>
 	                                </form>
 	                           

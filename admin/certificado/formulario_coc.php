@@ -243,7 +243,7 @@ echo $row_cultivos['idcultivos'];
         	<input  name="nombre_cientifico" placeholder="escribe aquí" type="text" value="<? echo $row_cert_productos['nombre_cientifico'];?>"  />
          </td>
          <td>
-         	<input  name="coc" type="text" value="<? echo $row_cert_productos['coc'];?>"  />
+         	<input  name="coc" type="text" value="<? if($row_plan_aud['num_coc']!=NULL){echo $row_plan_aud['num_coc'];} else { echo $row_cert_productos['coc'];}?>"  />
          </td>
          <td>
          	<input  name="pamfa" type="text" value="<? echo $row_cert_productos['pamfa'];?>"  />
@@ -278,7 +278,7 @@ echo $row_cultivos['idcultivos'];
         	<input  name="nombre_cientifico" placeholder="escribe aquí" type="text" value="<? echo $row_cert_productos['nombre_cientifico'];?>"  />
          </td>
          <td>
-         	<input  name="ggn" type="text" value="<? echo $row_plan_aud['num_coc'];?>"  />
+         	<input  name="coc" type="text" value="<? echo $row_plan_aud['num_coc'];?>"  />
          </td>
          <td>
          	<input  name="pamfa" type="text" value="<? echo $row_plan_aud['num_pamfa'];?>"  />

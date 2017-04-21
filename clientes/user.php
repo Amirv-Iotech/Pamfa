@@ -1,6 +1,6 @@
 <?php
 session_start();
-include ("../../../Connections/inforgan_pamfa.php");
+include ("../Connections/inforgan_pamfa.php");
 mysql_select_db($database_pamfa, $inforgan_pamfa);
 
 if (!function_exists("GetSQLValueString")) {
@@ -33,8 +33,20 @@ if (!function_exists("GetSQLValueString")) {
     return $theValue;
   }
 }
+if(isset($_POST['update']))
+{
+	$insertSQL = sprintf("Update operador SET username=%s,password=%s,email=%s WHERE idoperador=%s",
+ GetSQLValueString($_POST['username'], "text"),
+ GetSQLValueString($_POST['password'], "text"),
+ GetSQLValueString($_POST['email'], "text"),
+  GetSQLValueString($_POST['idoperador'], "text"));
 
- $query_usuario=sprintf("SELECT * FROM usuario WHERE idusuario=%s",
+
+
+
+  $Result1= mysql_query($insertSQL ,$inforgan_pamfa) or die(mysql_error());
+}
+ $query_usuario=sprintf("SELECT * FROM operador WHERE idoperador=%s",
       GetSQLValueString($_SESSION["idusuario"], "text")); 
 	
        
@@ -42,7 +54,7 @@ if (!function_exists("GetSQLValueString")) {
      $row_usuario  = mysql_fetch_assoc($usuario);
 ?>
 
-<? include('../../includes/header.php');?>
+<? include('includes/header.php');?>
 	        <div class="content">
 	           
 	                    <div class="col-md-8">
@@ -53,29 +65,29 @@ if (!function_exists("GetSQLValueString")) {
 	                            </div>
 	                            <div class="card-content">
                                 
-	                                <form>
+	                                <form method="post" action="">
 	                                    <div class="row">
 	                                        
 	                                        <div class="col-md-3">
 												<div class="form-group label-floating">
 													<label class="control-label">Username</label>
-													<input type="text" class="form-control" value="<? echo $row_usuario['username'];?>" >
+													<input name="username" type="text" class="form-control" value="<? echo $row_usuario['username'];?>" >
 												</div>
 	                                        </div>
                                              <div class="col-md-3">
 												<div class="form-group label-floating">
-													<label class="control-label">Username</label>
-													<input type="text" class="form-control" value="<? echo $row_usuario['password'];?>" >
+                                                <label class="control-label">Password</label>
+												  <input name="password" type="text" class="form-control" value="<? echo $row_usuario['password'];?>" >
 												</div>
 	                                        </div>
-	                                        <div class="col-md-4">
+	                                        <div class="col-md-3">
 												<div class="form-group label-floating">
 													<label class="control-label">Email address</label>
-													<input type="email" class="form-control" value="<? echo $row_usuario['email'];?>">
+													<input name="email" type="email" class="form-control" value="<? echo $row_usuario['email'];?>">
 												</div>
 	                                        </div>
 	                                    </div>
-
+<? /*
 	                                    <div class="row">
 	                                        <div class="col-md-6">
 												<div class="form-group label-floating">
@@ -90,13 +102,14 @@ if (!function_exists("GetSQLValueString")) {
 												</div>
 	                                        </div>
 	                                    </div>
-
-	                                    <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+*/?>
+	                                    <button type="submit" class="btn btn-primary pull-right" name="update">Update Profile</button>
+                                        <input type="hidden" name="idoperador" value="<? echo $_SESSION['idusuario']; ?>" />
 	                                    <div class="clearfix"></div>
 	                                </form>
 	                           
 	                        </div>
 	                    </div>
-			<? include('../../includes/footer.php');?>			
+			<? include('includes/footer.php');?>			
 	       
 </html>

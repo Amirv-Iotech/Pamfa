@@ -38,7 +38,13 @@ while($row_vista1 = mysql_fetch_assoc($vista1)){
 <option  value="<?php echo $row_vista1['idusuario'];?>"><?php echo $row_vista1['nombre']." ".$row_vista1['apellidos'];?></option>
 <?php }?>
 </select>
-      
+       <input type="hidden" name="idplan_auditoria" value="<? echo $row_plan_auditoria['idplan_auditoria']; ?>" />
+       
+ 
+
+  <input type="hidden" name="seccion" value="6" />
+      </form>
+    
 </th></tr></tbody></table>
       
        <? $query_equipo = sprintf("SELECT * FROM plan_auditoria_equipo where idplan_auditoria='".$_POST['idplan_auditoria']."'");
@@ -61,10 +67,13 @@ $equipo = mysql_query($query_equipo, $inforgan_pamfa) or die(mysql_error());
       <?
       while($row_equipo= mysql_fetch_assoc($equipo))
 {
+	$query_vista1 = "select nombre,apellidos from usuario where idusuario=(SELECT idauditor FROM plan_auditoria_equipo where idplan_auditoria='".$row_equipo['idplan_auditoria']."') ";
+$vista1 = mysql_query($query_vista1,  $inforgan_pamfa) or die(mysql_error());
+$row_vista1 = mysql_fetch_assoc($vista1);
 	?>
    <tr>
    <th colspan="2" >
- <? echo $row_equipo['nombre'];?>
+ <? echo $row_vista1['nombre']."  ".$row_vista1['apellidos'];?>
    </th>
     <th colspan="2" >
  <? if($row_equipo['puesto']==2){?>Auditor <? } else if ($row_equipo['puesto']==3) {?>Inspector <? }?>
@@ -82,13 +91,7 @@ $equipo = mysql_query($query_equipo, $inforgan_pamfa) or die(mysql_error());
    
    
       
-    <input type="hidden" name="idplan_auditoria" value="<? echo $_POST['idplan_auditoria']; ?>" />
-       
- 
-
-  <input type="hidden" name="seccion" value="6" />
-      </form>
-    
+   
     </fieldset>
    
 	

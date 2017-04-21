@@ -28,6 +28,7 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
     
+  
 </head>
 
 <body>
@@ -114,6 +115,11 @@
 							<span class="icon-bar"></span>
 						</button>
 						<a class="navbar-brand" href="#">PAMFA S.A. </a>
+                        <form action="../solicitud/solicitudes.php" method="post" >
+      
+      <input type="submit" value="Regresar"  />
+            
+            </form> 
 					</div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">

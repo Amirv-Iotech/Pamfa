@@ -46,7 +46,7 @@ while($row_esquema= mysql_fetch_assoc($esquema))
 
     
     	
-  <label><input onchange="this.form.submit()"  type="checkbox" <? if ($row_solicitud_esq['esq_tipo1_op1']==$row_esquema['idesquema']){?> checked="checked"<? }?>  value="<? echo $row_esquema['idesquema'];?>" name="esq_tipo1_op1"><? echo $row_esquema['esquema'];?></label>
+  <label><input onchange="this.form.submit()"  type="radio" <? if ($row_solicitud_esq['esq_tipo1_op1']==$row_esquema['idesquema']){?> checked="checked"<? }?>  value="<? echo $row_esquema['idesquema'];?>" name="esq_tipo1_op1"><? echo $row_esquema['esquema'];?></label>
 
   
     <? }?></div><?
@@ -109,7 +109,7 @@ $esquema = mysql_query($query_esquema, $inforgan_pamfa) or die(mysql_error());
 	{?>
 
     	
-  <label><input onchange="this.form.submit()"  type="checkbox"  <? if ($row_solicitud_esq['esq_tipo2_op1']==$row_esquema['idesquema']){?> checked="checked"<? }?> value="<? echo $row_esquema['idesquema'];?>" name="esq_tipo2_op1"><? echo $row_esquema['esquema'];?></label>
+  <label><input onchange="this.form.submit()"  type="radio"  <? if ($row_solicitud_esq['esq_tipo2_op1']==$row_esquema['idesquema']){?> checked="checked"<? }?> value="<? echo $row_esquema['idesquema'];?>" name="esq_tipo2_op1"><? echo $row_esquema['esquema'];?></label>
 
 
      <? }
@@ -121,7 +121,7 @@ $esquema = mysql_query($query_esquema, $inforgan_pamfa) or die(mysql_error());
     <tr>
     <td>
     
-  <label><input  onchange="this.form.submit()" <? if ($row_solicitud_esq['preg3_tipo2']=="Si"){?> checked="checked"<? }?>  type="checkbox" value="Si" name="preg3_tipo2">¿La empresa realiza el etiquetado?</label>
+  <label><input  onchange="this.form.submit()" <? if ($row_solicitud_esq['preg3_tipo2']=="Si"){?> checked="checked"<? }?>  type="radio" value="Si" name="preg3_tipo2">¿La empresa realiza el etiquetado?</label>
 
     </td>
     <td rowspan="2">
@@ -132,7 +132,7 @@ $esquema = mysql_query($query_esquema, $inforgan_pamfa) or die(mysql_error());
     <tr>
      <td>
    
-  <label><input onchange="this.form.submit()"  <? if ($row_solicitud_esq['preg5_tipo2']=="Si"){?> checked="checked"<? }?> type="checkbox" value="Si" name="preg5_tipo2">¿Cuenta con un sistema de trazabilidad?</label>
+  <label><input onchange="this.form.submit()"  <? if ($row_solicitud_esq['preg5_tipo2']=="Si"){?> checked="checked"<? }?> type="radio" value="Si" name="preg5_tipo2">¿Cuenta con un sistema de trazabilidad?</label>
 
     </td>
     </tr>
@@ -152,7 +152,7 @@ $esquema = mysql_query($query_esquema, $inforgan_pamfa) or die(mysql_error());
     	</th>
         <th>
         </th><th>
-        <input onchange="this.form.submit()"  <? if ($row_solicitud_esq['preg6']=="Si"){?> checked="checked"<? }?> type="checkbox" value="Si" name="preg6">
+        <input onchange="this.form.submit()"  <? if ($row_solicitud_esq['preg6']=="Si"){?> checked="checked"<? }?> type="radio" value="Si" name="preg6">
        
         </th>
         <tr>
@@ -162,7 +162,7 @@ $esquema = mysql_query($query_esquema, $inforgan_pamfa) or die(mysql_error());
     <th>&nbsp;
         </th>
    <th>
-   <input onchange="this.form.submit()"  <? if ($row_solicitud_esq['preg7']=="Si"){?> checked="checked"<? }?> type="checkbox" value="Si" name="preg7">
+   <input onchange="this.form.submit()"  <? if ($row_solicitud_esq['preg7']=="Si"){?> checked="checked"<? }?> type="radio" value="Si" name="preg7">
    </th>
    </tr>
    <tr>
@@ -174,7 +174,7 @@ $esquema = mysql_query($query_esquema, $inforgan_pamfa) or die(mysql_error());
          <th>
         </th>
         <th>
-         <input onchange="this.form.submit()"  <? if ($row_solicitud_esq['preg8']=="Si"){?> checked="checked"<? }?> type="checkbox" value="Si" name="preg8"></th>
+         <input onchange="this.form.submit()"  <? if ($row_solicitud_esq['preg8']=="Si"){?> checked="checked"<? }?> type="radio" value="Si" name="preg8"></th>
    
   
    </th></tr>

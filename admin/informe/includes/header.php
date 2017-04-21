@@ -121,7 +121,11 @@
 							<span class="icon-bar"></span>
 						</button>
 						<a class="navbar-brand" href="#">PAMFA S.A. </a>
-                        
+                        <form action="../informe/informes.php" method="post" >
+      
+      <input type="submit" value="Regresar"  />
+            
+            </form> 
 					</div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">
