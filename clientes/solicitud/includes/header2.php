@@ -23,12 +23,19 @@
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="../assets/css/demo.css" rel="stylesheet" />
+	
+	<!-- css de malpika -->
+	<link href="../assets/css/solicitud.css" rel="stylesheet"/>
 
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+<<<<<<< HEAD:clientes/solicitud/includes/header2.php
     
   
+=======
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+>>>>>>> anthony:clientes/solicitud/includes/header.php
 </head>
 
 <body>

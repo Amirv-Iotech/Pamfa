@@ -1,40 +1,14 @@
-
-  
-    <fieldset>
-    <legend>Sección 11</legend>
-     <a name="seccion11">
-     <form method="post" action="#seccion11">
-     <table width="100%"><tbody><tr><th  bgcolor="#00CC33">
-    <h3>Información sobre comercialización de producto, indicar paises de destino</h3>
-    
-   </th></tr></tbody></table>
- 
-      
-      
-<br />
-
-      <table width="100%" cellpadding="5" cellpadding="1"><tbody>
-      
-     
-          <tr>
-          <th >
-         Información:
-          </th>
-          <th >
-            <input  class="form-control" onchange="this.form.submit()" placeholder="escribe aquí" name="inf_comercializacion" type="text" 			title="Número " value="<? echo $row_solicitud['inf_comercializacion'];?>" />
-         
-          </tr>
-          </tbody></table>
-         
-    
-   
-      
-      <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
-    
-
-  <input type="hidden" name="seccion" value="11" />
+<fieldset><br/>
+  <div clas="row" id="seccion11">
+    <div class="col-lg-12 col-xs-12 campos2" style="background-color: #ecfbe7; border: solid 1px #AAAAAA; border-bottom-width:2px;">
+      <form method="post" action="#seccion11">
+      <div class="col-lg-12" style="text-align: center;background-color: #dbf573e6; border: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
+        <h4><b>Información sobre comercialización de producto, indicar paises de destino</b></h4>
+      </div>
+      <div class="col-xs-12 col-lg-12 campos2">
+          <input  class="form-control inputsf" id="inf_comercializacion" placeholder="" name="inf_comercializacion" type="text"       title="inf_comercializacion " value="<? echo $row_solicitud['inf_comercializacion'];?>" />
+      </div>
       </form>
-    
-    </fieldset>
-   
-	
+    </div>
+  </div>
+</fieldset>
