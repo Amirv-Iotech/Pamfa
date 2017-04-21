@@ -1,0 +1,95 @@
+.solicitud {
+	font-size:18px;
+	
+}
+.fechas {
+vertical-align: bottom;
+/*border-bottom: solid 1px green;*/
+display: inline-block;
+}
+.inputsf{
+	text-align: center;
+}
+.campos{
+	padding-top: 5px;
+	padding-bottom: 0px;
+	margin: 0px 0px 0px 0px;
+}
+.campos2{
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+}
+#seccion1 input{
+	padding-top:10px; 
+	background-color: #ccefb4;
+	background-image: none;
+	border-radius: 5px;
+}
+#seccion2 input{
+	padding-top:10px; 
+	background-color: #ccefb4;
+	background-image: none;
+	border-radius: 5px;
+}
+#seccion3 input{
+	padding-top:10px; 
+	background-color: #ccefb4;
+	background-image: none;
+	border-radius: 5px;
+}
+#seccion4 input{
+	padding-top:10px; 
+	background-color: #ccefb4;
+	background-image: none;
+	border-radius: 5px;
+}
+
+/*Ubica div al fondo (para los inputs */
+.div4{ 
+	right:2%;
+	left:2%;
+	position:absolute;
+	bottom:1px;
+	text-align:center;
+}
+.div9{
+	padding: 0px 0px; 
+	border:solid 1px #AAAAAA; 
+	height: 75px;
+}
+
+#seccion5 input{
+	padding-top:10px; 
+	background-color: #ccefb4;
+	background-image: none;
+	border-radius: 5px;
+}
+#seccion5 label{
+	font-size:12px;
+}
+#seccion8 input{
+	padding-top:10px; 
+	background-color: #ccefb4;
+	background-image: none;
+	border-radius: 5px;
+}
+#seccion9 input{
+	padding-top:10px; 
+	background-color: #ccefb4;
+	background-image: none;
+	border-radius: 5px;
+}
+#seccion10 input{
+	padding-top:10px; 
+	background-color: #ccefb4;
+	background-image: none;
+	border-radius: 5px;
+}
+
+#seccion11 input,
+#seccion12 input{
+	padding-top:10px; 
+	background-color: #ccefb4;
+	background-image: none;
+	border-radius: 5px;
+}
