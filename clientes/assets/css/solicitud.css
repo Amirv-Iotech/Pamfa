@@ -52,6 +52,11 @@ display: inline-block;
 	bottom:1px;
 	text-align:center;
 }
+.div9{
+	padding: 0px 0px; 
+	border:solid 1px #AAAAAA; 
+	height: 75px;
+}
 
 #seccion5 input{
 	padding-top:10px; 
@@ -75,6 +80,14 @@ display: inline-block;
 	border-radius: 5px;
 }
 #seccion10 input{
+	padding-top:10px; 
+	background-color: #ccefb4;
+	background-image: none;
+	border-radius: 5px;
+}
+
+#seccion11 input,
+#seccion12 input{
 	padding-top:10px; 
 	background-color: #ccefb4;
 	background-image: none;
