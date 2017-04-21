@@ -102,7 +102,7 @@ else{
 	GetSQLValueString($_POST['idsolicitud'], "int")); 
 	
 }
-//SECCION 3
+//SECCION3
 $query_cert = sprintf("SELECT * FROM cert_anterior where idsolicitud=%s ",GetSQLValueString($_POST['idsolicitud'], "text"));
 $cert  = mysql_query($query_cert , $inforgan_pamfa) or die(mysql_error());
 $row_cert= mysql_fetch_assoc($cert );
