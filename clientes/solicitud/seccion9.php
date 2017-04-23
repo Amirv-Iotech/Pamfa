@@ -109,7 +109,7 @@
     <div class="col-lg-12 col-xs-12 campos2" style="background-color: #ecfbe7; border: solid 1px #AAAAAA; border-bottom-width:2px;"><!-- tabla-->
        <div class="col-lg-6 col-md-12 campos2" >
           <div class=" col-lg-2 col-xs-2 campos2">
-                <div class="col-xs-12 campos2" style="text-align: center;background-color: #dbf573e6; border: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px; min-height: 67px;">
+                <div class=" col-lg-12 col-xs-12 campos2" style="text-align: center;background-color: #dbf573e6; border: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px; min-height: 67px;">
                 <label>Producto y variedad:</label>
                 </div>
                   <?php 
@@ -121,7 +121,7 @@
                     $a= mysql_query($query_a, $inforgan_pamfa) or die(mysql_error());
                     while ($row_a = mysql_fetch_assoc($a)){
                       ?>
-                      <div class="col-lg-12 div9"  style=" padding: 0px 0px; border:solid 1px #AAAAAA; height: 75px;">
+                      <div class="col-lg-12 col-xs-12 div9"  style=" padding: 0px 0px; border:solid 1px #AAAAAA; height: 75px;">
                       <label><? echo $row_a['producto'];?></label>
                       </div><? }}?>
           </div>
@@ -137,7 +137,7 @@
                     $a= mysql_query($query_a, $inforgan_pamfa) or die(mysql_error());
                     while ($row_a = mysql_fetch_assoc($a)){
                       ?>
-                      <div class="col-lg-12 div9" style=" padding: 0px 0px; border:solid 1px #AAAAAA; height: 75px;">
+                      <div class="col-lg-12 col-xs-12 div9" style=" padding: 0px 0px; border:solid 1px #AAAAAA; height: 75px;">
                       <label><? echo $row_a['num_productores']; ?></label>
                       </div><? }}?>
           </div>
@@ -153,7 +153,7 @@
                     $a= mysql_query($query_a, $inforgan_pamfa) or die(mysql_error());
                     while ($row_a = mysql_fetch_assoc($a)){
                       ?>
-                      <div class="col-lg-12 div9" style=" padding: 0px 0px; border:solid 1px #AAAAAA; height: 75px;">
+                      <div class="col-lg-12 col-xs-12 div9" style=" padding: 0px 0px; border:solid 1px #AAAAAA; height: 75px;">
                         <label><? echo $row_a['num_fincas']; ?></label>
                       </div><? }}?>
           </div>
@@ -169,7 +169,7 @@
                     $a= mysql_query($query_a, $inforgan_pamfa) or die(mysql_error());
                     while ($row_a = mysql_fetch_assoc($a)){
                       ?>
-                      <div class="col-lg-12 div9" style=" padding: 0px 0px; border:solid 1px #AAAAAA; height: 75px;">
+                      <div class="col-lg-12 col-xs-12 div9" style=" padding: 0px 0px; border:solid 1px #AAAAAA; height: 75px;">
                         <label><? echo $row_a['ubicacion_unidad']; ?></label>
                       </div><? }}?>
           </div>
@@ -185,7 +185,7 @@
                     $a= mysql_query($query_a, $inforgan_pamfa) or die(mysql_error());
                     while ($row_a = mysql_fetch_assoc($a)){
                       ?>
-                      <div class="col-lg-12 div9" style=" padding: 0px 0px; border:solid 1px #AAAAAA; height: 75px;">
+                      <div class="col-lg-12 col-xs-12 div9" style=" padding: 0px 0px; border:solid 1px #AAAAAA; height: 75px;">
                         <label><? echo $row_a['coordenadas']; ?></label>
                       </div><? }}?>
           </div>
@@ -201,16 +201,16 @@
                     $a= mysql_query($query_a, $inforgan_pamfa) or die(mysql_error());
                     while ($row_a = mysql_fetch_assoc($a)){
                       ?>
-                      <div class="col-lg-12 div9" style=" padding: 0px 0px; border:solid 1px #AAAAAA; height: 75px;">
+                      <div class="col-lg-12 col-xs-12 div9" style=" padding: 0px 0px; border:solid 1px #AAAAAA; height: 75px;">
                          <label><? echo $row_a['superficie']; ?></label>
                       </div><? }}?>
           </div>
         </div>
 
-        <div class="col-lg-6 col-md-12 campos2"><!-- T======== -->
+        <div class="col-lg-6 col-md-12 campos2"><!-- T2======== -->
             <div class=" col-lg-2 col-xs-2 campos2">
-            <div class="col-xs-12 campos2" style="text-align: center;background-color: #dbf573e6; border: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px; min-height: 67px;">
-              <label>Periodo de cosecha</label>
+              <div class=" col-lg-12 col-xs-12 campos2" style="text-align: center;background-color: #dbf573e6; border: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px; min-height: 67px;">
+                <label>Periodo de cosecha</label>
               </div>
               <?php 
                     $query_cultivos = sprintf("SELECT * FROM cultivos WHERE idsolicitud = %s", GetSQLValueString($row_solicitud["idsolicitud"], "int"));
@@ -220,7 +220,7 @@
                     $a= mysql_query($query_a, $inforgan_pamfa) or die(mysql_error());
                     while ($row_a = mysql_fetch_assoc($a)){
                       ?>
-                      <div class="col-lg-12 div9" style=" padding: 0px 0px; border:solid 1px #AAAAAA; height: 75px;">
+                      <div class="col-lg-12 col-xs-12 div9" style=" padding: 0px 0px; border:solid 1px #AAAAAA; height: 75px;">
                         <label><? echo $row_a['periodo_cosecha']; ?></label>
                       </div><? }}?>
 
@@ -237,7 +237,7 @@
                     $a= mysql_query($query_a, $inforgan_pamfa) or die(mysql_error());
                     while ($row_a = mysql_fetch_assoc($a)){
                       ?>
-                      <div class="col-lg-12 div9" style=" padding: 0px 0px; border:solid 1px #AAAAAA; height: 75px;">  
+                      <div class="col-lg-12 col-xs-12 div9" style=" padding: 0px 0px; border:solid 1px #AAAAAA; height: 75px;">  
                         <label><?php if ($row_a['libre_cubierto']==1){echo "Libre";} else{echo "Cubierto";}?></label>                    
                       </div><? }}?>
           </div>
@@ -253,7 +253,7 @@
                     $a= mysql_query($query_a, $inforgan_pamfa) or die(mysql_error());
                     while ($row_a = mysql_fetch_assoc($a)){
                       ?>
-                      <div class="col-lg-12 div9" style=" padding: 0px 0px; border:solid 1px #AAAAAA; height: 75px;">  
+                      <div class="col-lg-12 col-xs-12 div9" style=" padding: 0px 0px; border:solid 1px #AAAAAA; height: 75px;">  
                         <label><?php if ($row_a['cosecha_recoleccion']==1){echo "Si";} else{echo "No";}?></label>                    
                       </div><? }}?>
           </div>
@@ -269,7 +269,7 @@
                     $a= mysql_query($query_a, $inforgan_pamfa) or die(mysql_error());
                     while ($row_a = mysql_fetch_assoc($a)){
                       ?>
-                      <div class="col-lg-12 div9" style=" padding: 0px 0px; border:solid 1px #AAAAAA; height: 75px;">  
+                      <div class="col-lg-12 col-xs-12 div9" style=" padding: 0px 0px; border:solid 1px #AAAAAA; height: 75px;">  
                         <label><?php if ($row_a['empaque']==1){echo "Si";} else{echo "No";}?></label>                    
                       </div><? }}?>
           </div>
@@ -285,12 +285,12 @@
                     $a= mysql_query($query_a, $inforgan_pamfa) or die(mysql_error());
                     while ($row_a = mysql_fetch_assoc($a)){
                       ?>
-                      <div class="col-lg-12 div9" style=" padding: 0px 0px; border:solid 1px #AAAAAA; height: 75px;">  
+                      <div class="col-lg-12 col-xs-12 div9" style=" padding: 0px 0px; border:solid 1px #AAAAAA; height: 75px;">  
                       <label><? echo $row_a['num_trabajadores']; ?></label>
                       </div><? }}?>
           </div>
           <div class=" col-lg-2 col-xs-2 campos2">
-          <div class="col-xs-12 campos2" style="text-align: center;background-color: #dbf573e6; border: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px; min-height: 67px;">
+          <div class="col-xs-12 col-lg-12 campos2" style="text-align: center;background-color: #dbf573e6; border: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px; min-height: 67px;">
               <label>Eliminar</label>
               </div>
               <?php 
@@ -301,7 +301,7 @@
                     $a= mysql_query($query_a, $inforgan_pamfa) or die(mysql_error());
                     while ($row_a = mysql_fetch_assoc($a)){
                       ?>
-                      <div class="col-lg-12 div9">  
+                      <div class="col-lg-12 col-xs-12 div9">  
                         <form id="form3" name="form3" method="post" action="">
                           <input type="hidden" name="eliminar" value="1" />
                           <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
