@@ -1,0 +1,13 @@
+#operador input{
+	background-color:#e7fbfe;
+	padding-top:10px; 
+	background-image: none;
+	border-radius: 10px;
+	height: : 45px;
+}
+#operador .campo1{
+	height: 60px;
+}
+#formulario label{
+	height: 40px;
+}

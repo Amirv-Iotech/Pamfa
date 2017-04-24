@@ -1,6 +1,4 @@
-
-  
-    <fieldset>
+<fieldset>
     <legend>Sección 6</legend>
      <a name="seccion6">
      <form method="post" action="#seccion6"><br />
