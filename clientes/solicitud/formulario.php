@@ -31,7 +31,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
     case "defined":
       $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
       break;
-  }
+  } 
   return $theValue;
 }
 }
@@ -334,7 +334,15 @@ window.addEventListener("beforeunload", function(event) {
             var post_idcert_anterior = $('#idcert_anterior').val();
 
                   //Seccion 5
-            var esq_tipo1_op1 = $('#esq_tipo1_op1').val();
+            var esq_tipo1_op1="";
+            var porNombre=document.getElementsByName("esq_tipo1_op1");
+            for(var i=0;i<porNombre.length;i++)
+              {
+                if(porNombre[i].checked){
+                esq_tipo1_op1=porNombre[i].value;}
+              }
+
+            //var esq_tipo1_op1 = $('#esq_tipo1_op1').val();
             var preg1_op2 = $('#preg1_op2').val();
             var preg2_op2 = $('#preg2_op2').val();
             var preg3_op2 = $('#preg3_op2').val();
@@ -409,43 +417,6 @@ function cambiar(){
   b.value=1;
 }
 </script>
-<script>   
-      function autoSave()  
-      {     
-            var post_idoperador = $('#idoperador').val();  
-            var post_idsolicitud = $('#idsolicitud').val();
-            var post_persona = $('#persona').val();
-            var post_fecha = $('#fecha').val();
-            var seccion=1;
-
-            //Seccion2
-            var post_personal = $('#personal').val();
-            var post_num_ggn = $('#num_ggn').val();
-            var post_num_gln = $('#num_gln').val();
-            var post_num_coc = $('#num_coc').val();
-            var post_num_mex_cal_sup = $('#num_mex_cal_sup').val();
-            var post_num_primus = $('#num_primus').val();
-            var post_num_senasica = $('#num_senasica').val();
-            var post_responsable = $('#responsable').val();
-           {  
-                $.ajax({  
-                     url:"cerebro.php",  
-                     method:"POST",
-                     data:{persona:post_persona, seccion:seccion, idoperador:post_idoperador, idsolicitud:post_idsolicitud, fecha:post_fecha, personal:post_personal, num_ggn:post_num_ggn, num_gln:post_num_gln, num_coc:post_num_coc, num_mex_cal_sup:post_num_mex_cal_sup, num_primus:post_num_primus, num_senasica:post_num_senasica, responsable:post_responsable},
-                     dataType:"text",  
-                     success:function(data)  
-                     {  
-                          if(data != '')  
-                          {  
-                              return "Datos Actualizados automaticamente";
-                          }  
-                          $('#autoSave').text("Formulario AutoGuardado"); 
-   }  
-                });  
-           }            
-      }    
- </script>
-
  <script>
  function cambioSeccion(nId){
 
