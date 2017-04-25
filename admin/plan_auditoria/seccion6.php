@@ -51,7 +51,7 @@
                  <?
                         while($row_equipo= mysql_fetch_assoc($equipo))
                   {
-                    $query_vista1 = "select nombre,apellidos from usuario where idusuario=(SELECT idauditor FROM plan_auditoria_equipo where idplan_auditoria='".$row_equipo['idplan_auditoria']."') ";
+                    $query_vista1 = "select nombre,apellidos from usuario where idusuario in (SELECT idauditor FROM plan_auditoria_equipo where idplan_auditoria='".$row_equipo['idplan_auditoria']."') ";
                   $vista1 = mysql_query($query_vista1,  $inforgan_pamfa) or die(mysql_error());
                   $row_vista1 = mysql_fetch_assoc($vista1);
                   ?>
@@ -78,6 +78,7 @@
     </div>
   </div>
 </fieldset>
+<!--
     <fieldset>
     <legend>Sección 6</legend>
      <a name="seccion6">
@@ -91,7 +92,7 @@
    <th>
  <select name="auditor" class="form-control" onchange="this.form.submit()">
 <option value="">Selecciona una opción...</option>
-<?php 
+<?php /*
 $query_vista1 = "SELECT * FROM usuario where tipo=2 ORDER BY nombre ASC";
 $vista1 = mysql_query($query_vista1, $inforgan_pamfa) or die(mysql_error());
 
@@ -160,13 +161,13 @@ $row_vista1 = mysql_fetch_assoc($vista1);
  <? echo $row_equipo['email'];?>
    </th>
    </tr>
-   <? }?>
+   <? } */?>
    
    </tbody></table>
    
    
       
    
-    </fieldset>
+    </fieldset>-->
    
 	

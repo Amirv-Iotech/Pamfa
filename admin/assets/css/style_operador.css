@@ -11,3 +11,14 @@
 #formulario label{
 	height: 40px;
 }
+.plan_input{
+	width: 100%;
+	padding-top: 10px;
+	background-color: #ccefb4;
+	background-image: none;
+	border-radius: 5px;
+}
+.datos{
+	height: 45px;
+	border:solid 1px #AAAAAA;
+}

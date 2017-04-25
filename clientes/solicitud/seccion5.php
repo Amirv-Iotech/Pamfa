@@ -20,7 +20,7 @@
                   <?
                     if($row_esquema['opcion']==1)
                   {?>
-                  <label><input   type="radio" <? if ($row_solicitud_esq['esq_tipo1_op1']==$row_esquema['idesquema']){?> checked="checked"<? }?>  value="<? echo $row_esquema['idesquema'];?>" id="esq_tipo1_op1" name="esq_tipo1_op1"/><? echo $row_esquema['esquema'];?></label>
+                  <input   type="radio" <? if ($row_solicitud_esq['esq_tipo1_op1']==$row_esquema['idesquema']){?> checked="checked"<? }?>  value="<? echo $row_esquema['idesquema'];?>" id="esq_tipo1_op1" name="esq_tipo1_op1"/><? echo $row_esquema['esquema'];?>
                   <? }?></div><?
                 }
         ?>        
@@ -145,10 +145,10 @@
               <label for="preg8" >¿La entidad legal que produce el producto, compra el mismo producto a otros proveedores, es decir, propiedad paralela?</label>
             </div> 
             <div class="col-lg-1 col-xs-1 campos2" style="border: solid 1px #AAAAAA; height: 26px;">
-               <input   <? if ($row_solicitud_esq['preg8']=="Si"){?> checked="checked"<? }?> type="radio" value="Si" id="preg8" name="preg8">
+               <input   <? if ($row_solicitud_esq['preg8']=="Si"){?> checked="checked"<? }?> type="radio" value="" id="preg8" name="preg8" click="cambiarSi()">
             </div> 
             <div class="col-lg-1 col-xs-1 campos2" style="border: solid 1px #AAAAAA; height: 26px;">
-               <input   <? if ($row_solicitud_esq['preg8']=="No"){?> checked="checked"<? }?> type="radio" value="No" id="preg8" name="preg8">
+               <input   <? if ($row_solicitud_esq['preg8']=="No"){?> checked="checked"<? }?> type="radio" value="" id="preg8" name="preg8" click="cambiarSi()">
             </div>
           </div>
 

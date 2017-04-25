@@ -89,80 +89,104 @@ $row_alcance= mysql_fetch_assoc($alcance);
 
 <div class="content">
 <div class="container-fluid">
-    <div class="row" id="form_plan_aud">
-        <div class="col-lg-12 col-xs-12">
+    <div class="row" id="form_plan_aud" style="background-color: #ecfbe7;">
+        <div class="col-lg-12 col-xs-12" style="padding: 0px;">
             <form id="myform" action="#seccion1" method="post" class="form-horizontal" enctype="multipart/form-data">
-               <div class="col-xs-12 col-lg-12">
+               <div class="col-xs-12 col-lg-12" style="background-color: #dbf573e6; padding: 0px;">
                   <h3 align="center">Plan de auditoria de certificación</h3>
                 </div>
-                <div class="col-xs-12 col-lg-12">
-                <p>DATOS DEL CLIENTE</p>
+                <div class="col-xs-12 col-lg-12" style="text-align: center;">
+                    <p><b>DATOS DEL CLIENTE</b></p>
                 </div>
-                <div class="col-lg-12 col-xs-12">
-                    <label>Razón social:</label>
-                    <input placeholder=""   class="" id="nombre_legal" name="nombre_legal" type="text" title="Nombre completo" value="<? echo $row_operador['nombre_legal'];?>"  />
+                <div class="col-lg-12 col-xs-12 datos">
+                    <label class="col-lg-3 col-xs-3">Razón social:</label>
+                    <div class="col-lg-9 col-xs-9">
+                    <input placeholder=""   class="plan_input" id="nombre_legal" name="nombre_legal" type="text" title="Nombre completo" value="<? echo $row_operador['nombre_legal'];?>" /></div>
                 </div>
-                <div class="col-lg-12 col-xs-12">
-                    <label>Dirección de la entidad legal: calle y número:</label>
-                    <input placeholder="" class="" id="direccion" name="direccion" value="<? echo $row_operador['direccion'];?>"  title="Dirección"  />
+                <div class="col-lg-12 col-xs-12 datos">
+                    <label class="col-lg-3 col-xs-3">Dirección de la entidad legal: calle y número:</label>
+                    <div class="col-xs-9 col-lg-9">
+                    <input placeholder="" class=" plan_input" id="direccion" name="direccion" value="<? echo $row_operador['direccion'];?>"  title="Dirección"  /></div>
                 </div>
-                <div class="col-lg-12 col-xs-12">
-                    <label>Colonia:</label>
-                    <input placeholder="" class="" id="colonia" name="colonia" value="<? echo $row_operador['colonia'];?>"  title="Colonia " />
+                <div class="col-lg-12 col-xs-12 datos">
+                    <label class="col-lg-3 col-xs-3">Colonia:</label>
+                    <div class="col-lg-9 col-xs-9">
+                    <input placeholder="" class="plan_input" id="colonia" name="colonia" value="<? echo $row_operador['colonia'];?>"  title="Colonia " />
+                    </div>
                 </div>
-                <div class="col-lg-12 col-xs-12">
-                    <label>C.P.:</label>
-                    <input placeholder="" class="" id="cp" name="cp" type="text" title="Codigo postal " value="<? echo $row_operador['cp'];?>"  />
+                <div class="col-lg-12 col-xs-12 datos">
+                    <label class="col-lg-3 col-xs-3">C.P.:</label>
+                    <div class="col-lg-9 col-xs-9">
+                    <input placeholder="" class="plan_input" id="cp" name="cp" type="text" title="Codigo postal " value="<? echo $row_operador['cp'];?>"  />
+                    </div>
                 </div>
-                <div class="col-lg-12 col-xs-12">
-                     <label>Municipio:</label>
-                      <input placeholder="" class="" id="municipio" name="municipio" type="text" title="Estado " value="<? echo $row_operador['municipio'];?>" />
+                <div class="col-lg-12 col-xs-12 datos">
+                     <label class="col-lg-3 col-xs-3">Municipio:</label>
+                     <div class="col-lg-9 col-xs-9">
+                      <input placeholder="" class="plan_input" id="municipio" name="municipio" type="text" title="Estado " value="<? echo $row_operador['municipio'];?>" />
+                      </div>
                 </div>
-                <div class="col-lg-12 col-xs-12">
-                      <label>Estado:</label>
-                      <input placeholder="" class="" id="estado" name="estado" type="text" title="Estado " value="<? echo $row_operador['estado'];?>" />
+                <div class="col-lg-12 col-xs-12 datos">
+                      <label class="col-lg-3 col-xs-3">Estado:</label>
+                      <div class="col-lg-9 col-xs-9">
+                      <input placeholder="" class="plan_input" id="estado" name="estado" type="text" title="Estado " value="<? echo $row_operador['estado'];?>" />
+                      </div>
                 </div>
-                <div class="col-lg-12 col-xs-12">
-                    <label>Teléfono:</label>
-                    <input placeholder="" class="" id="telefono" name="telefono" type="text" title="Telefono " value="<? echo $row_operador['telefono'];?>"  />
+                <div class="col-lg-12 col-xs-12 datos">
+                    <label class="col-lg-3 col-xs-3">Teléfono:</label>
+                    <div class="col-lg-9 col-xs-9">
+                    <input placeholder="" class="plan_input" id="telefono" name="telefono" type="text" title="Telefono " value="<? echo $row_operador['telefono'];?>"  />
+                    </div>
                 </div>
-                <div class="col-lg-12 col-xs-12">
-                    <label>Correo Electrónico:</label>
-                    <input placeholder="" class="" id="email" name="email" type="text" value="<? echo $row_operador['email'];?>" id="email" title="Email " />
+                <div class="col-lg-12 col-xs-12 datos">
+                    <label class="col-lg-3 col-xs-3">Correo Electrónico:</label>
+                    <div class="col-lg-9 col-xs-9">
+                    <input placeholder="" class="plan_input" id="email" name="email" type="text" value="<? echo $row_operador['email'];?>" id="email" title="Email " />
+                    </div>
                 </div>
-                <div class="col-lg-12 col-xs-12">
-                    <label>Nombre del representante legal:</label>
-                    <input placeholder="" class="" id="nombre_representante" name="nombre_representante" type="text" value="<? echo $row_operador['nombre_representante'];?>"  title="Nombre " />
+                <div class="col-lg-12 col-xs-12 datos">
+                    <label class="col-lg-3 col-xs-3">Nombre del representante legal:</label>
+                    <div class="col-lg-9 col-xs-9">
+                    <input placeholder="" class="plan_input" id="nombre_representante" name="nombre_representante" type="text" value="<? echo $row_operador['nombre_representante'];?>"  title="Nombre " />
+                    </div>
                 </div>
-                <div class="col-lg-12 col-xs-12">
+                <div class="col-lg-12 col-xs-12 datos">
                     <input type="hidden" name="idoperador" value="<? echo $row_operador['idoperador']; ?>" />
                     <input type="hidden" name="idsolicitud" value="<? echo $_POST['idsolicitud']; ?>" />
                     <input type="hidden" name="seccion" value="1" />
                     <input type="hidden" name="fecha" value="<? echo time();?>" />
                 </div>
-                <div class="col-lg-12 col-xs-12">                                
-                    <label>Centro de manipulación:</label>    
-                    <input placeholder="" class="" id="procesadora" name="procesadora" type="text" title="Estado " value="<? echo $row_procesadora['empresa'];?>" />
+                <div class="col-lg-12 col-xs-12 datos">                                
+                    <label class="col-lg-3 col-xs-3">Centro de manipulación:</label>  
+                    <div class="col-lg-9 col-xs-9">  
+                    <input placeholder="" class="plan_input" id="procesadora" name="procesadora" type="text" title="Estado " value="<? echo $row_procesadora['empresa'];?>" />
+                    </div>
                 </div>
-                <div class="col-lg-12 col-xs-12">
-                    <label>Producto:</label>
+                <div class="col-lg-12 col-xs-12 datos">
+                    <label class="col-lg-3 col-xs-3">Producto:</label>
                     <?  $query_prod = sprintf("SELECT * FROM cultivos WHERE idsolicitud=%s order by idcultivos", GetSQLValueString( $_POST["idsolicitud"], "int"));
                       $prod = mysql_query($query_prod, $inforgan_pamfa) or die(mysql_error());
                       while($row_prod= mysql_fetch_assoc($prod))
                       {
                         $productos=$row_prod['producto'].",".$productos;
                       }?>
-                      <input placeholder="" class="" id="productos" name="productos" type="text" title="Telefono " value="<? echo $productos;?>"  />
+                      <div class="col-lg-9 col-xs-9">
+                      <input placeholder="" class="plan_input" id="productos" name="productos" type="text" title="Telefono " value="<? echo $productos;?>"  />
+                      </div>
                 </div>
-                <div class="col-lg-12 col-xs-12">
-                    <label>Fecha_emision:</label>
-                    <input placeholder="" class="" id="fecha_emision" name="fecha_emision" type="date" value="<? echo $row_plan_auditoria['fecha_emision'];?>" id="email" title="Email " />
+                <div class="col-lg-12 col-xs-12 datos">
+                    <label class="col-lg-3 col-xs-3">Fecha_emision:</label>
+                    <div class="col-lg-9 col-xs-9">
+                    <input placeholder="" class="plan_input" id="fecha_emision" name="fecha_emision" type="date" value="<? echo $row_plan_auditoria['fecha_emision'];?>" id="email" title="Email " />
+                    </div>
                 </div>
-                <div class="col-lg-12 col-xs-12">
-                    <label>Fecha_auditoria:</label>
-                    <input type="date" placeholder="" class="" id="fecha_auditoria" name="fecha_auditoria" value="<? echo $row_plan_auditoria['fecha_auditoria'];?>"  title="Nombre " />
+                <div class="col-lg-12 col-xs-12 datos">
+                    <label class="col-lg-3 col-xs-3">Fecha_auditoria:</label>
+                    <div class="col-lg-9 col-xs-9">
+                    <input type="date" placeholder="" class="plan_input" id="fecha_auditoria" name="fecha_auditoria" value="<? echo $row_plan_auditoria['fecha_auditoria'];?>"  title="Nombre " />
+                    </div>
                 </div>
-                <div class="col-lg-12 col-xs-12">
+                <div class="col-lg-12 col-xs-12 datos" >
                     <input type="hidden" name="idsolicitud" value="<? echo $_POST['idsolicitud']; ?>" />
                     <input type="hidden" name="seccion" value="2" />
                 </div>
