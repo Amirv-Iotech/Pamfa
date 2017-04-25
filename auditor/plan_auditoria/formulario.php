@@ -113,7 +113,7 @@ $row_alcance= mysql_fetch_assoc($alcance);
     	<label for="nombre_legal" class="form-label col-lg-1">Razón social:</label>
         
     	<div class="form-group col-lg-11">
-    	<input placeholder="escribe aquí"   class="form-control" onchange="this.form.submit()" name="nombre_legal" type="text" 			title="Nombre completo " value="<? echo $row_operador['nombre_legal'];?>"  />
+    	<input placeholder="escribe aquí"   class="" onchange="this.form.submit()" name="nombre_legal" type="text" 			title="Nombre completo " value="<? echo $row_operador['nombre_legal'];?>"  />
 	    </div>
 		</div>
 

@@ -1,6 +1,6 @@
 <fieldset>
   <div clas="row" id="seccion6">
-    <div class="col-lg-12 col-xs-12">
+    <div class="col-lg-12 col-xs-12" style="background-color: #ecfbe7;">
     <form method="post" action=""><br />
 
         <div class="col-lg-12 col-xs-12">

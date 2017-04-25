@@ -1,27 +1,47 @@
 <fieldset>
-  <div class="row" id="seccion5">
+  <div class="row" id="seccion5" style="background-color: #ecfbe7;">
       <form method="post" action="">
         <div class="col-lg-12 col-xs-12">
-            <div class="col-lg-12 col-xs-12">
+            <div class="col-lg-12 col-xs-12" style="background-color: #dbf573e6; padding: 0px;">
             <h3>Datos de la auditoria</h3>
             </div>
-            <div class="col-xs-12 col-lg-12">
-                <div class="col-lg-6 col-xs-6">
-                  <div class="col-xs-12"
-                    <label>Tipo de Auditoria</label>
-                  </div>
-                    <div class="col-xs-6"><label><input type="checkbox" <? if ($row_plan_auditoria['tipo']==1){?> checked="checked"<? }?>  value="1" name="tipo1">Certificación</label></div>
-                    <div clas="col-xs-6"> <label><input  type="checkbox" <? if ($row_plan_auditoria['tipo']==2){?> checked="checked"<? }?>  value="1" name="tipo2">Re-certificación</label></div>
-                    <div class="col-xs-6"><label><input type="checkbox" <? if ($row_plan_auditoria['tipo']==1){?> checked="checked"<? }?>  value="1" name="tipo3">Vigilancia(No anunciada)</label></div>
-                    <div class="col-xs-6"><label><input type="checkbox" <? if ($row_plan_auditoria['tipo']==1){?> checked="checked"<? }?>  value="1" name="tipo5">Extraordinaria</label></div>
+            <div class="col-xs-12 col-lg-12" style="padding: 0px;">
+                <div class="col-lg-6 col-xs-6" style="border:solid 5px #dbf573e6">
                     <div class="col-xs-12">
-                      <label>Evaluaciones de cambio de alcances</label>
+                      <label>Tipo de Auditoria</label>
                     </div>
                     <div class="col-xs-6">
-                      <label><input type="checkbox" <? if ($row_plan_auditoria['tipo']==1){?> checked="checked"<? }?>  value="1" name="tipo6">Ampliacion</label></div>
-                      <div class="col-xs-6"><label><input type="checkbox" <? if ($row_plan_auditoria['tipo']==1){?> checked="checked"<? }?>  value="1" name="tipo6">Reducción</label></div>
+                        <label><input type="checkbox" <? if ($row_plan_auditoria['tipo']==1){?> checked="checked"<? }?>  value="1" name="tipo1">Certificación</label>
+                    </div>
+                    <div class="col-xs-6">
+                        <label><input type="checkbox" <? if ($row_plan_auditoria['tipo']==2){?> checked="checked"<? }?>  value="1" name="tipo2">Re-certificación</label>
+                    </div>
+                    <div class="col-xs-6">
+                        <label><input type="checkbox" <? if ($row_plan_auditoria['tipo']==1){?> checked="checked"<? }?>  value="1" name="tipo3">Vigilancia(No anunciada)</label>
+                    </div>
+                    <div class="col-xs-6">
+                        <label><input type="checkbox" <? if ($row_plan_auditoria['tipo']==1){?> checked="checked"<? }?>  value="1" name="tipo5">Extraordinaria</label>
+                    </div>
+                    <div class="col-xs-12">
+                        <label>Evaluaciones de cambio de alcances</label>
+                    </div>
+                    <div class="col-xs-6">
+                        <label><input type="checkbox" <? if ($row_plan_auditoria['tipo']==1){?> checked="checked"<? }?>  value="1" name="tipo6">Ampliacion</label>
+                    </div>
+                    <div class="col-xs-6">
+                        <label><input type="checkbox" <? if ($row_plan_auditoria['tipo']==1){?> checked="checked"<? }?>  value="1" name="tipo6">Reducción</label>
                     </div>
                     <div class="col-lg-6 col-xs-6">
+                        <label style="height: 38px;">Nombre del Rancho / Invernadero</label>
+                          <input placeholder="escribe aquí"  class="form-control" onchange="this.form.submit()" name="rancho_invernadero" type="text"       title="Número " value="<? echo $row_plan_auditoria['rancho_invernadero'];?>"  />
+                    </div>
+                    <div class="col-lg-6 col-xs-6">
+                        <label style="height: 38px;">Superficie</label>
+                         <input placeholder="escribe aquí"  class="form-control" onchange="this.form.submit()" name="superficie" type="number" step="any"       title="Número " value="<? echo $row_plan_auditoria['superficie'];?>"  />
+                    </div>
+                </div>
+
+                    <div class="col-lg-6 col-xs-6" style="border:solid 5px #dbf573e6">
                       <div class="col-xs-12">
                         <label>Esquema de Certificación</label>
                       </div>
@@ -41,14 +61,8 @@
                           <label><input onchange="this.form.submit()"  type="checkbox" <? if ($row_solicitud['idsrrc']!=NULL){?> checked="checked"<? }?>  value="1" name="tipo1">Sistema  Reduccion de Riesgos de contaminación</label>
                       </div>
                     </div>
-                    <div class="col-lg-3 col-xs-6">
-                        <label>Nombre del Rancho / Invernadero</label>
-                          <input placeholder="escribe aquí"  class="form-control" onchange="this.form.submit()" name="rancho_invernadero" type="text"       title="Número " value="<? echo $row_plan_auditoria['rancho_invernadero'];?>"  />
-                    </div>
-                    <div class="col-lg-3 col-xs-6">
-                        <label>Superficie</label>
-                         <input placeholder="escribe aquí"  class="form-control" onchange="this.form.submit()" name="superficie" type="number" step="any"       title="Número " value="<? echo $row_plan_auditoria['superficie'];?>"  />
-                    </div>
+                    
+                    
                     <div class="col-lg-3 col-xs-6">
                         <label>Número PGFS</label>
                       <input placeholder="escribe aquí"  class="form-control" onchange="this.form.submit()" name="num_pgfs" type="text"       title="Número " value="<? echo $row_plan_auditoria['num_pgfs'];?>"  />

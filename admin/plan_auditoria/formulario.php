@@ -86,10 +86,8 @@ $row_alcance= mysql_fetch_assoc($alcance);
 
 ////////
 ?>
-
-<div class="content">
-<div class="container-fluid">
-    <div class="row" id="form_plan_aud" style="background-color: #ecfbe7;">
+<div class="content" >
+    <div class="row" id="form_plan_aud" style="background-color: #ecfbe7; padding: 0px;">
         <div class="col-lg-12 col-xs-12" style="padding: 0px;">
             <form id="myform" action="#seccion1" method="post" class="form-horizontal" enctype="multipart/form-data">
                <div class="col-xs-12 col-lg-12" style="background-color: #dbf573e6; padding: 0px;">
@@ -100,8 +98,8 @@ $row_alcance= mysql_fetch_assoc($alcance);
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">
                     <label class="col-lg-3 col-xs-3">Razón social:</label>
-                    <div class="col-lg-9 col-xs-9">
-                    <input placeholder=""   class="plan_input" id="nombre_legal" name="nombre_legal" type="text" title="Nombre completo" value="<? echo $row_operador['nombre_legal'];?>" /></div>
+                    <div class="col-lg-9 col-xs-9" >
+                    <input placeholder=""   class=" plan_input" id="nombre_legal" name="nombre_legal" type="text" title="Nombre completo" value="<? echo $row_operador['nombre_legal'];?>" /></div>
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">
                     <label class="col-lg-3 col-xs-3">Dirección de la entidad legal: calle y número:</label>
@@ -197,9 +195,7 @@ $row_alcance= mysql_fetch_assoc($alcance);
             </form>
         </div>
     </div>
-</div><!-- container fluid-->
 </div>
-
 <?php  include("seccion5.php");?>
 <?php  include("seccion6.php");?>
 <?php  include("seccion7.php");?>
