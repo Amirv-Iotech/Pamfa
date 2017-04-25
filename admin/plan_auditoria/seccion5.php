@@ -1,12 +1,12 @@
 <fieldset>
-  <div class="row" id="seccion5" style="background-color: #ecfbe7;">
+  <div class="row" id="seccion5" style="background-color: #ecfbe7; border:solid 2px #dbf573e6">
       <form method="post" action="">
         <div class="col-lg-12 col-xs-12">
             <div class="col-lg-12 col-xs-12" style="background-color: #dbf573e6; padding: 0px;">
             <h3>Datos de la auditoria</h3>
             </div>
             <div class="col-xs-12 col-lg-12" style="padding: 0px;">
-                <div class="col-lg-6 col-xs-6" style="border:solid 5px #dbf573e6">
+                <div class="col-lg-6 col-xs-6" style="border:solid 2px #dbf573e6">
                     <div class="col-xs-12">
                       <label>Tipo de Auditoria</label>
                     </div>
@@ -33,15 +33,24 @@
                     </div>
                     <div class="col-lg-6 col-xs-6">
                         <label style="height: 38px;">Nombre del Rancho / Invernadero</label>
-                          <input placeholder="escribe aquí"  class="form-control" onchange="this.form.submit()" name="rancho_invernadero" type="text"       title="Número " value="<? echo $row_plan_auditoria['rancho_invernadero'];?>"  />
+                          <input placeholder="escribe aquí"  class="plan_input" onchange="this.form.submit()" name="rancho_invernadero" type="text"       title="Número " value="<? echo $row_plan_auditoria['rancho_invernadero'];?>"  />
                     </div>
                     <div class="col-lg-6 col-xs-6">
                         <label style="height: 38px;">Superficie</label>
-                         <input placeholder="escribe aquí"  class="form-control" onchange="this.form.submit()" name="superficie" type="number" step="any"       title="Número " value="<? echo $row_plan_auditoria['superficie'];?>"  />
+                         <input placeholder="escribe aquí"  class="plan_input" onchange="this.form.submit()" name="superficie" type="number" step="any"       title="Número " value="<? echo $row_plan_auditoria['superficie'];?>"  />
                     </div>
+                    <div class="col-lg-12 col-xs-6">
+                      <label>Producto</label>
+                      <input placeholder="escribe aquí"  class="plan_input" onchange="this.form.submit()" name="producto_proce" type="text"       title="Número " value="<? echo $row_plan_auditoria['producto_proce'];?>"  />
+                    </div>
+                    <div class="col-lg-12 col-xs-6">
+                      <label> Nombre del centro de manipulación/cuarto frio/empacadora/procesadora</label>
+                      <input placeholder="escribe aquí"  class="plan_input" onchange="this.form.submit()" name="manip"       title="Número " value="<? echo $row_plan_auditoria['manip'];?>"  />
+                    </div>
+
                 </div>
 
-                    <div class="col-lg-6 col-xs-6" style="border:solid 5px #dbf573e6">
+                    <div class="col-lg-6 col-xs-6" style="border:solid 0px #dbf573e6">
                       <div class="col-xs-12">
                         <label>Esquema de Certificación</label>
                       </div>
@@ -57,65 +66,61 @@
                       <div class="col-xs-6">
                           <label><input onchange="this.form.submit()"  type="checkbox" <? if ($row_solicitud['idmex_pliego']!=NULL){?> checked="checked"<? }?>  value="1" name="tipo1">Pliego de condiciones México Calidad Suprema</label>
                       </div>
-                      <div class="col-xs-6">
+                      <div class="col-xs-12">
                           <label><input onchange="this.form.submit()"  type="checkbox" <? if ($row_solicitud['idsrrc']!=NULL){?> checked="checked"<? }?>  value="1" name="tipo1">Sistema  Reduccion de Riesgos de contaminación</label>
                       </div>
-                    </div>
-                    
-                    
-                    <div class="col-lg-3 col-xs-6">
+                        <hr class="col-lg-12">
+                    <div class="col-lg-6 col-xs-6">
                         <label>Número PGFS</label>
-                      <input placeholder="escribe aquí"  class="form-control" onchange="this.form.submit()" name="num_pgfs" type="text"       title="Número " value="<? echo $row_plan_auditoria['num_pgfs'];?>"  />
-                    </div>
-                    <div class="col-lg-3 col-xs-6">
-                        <label>  N°. PAMFA(PC.MC/MEXICO G.A.P/SRRC)</label>
-                          <input placeholder="escribe aquí"  class="form-control" onchange="this.form.submit()" name="num_pamfa" type="text"      title="Número " value="<? echo $row_plan_auditoria['num_pamfa'];?>"  />
-                    </div>
-                    <div class="col-lg-4 col-xs-6">
-                    <label>  Número GlobalGG. A.P.</label>
-                      <input placeholder="escribe aquí"  class="form-control" onchange="this.form.submit()" name="num_globalgg" type="text"       title="Número " value="<? echo $row_plan_auditoria['num_globalgg'];?>"  />
-                    </div>
-                    <div class="col-lg-4 col-xs-6">
-                    <label>Número CoC</label>
-                      <input placeholder="escribe aquí"  class="form-control" onchange="this.form.submit()" name="num_coc" type="text"      title="Número " value="<? echo $row_plan_auditoria['num_coc'];?>"  />
-
-                    </div>
-                    <div class="col-lg-4 col-xs-6">
-                      <label>Producto</label>
-                      <input placeholder="escribe aquí"  class="form-control" onchange="this.form.submit()" name="producto_proce" type="text"       title="Número " value="<? echo $row_plan_auditoria['producto_proce'];?>"  />
+                      <input placeholder="escribe aquí"  class="plan_input" onchange="this.form.submit()" name="num_pgfs" type="text"       title="Número " value="<? echo $row_plan_auditoria['num_pgfs'];?>"  />
                     </div>
                     <div class="col-lg-6 col-xs-6">
-                      <label> Nombre del centro de manipulación/cuarto frio/empacadora/procesadora</label>
-                      <input placeholder="escribe aquí"  class="form-control" onchange="this.form.submit()" name="manip"       title="Número " value="<? echo $row_plan_auditoria['manip'];?>"  />
+                        <label>  N°. PAMFA(PC.MC/MEXICO G.A.P/SRRC)</label>
+                          <input placeholder="escribe aquí"  class="plan_input" onchange="this.form.submit()" name="num_pamfa" type="text"      title="Número " value="<? echo $row_plan_auditoria['num_pamfa'];?>"  />
+                    </div>
+                    <div class="col-lg-6 col-xs-6">
+                    <label>  Número GlobalGG. A.P.</label>
+                      <input placeholder="escribe aquí"  class="plan_input" onchange="this.form.submit()" name="num_globalgg" type="text"       title="Número " value="<? echo $row_plan_auditoria['num_globalgg'];?>"  />
+                    </div>
+                    <div class="col-lg-6 col-xs-6">
+                      <label>Número CoC</label>
+                      <input placeholder="escribe aquí"  class="plan_input" onchange="this.form.submit()" name="num_coc" type="text"      title="Número " value="<? echo $row_plan_auditoria['num_coc'];?>"  />
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-xs-12 " style="border:solid 2px #dbf573e6">
+                    <div class="col-lg-6 col-xs-6">
+                      <label>Producto(s):</label>
+                       <input placeholder="escribe aquí"  class="plan_input" name="produtos" title="productos " value=""/>
                     </div>
                     <div class="col-lg-6 col-xs-6">
                       <label>Otro (Especifique)</label>
-                       <input placeholder="escribe aquí"  class="form-control" onchange="this.form.submit()" name="otro"        title="Otro " value="<? echo $row_plan_auditoria['otro'];?>"  />
+                       <input placeholder="escribe aquí"  class="plan_input" onchange="this.form.submit()" name="otro"        title="Otro " value="<? echo $row_plan_auditoria['otro'];?>"  />
                     </div>
                     <div class="col-lg-6 col-xs-6">
                       <label>Objetivo</label>
-                       <input placeholder="escribe aquí"  class="form-control" onchange="this.form.submit()" name="objetivo"        title="Objetivo " value="<? echo $row_plan_auditoria['objetivo'];?>"  />
+                       <input placeholder="escribe aquí"  class="plan_input" onchange="this.form.submit()" name="objetivo"        title="Objetivo " value="<? echo $row_plan_auditoria['objetivo'];?>"  />
                     </div>
                     <div class="col-lg-6 col-xs-6">
                       <label>Alcance</label>
-                       <input placeholder="escribe aquí"  class="form-control" onchange="this.form.submit()" name="alcance"       title="Alcance " value="<? echo $row_alcance['descripcion'];?>"  />
+                       <input placeholder="escribe aquí"  class="plan_input" onchange="this.form.submit()" name="alcance"       title="Alcance " value="<? echo $row_alcance['descripcion'];?>"  />
                     </div>
                     <div class="col-lg-6 col-xs-6">
                         <label>Criterios de Evaluación </label>
-                         <input placeholder="escribe aquí"  class="form-control" onchange="this.form.submit()" name="criterio"        title="Evaluación " value="<? echo $row_plan_auditoria['criterio'];?>"  />
+                         <input placeholder="escribe aquí"  class="plan_input" onchange="this.form.submit()" name="criterio"        title="Evaluación " value="<? echo $row_plan_auditoria['criterio'];?>"  />
                     </div>
                     <div class="col-lg-6 col-xs-6">
                         <label class="col-lg-12 col-xs-12">Idioma en que se realizará la auditoria y a utilizar para el informe:</label>
                         <div class="col-lg-6 col-xs-6">
-                         <input placeholder="Auditoria"  class="form-control" onchange="this.form.submit()" name="idioma_aud"  type="text" title="Idioma " value="<? echo $row_solicitud['idioma_aud'];?>"  />
+                         <input placeholder="Auditoria"  class="plan_input" onchange="this.form.submit()" name="idioma_aud"  type="text" title="Idioma " value="<? echo $row_solicitud['idioma_aud'];?>"  />
                         </div>
                         <div class="col-lg-6 col-xs-6">
-                         <input placeholder="informe"  class="form-control" onchange="this.form.submit()" name="idioma_inf" type="text" title="Idioma " value="<? echo $row_solicitud['idioma_inf'];?>"  />
+                         <input placeholder="informe"  class="plan_input" onchange="this.form.submit()" name="idioma_inf" type="text" title="Idioma " value="<? echo $row_solicitud['idioma_inf'];?>"  />
                         </div>
                         <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
                         <input type="hidden" name="idsolicitud_esquema" value="<? echo $row_solicitud_esq['idsolicitud_esquema']; ?>" />
                         <input type="hidden" name="seccion" value="5" />
                     </div>
+                  </div>
             </div>
         </div>
 

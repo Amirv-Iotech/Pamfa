@@ -1,14 +1,14 @@
 <fieldset>
   <div clas="row" id="seccion6">
-    <div class="col-lg-12 col-xs-12" style="background-color: #ecfbe7;">
+    <div class="col-lg-12 col-xs-12" style="background-color: #ecfbe7; padding: 0px;">
     <form method="post" action=""><br />
 
-        <div class="col-lg-12 col-xs-12">
+        <div class="col-lg-12 col-xs-12" style="background-color: #dbf573e6; padding: 0px;">
                 <h3>Equipo Auditor</h3>
         </div>
         <div class="col-lg-12 col-xs-12">
         Auditor
-             <select name="auditor" class="form-control" onchange="this.form.submit()">
+             <select name="auditor" class="plan_input" onchange="this.form.submit()">
               <option value="">Selecciona un Auditor...</option>
               <?php 
               $query_vista1 = "SELECT * FROM usuario where tipo=2 ORDER BY nombre ASC";
@@ -22,7 +22,7 @@
         </div>
         <div class="col-lg-12 col-xs-12">
             Inspector
-            <select name="inspector" class="form-control" onchange="this.form.submit()">
+            <select name="inspector" class="plan_input" onchange="this.form.submit()">
               <option value="">Selecciona una opción...</option>
               <?php 
               $query_vista1 = "SELECT * FROM usuario where tipo=3 ORDER BY nombre ASC";

@@ -2,33 +2,33 @@
 <div class="row" id="seccion7" style="background-color: #ecfbe7;">
   <div class="col-lg-12 col-xs-12">
     <form method="post" action="#seccion6"><br />
-      <div class="col-lg-12 col-xs-12">
+      <div class="col-lg-12 col-xs-12" style="background-color: #dbf573e6; padding: 0px;">
           <h3>Agenda de trabajo general:</h3>
       </div>
       <div class="col-lg-2 col-xs-4">
       <label>fecha</label>
-       <input placeholder="escribe aquí"  class="form-control"  name="fecha"        title="Fecha " type="date" value=""  />
+       <input placeholder="escribe aquí"  class="plan_input"  name="fecha"        title="Fecha " type="date" value=""  />
 
       </div>
       <div class="col-lg-2 col-xs-4">
       <label>Horario</label>
-       <input placeholder="escribe aquí"  class="form-control"  name="horario"        title="Horario " type="text" value=""  />
+       <input placeholder="escribe aquí"  class="plan_input"  name="horario"        title="Horario " type="text" value=""  />
 
       </div>
       <div class="col-lg-2 col-xs-4">
         <label data-toggle="tooltip" title="se deberá indicar detalladamente las actividades o documentos a revisar por áreas, rubros o secciones">Area / Actividad</label>
 
-       <input placeholder="escribe aquí"  class="form-control"  name="actividad"        title="Actividad " type="text" value=""  />
+       <input placeholder="escribe aquí"  class="plan_input"  name="actividad"        title="Actividad " type="text" value=""  />
 
       </div>
       <div class="col-lg-2 col-xs-4">
       <label>Responsable por Parte del cliente</label>
-       <input placeholder="escribe aquí"  class="form-control"  name="responsable"        title="Responsable " type="text" value=""  />
+       <input placeholder="escribe aquí"  class="plan_input"  name="responsable"        title="Responsable " type="text" value=""  />
 
       </div>
       <div class="col-lg-2 col-xs-4">
       <label>Auditor</label>
-        <select name="auditor" class="form-control" >
+        <select name="auditor" class="plan_input" >
         <option value="">Selecciona una opción...</option>
         <?php 
         $query_vista1 = "select nombre,apellidos from usuario where idusuario=(SELECT idauditor FROM plan_auditoria_equipo where idplan_auditoria='".$_POST['idplan_auditoria']."') ";
