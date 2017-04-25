@@ -1,5 +1,5 @@
-
 <? include ("../Connections/inforgan_pamfa.php");
+
 mysql_select_db($database_pamfa, $inforgan_pamfa);
 
 
@@ -56,6 +56,8 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
     <link href="assets/css/material-dashboard.css" rel="stylesheet"/>
 
    
+    <!-- CSS Malpika. -->
+    <link href="assets/css/style_operador.css" rel="stylesheet" />
 
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
