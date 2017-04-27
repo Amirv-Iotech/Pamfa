@@ -58,7 +58,6 @@ else if($_POST['eliminar']){
 	$insertSQL = sprintf("delete from informe_hallazgos where idinforme_hallazgo=%s  ",
  GetSQLValueString($_POST['idinforme_hallazgo'], "text"));
 }
-echo $insertSQL;
   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
 
 
@@ -113,7 +112,6 @@ $f=time();
 			 GetSQLValueString($f, "text"),
 			 GetSQLValueString($_SESSION['idusuario'], "text"),
 			  GetSQLValueString($_POST['idinforme'], "text"));
-			  echo $insertSQL;
 			   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
 			  if($_POST['dictamen_coc']=="aprobado")
 {
@@ -151,7 +149,6 @@ $f=time();
 			 GetSQLValueString($f, "text"),
 			 GetSQLValueString($_SESSION['idusuario'], "text"),
 			  GetSQLValueString($_POST['idinforme'], "text"));
-			  echo $insertSQL;
 			   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
 if($_POST['dictamen_mexcalsup']=="aprobado")
 {
@@ -181,5 +178,3 @@ else
 						 
 }
 
-
-///////fin
