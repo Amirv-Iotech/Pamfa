@@ -33,19 +33,19 @@
           <div class="form-group col-lg-4 col-sm-4 campos2" style="border: solid 1px #AAAAAA; min-height: 136px">
             <label for="preg1_op2" class="form-label col-lg-12">Número de productores a certificar:</label>
             <div class="col-lg-12 div4">
-              <input placeholder="" class="form-control inputsf"   id="preg1_op2" name="preg1_op2" type="text"      title="Número " value="<? echo $row_solicitud_esq['preg1_op2'];?>" />
+              <input placeholder="" class="form-control inputsf"   id="preg1_op2" name="preg1_op2" type="number      title="Número " value="<? echo $row_solicitud_esq['preg1_op2'];?>" />
             </div>
           </div>
           <div class=" form-group col-lg-4 col-sm-4 campos2" style="border: solid 1px #AAAAAA; min-height: 136px">
             <label  for="preg2_op2" class="form-label col-lg-12">Número de unidades de producción a certifcar:</label>
             <div class="col-lg-12 div4">
-              <input placeholder=""  class="form-control inputsf"  id="preg2_op2" name="preg2_op2" type="text"      title="Número " value="<? echo $row_solicitud_esq['preg2_op2'];?>"  />
+              <input placeholder=""  class="form-control inputsf"  id="preg2_op2" name="preg2_op2" type="number"      title="Número " value="<? echo $row_solicitud_esq['preg2_op2'];?>"  />
             </div>
           </div>
           <div class="form-group col-lg-4 col-sm-4 campos2" style="border: solid 1px #AAAAAA; min-height: 136px">
             <label for="preg3_op2" class="form-label col-lg-12">Número de unidades de maniupalación de productos a certificar:</label>
             <div class="col-lg-12 div4">
-              <input placeholder="" class="form-control inputsf"  id="preg3_op2" name="preg3_op2" type="text"       title="Número " value="<? echo $row_solicitud_esq['preg3_op2'];?>"  />
+              <input placeholder="" class="form-control inputsf"  id="preg3_op2" name="preg3_op2" type="number"       title="Número " value="<? echo $row_solicitud_esq['preg3_op2'];?>"  />
             </div>
           </div>
         </div>
@@ -58,7 +58,7 @@
             <label for="preg1_tipo2" >Número total de unidades de produccion: Ranchos, huertos o invernaderos</label>
           </div>
           <div class="div4">
-            <input placeholder="" class="form-control inputsf"  id="preg1_tipo2" name="preg1_tipo2" type="text"       title="Número " value="<? echo $row_solicitud_esq['preg1_tipo2'];?>" />
+            <input placeholder="" class="form-control inputsf"  id="preg1_tipo2" name="preg1_tipo2" type="number"       title="Número " value="<? echo $row_solicitud_esq['preg1_tipo2'];?>" />
           </div>
         </div>
         <div class="col-lg-6 col-sm-6 campos2" style="border: solid 1px #AAAAAA; min-height:154px;">
@@ -66,7 +66,7 @@
             <label for="preg2_tipo2" >Número de unidades de producción a certifcar:</label>
           </div>
           <div class="div4">
-            <input placeholder=" "  class="form-control inputsf"  id="preg2_tipo2" name="preg2_tipo2" type="text"       title="Número " value="<? echo $row_solicitud_esq['preg2_tipo2'];?>"  />
+            <input placeholder=" "  class="form-control inputsf"  id="preg2_tipo2" name="preg2_tipo2" type="number"       title="Número " value="<? echo $row_solicitud_esq['preg2_tipo2'];?>"  />
           </div>
         </div>
       </div>
@@ -101,7 +101,7 @@
           <div class="form-group col-lg-6 col-xs-6 campos2" style="border: solid 1px #AAAAAA; min-height: 102px;">
                     <label>Cantidad estimada de producto certificado (Voluntario) en toneladas anual.</label>
                     <div class="div4">
-                        <input placeholder=""  class="form-control inputsf"  id="preg4_tipo2" name="preg4_tipo2" type="text"       title="Cantidad " value="<? echo $row_solicitud_esq['preg4_tipo2'];?>" />    
+                        <input placeholder=""  class="form-control inputsf"  id="preg4_tipo2" name="preg4_tipo2" type="number"       title="Cantidad " value="<? echo $row_solicitud_esq['preg4_tipo2'];?>" />    
                     </div>
                   </div>
             </div>

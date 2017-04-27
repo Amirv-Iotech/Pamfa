@@ -20,7 +20,12 @@
             <div class="col-lg-2 col-xs-2">
                 <input id="respuesta5"  <? if ($row_solicitud['respuesta5']=="Si"){?> checked="checked"<? }?> type="checkbox" value="Si" name="respuesta5">
             </div>
-                 <button type="submit"  id="terminada" name="terminada"  value="" onClick="cambiar()" class="btn btn-success">Solicitud terminada</button>
+            <? if($row_solicitud['terminada']==1){?>
+          
+            <? } else {?>
+            
+                 <button  type="button"  id="terminada" name="terminada"  value="" onClick="cambiar()" class="btn btn-success">Solicitud terminada</button>
+                 <? }?>
         </div>
         </form>
     </div>
