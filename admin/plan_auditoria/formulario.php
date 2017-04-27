@@ -86,10 +86,8 @@ $row_alcance= mysql_fetch_assoc($alcance);
 
 ////////
 ?>
-
-<div class="content">
-<div class="container-fluid">
-    <div class="row" id="form_plan_aud" style="background-color: #ecfbe7;">
+<div class="content" >
+    <div class="row" id="form_plan_aud" style="background-color: #ecfbe7; padding: 0px;">
         <div class="col-lg-12 col-xs-12" style="padding: 0px;">
             <form id="myform" action="#seccion1" method="post" class="form-horizontal" enctype="multipart/form-data">
                <div class="col-xs-12 col-lg-12" style="background-color: #dbf573e6; padding: 0px;">
@@ -100,8 +98,8 @@ $row_alcance= mysql_fetch_assoc($alcance);
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">
                     <label class="col-lg-3 col-xs-3">Razón social:</label>
-                    <div class="col-lg-9 col-xs-9">
-                    <input placeholder=""   class="plan_input" id="nombre_legal" name="nombre_legal" type="text" title="Nombre completo" value="<? echo $row_operador['nombre_legal'];?>" /></div>
+                    <div class="col-lg-9 col-xs-9" >
+                    <input placeholder=""   class=" plan_input" id="nombre_legal" name="nombre_legal" type="text" title="Nombre completo" value="<? echo $row_operador['nombre_legal'];?>" /></div>
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">
                     <label class="col-lg-3 col-xs-3">Dirección de la entidad legal: calle y número:</label>
@@ -171,7 +169,7 @@ $row_alcance= mysql_fetch_assoc($alcance);
                         $productos=$row_prod['producto'].",".$productos;
                       }?>
                       <div class="col-lg-9 col-xs-9">
-                      <input placeholder="" class="plan_input" id="productos" name="productos" type="text" title="Telefono " value="<? echo $productos;?>"  />
+                      <input placeholder="" class="plan_input" id="producto" name="producto" type="text" title="Telefono " value="<? echo $productos;?>"  />
                       </div>
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">
@@ -197,14 +195,71 @@ $row_alcance= mysql_fetch_assoc($alcance);
             </form>
         </div>
     </div>
-</div><!-- container fluid-->
 </div>
-
 <?php  include("seccion5.php");?>
 <?php  include("seccion6.php");?>
 <?php  include("seccion7.php");?>
 
 <?php include("includes/footer.php");?>
+
+<script>
+window.addEventListener("beforeunload", function(event) {    
+var procesadora =$('#procesadora').val();
+var producto =$('#producto').val();
+var fecha_emision =$('#fecha_emision').val();
+var fecha_auditoria =$('#fecha_auditoria').val();
+var tipo1 =$('#tipo1').val();
+var tipo6 =$('#tipo6').val();
+var rancho_invernadero =$('#rancho_invernadero').val();
+var superficie =$('#superficie').val();
+var producto_proce =$('#producto_proce').val();
+var manip =$('#manip').val();
+var esq1 =$('#esq1').val();
+var num_pgfs =$('#num_pgfs').val();
+var num_pamfa =$('#num_pamfa').val();
+var num_globalgg =$('#num_globalgg').val();
+var num_coc =$('#num_coc').val();
+var produtos =$('#productos').val()
+var otro =$('#otro').val();
+var objetivo =$('#objetivo').val();
+var alcance =$('#alcance').val();
+var criterio =$('#criterio').val();
+var idioma_aud =$('#idioma_aud').val();
+var idioma_inf =$('#idioma_inf').val();
+var idsolicitud =$('#idsolicitud').val();
+var idsolicitud_esquema =$('#idsolicitud_esquema').val();
+var seccion =$('#seccion').val();
+            
+            {  
+                $.ajax({  
+                     url:"cerebro.php",  
+                     method:"POST",
+                    data:{procesadora:procesadora, producto:producto, fecha_emision:fecha_emision, fecha_auditoria:fecha_auditoria, tipo1:tipo1, tipo6:tipo6, rancho_invernadero:rancho_invernadero, superficie:superficie, producto_proce:producto_proce, manip:manip, esq1:esq1, num_pgfs:num_pgfs, num_pamfa:num_pamfa, num_globalgg:num_globalgg, num_coc:num_coc, produtos:produtos, otro:otro, objetivo:objetivo, alcance:alcance, criterio:criterio, idioma_aud:idioma_aud, idioma_inf:idioma_inf, idsolicitud:idsolicitud, idsolicitud_esquema:idsolicitud_esquema, seccion:seccion},
+                     dataType:"text",  
+                     success:function(data)  
+                     {  
+                          if(data != '')  
+                          {  
+                               $('#post_id').val(data);  
+                          }  
+                          $('#autoSave').text("Formulario AutoGuardado");  
+                          setInterval(function(){  
+                               $('#autoSave').text('');  
+                          }, 5000);  
+                  
+
+   }  
+                });  
+           }
+
+  event.returnValue = "AnthonySS";
+});
+</script>
+
+
+
+
+
 </html>
 <!--
 <div class="content">

@@ -92,199 +92,113 @@ $mpdf->SetWatermarkImage('../images/borrador.png');
 $mpdf->showWatermarkImage = true;
 }
 $mpdf->WriteHTML('
-<table border="0">
+  <table>
   <tr>
-  <td width="100">
-  <img src="../images/izquierdo.png" width="100%"/>
-  </td>
+    <td rowspan="2">
+      <img src="../images/izquierdo.png" width="100%"/>
+    </td>
     <td valign="top">
-      <table border="0" align="center" >
-      <tr>
-        <td style="font-size:24px" align="left"><br><b>USUARIO: </b>'.$row_operador['nombre_legal'].'<br></td>
-      </tr>
-      <tr>
-        <td style="font-size:20px" align="left"><b>Dirección: </b>'.$row_operador['direccion'].' '.$row_operador['colonia'].' '.$row_operador['municipio'].' '.$row_operador['estado'].' '.'</td>
-      </tr>
-      <tr>
-        <td style="font-size:20px" align="left"><br><b>Opción: </b>');
-	  if($row_solicitud_esq['esquema']!=NULL){ 
-	  
-	   $mpdf->WriteHTML('1 '. $row_solicitud_esq['esquema'].''); }else {  $mpdf->WriteHTML('2 Grupo de productores');}
-	  $mpdf->WriteHTML('</td>
-      </tr>
-      <tr> 
-        <td style="font-size:20px" align="left"><b>Versión: </b>'.$row_cert['version_ifa'].'</td>
-      </tr>
-      <tr>
-        <td style="font-size:20px" align="left"><b>Fecha de decision de certificación: </b>'.date('d/m/y',$row_inf['fecha_dictamen_ifa']).'</td>
-      </tr>
-      <tr>
-        <td style="font-size:20px" align="left"><br><b>Valido desde: </b>'.$row_cert['fecha_inicial_ifa'].'<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hasta: </b>'.$row_cert['fecha_final_ifa'].'</td>
-		
-      </tr>
-	  <tr>
-	  <td>
-	  <table width="100%" cellpadding="5" cellspacing="1"><tr><td>
-    Producto
-    </td><td>
-    Nombre Cientifico
-    </td><td>
-    GGN
-    </td><td>
-    Número PAMFA
-    </td><td>
-    Centro de manipulación
-    </td><td>
-    Cosecha excluida
-    </td><td>
-    Numero de emplazamientos
-    </td><td>
-    Producción paralela
-    </td></tr>');
-	
-	
+      <table>
+        <tr>
+           <td style="font-size:28px" align="left"><b>USUARIO: </b><span style="font-size:28px; color:gray;">'.$row_operador['nombre_legal'].'</span></td>  
+            <td rowspan="2"> <img src="../images/Globalgap.jpg"/ width="90px" height="90px"></td>   
+        </tr>
+        <tr>
+           <td style="font-size:20px" align="left" vertical-align:top;><b>Dirección: </b><span style="color:gray;">'.$row_operador['direccion'].' '.$row_operador['colonia'].' '.$row_operador['municipio'].' '.$row_operador['estado'].' '.'</span></td>
 
-	 while($row_cert_productos= mysql_fetch_assoc($cert_productos))
-	{$mpdf->WriteHTML('
-		 <tr>
-       	<td>'.$row_cert_productos['producto'].'
-       	</td>
-		<td>'.$row_cert_productos['nombre_cientifico'].'
-         </td>
-         <td>'.$row_cert_productos['ggn'].'
-         </td>
-         <td>'. $row_cert_productos['pamfa'].'
-          </td>
-          <td>'.$row_cert_productos['centro_manipulacion'].'
-          </td>
-          <td>'.$row_cert_productos['cosecha_excluida'].'
-          </td>
-          <td>'.$row_cert_productos['emplazamientos'].'
-          </td>
-          <td>'.$row_cert_productos['prod_paralela'].'
-          </td>');
-    
-		
-	}
-	$mpdf->WriteHTML('</tr>
-	
-	
-	  </table>
-      
+        </tr>
+        <tr>
+              <td style="font-size:20px" align="left"><br><b>Opción: </b>');
+          if($row_solicitud_esq['esquema']!=NULL){ 
+          
+           $mpdf->WriteHTML('<span style="font-size:20px; color:gray;">1  '. $row_solicitud_esq['esquema'].'</span>'); }else {  $mpdf->WriteHTML('<span style="font-size:20px; color:gray;">2 Grupo de productores</span>');}
+           $mpdf->WriteHTML('</td>
+            </tr>
+            <tr> 
+              <td style="font-size:20px" align="left"><b>Versión: </b><span style="font-size:20px; color:gray;">'.$row_cert['version_ifa'].'</span></td>
+            </tr>
+            <tr>
+              <td style="font-size:20px" align="left"><b>Fecha de decision de certificación: </b><span style="font-size:20px; color:gray;">'.date('d/m/y',$row_inf['fecha_dictamen_ifa']).'</span></td>
+            </tr>
+            <tr>
+              <td style="font-size:20px" align="left"><br><b>Valido desde: </b>'.$row_cert['fecha_inicial_ifa'].'<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hasta: </b>'.$row_cert['fecha_final_ifa'].'</td>
+            </tr>
+        
+            <tr>
+              <td colspan="2">
+              <table width="100%" cellpadding="5" cellspacing="1">
+              <tr style="background-color:#3aa749;"><td style="text-align:center;">
+              Producto
+              </td><td>
+              Nombre Cientifico
+              </td><td>
+              GGN
+              </td><td>
+              Número PAMFA
+              </td><td>
+              Centro de manipulación
+              </td><td>
+              Cosecha excluida
+              </td><td>
+              Numero de emplazamientos
+              </td><td>
+              Producción paralela
+              </td></tr>');
+             while($row_cert_productos= mysql_fetch_assoc($cert_productos))
+            {$mpdf->WriteHTML('
+               <tr style="background-color:#73bb44;">
+                  <td>'.$row_cert_productos['producto'].'
+                  </td>
+              <td>'.$row_cert_productos['nombre_cientifico'].'
+                   </td>
+                   <td>'.$row_cert_productos['ggn'].'
+                   </td>
+                   <td>'. $row_cert_productos['pamfa'].'
+                    </td>
+                    <td>'.$row_cert_productos['centro_manipulacion'].'
+                    </td>
+                    <td>'.$row_cert_productos['cosecha_excluida'].'
+                    </td>
+                    <td>'.$row_cert_productos['emplazamientos'].'
+                    </td>
+                    <td>'.$row_cert_productos['prod_paralela'].'
+                    </td>');
+            }
+            $mpdf->WriteHTML('</tr>    
+              </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td  colspan="2" align="right">
+              <img src="../images/logo_ema.jpg" width="90px" height="90px">            
+              </td>
+            </tr>
+
+            <tr>
+                <td style="font-size:20px" align="left"><b>_______________________________</b></td>
+            </tr>
+            <tr>
+                <td style="font-size:20px" align="center"><b>Ing.Marisela Fárias López</b></td>
+                <td style="font-size:20px" align="center"><b>Fecha de impresión</b></td>
+                <td style="font-size:20px" align="center">&nbsp;<b>Acreditación</b></td>
+            </tr>
+            <tr>
+                <td style="font-size:20px" align="left"><b>GERENTE GENERAL</b></td>
+                <td style="font-size:20px" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$row_cert['fecha_impresion_ifa'].'</td>
+                <td style="font-size:20px" align="left">&nbsp;&nbsp;&nbsp;'.$row_cert['acreditacion_ifa'].'</td>
+            </tr>
+
+      </table>
     </td>
-	
   </tr>
-  <br><br><br>
-  <tr>
-  
-	
-	<td>
-	<table>
-	<tr>
-	<td style="font-size:20px" align="left"><b>_______________________________</b>
-	</td>
-	</tr>
-	<tr>
-	
-	<td style="font-size:20px" align="left"><b>Ing.Marisela Fárias López</b></td>
-	<td style="font-size:20px" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Fecha de impresión</b></td>
-	<td style="font-size:20px" align="left">&nbsp;&nbsp;<b>Acreditación</b></td>
-	
-	</tr>
-	<tr>');
-	
-	$mpdf->WriteHTML('
-	<td colspan="1" style="font-size:20px" align="left"><b>GERENTE GENERAL</b></td>
-	<td colspan="1" style="font-size:20px" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$row_cert['fecha_impresion_ifa'].'</td>
-	<td colspan="1" style="font-size:20px" align="left">&nbsp;&nbsp;&nbsp;'.$row_cert['acreditacion_ifa'].'</td>
-	
-	</tr>
-	</table>
-	</td>
-	</tr>
-    </table>
-	</td>
-	</tr>  
-</table>');
-$mpdf->AddPage();
-$mpdf->WriteHTML('<br><br><br><br><br>
-<table border="0" >
-  <tr>
-  <td width="100">
-  <img src="../images/izquierdo.png" width="100%"/>
-  </td>
-    <td valign="top">
-      <table border="0"  >
-      <tr>
-        <td style="font-size:24px" align="left"><br><br></td>
-      </tr>
-      <tr>
-        <td style="font-size:20px" align="left"></td>
-      </tr>
-      <tr>
-        <td style="font-size:20px" align="left"><br></td>
-      </tr>
-      <tr> 
-        <td style="font-size:20px" align="left"></td>
-      </tr>
-      <tr>
-        <td style="font-size:20px" align="left"></td>
-      </tr>
-      <tr>
-        <td style="font-size:20px" align="left"><br><b>Anexo: </b></td>
-		
-      </tr>
-	  <tr>
-	  <td></td>
-	  <td>
-	  <table width="100%" cellpadding="15" cellspacing="1" align="center"><tr><td>
-    Producto
-    </td><td>
-    Emplazamientos
-    </td><td>
-    Superficie
-    </td>
-	<td>
-    Ubicación
-    </td></tr>');
-	
-	
 
-	 while($row_cert_productos2= mysql_fetch_assoc($cert_productos2))
-	{
-		$query_cultivos = sprintf("SELECT superficie,ubicacion_unidad FROM cultivos WHERE idcultivos=%s limit 1 ", GetSQLValueString( $row_cert_productos2['idcultivo'], "int"));
-$cultivos= mysql_query($query_cultivos, $inforgan_pamfa) or die(mysql_error());
-$row_cultivos= mysql_fetch_assoc($cultivos);
+</table>
 
-	
-		
-		$mpdf->WriteHTML('
-		 <tr>
-       	<td>'.$row_cert_productos2['producto'].'
-       	</td>
-		
-          <td>'.$row_cert_productos2['emplazamientos'].'
-          </td>
-         
-		  <td>'.$row_cultivos['superficie'].'
-          </td>
-		  <td>'.$row_cultivos['ubicacion_unidad'].'
-          </td>');
-    
-		
-	}
-	$mpdf->WriteHTML('</tr>
-	
-	
-	  </table>
-      
-    </td>
-	
-  </tr>
-  
-    </table>
-	</td>
-	</tr>  
-</table>');
+
+
+
+
+  ');
 $mpdf->Output();
 exit();?>
