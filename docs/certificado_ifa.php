@@ -179,18 +179,10 @@ $mpdf->WriteHTML('
                 <td style="font-size:20px" align="left"><b>_______________________________</b></td>
             </tr>
             <tr>
-            <td colspan="2" style="background-color:red">
-              <table style="background-color:blue">
-                <tr>
                 <td style="font-size:20px" align="center"><b>Ing.Marisela Fárias López</b></td>
                 <td style="font-size:20px" align="center"><b>Fecha de impresión</b></td>
                 <td style="font-size:20px" align="center">&nbsp;<b>Acreditación</b></td>
-                </tr>
-                </table>
-                </td>
-            </tr>');
-            
-                $mpdf->WriteHTML('
+            </tr>
             <tr>
                 <td style="font-size:20px" align="left"><b>GERENTE GENERAL</b></td>
                 <td style="font-size:20px" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$row_cert['fecha_impresion_ifa'].'</td>
