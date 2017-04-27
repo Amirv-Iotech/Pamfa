@@ -21,7 +21,7 @@
             {
                ?>  
                <div class="col-lg-6 col-xs-6 campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA;">
-                <label><input id="idmex_alcance" <? if ($row_solicitud['idmex_alcance']==$row_mcs['idmex_cal_sup']){?> checked="checked"<? }?> type="checkbox" value="<? echo $row_mcs['idmex_cal_sup'];?>" name="idmex_alcance"><? echo $row_mcs['descripcion'];?></label>
+                <label><input id="idmex_alcance" <? if ($row_solicitud['idmex_alcance']==$row_mcs['idmex_cal_sup']){?> checked="checked"<? }?> type="radio" value="<? echo $row_mcs['idmex_cal_sup'];?>" name="idmex_alcance"><? echo $row_mcs['descripcion'];?></label>
                 </div>
           <?}?>
         </div>
@@ -35,7 +35,7 @@
             while($row_mcs2= mysql_fetch_assoc($mcs2))
             {
               ?><div class="col-lg-3 col-xs-3 campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA;">
-              <label><input id="idmex_pliego" <? if ($row_solicitud['idmex_pliego']==$row_mcs2['idmex_cal_sup']){?> checked="checked"<? }?>  type="checkbox" value="<? echo $row_mcs2['idmex_cal_sup'];?>" name="idmex_pliego"><? echo $row_mcs2['descripcion'];?></label></div>
+              <label><input id="idmex_pliego" <? if ($row_solicitud['idmex_pliego']==$row_mcs2['idmex_cal_sup']){?> checked="checked"<? }?>  type="radio" value="<? echo $row_mcs2['idmex_cal_sup'];?>" name="idmex_pliego"><? echo $row_mcs2['descripcion'];?></label></div>
               <?
             }?>
           </div>
