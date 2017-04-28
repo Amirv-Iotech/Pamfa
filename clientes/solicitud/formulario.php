@@ -490,22 +490,12 @@ window.addEventListener("beforeunload", function(event) {
                     data:{persona:post_persona, seccion:seccion, idoperador:post_idoperador, idsolicitud:post_idsolicitud, fecha:post_fecha, personal:post_personal, num_ggn:post_num_ggn, num_gln:post_num_gln, num_coc:post_num_coc, num_mex_cal_sup:post_num_mex_cal_sup, num_primus:post_num_primus, num_senasica:post_num_senasica, responsable:post_responsable,organismo:post_organismo, fecha_inicio:post_fecha_inicio, fecha_fin:post_fecha_fin, idcert_anterior:post_idcert_anterior, esq_tipo1_op1: esq_tipo1_op1, preg1_op2:preg1_op2, preg2_op2:preg2_op2, preg3_op2:preg3_op2,  preg1_tipo2:preg1_tipo2, preg2_tipo2:preg2_tipo2, preg3_tipo2:preg3_tipo2, esq_tipo2_op1:esq_tipo2_op1, preg4_tipo2:preg4_tipo2, preg5_tipo2:preg5_tipo2, preg6:preg6, preg7:preg7, preg8:preg8, idsolicitud_esquema:idsolicitud_esquema,primus:primus, idmex_pliego:idmex_pliego, idmex_alcance:idmex_alcance, idsrrc:idsrrc, srrc_preg1:srrc_preg1, srrc_preg2:srrc_preg2, empresa:empresa, rfc:rfc, direccion:direccion, direccion2:direccion2, cp:cp, tel:tel, idprocesadora:idprocesadora, inf_comercializacion:inf_comercializacion, idioma_aud:idioma_aud, idioma_inf:idioma_inf, respuesta4:respuesta4, respuesta5:respuesta5, terminada:terminada},
                      dataType:"text",  
                      success:function(data)  
-                     {  
-                          if(data != '')  
-                          {  
-                               $('#post_id').val(data);  
-                          }  
-                          $('#autoSave').text("Formulario AutoGuardado3");  
-                          setInterval(function(){  
-                               $('#autoSave').text('');  
-                          }, 5000);  
-                  
-
+                     {   
+                          event.returnValue = "AnthonySS";
    }  
                 });  
            }
 
-  event.returnValue = "AnthonySS";
 });
 </script>
 <script type="text/javascript">
