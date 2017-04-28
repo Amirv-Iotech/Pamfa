@@ -79,96 +79,109 @@ $mpdf->SetWatermarkImage('../images/borrador.png');
 $mpdf->showWatermarkImage = true;
 }
 $mpdf->WriteHTML('
-<table border="0">
+<table>
   <tr>
-  <td width="100">
-  <img src="../images/izquierdo.png" width="100%"/>
-  </td>
-    <td valign="top">
-      <table border="0" align="center" >
-      <tr>
-        <td style="font-size:24px" align="left"><br><b>USUARIO: </b>'.$row_operador['nombre_legal'].'<br></td>
-      </tr>
-      <tr>
-        <td style="font-size:20px" align="left"><b>Dirección: </b>'.$row_operador['direccion'].' '.$row_operador['colonia'].' '.$row_operador['municipio'].' '.$row_operador['estado'].' '.'</td>
-      </tr>
-      
-     
-     
-      <tr>
-        <td style="font-size:20px" align="left"><br><b>Valido desde: </b>'.$row_cert['fecha_inicial_mexcalsup'].'<b>
-		 </tr>
-		<tr>
-		<td style="font-size:20px" align="left"><b>Hasta: </b>'.$row_cert['fecha_final_mexcalsup'].'</td>
-		
-      </tr>
-	  <tr>
-		<td style="font-size:20px" align="left"><b>Fecha de impresion: </b>'.$row_cert['fecha_impresion_mexcalsup'].'</td>
-		
-      </tr>
-	  <tr>
-	  <td>
-	  <table width="100%" cellpadding="5" cellspacing="1"><tr><td colspan="2">
-    Pliego de condiciones
-    </td></tr><tr><td>
-    Alcance
-    </td><td>
-    Pliego
-    </td></tr>');
-	
-	$query_mex = sprintf("SELECT descripcion FROM mex_cal_sup WHERE idmex_cal_sup=%s  ", GetSQLValueString( $row_solicitud['idmex_alcance'], "int"));
-$mex= mysql_query($query_mex, $inforgan_pamfa) or die(mysql_error());
-$row_mex= mysql_fetch_assoc($mex);
-
-$query_mexp = sprintf("SELECT descripcion FROM mex_cal_sup WHERE idmex_cal_sup=%s  ", GetSQLValueString( $row_solicitud['idmex_pliego'], "int"));
-$mexp= mysql_query($query_mexp, $inforgan_pamfa) or die(mysql_error());
-$row_mexp= mysql_fetch_assoc($mexp);
-	$mpdf->WriteHTML('
-		 <tr>
-       	<td>'.$row_mex['descripcion'].'
-       	</td>
-		<td>'.$row_mexp['descripcion'].'
-         </td>');
-   	$mpdf->WriteHTML('</tr>
-	
-	
-	  </table>
-      
+    <td>
+        <img src="../images/izquierdo.png" width="100%"/>
     </td>
-	
+    <td valign="top">
+      <table>
+        <tr style="">
+          <td height="80px">
+          
+          </td>
+          <td> 
+          </td>
+        </tr>
+        <tr style="">
+          <td width="640px">
+            <b style="font-size:24px">Usuario:</b> <span style=" font-size:24px; color:gray;"> '.$row_operador['nombre_legal'].'</span>
+          </td>
+          <td rowspan="3" width="140px" align="center" valign="top"> <img src="../images/mexico_calidadsuprema.png" width="150px" height="150px"/>
+        </tr>
+        <tr style="">
+          <td  height="80px" valign="top">
+          <b style="font-size:24px;">Dirección:</b><span style=" font-size:24px; color:gray;">'.$row_operador['direccion'].' '.$row_operador['colonia'].' '.$row_operador['municipio'].' '.$row_operador['estado'].' '.'</span>
+          </td>
+          </td>
+        </tr>
+        <tr style="">
+          <td height="60px">
+          <b style="font-size:20px">Valido desde:</b>'.$row_cert['fecha_inicial_mexcalsup'].'
+          </td>
+        </tr>
+        <tr style="">
+          <td height="60px">
+          <b style="font-size:20px">Valido Hasta: </b>'.$row_cert['fecha_final_mexcalsup'].'
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr style="">
+          <td height="60px">
+          <b style="font-size:20px">Fecha de impresión:</b>'.$row_cert['fecha_impresion_mexcalsup'].'
+          </td>
+          <td> 
+          </td>
+        </tr>
+        <tr style="">
+          <td height="40px" align="center">
+          <b style="font-size:20px">Pliego de condiciones:
+          </td>
+          <td> 
+          </td>
+        </tr>
+        <tr>
+        <td align="center" height="80px" valign="top">
+          <span style="font-size:20px" valign="top">Alcance:</span>');  
+            $query_mex = sprintf("SELECT descripcion FROM mex_cal_sup WHERE idmex_cal_sup=%s  ", GetSQLValueString( $row_solicitud['idmex_alcance'], "int"));
+            $mex= mysql_query($query_mex, $inforgan_pamfa) or die(mysql_error());
+            $row_mex= mysql_fetch_assoc($mex);
+            $query_mexp = sprintf("SELECT descripcion FROM mex_cal_sup WHERE idmex_cal_sup=%s  ", GetSQLValueString( $row_solicitud['idmex_pliego'], "int"));
+            $mexp= mysql_query($query_mexp, $inforgan_pamfa) or die(mysql_error());
+            $row_mexp= mysql_fetch_assoc($mexp);
+$mpdf->WriteHTML('
+              <span style="font-size:18px; color:gray">'.$row_mex['descripcion'].'</span>
+        </td>
+        <td></td>
+        </tr> 
+        <tr>
+          <td align="center" height="80px" valign="top">
+          <span style="font-size:20px">Pliego:</span><span style="font-size:18px; color:gray">'.$row_mexp['descripcion'].'</span>  
+          </td>
+          <td rowspan="2">  
+            <img src="../images/logo_ema.jpg" width="150px" height="150px">            
+          </td>
+        </tr>
+        <tr style="">
+          <td valign="bottom">
+          <b style="font-size:20px">__________________________________________________________</b>
+          </td>
+        </tr>
+        <tr style="">
+          <td>
+          <b style="font-size:24px"> Ing. Marisela Farías López</b>
+          </td>
+          <td> 
+          <b style="font-size:24px">Acreditación:</b>
+          </td>
+        </tr>
+        <tr style="">
+          <td>
+          <b style="font-size:24px">Gerente General</b>
+          </td>
+          <td> 
+          </td>
+        </tr>
+        <tr>
+        <td colspan="2">
+                    <span> VERIFICACIÓN Y CERTIFICACIÓN PAMFA A.C </span><BR><span style="font-size:12px"> Calle José Zamora #48 Col. Emiliano Zapata, Uruapam, Michoacán. Tel. 452 502 0849 Cel. 452 128 51 46 / certificacion@pamfa.com.mx</span>
+        </td>
+        </tr>
+      </table>
+    </td>
   </tr>
-  <br><br><br>
-  <tr>
-  
-	
-	<td>
-	<table>
-	<tr>
-	<td style="font-size:20px" align="left"><b>_______________________________</b>
-	</td>
-	</tr>
-	<tr>
-	
-	<td style="font-size:20px" align="left"><b>Ing.Marisela Fárias López</b></td>
-	<td style="font-size:20px" align="left" width="150" ></td>
-	<td style="font-size:20px" align="left">&nbsp;&nbsp;<b>Acreditación</b></td>
-	
-	</tr>
-	<tr>');
-	
-	$mpdf->WriteHTML('
-	<td  style="font-size:20px" align="left"><b>GERENTE GENERAL</b></td>
-	<td  style="font-size:20px" align="left" width="150"></td>
-	<td  style="font-size:20px" align="left">&nbsp;&nbsp;&nbsp;'.$row_cert['acreditacion_mexcalsup'].'</td>
-	
-	</tr>
-	</table>
-	</td>
-	</tr>
-    </table>
-	</td>
-	</tr>  
-</table>');
-
+</table>
+');
 $mpdf->Output();
 exit();?>

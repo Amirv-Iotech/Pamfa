@@ -153,7 +153,7 @@ $row_cliente= mysql_fetch_assoc($cliente);
                                  <td>
                                  <form action="../../docs/certificado_ifa.php" method="post" target="_blank" >
       
-      <input type="submit" value="Ver certificado"  />
+      <input type="submit" value="Ver certificado IFA"  />
             <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
           
             <input type="hidden" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
@@ -174,7 +174,7 @@ $row_cliente= mysql_fetch_assoc($cliente);
                                 <td>
                                  <form action="../../docs/certificado_coc.php" method="post" target="_blank" >
       
-      <input type="submit" value="Ver certificado"  />
+      <input type="submit" value="Ver certificado CoC"  />
             <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
           
             <input type="hidden" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
@@ -195,7 +195,7 @@ $row_cliente= mysql_fetch_assoc($cliente);
                                  <td>
                                  <form action="../../docs/certificado_mexcalsup.php" method="post" target="_blank" >
       
-      <input type="submit" value="Ver certificado"  />
+      <input type="submit" value="Ver certificado MCS"  />
             <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
           
             <input type="hidden" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
