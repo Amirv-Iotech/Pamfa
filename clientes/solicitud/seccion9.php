@@ -91,7 +91,7 @@
             </div>
             <div class="col-lg-2 col-xs-2 campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA; min-height: 124px; ">
                 <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
-                <input type="hidden" name="insertar" value="1" />
+                <input type="hidden" name="insertar_prod" value="1" />
                 <input type="hidden" name="seccion" value="9" />
                 <div class=" col-xs-12 campos2" style="position: absolute; bottom: 35%; text-align: center;">
                 <input type="submit" value="Agregar"  />

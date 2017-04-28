@@ -139,13 +139,15 @@ $row_alcance= mysql_fetch_assoc($alcance);
                 <div class="col-lg-12 col-xs-12 datos">
                     <label class="col-lg-3 col-xs-3">Correo Electrónico:</label>
                     <div class="col-lg-9 col-xs-9">
-                    <input placeholder="" class="plan_input" id="email" name="email" type="text" value="<? echo $row_operador['email'];?>" id="email" title="Email " />
+                   
+                    
+                     <input placeholder="" class="plan_input" id="nombre_representante" name="nombre_representante" type="text" value="<? echo $row_operador['email'];?>"  title="Email" />
                     </div>
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">
                     <label class="col-lg-3 col-xs-3">Nombre del representante legal:</label>
                     <div class="col-lg-9 col-xs-9">
-                    <input placeholder="" class="plan_input" id="nombre_representante" name="nombre_representante" type="text" value="<? echo $row_operador['nombre_representante'];?>"  title="Nombre " />
+                    <input placeholder="" class="plan_input" id="email" name="email" type="text" value="<? echo $row_operador['nombre_representante'];?>"  title="Nombre " />
                     </div>
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">
@@ -174,8 +176,8 @@ $row_alcance= mysql_fetch_assoc($alcance);
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">
                     <label class="col-lg-3 col-xs-3">Fecha_emision:</label>
-                    <div class="col-lg-9 col-xs-9">
-                    <input placeholder="" class="plan_input" id="fecha_emision" name="fecha_emision" type="date" value="<? echo $row_plan_auditoria['fecha_emision'];?>" id="email" title="Email " />
+                     <div class="col-lg-9 col-xs-9">
+                     <input class="plan_input" id="fecha_emision" name="fecha_emision" type="date" value="<? echo $row_plan_auditoria['fecha_emision'];?>"  title="Nombre " />
                     </div>
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">
@@ -208,8 +210,15 @@ var procesadora =$('#procesadora').val();
 var producto =$('#producto').val();
 var fecha_emision =$('#fecha_emision').val();
 var fecha_auditoria =$('#fecha_auditoria').val();
-var tipo1 =$('#tipo1').val();
-var tipo6 =$('#tipo6').val();
+
+ var tipo1="";
+            var porNombre=document.getElementsByName("tipo1");
+            for(var i=0;i<porNombre.length;i++)
+              {
+                if(porNombre[i].checked){
+                tipo1=porNombre[i].value;}
+              }
+
 var rancho_invernadero =$('#rancho_invernadero').val();
 var superficie =$('#superficie').val();
 var producto_proce =$('#producto_proce').val();
@@ -219,7 +228,7 @@ var num_pgfs =$('#num_pgfs').val();
 var num_pamfa =$('#num_pamfa').val();
 var num_globalgg =$('#num_globalgg').val();
 var num_coc =$('#num_coc').val();
-var produtos =$('#productos').val()
+var prod =$('#prod').val()
 var otro =$('#otro').val();
 var objetivo =$('#objetivo').val();
 var alcance =$('#alcance').val();
@@ -228,13 +237,13 @@ var idioma_aud =$('#idioma_aud').val();
 var idioma_inf =$('#idioma_inf').val();
 var idsolicitud =$('#idsolicitud').val();
 var idsolicitud_esquema =$('#idsolicitud_esquema').val();
-var seccion =$('#seccion').val();
+var seccion =5;
             
             {  
                 $.ajax({  
                      url:"cerebro.php",  
                      method:"POST",
-                    data:{procesadora:procesadora, producto:producto, fecha_emision:fecha_emision, fecha_auditoria:fecha_auditoria, tipo1:tipo1, tipo6:tipo6, rancho_invernadero:rancho_invernadero, superficie:superficie, producto_proce:producto_proce, manip:manip, esq1:esq1, num_pgfs:num_pgfs, num_pamfa:num_pamfa, num_globalgg:num_globalgg, num_coc:num_coc, produtos:produtos, otro:otro, objetivo:objetivo, alcance:alcance, criterio:criterio, idioma_aud:idioma_aud, idioma_inf:idioma_inf, idsolicitud:idsolicitud, idsolicitud_esquema:idsolicitud_esquema, seccion:seccion},
+                    data:{procesadora:procesadora, producto:producto, fecha_emision:fecha_emision, fecha_auditoria:fecha_auditoria, tipo1:tipo1, rancho_invernadero:rancho_invernadero, superficie:superficie, producto_proce:producto_proce, manip:manip, esq1:esq1, num_pgfs:num_pgfs, num_pamfa:num_pamfa, num_globalgg:num_globalgg, num_coc:num_coc, prod:prod, otro:otro, objetivo:objetivo, alcance:alcance, criterio:criterio, idioma_aud:idioma_aud, idioma_inf:idioma_inf, idsolicitud:idsolicitud, idsolicitud_esquema:idsolicitud_esquema, seccion:seccion},
                      dataType:"text",  
                      success:function(data)  
                      {  
@@ -261,162 +270,3 @@ var seccion =$('#seccion').val();
 
 
 </html>
-<!--
-<div class="content">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-md-12">
-                        
-<div class="panel panel-white">
-<div class="panel-heading clearfix"><br>
-
-
-	<form id="myform" action="#seccion1" method="post" class="form-horizontal" enctype="multipart/form-data">
-	<h3 align="center">Plan de auditoria de certificación</h3>
-    <br><br>
-    <table >
-    <tr>
-    </tr><tr><td colspan="4">
-    
-   
-    </td></tr></table>
-	<fieldset>
-    <a name="seccion1"></a>
-    
-    
-	<legend><table width="100%" ><tr><td width="100%" bgcolor="#00CC33">DATOS DEL CLIENTE </td></tr></table></legend>
-		
-		<div class="form-group col-lg-12 col-md-12">
-    	<label for="nombre_legal" class="form-label col-lg-1">Razón social:</label>
-        
-    	<div class="form-group col-lg-11">
-    	<input placeholder="escribe aquí"   class="form-control" onchange="this.form.submit()" name="nombre_legal" type="text" 			title="Nombre completo " value="<? /*echo $row_operador['nombre_legal'];?>"  />
-	    </div>
-		</div>
-
-		
-		<div class="form-group col-lg-6 col-md-6">
-    	<label for="direccion" class="form-label col-lg-5">Dirección de la entidad legal: calle y número:</label>
-    	<div class="col-lg-7">
-    	<input placeholder="escribe aquí" class="form-control" onchange="this.form.submit()" name="direccion" value="<? echo $row_operador['direccion'];?>"  title="Dirección"  />
-    	</div>
-    	</div>  
-
-		<div class="form-group col-lg-3 col-md-3">
-    	<label for="colonia" class="form-label col-lg-4">Colonia:</label>
-    	<div class="col-lg-8">
-    	<input placeholder="escribe aquí" class="form-control"  onchange="this.form.submit()" name="colonia" value="<? echo $row_operador['colonia'];?>"  title="Colonia " />
-    	</div>
-		</div>
-         <div class=" form-group col-lg-3 col-md-3">
-    	<label for="cp" class="form-label col-lg-4">C.P.:</label>
-    	<div class="col-lg-8">
-    	<input placeholder="escribe aquí" class="form-control" onchange="this.form.submit()" name="cp" type="text"  			title="Codigo postal " value="<? echo $row_operador['cp'];?>"  />
-	    </div>
-		</div>
-        <div class="form-group col-lg-6 col-md-6">
-    	<label for="municipio" class="form-label col-lg-2">Municipio:</label>
-    	<div class="col-lg-10">
-    	<input placeholder="escribe aquí" class="form-control" onchange="this.form.submit()" name="municipio" type="text"  			title="Estado " value="<? echo $row_operador['municipio'];?>" />
-	    </div>
-		</div>
-        <div class="form-group col-lg-6 col-md-6">
-    	<label for="estado" class="form-label col-lg-2">Estado:</label>
-    	<div class="col-lg-10">
-    	<input placeholder="escribe aquí" class="form-control" onchange="this.form.submit()" name="estado" type="text"  			title="Estado " value="<? echo $row_operador['estado'];?>" />
-	    </div>
-		</div>
-      <div class="form-group col-lg-6 col-md-6">
-    	<label for="telefono" class="form-label col-lg-2">Teléfono:</label>
-    	<div class="col-lg-8">
-    	<input placeholder="escribe aquí" class="form-control" onchange="this.form.submit()" name="telefono" type="text" 			title="Telefono " value="<? echo $row_operador['telefono'];?>"  />
-	    </div>
-		</div>
-		<div class=" form-group col-lg-6 col-md-6">
-    	<label for="email" class="form-label col-lg-2">Correo Electrónico:</label>
-    	<div class="col-lg-10">
-    	<input placeholder="escribe aquí" class="form-control" onchange="this.form.submit()" name="email" type="text" value="<? echo $row_operador['email'];?>" id="email" title="Email " />
-    	</div>
-		</div>
-        <div class="form-group col-lg-6 col-md-6">
-    	<label for="nombre_representante" class="form-label col-lg-4">Nombre del representante legal:</label>
-    	<div class="col-lg-8">
-    	<input placeholder="escribe aquí" class="form-control"  onchange="this.form.submit()" name="nombre_representante" type="text" value="<? echo $row_operador['nombre_representante'];?>"  title="Nombre " />
-    	</div>
-		</div>
-        
-
-		
-    </fieldset>	
-<input type="hidden" name="idoperador" value="<?/* echo $row_operador['idoperador']; ?>" />
-<input type="hidden" name="idsolicitud" value="<? echo $_POST['idsolicitud']; ?>" />
-  <input type="hidden" name="seccion" value="1" />
-  <input type="hidden" name="fecha" value="<? echo time();?>" />
-
-</form>
-<form id="myform" action="#seccion2" method="post" class="form-horizontal" enctype="multipart/form-data">
-<fieldset>
-    <a name="seccion2">
-    
-    
-	<legend></legend>
-		
-         <div class="form-group col-lg-6 col-md-6">
-    	<label for="empresa" class="form-label col-lg-2">Centro de manipulación:</label>
-    	<div class="col-lg-10">
-    	<input placeholder="escribe aquí" class="form-control" onchange="this.form.submit()" name="procesadora" type="text"  			title="Estado " value="<? /*echo $row_procesadora['empresa'];?>" />
-	    </div>
-		</div>
-      <div class="form-group col-lg-6 col-md-6">
-    	<label for="productos" class="form-label col-lg-2">Producto:</label>
-    	<div class="col-lg-8">
-        <? /* $query_prod = sprintf("SELECT * FROM cultivos WHERE idsolicitud=%s order by idcultivos", GetSQLValueString( $_POST["idsolicitud"], "int"));
-$prod = mysql_query($query_prod, $inforgan_pamfa) or die(mysql_error());
-while($row_prod= mysql_fetch_assoc($prod))
-{
-$productos=$row_prod['producto'].",".$productos;
-}?>
-    	<input placeholder="escribe aquí" class="form-control" onchange="this.form.submit()" name="productos" type="text" 			title="Telefono " value="<? //echo $productos;?>"  />
-	    </div>
-		</div>
-		<div class=" form-group col-lg-6 col-md-6">
-    	<label for="fecha_emision" class="form-label col-lg-2">Fecha_emision:</label>
-    	<div class="col-lg-10">
-    	<input placeholder="escribe aquí" class="form-control" onchange="this.form.submit()" name="fecha_emision" type="date" value="<? ////echo $row_plan_auditoria['fecha_emision'];?>" id="email" title="Email " />
-    	</div>
-		</div>
-        <div class="form-group col-lg-6 col-md-6">
-    	<label for="fecha_auditoria" class="form-label col-lg-4">Fecha_auditoria:</label>
-    	<div class="col-lg-8">
-    	<input type="date" placeholder="escribe aquí" class="form-control"  onchange="this.form.submit()" name="fecha_auditoria" value="<? //echo $row_plan_auditoria['fecha_auditoria'];?>"  title="Nombre " />
-    	</div>
-		</div>
-    </fieldset>	
-    
-
- 
-<input type="hidden" name="idsolicitud" value="<? //echo $_POST['idsolicitud']; ?>" />
-  <input type="hidden" name="seccion" value="2" />
- 
-</form>
-
-<?php  //include("seccion5.php");?>
-<?php //include("seccion6.php");?>
-<?php // include("seccion7.php");?>
-
-
-
-
-
-
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
- 
-
-
-<?php //include("includes/footer.php");?>
-</html>-->*/

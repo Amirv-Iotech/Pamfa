@@ -1,48 +1,21 @@
-
-  
-    <fieldset>
-    <legend>Sección 12</legend>
-     <a name="seccion12">
-     <form method="post" action="#seccion12">
-     <table width="100%"><tbody><tr><th  bgcolor="#00CC33">
-    <h3>Por favor indicar el idioma en que se realizará la auditoria y el idioma en que se realizará el informe</h3>
-    
-   </th></tr></tbody></table>
- 
-      
-      
-<br />
-
-      <table width="100%" cellpadding="5" cellpadding="1"><tbody>
-      
-     
-          <tr>
-          <th >
-         Auditoria:
-          </th>
-          <th >
-            <input  class="form-control" onchange="this.form.submit()" placeholder="escribe aquí" name="idioma_aud" type="text" 			title="Número " value="<? echo $row_solicitud['idioma_aud'];?>" />
-         </th>
-          </tr>
-          <tr>
-          <th >
-         Informe:
-          </th>
-          <th >
-            <input  class="form-control" onchange="this.form.submit()" placeholder="escribe aquí" name="idioma_inf" type="text" 			title="Número " value="<? echo $row_solicitud['idioma_inf'];?>" />
-         </th>
-          </tr>
-          </tbody></table>
-         
-    
-   
-      
-     <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
-    
-
-  <input type="hidden" name="seccion" value="12" />
+<fieldset><br/>
+  <div clas="row" id="seccion12">
+    <div class="col-lg-12 col-xs-12 campos2" style="background-color: #ecfbe7; border: solid 1px #AAAAAA; border-bottom-width:2px;">
+      <form method="post" action="#seccion12">
+      <div class="col-lg-12" style="text-align: center;background-color: #dbf573e6; border: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
+          <h4><b>Por favor indicar el idioma en que se realizará la auditoria y el idioma en que se realizará el informe</b></h4>
+      </div>
+      <div class="col-xs-12 col-lg-12 campos2">
+        <div class="col-lg-6 col-xs-6 form-group campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA;">
+          <label>Auditoria:</label>
+          <input  class="form-control inputsf" id="idioma_aud" placeholder="" name="idioma_aud" type="text"       title="Número " value="<? echo $row_solicitud['idioma_aud'];?>" />
+        </div>
+        <div class="col-lg-6 col-xs-6 form-group campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA;">
+          <label>Informe:</label>
+            <input  class="form-control inputsf" id="idioma_inf"  placeholder="" name="idioma_inf" type="text"       title="Número " value="<? echo $row_solicitud['idioma_inf'];?>" />
+        </div>
+      </div>
       </form>
-    
-    </fieldset>
-   
-	
+    </div>
+  </div>
+</fieldset>

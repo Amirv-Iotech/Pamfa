@@ -401,7 +401,7 @@ h2.title {
 }
 
 .text-primary {
-  color: #9c27b0;
+  color: #333;
 }
 
 .text-danger {
@@ -1502,7 +1502,7 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4 {
 }
 
 a {
-  color: #333;
+  color: #080808;
 }
 a:hover, a:focus {
   color: #333;
@@ -1813,7 +1813,7 @@ output {
 }
 .form-group.is-focused .form-control {
   outline: none;
-  background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#D2D2D2, #D2D2D2);
+  background-image: linear-gradient(#4caf50, #4caf50), linear-gradient(#D2D2D2, #D2D2D2);
   background-size: 100% 2px, 100% 1px;
   box-shadow: none;
   transition-duration: 0.3s;
@@ -1933,7 +1933,7 @@ label {
 label.control-label {
   font-size: 11px;
   line-height: 1.07143;
-  color: #AAAAAA;
+  color: #333;
   font-weight: 400;
   margin: 16px 0 0 0;
 }
@@ -2196,7 +2196,7 @@ select.form-control[multiple], .form-group.is-focused select.form-control[multip
   margin-bottom: 10px;
 }
 .form-horizontal label {
-  text-align: left;
+  text-align:lefth;
 }
 .form-horizontal label.control-label {
   margin: 0;
@@ -3576,7 +3576,7 @@ footer .btn {
   margin: -20px 15px 0;
   border-radius: 3px;
   padding: 15px;
-  background-color: #fbf118;
+  background-color: #999999;
 }
 .card .card-header .title {
   color: #FFFFFF;

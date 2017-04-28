@@ -1,14 +1,15 @@
 <fieldset>
   <div clas="row" id="seccion6">
     <div class="col-lg-12 col-xs-12" style="background-color: #ecfbe7; padding: 0px;">
-    <form method="post" action=""><br />
+    
+    <form method="post" action="#seccion6"><br />
 
         <div class="col-lg-12 col-xs-12" style="background-color: #dbf573e6; padding: 0px;">
                 <h3>Equipo Auditor</h3>
         </div>
         <div class="col-lg-12 col-xs-12">
         Auditor
-             <select name="auditor" class="plan_input" onchange="this.form.submit()">
+             <select name="auditor" class="plan_input" onchange="this.form.submit()" >
               <option value="">Selecciona un Auditor...</option>
               <?php 
               $query_vista1 = "SELECT * FROM usuario where tipo=2 ORDER BY nombre ASC";
@@ -33,7 +34,9 @@
               <?php }?>
             </select>
               <input type="hidden" name="idplan_auditoria" value="<? echo $row_plan_auditoria['idplan_auditoria']; ?>" />
+               <input type="hidden" name="idsolicitud" id="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
               <input type="hidden" name="seccion" value="6" />
+               </form>   
         </div>
         <div class="col-xs-12 col-lg-12">
           <? $query_equipo = sprintf("SELECT * FROM plan_auditoria_equipo where idplan_auditoria='".$_POST['idplan_auditoria']."'");
@@ -51,7 +54,7 @@
                  <?
                         while($row_equipo= mysql_fetch_assoc($equipo))
                   {
-                    $query_vista1 = "select nombre,apellidos from usuario where idusuario in (SELECT idauditor FROM plan_auditoria_equipo where idplan_auditoria='".$row_equipo['idplan_auditoria']."') ";
+                    $query_vista1 = "select nombre,apellidos from usuario where idusuario='".$row_equipo['idauditor']."' ";
                   $vista1 = mysql_query($query_vista1,  $inforgan_pamfa) or die(mysql_error());
                   $row_vista1 = mysql_fetch_assoc($vista1);
                   ?>
@@ -74,7 +77,7 @@
             </table>
             </div>
         </div>
-      </form>      
+        
     </div>
   </div>
 </fieldset>

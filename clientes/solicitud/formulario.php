@@ -79,7 +79,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 
 
 <form id="myform" action="#seccion1" method="post" class="form-horizontal" enctype="multipart/form-data">
-	<div class="row">
+	<div class="row" id="seccion1">
 		<div class="col-lg-12">
 			<p style="font-size:25px; text-align:center;">Solicitud de certificación de producto</p>
 			<br/>
@@ -89,14 +89,22 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 			<p class="solicitud">Fecha de solicitud </p>
 		</div>
 		<div class="col-lg-2 col-md-2 col-xs-6 fechas" style="border-bottom:solid 1px #AAAAAA;">
-			<p class="solicitud" id="fecha"><? if(isset($row_solicitud['fecha'])){ echo date('d/m/y',$row_solicitud['fecha']);}else{ echo date('d/m/y',time());}?> </p>
+			
+			<input  id="fecha1" name="fecha1"  disabled="disabled" type="text" placeholder=""  <? if(isset($row_solicitud['fecha'])){?>value="<? echo date('d/m/y',$row_solicitud['fecha']);?>"<? }else{ ?> value="<? echo date('d/m/y',time());?>"<? }?>  style="font-size: 18px; text-align:center;"/>
+			
+		<?	$f="";
+		if(isset($row_solicitud['fecha']))
+		{  $f=$row_solicitud['fecha'];}
+		else{ $f= time(); }?>
+        
+        <input type="hidden" name="fecha" id="fecha" value="<? echo $f?>"/>
 		</div>
 
-		<div class="col-lg-5 col-md-5 col-xs-6 fechas">
+		<div class="col-lg-4 col-md-4 col-xs-4 fechas">
 			<p class="solicitud">   Nombre de la persona que llena la solicitud: </p>
 		</div>
-		<div class="col-lg-3 col-md-3 col-xs-6 fechas">
-			<p class="solicitud"> <input id="persona" name="persona" type="text" placeholder=""  class="form-control" title="Nombre " value="<? echo $row_solicitud['persona'];?>" style="font-size: 18px; text-align:center;"/></p>
+		<div class="col-lg-3 col-md-6 col-xs-6 fechas">
+			<p class="solicitud"> <input id="persona" name="persona" type="text" placeholder=""  title="Nombre " value="<? echo $row_solicitud['persona'];?>" style="font-size: 18px; text-align:center; width:100%"/></p>
 		</div>
 		<div class="col-lg-12 col-xs-12">
                     <div class="form-group">  
@@ -106,9 +114,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 			<p class="solicitud" >Estimado cliente, favor de llenar los datos en los espacios requeridos, esta información es necesaria para completar el proceso de certificación de acuerdo al esquema de certificación que usted solicita.</p>
 		</div>
 	</div>
-    <input type="" id="idoperador1" name="idoperador1" value="<? echo  $row_operador['idoperador']; ?>" />
-  <input type="" id="idsolicitud1" name="idsolicitud1" value="<? echo  $row_solicitud['idsolicitud']; ?>" />
-  <input type="" id="seccion1" name="seccion1" value="1" />
+    
   <input type="" id="fecha1" name="fecha1" value="<? echo time();?>" />
   </form>
 	<fieldset> 
@@ -281,8 +287,8 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
         </div>
       </div>
 
-       <input type="hidden" id="idoperador2" name="idoperador2" value="<? echo $row_operador['idoperador']; ?>" />
-      <input type="hidden"  id="idsolicitud2" name="idsolicitud2" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+       <input type="hidden" id="idoperador" name="idoperador" value="<? echo $row_operador['idoperador']; ?>" />
+      <input type="hidden"  id="idsolicitud" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
         <input type="hidden" id="seccion" name="seccion2" value="2" />
       </form>
 </div>
@@ -313,8 +319,8 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 <script>
 window.addEventListener("beforeunload", function(event) {    
 
-            var post_idoperador = $('#idoperador1').val();  
-            var post_idsolicitud = $('#idsolicitud1').val();
+            var post_idoperador = $('#idoperador').val();  
+            var post_idsolicitud = $('#idsolicitud').val();
             var post_persona = $('#persona').val();
             var post_fecha = $('#fecha').val();
             var seccion=1;           
@@ -348,22 +354,99 @@ window.addEventListener("beforeunload", function(event) {
             var preg3_op2 = $('#preg3_op2').val();
             var preg1_tipo2 = $('#preg1_tipo2').val();
             var preg2_tipo2 = $('#preg2_tipo2').val();
-            var esq_tipo2_op1 = $('#esq_tipo2_op1').val();
-            var preg3_tipo2 = $('#preg3_tipo2').val();
-            var preg5_tipo2 = $('#preg5_tipo2').val();
+			
+			 var esq_tipo2_op1="";
+            var porNombre2=document.getElementsByName("esq_tipo2_op1");
+            for(var i=0;i<porNombre2.length;i++)
+              {
+                if(porNombre2[i].checked){
+                esq_tipo2_op1=porNombre2[i].value;}
+              }
+
+			
+            //var esq_tipo2_op1 = $('#esq_tipo2_op1').val();
+			
+			 var preg3_tipo2="";
+            var porNombre3=document.getElementById("preg3_tipo2");
+            
+                if(porNombre3.checked){
+                preg3_tipo2=porNombre3.value;}
+				
+              var preg5_tipo2="";
+            var porNombre4=document.getElementById("preg5_tipo2");
+            
+                if(porNombre4.checked){
+                preg5_tipo2=porNombre4.value;}
+             
+
+            //var preg3_tipo2 = $('#preg3_tipo2').val();
+            //var preg5_tipo2 = $('#preg5_tipo2').val();
             var preg4_tipo2 = $('#preg4_tipo2').val();
-            var preg6 = $('#preg6').val();
-            var preg7 = $('#preg7').val();
-            var preg8 = $('#preg8').val();
+			
+			 var preg6="";
+            var porNombre5=document.getElementsByName("preg6");
+            for(var i=0;i<porNombre5.length;i++)
+              {
+                if(porNombre5[i].checked){
+                preg6=porNombre5[i].value;}
+              }
+
+ var preg7="";
+            var porNombre6=document.getElementsByName("preg7");
+            for(var i=0;i<porNombre6.length;i++)
+              {
+                if(porNombre6[i].checked){
+                preg7=porNombre6[i].value;}
+              }
+
+			 var preg8="";
+            var porNombre7=document.getElementsByName("preg8");
+            for(var i=0;i<porNombre7.length;i++)
+              {
+                if(porNombre7[i].checked){
+                preg8=porNombre7[i].value;}
+              }
+
             var idsolicitud_esquema = $('#idsolicitud_esquema').val();
 
             //Seccion 6
-            var primus = $('#primus').val();
+			 var primus="";
+            var porNombre8=document.getElementsByName("primus");
+            for(var i=0;i<porNombre8.length;i++)
+              {
+                if(porNombre8[i].checked){
+                primus=porNombre8[i].value;}
+              }
+
+            //var primus = $('#primus').val();
             //Seccion 7
-            var idmex_pliego = $('#idmex_pliego').val();
-            var idmex_alcance = $('#idmex_alcance').val();
+			 var idmex_pliego="";
+            var porNombre9=document.getElementsByName("idmex_pliego");
+            for(var i=0;i<porNombre9.length;i++)
+              {
+                if(porNombre9[i].checked){
+                idmex_pliego=porNombre9[i].value;}
+              }
+			   var idmex_alcance="";
+            var porNombre10=document.getElementsByName("idmex_alcance");
+            for(var i=0;i<porNombre10.length;i++)
+              {
+                if(porNombre10[i].checked){
+                idmex_alcance=porNombre10[i].value;}
+              }
+			
+            //var idmex_pliego = $('#idmex_pliego').val();
+            //var idmex_alcance = $('#idmex_alcance').val();
             //Seccion 8
-            var idsrrc = $('#idsrrc').val();
+			
+			 var idsrrc="";
+            var porNombre11=document.getElementsByName("idsrrc");
+            for(var i=0;i<porNombre11.length;i++)
+              {
+                if(porNombre11[i].checked){
+                idsrrc=porNombre11[i].value;}
+              }
+           // var idsrrc = $('#idsrrc').val();
             var srrc_preg1 = $('#srrc_preg1').val();
             var srrc_preg2 = $('#srrc_preg2').val();
 
@@ -383,38 +466,44 @@ window.addEventListener("beforeunload", function(event) {
             var idioma_aud = $('#idioma_aud').val();
             var idioma_inf = $('#idioma_inf').val();
             //seccion 13
-            var respuesta4 = $('#respuesta4').val();
-            var respuesta5 = $('#respuesta5').val();
+			 var respuesta4="";
+            var porNombre12=document.getElementsByName("respuesta4");
+            for(var i=0;i<porNombre12.length;i++)
+              {
+                if(porNombre12[i].checked){
+                respuesta4=porNombre12[i].value;}
+              }
+			   var respuesta5="";
+            var porNombre13=document.getElementsByName("respuesta5");
+            for(var i=0;i<porNombre13.length;i++)
+              {
+                if(porNombre13[i].checked){
+                respuesta5=porNombre13[i].value;}
+              }
+            //var respuesta4 = $('#respuesta4').val();
+            //var respuesta5 = $('#respuesta5').val();
             var terminada = $('#terminada').val();
             {  
                 $.ajax({  
                      url:"cerebro.php",  
                      method:"POST",
-                    data:{persona:post_persona, seccion:seccion, idoperador:post_idoperador, idsolicitud:post_idsolicitud, fecha:post_fecha, personal:post_personal, num_ggn:post_num_ggn, num_gln:post_num_gln, num_coc:post_num_coc, num_mex_cal_sup:post_num_mex_cal_sup, num_primus:post_num_primus, num_senasica:post_num_senasica, responsable:post_responsable,organismo:post_organismo, fecha_inicio:post_fecha_inicio, fecha_fin:post_fecha_fin, idcert_anterior:post_idcert_anterior, esq_tipo1_op1, preg1_op2:preg1_op2, preg2_op2:preg2_op2, preg3_op2:preg3_op2,  preg1_tipo2:preg1_tipo2, preg2_tipo2:preg2_tipo2, preg3_tipo2:preg3_tipo2, esq_tipo2_op1:esq_tipo2_op1, preg4_tipo2:preg4_tipo2, preg5_tipo2:preg5_tipo2, preg6:preg6, preg7:preg7, preg8:preg8, idsolicitud_esquema:idsolicitud_esquema,primus:primus, idmex_pliego:idmex_pliego, idmex_alcance:idmex_alcance, idsrrc:idsrrc, srrc_preg1:srrc_preg1, srrc_preg2:srrc_preg2, empresa:empresa, rfc:rfc, direccion:direccion, direccion2:direccion2, cp:cp, tel:tel, idprocesadora:idprocesadora, inf_comercializacion:inf_comercializacion, idioma_aud:idioma_aud, idioma_inf:idioma_inf, respuesta4:respuesta4, respuesta5:respuesta5, terminada:terminada},
+                    data:{persona:post_persona, seccion:seccion, idoperador:post_idoperador, idsolicitud:post_idsolicitud, fecha:post_fecha, personal:post_personal, num_ggn:post_num_ggn, num_gln:post_num_gln, num_coc:post_num_coc, num_mex_cal_sup:post_num_mex_cal_sup, num_primus:post_num_primus, num_senasica:post_num_senasica, responsable:post_responsable,organismo:post_organismo, fecha_inicio:post_fecha_inicio, fecha_fin:post_fecha_fin, idcert_anterior:post_idcert_anterior, esq_tipo1_op1: esq_tipo1_op1, preg1_op2:preg1_op2, preg2_op2:preg2_op2, preg3_op2:preg3_op2,  preg1_tipo2:preg1_tipo2, preg2_tipo2:preg2_tipo2, preg3_tipo2:preg3_tipo2, esq_tipo2_op1:esq_tipo2_op1, preg4_tipo2:preg4_tipo2, preg5_tipo2:preg5_tipo2, preg6:preg6, preg7:preg7, preg8:preg8, idsolicitud_esquema:idsolicitud_esquema,primus:primus, idmex_pliego:idmex_pliego, idmex_alcance:idmex_alcance, idsrrc:idsrrc, srrc_preg1:srrc_preg1, srrc_preg2:srrc_preg2, empresa:empresa, rfc:rfc, direccion:direccion, direccion2:direccion2, cp:cp, tel:tel, idprocesadora:idprocesadora, inf_comercializacion:inf_comercializacion, idioma_aud:idioma_aud, idioma_inf:idioma_inf, respuesta4:respuesta4, respuesta5:respuesta5, terminada:terminada},
                      dataType:"text",  
                      success:function(data)  
-                     {  
-                          if(data != '')  
-                          {  
-                               $('#post_id').val(data);  
-                          }  
-                          $('#autoSave').text("Formulario AutoGuardado3");  
-                          setInterval(function(){  
-                               $('#autoSave').text('');  
-                          }, 5000);  
-                  
-
+                     {   
+                          event.returnValue = "AnthonySS";
    }  
                 });  
            }
 
-  event.returnValue = "AnthonySS";
 });
 </script>
 <script type="text/javascript">
 function cambiar(){
   var b=document.getElementById("terminada");
   b.value=1;
+  location.href='../index.php';
+ 
 }
 </script>
  <script>
