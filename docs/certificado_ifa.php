@@ -124,7 +124,11 @@ $mpdf->WriteHTML('
             <tr>
               <td  colspan="3" style="font-size:20px" align="left"><br><b>Valido desde: </b>'.$row_cert['fecha_inicial_ifa'].'<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hasta: </b>'.$row_cert['fecha_final_ifa'].'</td>
             </tr>
-        
+        <tr>
+        <td height="50px" colspan="4">
+
+        </td>
+        </tr>
             <tr>
               <td colspan="4">
               <table width="100%" cellpadding="5" cellspacing="1">
@@ -134,7 +138,7 @@ $mpdf->WriteHTML('
               Nombre Cientifico
               </td><td>
               GGN
-              </td><td>
+              </td><td height="60px">
               Número PAMFA
               </td><td>
               Centro de manipulación
@@ -144,13 +148,11 @@ $mpdf->WriteHTML('
               Numero de emplazamientos
               </td><td>
               Producción paralela
-              </td></tr>');
-             while($row_cert_productos= mysql_fetch_assoc($cert_productos))
-            {$mpdf->WriteHTML('
-               <tr style="background-color:#73bb44;">
+              </td></tr>
+               <tr style="background-color:#b4db9b">
                   <td>'.$row_cert_productos['producto'].'
                   </td>
-              <td>'.$row_cert_productos['nombre_cientifico'].'
+                  <td>'.$row_cert_productos['nombre_cientifico'].'
                    </td>
                    <td>'.$row_cert_productos['ggn'].'
                    </td>
@@ -158,14 +160,13 @@ $mpdf->WriteHTML('
                     </td>
                     <td>'.$row_cert_productos['centro_manipulacion'].'
                     </td>
-                    <td>'.$row_cert_productos['cosecha_excluida'].'
+                    <td height="80px">'.$row_cert_productos['cosecha_excluida'].'
                     </td>
                     <td>'.$row_cert_productos['emplazamientos'].'
                     </td>
                     <td>'.$row_cert_productos['prod_paralela'].'
-                    </td>');
-            }
-            $mpdf->WriteHTML('</tr>    
+                    </td>
+                  </tr>    
               </table>
               </td>
             </tr>
@@ -189,11 +190,18 @@ $mpdf->WriteHTML('
                 <td style="font-size:20px; color:gray" align="center">'.$row_cert['fecha_impresion_ifa'].'</td>
                 <td style="font-size:20px; color:gray" align="center">'.$row_cert['acreditacion_ifa'].'</td>
             </tr>
-
-      </table>
-    </td>
-  </tr>
-
+            <tr>
+              <td height="40px">
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                    <span> VERIFICACIÓN Y CERTIFICACIÓN PAMFA A.C </span><BR><span style="font-size:12px"> Calle José Zamora #48 Col. Emiliano Zapata, Uruapam, Michoacán. Tel. 452 502 0849 Cel. 452 128 51 46 / certificacion@pamfa.com.mx</span>
+              </td>
+            </tr>
+            </table>
+            </td>
+            </tr>
 </table>');
                     //Anexo
 $mpdf->AddPage();
@@ -225,8 +233,8 @@ $mpdf->WriteHTML('<br>
     
       </tr>
     <tr>
-    <td>&nbsp; &nbsp;</td>
-    <td align="center">
+      <td>&nbsp; &nbsp;</td>
+      <td align="center">
       <table width="100%" cellpadding="15" cellspacing="2" align="center">
       <tr style="background-color:#3aa749">
       <td colspan="2">
@@ -238,7 +246,8 @@ $mpdf->WriteHTML('<br>
       </td>
       <td colspan="2">
       &nbsp; &nbsp; Ubicación &nbsp; &nbsp;
-      </td></tr>');
+      </td>
+      </tr>');
 
   
   
@@ -252,21 +261,22 @@ $row_cultivos= mysql_fetch_assoc($cultivos);
   
     
     $mpdf->WriteHTML('
-     <tr style="background-color:#73bb44">
-        <td>'.$row_cert_productos2['producto'].'
+     <tr style="background-color:#b4db9b">
+        <td style="text-align:center" colspan="2">'.$row_cert_productos2['producto'].'
         </td>
     
-          <td>'.$row_cert_productos2['emplazamientos'].'
+          <td style="text-align:center" colspan="2">'.$row_cert_productos2['emplazamientos'].'
           </td>
          
-      <td>'.$row_cultivos['superficie'].'
+      <td style="text-align:center" colspan="2">'.$row_cultivos['superficie'].'
           </td>
-      <td>'.$row_cultivos['ubicacion_unidad'].'
-          </td>');
+      <td style="text-align:center">'.$row_cultivos['ubicacion_unidad'].'
+          </td></tr>');
+
     
     
   }
-  $mpdf->WriteHTML('</tr>
+  $mpdf->WriteHTML('
   
   
     </table>
@@ -277,7 +287,7 @@ $row_cultivos= mysql_fetch_assoc($cultivos);
   
     </table>
   </td>
-  </tr>  
+  </tr>
 </table>');
 $mpdf->Output();
 exit();?>            
