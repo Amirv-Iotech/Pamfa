@@ -2,6 +2,7 @@
 
 mysql_select_db($database_pamfa, $inforgan_pamfa);
 
+ $dac = basename($_SERVER['PHP_SELF']);
 
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
@@ -66,9 +67,8 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
 <body>
 
-	<div class="wrapper">
-
-	    <div class="sidebar" data-color="green" data-image="app/assets/img/sidebar-1.jpg">
+	
+	    <div class="sidebar" data-color="green"  data-image="assets/img/sidebar-1.jpg">
 			<!--
 		        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
@@ -84,51 +84,25 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
 	    	<div class="sidebar-wrapper">
 	            <ul class="nav">
-	                <li class="active">
+                <li class="active">
+	                
 	                    <a href="app/secciones/index.php">
 	                        <i class="material-icons">dashboard</i>
-	                        <p>Dashboard</p>
+	                        <p>Inicio </p>
 	                    </a>
 	                </li>
-	                <li>
+	               <?  if($dac=='user.php'){?><li class="active"><? }else{ ?> <li> <? }?>
 	                    <a href="app/secciones/user.php">
 	                        <i class="material-icons">person</i>
-	                        <p>User Profile</p>
+	                        <p>Usuario</p>
 	                    </a>
 	                </li>
-	                <li>
-	                    <a href="app/secciones/table.html">
-	                        <i class="material-icons">content_paste</i>
-	                        <p>Table List</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="app/secciones/typography.html">
-	                        <i class="material-icons">library_books</i>
-	                        <p>Typography</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="app/secciones/icons.html">
-	                        <i class="material-icons">bubble_chart</i>
-	                        <p>Icons</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="app/secciones/maps.html">
-	                        <i class="material-icons">location_on</i>
-	                        <p>Maps</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="app/secciones/notifications.html">
-	                        <i class="material-icons text-gray">notifications</i>
-	                        <p>Notifications</p>
-	                    </a>
-	                </li>
-					<li class="active-pro">
-	                    <a href="../../Connections/salir.php">
-	                        <i class="material-icons">unarchive</i>
+	               
+	                
+	               
+					<li>
+	                    <a href="../Connections/salir.php">
+	                        <i class="material-icons">power_settings_new</i>
 	                        <p>Salir</p>
 	                    </a>
 	                </li>
@@ -140,48 +114,20 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 			<nav class="navbar navbar-transparent navbar-absolute">
 				<div class="container-fluid">
 					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="#">Material Dashboard</a>
-					</div>
-					<div class="collapse navbar-collapse">
-						<ul class="nav navbar-nav navbar-right">
-							<li>
-								<a href="" class="dropdown-toggle" data-toggle="dropdown">
-									<i class="material-icons">dashboard</i>
-									<p class="hidden-lg hidden-md">Dashboard</p>
-								</a>
-							</li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									<i class="material-icons">notifications</i>
-									<span class="notification">5</span>
-									<p class="hidden-lg hidden-md">Notifications</p>
-								</a>
-								<ul class="dropdown-menu">
-									<li><a href="#">Mike John responded to your email</a></li>
-									<li><a href="#">You have 5 new tasks</a></li>
-									<li><a href="#">You're now friend with Andrew</a></li>
-									<li><a href="#">Another Notification</a></li>
-									<li><a href="#">Another One</a></li>
-								</ul>
-							</li>
-							<li>
-								<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
-	 							   <i class="material-icons">person</i>
-	 							   <p class="hidden-lg hidden-md">Profile</p>
-		 						</a>
-							</li>
-						</ul>
-
 						
+						<a class="navbar-brand" href="#">PAMFA S.A. </a>
+                        <? if($dac=='formulario.php')
+						{?>
+                        <form action="../solicitud/solicitudes.php" method="post" >
+      
+      <input type="submit" value="Regresar"  />
+            
+            </form> <? }?>
 					</div>
+					
 				</div>
 			</nav>
+
      <?       include("configuracion/guardar.php");?>
 <div class="row">
 </div>
@@ -257,6 +203,7 @@ else if(!empty($_POST['op'])&&$_POST['op']==8){include('configuracion/subproduct
 						</div>
 
 						
+			
 			<footer class="footer">
 				<div class="container-fluid">
 					<nav class="pull-left">
@@ -297,7 +244,15 @@ else if(!empty($_POST['op'])&&$_POST['op']==8){include('configuracion/subproduct
 	<script src="assets/js/material.min.js" type="text/javascript"></script>
 
 	<!--  Charts Plugin -->
+	<script src="assets/js/chartist.min.js"></script>
+
+	<!--  Notifications Plugin    -->
+	<script src="assets/js/bootstrap-notify.js"></script>
+
 	
+
+	<!-- Material Dashboard javascript methods -->
+	<script src="assets/js/material-dashboard.js"></script>
 
 	
 

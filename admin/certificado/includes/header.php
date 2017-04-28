@@ -53,55 +53,27 @@
 
 				</a>
 			</div>
-
-	    	<div class="sidebar-wrapper">
+<div class="sidebar-wrapper">
 	            <ul class="nav">
-                <? if($dac=='index.php'){?><li class="active"><? }else{ ?> <li> <? }?>
+                <li class="active">
 	                
 	                    <a href="../app/secciones/index.php">
 	                        <i class="material-icons">dashboard</i>
-	                        <p>Dashboard </p>
+	                        <p>Inicio </p>
 	                    </a>
 	                </li>
 	               <?  if($dac=='user.php'){?><li class="active"><? }else{ ?> <li> <? }?>
 	                    <a href="../app/secciones/user.php">
 	                        <i class="material-icons">person</i>
-	                        <p>User Profile</p>
+	                        <p>Usuario</p>
 	                    </a>
 	                </li>
-	                <li>
-	                    <a href="table.html">
-	                        <i class="material-icons">content_paste</i>
-	                        <p>Table List</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href=".typography.html">
-	                        <i class="material-icons">library_books</i>
-	                        <p>Typography</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="icons.html">
-	                        <i class="material-icons">bubble_chart</i>
-	                        <p>Icons</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="maps.html">
-	                        <i class="material-icons">location_on</i>
-	                        <p>Maps</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="notifications.html">
-	                        <i class="material-icons text-gray">notifications</i>
-	                        <p>Notifications</p>
-	                    </a>
-	                </li>
-					<li class="active-pro">
-	                    <a href="../../../Connections/salir.php">
-	                        <i class="material-icons">unarchive</i>
+	               
+	                
+	               
+					<li>
+	                    <a href="../../Connections/salir.php">
+	                        <i class="material-icons">power_settings_new</i>
 	                        <p>Salir</p>
 	                    </a>
 	                </li>
@@ -113,50 +85,16 @@
 			<nav class="navbar navbar-transparent navbar-absolute">
 				<div class="container-fluid">
 					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
+						
 						<a class="navbar-brand" href="#">PAMFA S.A. </a>
-                         <form action="../informe/informes.php" method="post" >
+                        <? if($dac=='formulario_ifa.php' || $dac=='formulario_coc.php' ||$dac=='formulario_mexcalsup.php')
+						{?>
+                        <form action="../informe/informes.php" method="post" >
       
       <input type="submit" value="Regresar"  />
             
-            </form> 
+            </form> <? }?>
 					</div>
-					<div class="collapse navbar-collapse">
-						<ul class="nav navbar-nav navbar-right">
-							<li>
-								<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
-									<i class="material-icons">dashboard</i>
-									<p class="hidden-lg hidden-md">Dashboard</p>
-								</a>
-							</li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									<i class="material-icons">notifications</i>
-									<span class="notification">5</span>
-									<p class="hidden-lg hidden-md">Notifications</p>
-								</a>
-								<ul class="dropdown-menu">
-									<li><a href="#">Mike John responded to your email</a></li>
-									<li><a href="#">You have 5 new tasks</a></li>
-									<li><a href="#">You're now friend with Andrew</a></li>
-									<li><a href="#">Another Notification</a></li>
-									<li><a href="#">Another One</a></li>
-								</ul>
-							</li>
-							<li>
-								<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
-	 							   <i class="material-icons">person</i>
-	 							   <p class="hidden-lg hidden-md">Profile</p>
-		 						</a>
-							</li>
-						</ul>
-
-						
-					</div>
+					
 				</div>
 			</nav>
