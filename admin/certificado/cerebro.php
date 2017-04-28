@@ -44,7 +44,6 @@ if($_POST['insertar'])
 $certificado = mysql_query($query_certificado, $inforgan_pamfa) or die(mysql_error());
 $total_certificado = mysql_num_rows($certificado);
 
-echo $query_certificado;
 if($total_certificado<1)
 {
 	
@@ -76,7 +75,6 @@ if($_POST['eliminar']){
 	
 	$insertSQL = sprintf("delete from informe_hallazgos where idinforme_hallazgo=%s  ",
  GetSQLValueString($_POST['idinforme_hallazgo'], "text"));
- echo $insertSQL;
   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
 }
 
@@ -90,7 +88,6 @@ if($_POST['insertar_prod'] && $_POST['insertar_prod'] == 1)
 $certificado = mysql_query($query_certificado, $inforgan_pamfa) or die(mysql_error());
 $total_certificado = mysql_num_rows($certificado);
 
-echo $query_certificado;
 ?><br><?
 echo $_POST['idcertificado'].
 			 $_POST['producto'].
@@ -115,7 +112,6 @@ if($total_certificado<1)
 			 GetSQLValueString($_POST['cosecha_excluida'], "text"),
 			 GetSQLValueString($_POST['emplazamientos'], "text"),
 			 GetSQLValueString($_POST['prod_paralela'], "text"));
-			 echo $insertSQL;
 			 
 }
 else{
@@ -146,7 +142,6 @@ if($_POST['insertar_coc'])
 $certificado = mysql_query($query_certificado, $inforgan_pamfa) or die(mysql_error());
 $total_certificado = mysql_num_rows($certificado);
 
-echo $query_certificado;
 if($total_certificado<1)
 {
 	
@@ -171,7 +166,6 @@ else{
 			 GetSQLValueString($_POST['acreditacion'], "text"),
 			  GetSQLValueString($_POST['idinforme'], "text"));
 }
-echo $insertSQL;
  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
 }
 
@@ -179,7 +173,6 @@ if($_POST['eliminar']){
 	
 	$insertSQL = sprintf("delete from informe_hallazgos where idinforme_hallazgo=%s  ",
  GetSQLValueString($_POST['idinforme_hallazgo'], "text"));
- echo $insertSQL;
   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
 }
 
@@ -207,7 +200,7 @@ if($total_certificado<1)
              GetSQLValueString($_POST['coc'], "text"),
 			 GetSQLValueString($_POST['pamfa'], "text"),
 			 GetSQLValueString($_POST['prod_paralela'], "text"));
-			 echo $insertSQL;
+
 			 
 }
 else{
@@ -234,7 +227,6 @@ if($_POST['insertar_destino_coc'] && $_POST['insertar_destino_coc'] == 1)
 			  GetSQLValueString($_POST['destino'], "text"),
              GetSQLValueString($_POST['idcert_producto'], "text"));
 
- echo $insertSQL;
  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
 }
 
@@ -248,7 +240,6 @@ if($_POST['insertar_mex'])
 $certificado = mysql_query($query_certificado, $inforgan_pamfa) or die(mysql_error());
 $total_certificado = mysql_num_rows($certificado);
 
-echo $query_certificado;
 if($total_certificado<1)
 {
 	
@@ -271,7 +262,6 @@ else{
 			 GetSQLValueString($_POST['acreditacion'], "text"),
 			  GetSQLValueString($_POST['idinforme'], "text"));
 }
-echo $insertSQL;
  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
 }
 
@@ -279,7 +269,6 @@ if($_POST['eliminar']){
 	
 	$insertSQL = sprintf("delete from informe_hallazgos where idinforme_hallazgo=%s  ",
  GetSQLValueString($_POST['idinforme_hallazgo'], "text"));
- echo $insertSQL;
   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
 }
 

@@ -18,9 +18,10 @@
     <!-- Bootstrap core CSS     -->
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
 
+
     <!--  Material Dashboard CSS    -->
     <link href="../assets/css/material-dashboard.css" rel="stylesheet"/>
-
+    <link href="../assets/css/style_operador.css" rel="stylesheet"/>
     
 
     <!--     Fonts and icons     -->
