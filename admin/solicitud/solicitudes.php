@@ -155,6 +155,6 @@ $row_cliente= mysql_fetch_assoc($cliente);
 	            </div>
 	        </div>
 
-	<? include("includes/header.php");?>      
+	<? include("includes/footer.php");?>      
 
 </html>

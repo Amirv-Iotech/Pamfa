@@ -14,12 +14,18 @@
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
- <link href="../assets/css/style_operador.css" rel="stylesheet"/>
+
     <!-- Bootstrap core CSS     -->
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
 
     <!--  Material Dashboard CSS    -->
     <link href="../assets/css/material-dashboard.css" rel="stylesheet"/>
+
+    <!-- Malpika css -->
+    <link href="../assets/css/style_operador.css" rel="stylesheet"/>
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="../assets/css/demo.css" rel="stylesheet" />
@@ -27,14 +33,12 @@
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
-   <style>.form-group .checkbox label,
-.form-group .radio label,
-.form-group label {
-  font-size: 14px;
-  line-height: 1.42857;
-  color: #333;
-  font-weight: 400;
-}</style> 
+  
+	
+
+
+    
+    
 </head>
 
 <body>
@@ -50,59 +54,32 @@
 
 			<div class="logo">
 				<a href="" class="simple-text">
-			<img style="width:100px;" src="../../images/pamfa.png" alt="">
+			<img style="width:100px;" src="../images/pamfa.png" alt="">
 
 				</a>
 			</div>
 
 	    	<div class="sidebar-wrapper">
 	            <ul class="nav">
-                <? if($dac=='index.php'){?><li class="active"><? }else{ ?> <li> <? }?>
+                <li class="active">
 	                
 	                    <a href="../index.php">
 	                        <i class="material-icons">dashboard</i>
-	                        <p>Dashboard </p>
+	                        <p>Inicio </p>
 	                    </a>
 	                </li>
 	               <?  if($dac=='user.php'){?><li class="active"><? }else{ ?> <li> <? }?>
 	                    <a href="../user.php">
 	                        <i class="material-icons">person</i>
-	                        <p>User Profile</p>
+	                        <p>Usuario</p>
 	                    </a>
 	                </li>
-	                <li>
-	                    <a href="table.html">
-	                        <i class="material-icons">content_paste</i>
-	                        <p>Table List</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href=".typography.html">
-	                        <i class="material-icons">library_books</i>
-	                        <p>Typography</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="icons.html">
-	                        <i class="material-icons">bubble_chart</i>
-	                        <p>Icons</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="maps.html">
-	                        <i class="material-icons">location_on</i>
-	                        <p>Maps</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="notifications.html">
-	                        <i class="material-icons text-gray">notifications</i>
-	                        <p>Notifications</p>
-	                    </a>
-	                </li>
-					<li class="active-pro">
-	                    <a href="../../../Connections/salir.php">
-	                        <i class="material-icons">unarchive</i>
+	               
+	                
+	               
+					<li>
+	                   <a href="../../Connections/salir.php?a">
+	                        <i class="material-icons">power_settings_new</i>
 	                        <p>Salir</p>
 	                    </a>
 	                </li>
@@ -114,50 +91,16 @@
 			<nav class="navbar navbar-transparent navbar-absolute">
 				<div class="container-fluid">
 					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
+						
 						<a class="navbar-brand" href="#">PAMFA S.A. </a>
-                        <a class="navbar-brand" href="#">PAMFA S.A. </a><form action="../../auditor/plan_auditoria/plan_auditoria.php" method="post" >
+                        <? if($dac=='formulario.php')
+						{?>
+                        <form action="../plan_auditoria/plan_auditoria.php" method="post" >
       
       <input type="submit" value="Regresar"  />
             
-            </form> 
+            </form> <? }?>
 					</div>
-					<div class="collapse navbar-collapse">
-						<ul class="nav navbar-nav navbar-right">
-							<li>
-								<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
-									<i class="material-icons">dashboard</i>
-									<p class="hidden-lg hidden-md">Dashboard</p>
-								</a>
-							</li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									<i class="material-icons">notifications</i>
-									<span class="notification">5</span>
-									<p class="hidden-lg hidden-md">Notifications</p>
-								</a>
-								<ul class="dropdown-menu">
-									<li><a href="#">Mike John responded to your email</a></li>
-									<li><a href="#">You have 5 new tasks</a></li>
-									<li><a href="#">You're now friend with Andrew</a></li>
-									<li><a href="#">Another Notification</a></li>
-									<li><a href="#">Another One</a></li>
-								</ul>
-							</li>
-							<li>
-								<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
-	 							   <i class="material-icons">person</i>
-	 							   <p class="hidden-lg hidden-md">Profile</p>
-		 						</a>
-							</li>
-						</ul>
-
-						
-					</div>
+					
 				</div>
 			</nav>

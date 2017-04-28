@@ -60,8 +60,8 @@ if(isset($_POST['update']))
 	                    <div class="col-md-8">
 	                        <div class="card">
 	                            <div class="card-header" data-background-color="green">
-	                                <h4 class="title">Edit Profile</h4>
-									<p class="category">Complete your profile  </p>
+	                                <h4 class="title">Editar perfil</h4>
+									<p class="category">Modifica tus datos  </p>
 	                            </div>
 	                            <div class="card-content">
                                 
@@ -70,19 +70,19 @@ if(isset($_POST['update']))
 	                                        
 	                                        <div class="col-md-3">
 												<div class="form-group label-floating">
-													<label class="control-label">Username</label>
+													<label class="control-label">Usuario</label>
 													<input name="username" type="text" class="form-control" value="<? echo $row_usuario['username'];?>" >
 												</div>
 	                                        </div>
                                              <div class="col-md-3">
 												<div class="form-group label-floating">
-                                                <label class="control-label">Password</label>
+                                                <label class="control-label">Contraseña</label>
 												  <input name="password" type="text" class="form-control" value="<? echo $row_usuario['password'];?>" >
 												</div>
 	                                        </div>
 	                                        <div class="col-md-3">
 												<div class="form-group label-floating">
-													<label class="control-label">Email address</label>
+													<label class="control-label">Email </label>
 													<input name="email" type="email" class="form-control" value="<? echo $row_usuario['email'];?>">
 												</div>
 	                                        </div>
