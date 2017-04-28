@@ -40,7 +40,7 @@
         </select>
       </div>
       <div class="col-lg-2 col-xs-4">
-        <input type="hidden" name="idplan_auditoria" value="<? echo $_POST['idplan_auditoria']; ?>" />          
+        <input type="hidden" name="idplan_auditoria" value="<? echo $_POST['idplan_auditoria']; ?>" />           <input type="hidden" name="idsolicitud" id="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
         <input type="hidden" name="insertar" value="1" />
         <input type="hidden" name="seccion" value="7" />
         <input type="submit" value="Agregar"  />
@@ -77,12 +77,13 @@
               <td><? echo $row_agenda['actividad'];?></td>
               <td><? echo $row_agenda['responsable'];?>"</td>
               <td><? echo $row_vista1['nombre']." ". $row_vista1['apellidos'];?>"</td>
-              <td><form id="form3" name="form3" method="post" action="">
+              <td><form id="form3" name="form3" method="post" action="#seccion7">
                   <input type="hidden" name="eliminar" value="1" />
                   <input type="hidden" name="idplan_auditoria" value="<? echo $_POST['idplan_auditoria']; ?>" />
                   <input type="hidden" name="idagenda" value="<? echo $row_agenda['idagenda']; ?>" />
                   <input type="hidden" name="seccion" value="7" />
                   <input type="image" name="imageField3" id="imageField3" src="../../images/delete.png" title="REMOVER" width="30" height="30" />
+                  <input type="hidden" name="idsolicitud" id="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
                   </form>
               </td>
             </tr>
