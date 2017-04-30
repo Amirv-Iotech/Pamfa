@@ -118,7 +118,7 @@
                         <div class="col-lg-6 col-xs-6">
                          <input placeholder="informe"  class="plan_input"  id="idioma_inf" name="idioma_inf" type="text" title="Idioma " value="<? echo $row_solicitud['idioma_inf'];?>"  />
                         </div>
-                        <input type="hidden" name="idsolicitud" id="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+                       
                         <input type="hidden" name="idsolicitud_esquema" id="idsolicitud_esquema" value="<? echo $row_solicitud_esq['idsolicitud_esquema']; ?>" />
                         <input type="hidden" name="seccion" id="seccion" value="5" />
                     </div>
@@ -127,5 +127,6 @@
         </div>
 
       </form>
+      <input type="hidden" name="idplan_auditoria" id="idplan_auditoria" value="<? echo $row_plan_auditoria['idplan_auditoria']; ?>" />
   </div>
 </fieldset>

@@ -496,21 +496,14 @@ window.addEventListener("beforeunload", function(event) {
                      dataType:"text",  
                      success:function(data)  
                      {  
-                          if(data != '')  
-                          {  
-                               $('#post_id').val(data);  
-                          }  
-                          $('#autoSave').text("Formulario AutoGuardado3");  
-                          setInterval(function(){  
-                               $('#autoSave').text('');  
-                          }, 5000);  
+                          event.returnValue = "AnthonySS";
                   
 
    }  
                 });  
            }
 
-  event.returnValue = "AnthonySS";
+ 
 });
 </script>
 <script type="text/javascript">
