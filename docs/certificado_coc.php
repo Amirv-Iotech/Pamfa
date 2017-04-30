@@ -34,7 +34,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
-
+ 
 
 
 if($_POST['idsolicitud']){
@@ -152,7 +152,7 @@ $mpdf->WriteHTML('
             } $mpdf->WriteHTML('
               </table>
               </td>
-              </tr>
+            </tr>
 
             <tr>
               <td  colspan="3" align="right">

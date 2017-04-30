@@ -137,11 +137,9 @@ else{
 //////////////////////////inicio coc
 if($_POST['insertar_coc'])
 {
-	
 	$query_certificado= sprintf("select *from certificado where idinforme=%s ", GetSQLValueString($_POST["idinforme"], "int"),GetSQLValueString($_POST["idcertificado"], "int"));
 $certificado = mysql_query($query_certificado, $inforgan_pamfa) or die(mysql_error());
 $total_certificado = mysql_num_rows($certificado);
-
 if($total_certificado<1)
 {
 	
