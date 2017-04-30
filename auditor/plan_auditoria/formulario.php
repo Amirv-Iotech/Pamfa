@@ -151,10 +151,9 @@ $row_alcance= mysql_fetch_assoc($alcance);
                     </div>
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">
-                    <input type="hidden" name="idoperador" value="<? echo $row_operador['idoperador']; ?>" />
-                    <input type="hidden" name="idsolicitud" value="<? echo $_POST['idsolicitud']; ?>" />
-                    <input type="hidden" name="seccion" value="1" />
-                    <input type="hidden" name="fecha" value="<? echo time();?>" />
+                    
+                   
+                   
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">                                
                     <label class="col-lg-3 col-xs-3">Centro de manipulación:</label>  
@@ -187,14 +186,16 @@ $row_alcance= mysql_fetch_assoc($alcance);
                     </div>
                 </div>
                 <div class="col-lg-12 col-xs-12 datos" >
-                    <input type="hidden" name="idsolicitud" value="<? echo $_POST['idsolicitud']; ?>" />
-                    <input type="hidden" name="seccion" value="2" />
+                    <input id="idsolicitud" type="hidden" name="idsolicitud" value="<? echo $_POST['idsolicitud']; ?>" /><input type="hidden" name="idoperador" value="<? echo $row_operador['idoperador']; ?>" />
+                  
+                    <input type="hidden" name="seccion" value="5" />
                 </div>
                 <div class="col-lg-12 col-xs-12">
                 </div>
                 <div class="col-lg-12 col-xs-12">
                 </div>
             </form>
+           <input id="idsolicitud" type="hidden" name="idsolicitud" value="<? echo $_POST['idsolicitud']; ?>" /> 
         </div>
     </div>
 </div>
@@ -236,6 +237,8 @@ var criterio =$('#criterio').val();
 var idioma_aud =$('#idioma_aud').val();
 var idioma_inf =$('#idioma_inf').val();
 var idsolicitud =$('#idsolicitud').val();
+var idplan_auditoria =$('#idplan_auditoria').val();
+
 var idsolicitud_esquema =$('#idsolicitud_esquema').val();
 var seccion =5;
             
@@ -243,7 +246,7 @@ var seccion =5;
                 $.ajax({  
                      url:"cerebro.php",  
                      method:"POST",
-                    data:{procesadora:procesadora, producto:producto, fecha_emision:fecha_emision, fecha_auditoria:fecha_auditoria, tipo1:tipo1, rancho_invernadero:rancho_invernadero, superficie:superficie, producto_proce:producto_proce, manip:manip, esq1:esq1, num_pgfs:num_pgfs, num_pamfa:num_pamfa, num_globalgg:num_globalgg, num_coc:num_coc, prod:prod, otro:otro, objetivo:objetivo, alcance:alcance, criterio:criterio, idioma_aud:idioma_aud, idioma_inf:idioma_inf, idsolicitud:idsolicitud, idsolicitud_esquema:idsolicitud_esquema, seccion:seccion},
+                    data:{procesadora:procesadora, producto:producto, fecha_emision:fecha_emision, fecha_auditoria:fecha_auditoria, tipo1:tipo1, rancho_invernadero:rancho_invernadero, superficie:superficie, producto_proce:producto_proce, manip:manip, esq1:esq1, num_pgfs:num_pgfs, num_pamfa:num_pamfa, num_globalgg:num_globalgg, num_coc:num_coc, prod:prod, otro:otro, objetivo:objetivo, alcance:alcance, criterio:criterio, idioma_aud:idioma_aud, idioma_inf:idioma_inf, idsolicitud:idsolicitud,idplan_auditoria:idplan_auditoria, idsolicitud_esquema:idsolicitud_esquema, seccion:5},
                      dataType:"text",  
                      success:function(data)  
                      {  
