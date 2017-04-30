@@ -24,3 +24,14 @@
 	height: 45px;
 }
 
+#form_ifa input{
+	background-color:#ccefb4;
+	padding-top:5px; 
+	padding-left: 10px;
+	background-image: none;
+	border-radius: 10px;
+	height: : 45px;
+}
+.div_centro{
+	text-align: center;
+}
