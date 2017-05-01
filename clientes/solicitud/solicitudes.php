@@ -86,7 +86,7 @@ $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error()
 	                                        	<td><? echo date('d/m/y',$row_solicitud['fecha']);?></td>
                                                 <td>
                                                 <form action="formulario_vista.php" method="post">
-                                                 <button type="submit" name="Ver"  value="1"class="btn btn-success">Ver</button>
+                                                 <button data-toggle="tooltip" title="Ver" type="submit" name="Ver"  value="1"class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
                                                  <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
 </form></td>
 												

@@ -146,7 +146,7 @@ $row_cliente= mysql_fetch_assoc($cliente);
  <label>GLOBALG.A.P IFA</label>
  </td>
  <td>
- <button type="button" name="aprobar"  value="1"<? if($row_informe['dictamen_ifa']=='rechazo'){?> class="btn btn-danger" data-toggle="tooltip" title="Rechazado" <? }else {?> class="btn btn-info" data-toggle="tooltip" title="Aprobado"<? }?>><? 
+ <button type="button" name="aprobar"  value="1" <? if($row_informe['dictamen_ifa']=='rechazo'){?> class="btn btn-danger" data-toggle="tooltip" title="Rechazado" <? }else {?> class="btn btn-info" data-toggle="tooltip" title="Aprobado" <? }?>><? 
                                             if($row_informe['dictamen_ifa']=='aprobado'){
                                             echo '<i class="fa fa-check-square-o fa-4x" aria-hidden="true"></i>';}
                                           else {echo '<i class="fa fa-window-close-o fa-4x" aria-hidden="true"></i>';}

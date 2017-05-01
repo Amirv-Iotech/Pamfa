@@ -14,7 +14,8 @@ include('includes/header.php');
 						<div class="col-lg-3 col-md-6 col-sm-6">
 							<div class="card card-stats">
 								<div class="card-header" data-background-color="green">
-									<i class="material-icons">store</i>
+									
+                                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
 								</div>
 								<div class="card-content">
 									<p class="category">Nueva</p>

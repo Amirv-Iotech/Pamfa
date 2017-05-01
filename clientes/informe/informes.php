@@ -118,23 +118,24 @@ $row_cliente= mysql_fetch_assoc($cliente);
 	                                        	
                                                 <td>
                                                 <form action="formulario.php" method="post">
-                                                 <button type="submit" name="Ver"  value="1"class="btn btn-success">Ver</button>
+                                                 <button data-toggle="tooltip" title="Ver" type="submit" name="Ver"  value="1"class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
                                                  <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
                                                    <input type="hidden" name="idinforme" value="<? echo $row_informe['idinforme']; ?>" />
 </form></td>
 <? if($row_informe['firma_auditor']==NULL || $row_informe['firma_cliente']==NULL)
 {?>
  <td>
-                                                <form action="" method="post">
-                                                 <button type="submit" name="firma" disabled  value="1"class="btn btn-danger">Por firmar</button>
+                                              <form action="" method="post">
+                                                 <button data-toggle="tooltip" title="Por Firmar" type="submit" name="firma" disabled  value="1"class="btn btn-danger"><i class="fa fa-clock-o" aria-hidden="true"></i>
+</button>
                                                  <input type="hidden" name="idinforme" value="<? echo $row_informe['idinforme'];  ?>" />
                                                  
 </form></td><? }?>
 
  <td>
                                                 
-                                                 <button type="button" name="firmada" disabled  value="1"class="btn btn-info">Firmada</button>
-                                                 
+                                                 <button data-toggle="tooltip" title="Firmada" type="button" name="firmada" disabled  value="1"class="btn btn-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+</button> 
 </form></td>
 
  <td>
@@ -144,18 +145,25 @@ $row_cliente= mysql_fetch_assoc($cliente);
  <label>GLOBALG.A.P IFA</label>
  </td>
  <td>
- <button type="button" name="aprobar"  value="1"<? if($row_informe['dictamen_ifa']=='rechazo'){?>class="btn btn-danger"<? }else {?> class="btn btn-info" <? }?>><? echo ucwords( $row_informe['dictamen_ifa']);?></button>
+ <button type="button" name="aprobar"  value="1" <? if($row_informe['dictamen_ifa']=='rechazo'){?> class="btn btn-danger" data-toggle="tooltip" title="Rechazado" <? }else {?> class="btn btn-info" data-toggle="tooltip" title="Aprobado" <? }?>><? 
+                                            if($row_informe['dictamen_ifa']=='aprobado'){
+                                            echo '<i class="fa fa-check-square-o fa-4x" aria-hidden="true"></i>';}
+                                          else {echo '<i class="fa fa-window-close-o fa-4x" aria-hidden="true"></i>';}
+ ?></button>
                                 </td>
+            
                                  <? if($row_informe['dictamen_ifa']=="aprobado")
 	  {?>
                                 
                                  <td>
                                  <form action="../../docs/certificado_ifa.php" method="post" target="_blank" >
       
-      <input type="submit" value="Ver certificado"  />
+     <button class="btn btn-warning" type="submit" data-toggle="tooltip" title="Ver Certificado" ><i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+ </button>
             <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
           
             <input type="hidden" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
+             <input type="hidden" name="cliente" value="1" />
             </form> 
                                 </td><? }?>
 </tr>
@@ -164,7 +172,13 @@ $row_cliente= mysql_fetch_assoc($cliente);
  <label>GLOBALG.A.P CoC</label>
  </td>
  <td>
- <button type="button" name="aprobar"  value="1"<? if($row_informe['dictamen_coc']=='rechazo'){?>class="btn btn-danger"<? }else {?> class="btn btn-info" <? }?>><? echo ucwords( $row_informe['dictamen_coc']);?></button>
+ <button type="button" name="aprobar"  value="1" <? if($row_informe['dictamen_coc']=='rechazo'){?> class="btn btn-danger" data-toggle="tooltip" title="Rechazado" <? }else {?> class="btn btn-info" data-toggle="tooltip" title="Aprobado" <? }?>> <?
+                                            if($row_informe['dictamen_coc']=='aprobado'){
+                                            echo '<i class="fa fa-check-square-o fa-4x" aria-hidden="true"></i>';}
+                                          else  { echo '<i class="fa fa-window-close-o fa-4x" aria-hidden="true"></i>';}
+
+ ?>
+ </button>
                                 </td>
                                  <? if($row_informe['dictamen_coc']=="aprobado")
 	  {?>
@@ -172,10 +186,13 @@ $row_cliente= mysql_fetch_assoc($cliente);
                                 <td>
                                  <form action="../../docs/certificado_coc.php" method="post" target="_blank" >
       
-      <input type="submit" value="Ver certificado"  />
-            <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+ <button class="btn btn-warning" type="submit" data-toggle="tooltip" title="Ver Certificado" ><i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+ </button>
+             <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
           
             <input type="hidden" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
+            
+             <input type="hidden" name="cliente" value="1" />
             </form> 
                                 </td><? }?>
 </tr>
@@ -183,8 +200,12 @@ $row_cliente= mysql_fetch_assoc($cliente);
 <td>
  <label>México Calidad Suprema</label>
  </td>
- <td>
- <button type="button" name="aprobar"  value="1"<? if($row_informe['dictamen_mexcalsup']=='rechazo'){?>class="btn btn-danger"<? }else {?> class="btn btn-info" <? }?>><? echo ucwords( $row_informe['dictamen_mexcalsup']);?></button>
+<td>
+ <button type="button" name="aprobar"  value="1" <? if($row_informe['dictamen_mexcalsup']=='rechazo'){ ?> class="btn btn-danger" data-toggle="tooltip" title="Rechazado" <? }else {?> class="btn btn-info" data-toggle="tooltip" title="Aprobado" <? }?> > <? 
+                                          if($row_informe['dictamen_mexcalsup']=='aprobado'){
+                                            echo '<i class="fa fa-check-square-o" aria-hidden="true"></i>';}
+                                          else {echo '<i class="fa fa-window-close-o" aria-hidden="true"></i>';}
+                                      ?> </button>
                                 </td>
                                    <? if($row_informe['dictamen_mexcalsup']=="aprobado")
 	  {?>
@@ -192,10 +213,12 @@ $row_cliente= mysql_fetch_assoc($cliente);
                                  <td>
                                  <form action="../../docs/certificado_mexcalsup.php" method="post" target="_blank" >
       
-      <input type="submit" value="Ver certificado"  />
-            <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+ <button class="btn btn-warning" type="submit" data-toggle="tooltip" title="Ver Certificado" ><i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+ </button>
+             <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
           
             <input type="hidden" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
+             <input type="hidden" name="cliente" value="1" />
             </form> 
                                 </td><? }?>
 </tr>
