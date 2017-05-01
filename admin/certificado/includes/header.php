@@ -92,8 +92,8 @@
 						{?>
                         <form action="../informe/informes.php" method="post" >
       
-      <input type="submit" value="Regresar"  />
-            
+<button  type="submit" value="Regresar" class="btn btn-secondary"><i class="fa fa-caret-square-o-left" aria-hidden="true"></i>
+ Regresar</button>            
             </form> <? }?>
 					</div>
 					
