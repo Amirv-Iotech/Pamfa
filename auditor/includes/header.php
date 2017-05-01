@@ -68,12 +68,7 @@
 	                    </a>
 	                </li>
 	               
-	                <li>
-	                    <a href="icons.html">
-	                        <i class="material-icons">bubble_chart</i>
-	                        <p>Icons</p>
-	                    </a>
-	                </li>
+	              
 	               
 					<li>
 	                    <a href="../Connections/salir.php?a">

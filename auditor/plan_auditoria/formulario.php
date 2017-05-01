@@ -99,41 +99,41 @@ $row_alcance= mysql_fetch_assoc($alcance);
                 <div class="col-lg-12 col-xs-12 datos">
                     <label class="col-lg-3 col-xs-3">Razón social:</label>
                     <div class="col-lg-9 col-xs-9" >
-                    <input placeholder=""   class=" plan_input" id="nombre_legal" name="nombre_legal" type="text" title="Nombre completo" value="<? echo $row_operador['nombre_legal'];?>" /></div>
+                    <input disabled class=" plan_input" id="nombre_legal" name="nombre_legal" type="text" title="Nombre completo" value="<? echo $row_operador['nombre_legal'];?>" /></div>
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">
                     <label class="col-lg-3 col-xs-3">Dirección de la entidad legal: calle y número:</label>
                     <div class="col-xs-9 col-lg-9">
-                    <input placeholder="" class=" plan_input" id="direccion" name="direccion" value="<? echo $row_operador['direccion'];?>"  title="Dirección"  /></div>
+                    <input disabled class=" plan_input" id="direccion" name="direccion" value="<? echo $row_operador['direccion'];?>"  title="Dirección"  /></div>
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">
                     <label class="col-lg-3 col-xs-3">Colonia:</label>
                     <div class="col-lg-9 col-xs-9">
-                    <input placeholder="" class="plan_input" id="colonia" name="colonia" value="<? echo $row_operador['colonia'];?>"  title="Colonia " />
+                    <input disabled class="plan_input" id="colonia" name="colonia" value="<? echo $row_operador['colonia'];?>"  title="Colonia " />
                     </div>
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">
                     <label class="col-lg-3 col-xs-3">C.P.:</label>
                     <div class="col-lg-9 col-xs-9">
-                    <input placeholder="" class="plan_input" id="cp" name="cp" type="text" title="Codigo postal " value="<? echo $row_operador['cp'];?>"  />
+                    <input disabled class="plan_input" id="cp" name="cp" type="text" title="Codigo postal " value="<? echo $row_operador['cp'];?>"  />
                     </div>
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">
                      <label class="col-lg-3 col-xs-3">Municipio:</label>
                      <div class="col-lg-9 col-xs-9">
-                      <input placeholder="" class="plan_input" id="municipio" name="municipio" type="text" title="Estado " value="<? echo $row_operador['municipio'];?>" />
+                      <input disabled class="plan_input" id="municipio" name="municipio" type="text" title="Estado " value="<? echo $row_operador['municipio'];?>" />
                       </div>
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">
                       <label class="col-lg-3 col-xs-3">Estado:</label>
                       <div class="col-lg-9 col-xs-9">
-                      <input placeholder="" class="plan_input" id="estado" name="estado" type="text" title="Estado " value="<? echo $row_operador['estado'];?>" />
+                      <input disabled class="plan_input" id="estado" name="estado" type="text" title="Estado " value="<? echo $row_operador['estado'];?>" />
                       </div>
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">
                     <label class="col-lg-3 col-xs-3">Teléfono:</label>
                     <div class="col-lg-9 col-xs-9">
-                    <input placeholder="" class="plan_input" id="telefono" name="telefono" type="text" title="Telefono " value="<? echo $row_operador['telefono'];?>"  />
+                    <input disabled class="plan_input" id="telefono" name="telefono" type="text" title="Telefono " value="<? echo $row_operador['telefono'];?>"  />
                     </div>
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">
@@ -141,13 +141,13 @@ $row_alcance= mysql_fetch_assoc($alcance);
                     <div class="col-lg-9 col-xs-9">
                    
                     
-                     <input placeholder="" class="plan_input" id="nombre_representante" name="nombre_representante" type="text" value="<? echo $row_operador['email'];?>"  title="Email" />
+                     <input disabled class="plan_input" id="nombre_representante" name="nombre_representante" type="text" value="<? echo $row_operador['email'];?>"  title="Email" />
                     </div>
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">
                     <label class="col-lg-3 col-xs-3">Nombre del representante legal:</label>
                     <div class="col-lg-9 col-xs-9">
-                    <input placeholder="" class="plan_input" id="email" name="email" type="text" value="<? echo $row_operador['nombre_representante'];?>"  title="Nombre " />
+                    <input disabled class="plan_input" id="email" name="email" type="text" value="<? echo $row_operador['nombre_representante'];?>"  title="Nombre " />
                     </div>
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">
@@ -158,7 +158,7 @@ $row_alcance= mysql_fetch_assoc($alcance);
                 <div class="col-lg-12 col-xs-12 datos">                                
                     <label class="col-lg-3 col-xs-3">Centro de manipulación:</label>  
                     <div class="col-lg-9 col-xs-9">  
-                    <input placeholder="" class="plan_input" id="procesadora" name="procesadora" type="text" title="Estado " value="<? echo $row_procesadora['empresa'];?>" />
+                    <inputdisabled class="plan_input" id="procesadora" name="procesadora" type="text" title="Estado " value="<? echo $row_procesadora['empresa'];?>" />
                     </div>
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">
@@ -170,7 +170,7 @@ $row_alcance= mysql_fetch_assoc($alcance);
                         $productos=$row_prod['producto'].",".$productos;
                       }?>
                       <div class="col-lg-9 col-xs-9">
-                      <input placeholder="" class="plan_input" id="producto" name="producto" type="text" title="Telefono " value="<? echo $productos;?>"  />
+                      <input disabled class="plan_input" id="producto" name="producto" type="text" title="Telefono " value="<? echo $productos;?>"  />
                       </div>
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">
@@ -250,21 +250,14 @@ var seccion =5;
                      dataType:"text",  
                      success:function(data)  
                      {  
-                          if(data != '')  
-                          {  
-                               $('#post_id').val(data);  
-                          }  
-                          $('#autoSave').text("Formulario AutoGuardado");  
-                          setInterval(function(){  
-                               $('#autoSave').text('');  
-                          }, 5000);  
+                         event.returnValue = "AnthonySS";
                   
 
    }  
                 });  
            }
 
-  event.returnValue = "AnthonySS";
+ 
 });
 </script>
 
