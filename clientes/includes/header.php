@@ -67,7 +67,7 @@
 	               
 					<li>
 	                    <a href="../Connections/salir.php?c">
-	                        <i class="material-icons">unarchive</i>
+	                        <i class="material-icons">power_settings_new</i>
 	                        <p>Salir</p>
 	                    </a>
 	                </li>
