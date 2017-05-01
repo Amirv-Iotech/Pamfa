@@ -23,6 +23,7 @@
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="../assets/css/demo.css" rel="stylesheet" />
+     <link href="../assets/css/style_operador.css" rel="stylesheet"/>
 
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
@@ -73,7 +74,7 @@
 	                
 					<li >
 	                    <a href="../../Connections/salir.php?c">
-	                        <i class="material-icons">unarchive</i>
+	                        <i class="material-icons">power_settings_new</i>
 	                        <p>Salir</p>
 	                    </a>
 	                </li>
