@@ -90,7 +90,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 		</div>
 		<div class="col-lg-2 col-md-2 col-xs-6 fechas" style="border-bottom:solid 1px #AAAAAA;">
 			
-			<input  id="fecha1" name="fecha1"  disabled="disabled" type="text" placeholder=""  <? if(isset($row_solicitud['fecha'])){?>value="<? echo date('d/m/y',$row_solicitud['fecha']);?>"<? }else{ ?> value="<? echo date('d/m/y',time());?>"<? }?>  style="font-size: 18px; text-align:center;"/>
+			<input  id="fecha1" name="fecha1"  disabled="disabled" type="text" placeholder=""  <? if(isset($row_solicitud['fecha'])){?>value="<? echo date('d/m/y',$row_solicitud['fecha']);?>"<? }else{ ?> value="<? echo date('d/m/y',time());?>"<? }?>  style="font-size: 18px; text-align:center; width: 100%"/>
 			
 		<?	$f="";
 		if(isset($row_solicitud['fecha']))
@@ -100,10 +100,10 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
         <input type="hidden" name="fecha" id="fecha" value="<? echo $f?>"/>
 		</div>
 
-		<div class="col-lg-4 col-md-4 col-xs-4 fechas">
-			<p class="solicitud">   Nombre de la persona que llena la solicitud: </p>
+		<div class="col-lg-4 col-md-4 col-xs-6 fechas">
+			<p class="solicitud">Nombre de la persona que llena la solicitud: </p>
 		</div>
-		<div class="col-lg-3 col-md-6 col-xs-6 fechas">
+		<div class="col-lg-4 col-md-4 col-xs-6 fechas">
 			<p class="solicitud"> <input id="persona" name="persona" type="text" placeholder=""  title="Nombre " value="<? echo $row_solicitud['persona'];?>" style="font-size: 18px; text-align:center; width:100%"/></p>
 		</div>
 		<div class="col-lg-12 col-xs-12">
@@ -115,7 +115,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 		</div>
 	</div>
     
-  <input type="" id="fecha1" name="fecha1" value="<? echo time();?>" />
+  <input type="hidden" id="fecha1" name="fecha1" value="<? echo time();?>" />
   </form>
 	<fieldset> 
     <div id="seccion1" class="row" style="border: solid 1px #AAAAAA; background-color: #ecfbe7">
@@ -126,14 +126,14 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
       		<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6 campos" style="border-right: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
             <label for="nombre_legal" class="form-label col-lg-12 col-md-12 col-sm-12 col-xs-12">Nombre de la entidad legal (empresa o persona):</label>
   			  <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 campos">
-          	<input placeholder="" class="inputsf form-control" name="nombre_legal" type="text" 	title="Nombre completo " value="<? echo $row_operador['nombre_legal'];?>"  />
+          	<input  disabled="disabled"  class="inputsf form-control" name="nombre_legal" type="text" 	title="Nombre completo " value="<? echo $row_operador['nombre_legal'];?>"  />
       	   </div>
   			 </div>
 
       	 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6 campos" style="margin-right: 0px; margin-left: 0px;">
           	<label for="nombre_representante" class="form-label col-lg-12 col-md-12 col-sm-12 col-xs-12">Nombre del representante legal:</label>
           	<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 campos">
-          	<input  placeholder="" class="inputsf form-control" name="nombre_representante" value="<? echo $row_operador['nombre_representante'];?>"  title="Nombre " />
+          	<input disabled="disabled" class="inputsf form-control" name="nombre_representante" value="<? echo $row_operador['nombre_representante'];?>"  title="Nombre " />
         	</div>
     		  </div>
         </div>
@@ -143,7 +143,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
         	  <label for="direccion" class="form-label" style="padding-top:5px;">Dirección de la entidad legal: calle y número:</label>
           </div>
         	<div class=" form-group col-lg-8 campos">
-        	<input placeholder="" class="form-control inputsf" name="direccion" value="<? echo $row_operador['direccion'];?>"  title="Dirección"  />
+        	<input disabled="disabled" class="form-control inputsf" name="direccion" value="<? echo $row_operador['direccion'];?>"  title="Dirección"  />
         	</div>
         </div>
             <div class="form-group col-lg-12 col-md-12 campos" style="border-bottom: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
@@ -151,7 +151,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
         	   <label for="coordenadas" class="form-label">Coordenadas de la entidad legal</label>
             </div>
         	<div class="col-lg-8 campos">
-        	<input placeholder="" class="form-control inputsf" name="coordenadas" value="<? echo $row_operador['coordenadas'];?>"  title="Coordenadas"  />
+        	<input disabled="disabled" class="form-control inputsf" name="coordenadas" value="<? echo $row_operador['coordenadas'];?>"  title="Coordenadas"  />
         	</div>
         	</div>
 
@@ -159,26 +159,26 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
             <div class=" form-group col-lg-2 col-md-2 campos" style="border-right: solid 1px #AAAAAA;margin-right: 0px; margin-left: 0px;" >
             	<label for="cp" class="form-label col-lg-4 col-sm-4">C.P.:</label>
             	<div class="col-lg-8 col-sm-8">
-            	<input placeholder="" class="form-control inputsf" name="cp" type="text" title="Codigo postal " value="<?php echo $row_operador['cp'];?>"  />
+            	<input  disabled="disabled" class="form-control inputsf" name="cp" type="text" title="Codigo postal " value="<?php echo $row_operador['cp'];?>"  />
       	     </div>
     		  </div>
     		<div class="form-group col-lg-4 col-md-4 col-sm-4 campos" style="border-right: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;" >
         	<label for="colonia" class="form-label col-lg-4 col-sm-4">Colonia:</label>
         	<div class="col-lg-8 col-sm-4">
-        	<input placeholder="" class="form-control inputsf" name="colonia" value="<?php echo $row_operador['colonia'];?>"  title="Colonia " />
+        	<input disabled="disabled" class="form-control inputsf" name="colonia" value="<?php echo $row_operador['colonia'];?>"  title="Colonia " />
         	</div>
     		</div>
             <div class="form-group col-lg-3 col-md-3 col-sm-3 campos" style="border-right: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
         	<label for="estado" class="form-label col-lg-4">Estado:</label>
         	<div class="col-lg-8 col-sm-8">
-        	<input placeholder="" class="form-control inputsf" name="estado" type="text"  			title="Estado " value="<? echo $row_operador['estado'];?>" />
+        	<input disabled="disabled" class="form-control inputsf" name="estado" type="text"  			title="Estado " value="<? echo $row_operador['estado'];?>" />
     	    </div>
     		</div>
 
     		<div class="form-group col-lg-3 col-md-3 col-sm-3 campos" style="border-right: solid 0px #AAAAAA; margin-right: 0px; margin-left: 0px;">
         	<label for="pais" class="form-label col-lg-4 col-sm-4">Pais:</label>
         	<div class="col-lg-8 col-sm-8">
-        	<input placeholder="" class="form-control inputsf" name="pais" value="<? echo  $row_operador['pais'];?>" id="email" title="Pais "  />
+        	<input disabled="disabled" class="form-control inputsf" name="pais" value="<? echo  $row_operador['pais'];?>" id="email" title="Pais "  />
         	</div>
     		</div>
       </div>
@@ -187,22 +187,23 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
     		<div class=" form-group col-lg-4 col-md-4 col-sm-4 campos" style="border-right: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
         	<label for="email" class="form-label col-lg-4 col-sm-4">Correo Electrónico:</label>
         	<div class="col-lg-8">
-        	<input placeholder="" class="form-control inputsf" name="email" value="<? echo  $row_operador['email'];?>" id="email" title="Email " />
+        	<input disabled="disabled" class="form-control inputsf" name="email" value="<? echo  $row_operador['email'];?>" id="email" title="Email " />
         	</div>
     		</div>
 
         <div class="form-group col-lg-5 col-md-5 col-sm-5 campos" style="border-right: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
         	<label for="telefono" class="form-label col-lg-8 col-sm-8">Número de telefono(oficina o personal):</label>
         	<div class="col-lg-4 col-sm-4">
-        	<input placeholder="" class="form-control inputsf" name="telefono" type="text" 			title="Telefono " value="<? echo  $row_operador['telefono'];?>"  />
+        	<input disabled="disabled" class="form-control inputsf" name="telefono" type="text" 			title="Telefono " value="<? echo  $row_operador['telefono'];?>"  />
     	    </div>
     		</div>
 
         <div class="form-group col-lg-3 col-md-3 col-sm-3 campos" style="border-right: solid 0px #AAAAAA; margin-right: 0px; margin-left: 0px;">
+        
         <div class="col-lg-4 col-sm-4 campos">
         	<label for="fax" class="form-label">Fax:</label></div>
         	<div class="col-lg-8 col-sm-8 campos">
-        	<input placeholder="" class="form-control inputsf" name="fax" value="<? echo  $row_operador['fax'];?>" title="Fax "  />
+        	<input  disabled="disabled" class="form-control inputsf" name="fax" value="<? echo  $row_operador['fax'];?>" title="Fax "  />
         	</div>
     		</div>
         </div>
