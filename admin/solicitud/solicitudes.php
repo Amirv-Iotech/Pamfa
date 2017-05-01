@@ -117,7 +117,7 @@ $row_cliente= mysql_fetch_assoc($cliente);
 	                                        	<td><? echo date('d/m/y',$row_solicitud['fecha']);?></td>
                                                 <td>
                                                 <form action="formulario.php" method="post">
-                                                 <button type="submit" name="Ver"  value="1"class="btn btn-success">Ver</button>
+                                                 <button data-toggle="tooltip" title="Ver" type="submit" name="Ver"  value="1" class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
                                                  <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
                                                  
 </form></td>
@@ -125,14 +125,15 @@ $row_cliente= mysql_fetch_assoc($cliente);
 {?>
  <td>
                                                 <form action="" method="post">
-                                                 <button type="submit" name="autorizar"  value="1"class="btn btn-danger">Autorizar</button>
+                                                 <button data-toggle="tooltip" title="Autorizar" type="submit" name="autorizar"  value="1"class="btn btn-danger"><i class="fa fa-check-circle-o" aria-hidden="true"></i></button>
                                                  <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
                                                  
 </form></td><? } else {?>
 
  <td>
                                                 
-                                                 <button type="button" name="desautorizar"  value="1"class="btn btn-info">Autorizado</button>
+                                                 <button type="button" data-toggle="tooltip" title="Autorizado" name="desautorizar"  value="1"class="btn btn-info"><i class="fa fa-check-square-o" aria-hidden="true"></i>
+</button>
                                                  
 </form></td><? }?>
 												
@@ -156,5 +157,13 @@ $row_cliente= mysql_fetch_assoc($cliente);
 	        </div>
 
 	<? include("includes/footer.php");?>      
+
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+
 
 </html>

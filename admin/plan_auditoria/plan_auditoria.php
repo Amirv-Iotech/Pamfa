@@ -145,7 +145,7 @@ $row_cliente= mysql_fetch_assoc($cliente);
 	                                        	
                                                 <td>
                                                 <form action="formulario.php" method="post">
-                                                 <button type="submit" name="Ver"  value="1"class="btn btn-success">Ver</button>
+                                                 <button data-toggle="tooltip" title="Ver" type="submit" name="Ver"  value="1"class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
                                                  <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
                                                    <input type="hidden" name="idplan_auditoria" value="<? echo $row_plan_auditoria['idplan_auditoria']; ?>" />
 </form></td>
@@ -153,14 +153,14 @@ $row_cliente= mysql_fetch_assoc($cliente);
 {?>
  <td>
                                                 <form action="" method="post">
-                                                 <button type="buttom" name="firma"  disabled value="1"class="btn btn-danger">Por firmar</button>
+                                                 <button data-toggle="tooltip" title="Por Firmar" type="buttom" name="firma"    value="1" class="btn btn-danger"><i class="fa fa-clock-o" aria-hidden="true"></i></button>
                                                  <input type="hidden" name="idplan_auditoria" value="<? echo $row_plan_auditoria['idplan_auditoria']; ?>" />
                                                  
 </form></td><? } else {?>
 
  <td>
                                                 
-                                                 <button type="button" name="firmada"  value="1"class="btn btn-info">Firmada</button>
+                                                 <button data-toggle="tooltip" title="Firmada" type="button" name="firmada"  value="1"class="btn btn-info"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                                  
 </form></td>
 
@@ -168,13 +168,13 @@ $row_cliente= mysql_fetch_assoc($cliente);
 {?>
  <td>
                                   <form action="" method="post">              
-                                                 <button type="submit" name="aprobar"  value="1"class="btn btn-danger">Aprobar</button>
+                                                 <button data-toggle="tooltip" title="Aprobar" type="submit" name="aprobar"  value="1" class="btn btn-danger"><i class="fa fa-check-circle-o" aria-hidden="true"></i></button>
                                                  <input type="hidden" name="idplan_auditoria" value="<? echo $row_plan_auditoria['idplan_auditoria']; ?>" />
                                                  
 </form></td>
 <? }else {?>
 	<td>
-	 <button type="button" name="aprobar"  value="1"class="btn btn-info">Aprobada</button>
+	 <button data-toggle="tooltip" title="Aprobada" type="button" name="aprobar"  value="1"class="btn btn-info"><i class="fa fa-check-square-o" aria-hidden="true"></i></button>
 	</td>
 	<? }}?>
 												
@@ -198,5 +198,11 @@ $row_cliente= mysql_fetch_assoc($cliente);
 	        </div>
 
 	<? include("includes/footer.php");?>      
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
 
 </html>

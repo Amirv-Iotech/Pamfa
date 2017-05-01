@@ -14,10 +14,10 @@ include('../../includes/header.php');
 						<div class="col-lg-3 col-md-6 col-sm-6">
 							<div class="card card-stats">
 								<div class="card-header" data-background-color="orange">
-									<i class="material-icons">content_copy</i>
+<i class="fa fa-cogs" aria-hidden="true"></i>
 								</div>
 								<div class="card-content">
-									<p class="category">Menú</p>
+									<p class="category">Menù</p>
 									<h3 class="title"><a href="../../config.php">Configuración</a></h3>
 								</div>
 								<? /*<div class="card-footer">
@@ -30,7 +30,7 @@ include('../../includes/header.php');
 						<div class="col-lg-3 col-md-6 col-sm-6">
 							<div class="card card-stats">
 								<div class="card-header" data-background-color="green">
-									<i class="material-icons">store</i>
+         							<i class="material-icons">content_copy</i>
 								</div>
 								<div class="card-content">
 									<p class="category">Ver</p>
