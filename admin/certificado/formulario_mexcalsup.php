@@ -103,7 +103,7 @@ $row_cert= mysql_fetch_assoc($cert);
 ?>
  
 <div class="content">
-<div class="container-fluid" style="text-align: center; background-color: #ecfbe7;>
+<div class="container-fluid" style="text-align: center; background-color: #ecfbe7;">
   <div class="row" id="form_ifa">
 
   <div class="col-lg-12 col-xs-12" style="background-color: #ecfbe7; padding: 0px;">
@@ -127,30 +127,30 @@ $row_cert= mysql_fetch_assoc($cert);
       <h3>Valido desde:</h3>
   </div>
   <div class="col-lg-8">
-    <input   class="form-control"  name="fecha_inicial"  onchange="this.form.submit()"      title="desde " type="date" value="<? echo $row_cert['fecha_inicial_mexcalsup']; ?>"  />
+    <input   class="form-control"  id="fecha_inicial"  name="fecha_inicial"        title="desde " type="date" value="<? echo $row_cert['fecha_inicial_mexcalsup']; ?>"  />
   </div>
   <div class="col-lg-4">
       <h3>Hasta:</h3>
   </div>
   <div class="col-lg-8">
-    <input   class="form-control"  name="fecha_final"  onchange="this.form.submit()"      title="Hasta " type="date" value="<? echo $row_cert['fecha_final_mexcalsup']; ?>"  />
+    <input   class="form-control"  id="fecha_final"  name="fecha_final"       title="Hasta " type="date" value="<? echo $row_cert['fecha_final_mexcalsup']; ?>"  />
   </div>
   <div class="col-lg-4">
     <h3>Fecha de impresión:</h3>
   </div>
   <div class="col-lg-8">
-    <input   class="form-control"  name="fecha_impresion"   placeholder="escribe aquí"  onchange="this.form.submit()" title="impresion " type="date" value="<? echo $row_cert['fecha_impresion_mexcalsup']; ?>"  />
+    <input   class="form-control"  id="fecha_impresion" name="fecha_impresion"   placeholder="escribe aquí"  onchange= title="impresion " type="date" value="<? echo $row_cert['fecha_impresion_mexcalsup']; ?>"  />
   </div>
   <div class="col-lg-4">
             <h3>Acreditación ema:</h3>
   </div>
   <div class="col-lg-8">
-      <input   class="form-control"  name="acreditacion"    placeholder="escribe aquí"  onchange="this.form.submit()" title="acreditacion " type="text" value="<? echo $row_cert['acreditacion_mexcalsup']; ?>"  />
+      <input   class="form-control"  id="acreditacion" name="acreditacion"    placeholder="escribe aquí"  onchange=title="acreditacion " type="text" value="<? echo $row_cert['acreditacion_mexcalsup']; ?>"  />
   </div>
     <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
     <input type="hidden" name="insertar_mex" value="1" />
-    <input type="hidden" name="idinforme" value="<? echo $row_inf['idinforme']; ?>" />
-    <input type="hidden" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
+    <input type="hidden" id="idinforme" name="idinforme" value="<? echo $row_inf['idinforme']; ?>" />
+    <input type="hidden"  id="idcertificado" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
   </form>
   <div class="col-lg-12">
   <div class="table-responsive">
@@ -181,7 +181,7 @@ $row_mexp= mysql_fetch_assoc($mexp);
          </td>
               </tr>
   </form>
-
+ 
     </tbody>
   </table>
   </div>
@@ -196,159 +196,45 @@ $row_mexp= mysql_fetch_assoc($mexp);
         <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
         <input type="hidden" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
       </form> 
+      <input type="hidden" id="insertar_mex" name="insertar_mex" value="1" />
+    <input type="hidden" id="idinforme" name="idinforme" value="<? echo $row_inf['idinforme']; ?>" />
+    <input type="hidden"  id="idcertificado" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
   </div>
 </div>
 </div>
-<!--
-<div class="content">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-md-12">
-                        
-<div class="panel panel-white">
-<div class="panel-heading clearfix"><br>
+
+<script>
+window.addEventListener("beforeunload", function(event) {    
+
+var fecha_inicial =$('#fecha_inicial').val();
+var fecha_final =$('#fecha_final').val();
+var fecha_impresion =$('#fecha_impresion').val();
+var acreditacion =$('#acreditacion').val();
+var insertar_mex =$('#insertar_mex').val();
+var idcertificado =$('#idcertificado').val();
+var idinforme =$('#idinforme').val();
 
 
-	
-	
-    
-	<fieldset>
-   
-    
-    
-	<legend></legend>
-    <form action="" method="post">
-		<table align="center" width="100%"  ><tr><td colspan="4" >
-		
-    	<h3>Razón social:</h3>
-        
-    	</td>
-        <td colspan="4">
-    	<label><h3><? echo $row_operador['nombre_legal'];?></h3> </label>
-	    
-</td>
-</tr>
-<tr><td colspan="4" >
-		
-    	<h3>Dirección:</h3>
-        
-    	</td>
-        <td colspan="4">
-    	<label><h3><? echo $row_operador['direccion'].",".$row_operador['colonia'].",".$row_operador['municipio'].",".$row_operador['estado'];?></h3>  </label>
-	    
-</td>
-</tr>
+  {  
+                $.ajax({  
+                     url:"cerebro.php",  
+                     method:"POST",
+                    data:{fecha_inicial:fecha_inicial,fecha_final:fecha_final,fecha_impresion:fecha_impresion,acreditacion:acreditacion,insertar_mex:insertar_mex,idcertificado:idcertificado,idinforme:idinforme},
+                     dataType:"text",  
+                      success:function(data)  
+                     {  
+                          event.returnValue = "AnthonySS";
+                  
 
-<? /*
-<tr><td colspan="4" >
-		
-    	<h3>Fecha de desición de certificación:</h3>
-        
-    	</td>
-        <td colspan="4">
-    	<label><h3><? echo date('d/m/y',$row_inf['fecha_dictamen_coc']);?></h3>  </label>
-	    
-</td>
-</tr>*/?>
-<tr><td colspan="2" >
-		
-    	<h3>Valido desde:</h3>
-        
-    	</td>
-       
-        
-        <td colspan="2">
-    	<input   class="form-control"  name="fecha_inicial"  onchange="this.form.submit()"			title="desde " type="date" value="<? echo $row_cert['fecha_inicial_mexcalsup']; ?>"  />
-	    
-</td>
- </tr>
-        <tr>
-<td colspan="2" >
-		
-    	<h3>Hasta:</h3>
-        
-    	</td>
-        <td colspan="2">
-    	<input   class="form-control"  name="fecha_final"  onchange="this.form.submit()"			title="Hasta " type="date" value="<? echo $row_cert['fecha_final_mexcalsup']; ?>"  />
-	    
-</td>
-</tr>
-<tr><td colspan="2" >
-		
-    	<h3>Fecha de impresión:</h3>
-        
-    	</td>
-        <td colspan="2">
-    	<input   class="form-control"  name="fecha_impresion"  	placeholder="escribe aquí"	onchange="this.form.submit()"	title="impresion " type="date" value="<? echo $row_cert['fecha_impresion_mexcalsup']; ?>"  />
-	    
-</td>
- </tr>
-        <tr>
-<td colspan="2" >
-		
-    	<h3>Acreditación ema:</h3>
-        
-    	</td>
-        <td colspan="2">
-    	<input   class="form-control"  name="acreditacion"  	placeholder="escribe aquí"	onchange="this.form.submit()"	title="acreditacion " type="text" value="<? echo $row_cert['acreditacion_mexcalsup']; ?>"  />
-	    
-</td>
-</tr>
+   }  
+                });  
+           }
 
-
-</table>
- <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
-  <input type="hidden" name="insertar_mex" value="1" />
-                                                   <input type="hidden" name="idinforme" value="<? echo $row_inf['idinforme']; ?>" />
-                                                    <input type="hidden" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
-	</form>	
-	<br />
-     
-    <table width="100%" cellpadding="5" cellspacing="1"><tr><td>
-    Alcance
-    </td><td>
-    Pliego
-    </td></tr>
-    <? $query_mex = sprintf("SELECT descripcion FROM mex_cal_sup WHERE idmex_cal_sup=%s  ", GetSQLValueString( $row_solicitud['idmex_alcance'], "int"));
-$mex= mysql_query($query_mex, $inforgan_pamfa) or die(mysql_error());
-$row_mex= mysql_fetch_assoc($mex);
-
-$query_mexp = sprintf("SELECT descripcion FROM mex_cal_sup WHERE idmex_cal_sup=%s  ", GetSQLValueString( $row_solicitud['idmex_pliego'], "int"));
-$mexp= mysql_query($query_mexp, $inforgan_pamfa) or die(mysql_error());
-$row_mexp= mysql_fetch_assoc($mexp);
-		
-?>
-   
-   
-	  <form action="" method="post" > 
-     <tr>
-       	<td>
-       		<input  name="producto" type="text" value="<? echo $row_mex['descripcion'];?>"  />
-       	</td>
-		<td>
-        	<input  name="nombre_cientifico" placeholder="escribe aquí" type="text" value="<? echo $row_mexp['descripcion'];?>"  />
-         </td>
-              </tr>
- 	</form>
-
-    </table>
-     <form action="../../docs/certificado_mexcalsup.php" method="post" target="_blank" >
-      
-      <input type="submit" value="Ver certificado"  />
-            <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
-          
-            <input type="hidden" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
-            </form> 
-
-    </fieldset>	
-     
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
  
--->
+});
+</script>
+
+
 
 <?php include("includes/footer.php");?>
+</html>
