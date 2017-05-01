@@ -139,7 +139,7 @@ $row_cliente= mysql_fetch_assoc($cliente);
 	                                        	
                                                 <td>
                                                 <form action="formulario.php" method="post">
-                                                 <button type="submit" name="Ver"  value="1"class="btn btn-success">Ver</button>
+                                                 <button data-toggle="tooltip" title="Ver" type="submit" name="Ver"  value="1"class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
                                                  <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
                                                    <input type="hidden" name="idplan_auditoria" value="<? echo $row_plan_auditoria['idplan_auditoria']; ?>" />
 </form></td>
@@ -147,14 +147,16 @@ $row_cliente= mysql_fetch_assoc($cliente);
 {?>
  <td>
                                                 <form action="" method="post">
-                                                 <button type="submit" name="firma"  value="1"class="btn btn-danger">Firmar</button>
+                                                 <button data-toggle="tooltip" title="Por Firmar" type="submit" name="firma" disabled  value="1"class="btn btn-danger"><i class="fa fa-clock-o" aria-hidden="true"></i>
+</button>
                                                  <input type="hidden" name="idplan_auditoria" value="<? echo $row_plan_auditoria['idplan_auditoria']; ?>" />
                                                  
 </form></td><? } else {?>
 
  <td>
                                                 
-                                                 <button type="button" name="firmada"  value="1"class="btn btn-info">Firmada</button>
+                                                  <button data-toggle="tooltip" title="Firmada" type="button" name="firmada" disabled  value="1"class="btn btn-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+</button> 
                                                  
 </form></td><? }?>
 												
