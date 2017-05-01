@@ -24,7 +24,10 @@
       <input type="hidden" name="idinforme" value="<? echo $_POST['idinforme']; ?>" />
       <input type="hidden" name="insertar" value="1" />
       <input type="hidden" name="seccion" value="7" />
+      <? if($row_inf['dictamen_ifa']!="aprobado")
+	  {?>
       <input type="submit" value="Agregar" class="btn btn-success" />
+      <? }?>
   </div>
 </form>
 
@@ -61,7 +64,10 @@
                         <input type="hidden" name="idinforme_hallazgo" value="<? echo $row_informe['idinforme_hallazgo']; ?>" /> 
                         <input type="hidden" name="idinforme" value="<? echo $row_informe['idinforme']; ?>" />
                         <input type="hidden" name="seccion" value="7" />
-                        <input type="image" name="imageField3" id="imageField3" src="../../images/delete.png" title="REMOVER" width="30" height="30" />
+                          <? if($row_inf['dictamen_ifa']!="aprobado")
+	  {?>
+      <input type="image" name="imageField3" id="imageField3" src="../../images/delete.png" title="REMOVER" width="30" height="30" />
+      <? }?>
                       </form>
                     </td>
                 </tr>
@@ -98,7 +104,11 @@
     <div class="col-lg-2">
       <input type="hidden" name="idinforme" value="<? echo $_POST['idinforme']; ?>" />
       <input type="hidden" name="insertar2" value="1" />
+      <? if($row_inf['dictamen_ifa']!="aprobado")
+	  {?>
       <input type="submit" value="Agregar" class="btn btn-success" />
+      <? }?>
+     
     </div>
   </form>   
 </div>
@@ -130,7 +140,10 @@
         <input type="hidden" name="idinforme" value="<? echo $_POST['idinforme']; ?>" />
         <input type="hidden" name="insertar" value="1" />
         <input type="hidden" name="seccion" value="7" />
-        <input type="submit" value="Agregar"   class="btn btn-success"/>
+        <? if($row_inf['dictamen_coc']!="aprobado")
+	  {?>
+      <input type="submit" value="Agregar" class="btn btn-success" />
+      <? }?>
     </div>
 
   </form> 
@@ -166,7 +179,10 @@
                       <input type="hidden" name="idinforme_hallazgo" value="<? echo $row_informe['idinforme_hallazgo']; ?>" /> 
                       <input type="hidden" name="idinforme" value="<? echo $row_informe['idinforme']; ?>" />
                       <input type="hidden" name="seccion" value="7" />
-                      <input type="image" name="imageField3" id="imageField3" src="../../images/delete.png" title="REMOVER" width="30" height="30" />
+                        <? if($row_inf['dictamen_coc']!="aprobado")
+	  {?>
+      <input type="image" name="imageField3" id="imageField3" src="../../images/delete.png" title="REMOVER" width="30" height="30" />
+      <? }?>
                     </form>
                   </td>
                 </tr>
@@ -201,7 +217,10 @@
           <div class="col-lg-2">
                 <input type="hidden" name="idinforme" value="<? echo $_POST['idinforme']; ?>" />
                 <input type="hidden" name="insertar3" value="1" />       
-                <input type="submit" value="Agregar"  class="btn btn-success"/>
+                <? if($row_inf['dictamen_coc']!="aprobado")
+	  {?>
+      <input type="submit" value="Agregar" class="btn btn-success" />
+      <? }?>
         </div> 
   </form>   
 </div>
@@ -232,7 +251,10 @@
         <input type="hidden" name="idinforme" value="<? echo $_POST['idinforme']; ?>" />
         <input type="hidden" name="insertar" value="1" />
         <input type="hidden" name="seccion" value="7" />
-        <input type="submit" value="Agregar" class="btn btn-success" />
+       <? if($row_inf['dictamen_mexcalsup']!="aprobado")
+	  {?>
+      <input type="submit" value="Agregar" class="btn btn-success" />
+      <? }?>
       </div>
     </form>
     <div class="col-lg-12">   
@@ -267,7 +289,11 @@
                   <input type="hidden" name="idinforme_hallazgo" value="<? echo $row_informe['idinforme_hallazgo']; ?>" /> 
                   <input type="hidden" name="idinforme" value="<? echo $row_informe['idinforme']; ?>" />
                   <input type="hidden" name="seccion" value="7" />
-                  <input type="image" name="imageField3" id="imageField3" src="../../images/delete.png" title="REMOVER" width="30" height="30" />
+                  <? if($row_inf['dictamen_mexcalsup']!="aprobado")
+	  {?>
+      <input type="image" name="imageField3" id="imageField3" src="../../images/delete.png" title="REMOVER" width="30" height="30" />
+      <? }?>
+                 
                   </form>
               </td>
             </tr>
@@ -303,7 +329,10 @@
         <div class="col-lg-2">
           <input type="hidden" name="idinforme" value="<? echo $_POST['idinforme']; ?>" />
           <input type="hidden" name="insertar4" value="1" />
-          <input type="submit" value="Agregar" class="btn btn-success" />
+          <? if($row_inf['dictamen_mexcalsup']!="aprobado")
+	  {?>
+      <input type="submit" value="Agregar" class="btn btn-success" />
+      <? }?>
         </div>
 
         </form>      

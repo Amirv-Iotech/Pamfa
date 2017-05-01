@@ -40,7 +40,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 if($_POST['insertar'])
 {
 	
-	$query_certificado= sprintf("select *from certificado where idinforme=%s ", GetSQLValueString($_POST["idinforme"], "int"),GetSQLValueString($_POST["idcertificado"], "int"));
+	$query_certificado= sprintf("select *from certificado where idcertificado=%s ",GetSQLValueString($_POST["idcertificado"], "int"));
 $certificado = mysql_query($query_certificado, $inforgan_pamfa) or die(mysql_error());
 $total_certificado = mysql_num_rows($certificado);
 
@@ -58,7 +58,7 @@ if($total_certificado<1)
 			 GetSQLValueString($_POST['acreditacion'], "text"));
 }
 else{
-	$insertSQL = sprintf("update certificado set version_ifa=%s,fecha_inicial_ifa=%s,fecha_final_ifa=%s,fecha_impresion_ifa=%s,acreditacion_ifa=%s WHERE idinforme=%s ",
+	$insertSQL = sprintf("update certificado set version_ifa=%s,fecha_inicial_ifa=%s,fecha_final_ifa=%s,fecha_impresion_ifa=%s,acreditacion_ifa=%s WHERE idcertificado=%s ",
  
             
 			 GetSQLValueString($_POST['version'], "text"),
@@ -66,8 +66,9 @@ else{
              GetSQLValueString($_POST['fecha_final'], "text"),
 			 GetSQLValueString($_POST['fecha_impresion'], "text"),
 			 GetSQLValueString($_POST['acreditacion'], "text"),
-			  GetSQLValueString($_POST['idinforme'], "text"));
+			  GetSQLValueString($_POST['idcertificado'], "text"));
 }
+echo $insertSQL;
  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
 }
 
@@ -137,7 +138,7 @@ else{
 //////////////////////////inicio coc
 if($_POST['insertar_coc'])
 {
-	$query_certificado= sprintf("select *from certificado where idinforme=%s ", GetSQLValueString($_POST["idinforme"], "int"),GetSQLValueString($_POST["idcertificado"], "int"));
+	$query_certificado= sprintf("select *from certificado where idcertificado=%s ",GetSQLValueString($_POST["idcertificado"], "int"));
 $certificado = mysql_query($query_certificado, $inforgan_pamfa) or die(mysql_error());
 $total_certificado = mysql_num_rows($certificado);
 if($total_certificado<1)
@@ -154,7 +155,7 @@ if($total_certificado<1)
 			 GetSQLValueString($_POST['acreditacion'], "text"));
 }
 else{
-	$insertSQL = sprintf("update certificado set version_coc=%s,fecha_inicial_coc=%s,fecha_final_coc=%s,fecha_impresion_coc=%s,acreditacion_coc=%s WHERE idinforme=%s",
+	$insertSQL = sprintf("update certificado set version_coc=%s,fecha_inicial_coc=%s,fecha_final_coc=%s,fecha_impresion_coc=%s,acreditacion_coc=%s WHERE idcertificado=%s",
  
             
 			 GetSQLValueString($_POST['version'], "text"),
@@ -162,7 +163,7 @@ else{
              GetSQLValueString($_POST['fecha_final'], "text"),
 			 GetSQLValueString($_POST['fecha_impresion'], "text"),
 			 GetSQLValueString($_POST['acreditacion'], "text"),
-			  GetSQLValueString($_POST['idinforme'], "text"));
+			  GetSQLValueString($_POST['idcertificado'], "text"));
 }
  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
 }
@@ -234,7 +235,7 @@ if($_POST['insertar_destino_coc'] && $_POST['insertar_destino_coc'] == 1)
 if($_POST['insertar_mex'])
 {
 	
-	$query_certificado= sprintf("select *from certificado where idinforme=%s ", GetSQLValueString($_POST["idinforme"], "int"),GetSQLValueString($_POST["idcertificado"], "int"));
+	$query_certificado= sprintf("select *from certificado where idcertificado ",GetSQLValueString($_POST["idcertificado"], "int"));
 $certificado = mysql_query($query_certificado, $inforgan_pamfa) or die(mysql_error());
 $total_certificado = mysql_num_rows($certificado);
 
@@ -252,13 +253,13 @@ if($total_certificado<1)
 			 GetSQLValueString($_POST['acreditacion'], "text"));
 }
 else{
-	$insertSQL = sprintf("update certificado set fecha_inicial_mexcalsup=%s,fecha_final_mexcalsup=%s,fecha_impresion_mexcalsup=%s,acreditacion_mexcalsup=%s WHERE idinforme=%s ",
+	$insertSQL = sprintf("update certificado set fecha_inicial_mexcalsup=%s,fecha_final_mexcalsup=%s,fecha_impresion_mexcalsup=%s,acreditacion_mexcalsup=%s WHERE idcertificado=%s ",
  
 			 GetSQLValueString($_POST['fecha_inicial'], "text"),
              GetSQLValueString($_POST['fecha_final'], "text"),
 			 GetSQLValueString($_POST['fecha_impresion'], "text"),
 			 GetSQLValueString($_POST['acreditacion'], "text"),
-			  GetSQLValueString($_POST['idinforme'], "text"));
+			  GetSQLValueString($_POST['idcertificado'], "text"));
 }
  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
 }

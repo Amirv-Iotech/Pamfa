@@ -35,7 +35,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 	
 }
 
-echo"lnj=".$_POST['seccion'];
+
 if ($_POST['seccion']==5) {
 $insertSQL = sprintf("update plan_auditoria set producto=%s,procesadora=%s,fecha_emision=%s,fecha_auditoria=%s,tipo=%s,rancho_invernadero=%s,superficie=%s,num_pgfs=%s,num_pamfa=%s,producto_proce=%s,manip=%s,num_globalgg=%s,num_coc=%s,productos=%s,otro=%s,objetivo=%s,criterio=%s WHERE idsolicitud=%s",
  GetSQLValueString($_POST['producto'], "text"),

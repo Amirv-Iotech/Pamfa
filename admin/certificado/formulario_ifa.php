@@ -135,7 +135,7 @@ $row_cert= mysql_fetch_assoc($cert);
       <h3>Versión:</h3>
   </div>
   <div class="col-lg-8">
-      <input placeholder=""  class="form-control"  name="version"      onchange="this.form.submit()" title="version " type="text" value="<? echo $row_cert['version_ifa']; ?>"  />
+      <input placeholder=""  class="form-control"  id="version" name="version"       title="version " type="text" value="<? echo $row_cert['version_ifa']; ?>"  />
   </div>
   <div class="col-lg-4">
       <h3>Fecha de decisión de certificación:</h3>
@@ -148,30 +148,29 @@ $row_cert= mysql_fetch_assoc($cert);
     <h3>Valido desde:</h3>
   </div>
   <div class="col-lg-8 col-xs-8" style="padding:0px">
-    <input   class="form-control"  name="fecha_inicial"  onchange="this.form.submit()"      title="desde " type="date" value="<? echo $row_cert['fecha_inicial_ifa']; ?>"  />
+    <input   class="form-control"  id="fecha_inicial"  name="fecha_inicial"        title="desde " type="date" value="<? echo $row_cert['fecha_inicial_ifa']; ?>"  />
   </div>
   </div>
   <div class="col-lg-4">
     <h3>Hasta:</h3>
   </div>
   <div class="col-lg-8">
-    <input   class="form-control"  name="fecha_final"  onchange="this.form.submit()"      title="Hasta " type="date" value="<? echo $row_cert['fecha_final_ifa']; ?>"  />
+    <input   class="form-control"  id="fecha_final" name="fecha_final"        title="Hasta " type="date" value="<? echo $row_cert['fecha_final_ifa']; ?>"  />
   </div>
   <div class="col-lg-4">
     <h3>Fecha de impresión:</h3>
   </div>
   <div class="col-lg-8">
-      <input   class="form-control"  name="fecha_impresion"   placeholder=""  onchange="this.form.submit()" title="impresion " type="date" value="<? echo $row_cert['fecha_impresion_ifa']; ?>"  />
+      <input   class="form-control" id="fecha_impresion"  name="fecha_impresion"   placeholder=""   title="impresion " type="date" value="<? echo $row_cert['fecha_impresion_ifa']; ?>"  />
   </div>
   <div class="col-lg-4">
       <h3>Acreditación ema:</h3>
   </div>
   <div class="col-lg-8">
-      <input   class="form-control"  name="acreditacion"    placeholder=""  onchange="this.form.submit()" title="acreditacion " type="text" value="<? echo $row_cert['acreditacion_ifa']; ?>"  />
+      <input   class="form-control"  id="acreditacion" name="acreditacion"    placeholder=""   title="acreditacion " type="text" value="<? echo $row_cert['acreditacion_ifa']; ?>"  />
       <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
-      <input type="hidden" name="insertar" value="1" />
-      <input type="hidden" name="idinforme" value="<? echo $row_inf['idinforme']; ?>" />
-      <input type="hidden" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
+      <input type="hidden" id="insertar" name="insertar" value="1" />
+     <input type="hidden" id="idinforme" name="idinforme" value="<? echo $row_inf['idinforme']; ?>" />   <input type="hidden" id="idcertificado" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
   </div>
   </form>
   <div class="col-lg-12">
@@ -292,271 +291,46 @@ $row_cert= mysql_fetch_assoc($cert);
       <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
       <input type="hidden" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
     </form> 
+      <input type="hidden" id="idinforme" name="idinforme" value="<? echo $row_inf['idinforme']; ?>" />   <input type="hidden" id="idcertificado" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
   </div>
 </div>
 </div>
- <!--
-<div class="content">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-md-12">             
-<div class="panel panel-white">
-<div class="panel-heading clearfix"><br>
 
 
 
-	
-    
-	<fieldset>
-   
-    
-    
-	<legend></legend>
-    <form action="" method="post">
-		<table align="center" width="100%"  ><tr><td colspan="4" >
-		
-    	<h3>Razón social:</h3>
-        
-    	</td>
-        <td colspan="4">
-    	<label><h3><? echo $row_operador['nombre_legal'];?></h3> </label>
-	    
-</td>
-</tr>
-<tr><td colspan="4" >
-		
-    	<h3>Dirección:</h3>
-        
-    	</td>
-        <td colspan="4">
-    	<label><h3><? echo $row_operador['direccion'].",".$row_operador['colonia'].",".$row_operador['municipio'].",".$row_operador['estado'];?></h3>  </label>
-	    
-</td>
-</tr>
-<tr><td colspan="4" >
-		
-    	<h3>Opción:</h3>
-        
-    	</td>
-        <td colspan="4">
-    	<label><h3><? if($row_solicitud_esq['esquema']!=NULL){ echo "1 ". $row_solicitud_esq['esquema'];}else { echo "2 Grupo de productores";}?></h3 ></label>
-	    
-</td>
-</tr>
-<tr><td colspan="4" >
-		
-    	<h3>Versión:</h3>
-        
-    	</td>
-        <td colspan="4">
-    	 <input placeholder=""  class="form-control"  name="version"  		onchange="this.form.submit()"	title="version " type="text" value="<? echo $row_cert['version_ifa']; ?>"  />
-	    
-</td>
-</tr>
-<tr><td colspan="4" >
-		
-    	<h3>Fecha de desición de certificación:</h3>
-        
-    	</td>
-        <td colspan="4">
-    	<label><h3><? echo date('d/m/y',$row_inf['fecha_dictamen_ifa']);?></h3>  </label>
-	    
-</td>
-</tr>
-<tr><td colspan="2" >
-		
-    	<h3>Valido desde:</h3>
-        
-    	</td>
-        <td colspan="2">
-    	<input   class="form-control"  name="fecha_inicial"  onchange="this.form.submit()"			title="desde " type="date" value="<? echo $row_cert['fecha_inicial_ifa']; ?>"  />
-	    
-</td>
-<td colspan="2" >
-		
-    	<h3>Hasta:</h3>
-        
-    	</td>
-        <td colspan="2">
-    	<input   class="form-control"  name="fecha_final"  onchange="this.form.submit()"			title="Hasta " type="date" value="<? echo $row_cert['fecha_final_ifa']; ?>"  />
-	    
-</td>
-</tr>
-<tr><td colspan="2" >
-		
-    	<h3>Fecha de impresión:</h3>
-        
-    	</td>
-        <td colspan="2">
-    	<input   class="form-control"  name="fecha_impresion"  	placeholder=""	onchange="this.form.submit()"	title="impresion " type="date" value="<? echo $row_cert['fecha_impresion_ifa']; ?>"  />
-	    
-</td>
-<td colspan="2" >
-		
-    	<h3>Acreditación ema:</h3>
-        
-    	</td>
-        <td colspan="2">
-    	<input   class="form-control"  name="acreditacion"  	placeholder=""	onchange="this.form.submit()"	title="acreditacion " type="text" value="<? echo $row_cert['acreditacion_ifa']; ?>"  />
-	    
-</td>
-</tr>
+<script>
+window.addEventListener("beforeunload", function(event) {    
+var version =$('#version').val();
+var fecha_inicial =$('#fecha_inicial').val();
+var fecha_final =$('#fecha_final').val();
+var fecha_impresion =$('#fecha_impresion').val();
+var acreditacion =$('#acreditacion').val();
+var insertar =$('#insertar').val();
+var idcertificado =$('#idcertificado').val();
+var idinforme =$('#idinforme').val();
 
 
-</table>
- <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
-  <input type="hidden" name="insertar" value="1" />
-                                                   <input type="hidden" name="idinforme" value="<? echo $row_inf['idinforme']; ?>" />
-                                                    <input type="hidden" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
-	</form>	
-	<br />
-     
-    <table width="100%" cellpadding="5" cellspacing="1"><tr><td>
-    Producto
-    </td><td>
-    Nombre Cientifico
-    </td><td>
-    GGN
-    </td><td>
-    Número PAMFA
-    </td><td>
-    Centro de manipulación
-    </td><td>
-    Cosecha excluida
-    </td><td>
-    Numero de emplazamientos
-    </td><td>
-    Producción paralela
-    </td></tr>
-    <? $cont=1;
-     while($row_cultivos= mysql_fetch_assoc($cultivos))
-	{
-		$query_cert_productos = sprintf("SELECT * FROM cert_producto WHERE idcultivo=%s  ", GetSQLValueString( $row_cultivos['idcultivos'], "int"));
-$cert_productos= mysql_query($query_cert_productos, $inforgan_pamfa) or die(mysql_error());
-$row_cert_productos= mysql_fetch_assoc($cert_productos);
-$total_cert_productos = mysql_num_rows($cert_productos);		
-echo $row_cultivos['idcultivos'];		
-   if($total_cert_productos>0){?>
-   
-   
-	  <form action="" method="post" > 
-     <tr>
-       	<td>
-       		<input  name="producto" type="text" value="<? echo $row_cert_productos['producto'];?>"  />
-       	</td>
-		<td>
-        	<input  name="nombre_cientifico" placeholder="" type="text" value="<? echo $row_cert_productos['nombre_cientifico'];?>"  />
-         </td>
-         <td>
-         	<input  name="ggn" type="text" value="<? if($row_plan_aud['num_globalgg']!=NULL){echo $row_plan_aud['num_globalgg'];} else { echo $row_cert_productos['ggn'];}?>"  />
-         </td>
-         <td>
-         	<input  name="pamfa" type="text" value="<? echo $row_cert_productos['pamfa'];?>"  />
-          </td>
-          <td>
-          	<input  name="centro_manipulacion" type="text" value="<?  echo $row_cert_productos['centro_manipulacion'];?>"  />
-          </td>
-          <td>
-          	<input name="cosecha_excluida" placeholder=""type="text" value="<? echo $row_cert_productos['cosecha_excluida'];?>"  />
-          </td>
-          <td>
-          	<input  name="emplazamientos" placeholder=""type="number" value="<? echo $row_cert_productos['emplazamientos'];?>"  />
-          </td>
-          <td>
-          	<input  name="prod_paralela" type="text" value="<? echo $row_cert_productos['prod_paralela'];?>"  />
-          </td>
-          
-          
-          <td>
-          	<input type="submit" value="Agregar"  />
-            <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
-            <input type="hidden" name="insertar_prod" value="1" />
-            <input type="hidden" name="idinforme" value="<? echo $row_inf['idinforme']; ?>" />
-            <input type="hidden" name="idcultivo" value="<? echo $row_cultivos['idcultivos']; ?>" />
-            <input type="hidden" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
-             <input type="hidden" name="idcert_producto" value="<? echo $row_cert_productos['idcert_producto']; ?>" />
-            
-          </td>
-     </tr>
- 	</form>
+  {  
+                $.ajax({  
+                     url:"cerebro.php",  
+                     method:"POST",
+                    data:{version:version,fecha_inicial:fecha_inicial,fecha_final:fecha_final,fecha_impresion:fecha_impresion,acreditacion:acreditacion,insertar:insertar,idcertificado:idcertificado,idinforme:idinforme},
+                     dataType:"text",  
+                      success:function(data)  
+                     {  
+                          event.returnValue = "AnthonySS";
+                  
 
-    <? } else {?>
-	<form action="" method="post" > 
-     <tr>
-       	<td>
-       		<input  name="producto" type="text" value="<? echo $row_cultivos['producto'];?>"  />
-       	</td>
-		<td>
-        	<input  name="nombre_cientifico" placeholder="" type="text" value="<? echo $row_cert_productos['nombre_cientifico'];?>"  />
-         </td>
-         <td>
-         	<input  name="ggn" type="text" value="<? echo $row_plan_aud['num_globalgg'];?>"  />
-         </td>
-         <td>
-         	<input  name="pamfa" type="text" value="<? echo $row_plan_aud['num_pamfa'];?>"  />
-          </td>
-          <td>
-          	<input  name="centro_manipulacion" type="text" value="<? if ($row_cultivos['empaque']==1){ echo $row_procesadora['empresa'];}else {echo "No";}?>"  />
-          </td>
-          <td>
-          	<input name="cosecha_excluida" placeholder=""type="text" value="<? echo $row_cert_productos['cosecha_excluida'];?>"  />
-          </td>
-          <td>
-          	<input  name="emplazamientos" placeholder=""type="number" value="<? echo $row_cert_productos['emplazamientos'];?>"  />
-          </td>
-          <td>
-          	<input  name="prod_paralela" type="text" value="<? if ($row_sol_esq['preg7']=="Si"){ echo "Si";}else {echo "No";}?>"  />
-          </td>
-          <td>
-          	<input type="submit" value="Agregar"  />
-            <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
-            <input type="hidden" name="insertar_prod" value="1" />
-            <input type="hidden" name="idinforme" value="<? echo $row_inf['idinforme']; ?>" />
-            <input type="hidden" name="idcultivo" value="<? echo $row_cultivos['idcultivos']; ?>" />
-            <input type="hidden" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
-            
-          </td>
-     </tr>
- 	</form>
-
-	<? }?>
-	<? $cont ++; }?>
-    </table>
-    	
-      <form action="../../docs/certificado_ifa.php" method="post" target="_blank" >
-      
-      <input type="submit" value="Ver certificado"  />
-            <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
-          
-            <input type="hidden" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
-            </form> 
-
-	
-	
-    </fieldset>	
-    
+   }  
+                });  
+           }
 
  
-
- 
-
-
+});
+</script>
 
 
-
-
-
-
-
-
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
- 
 
 
 <?php include("includes/footer.php");?>
-</html>a
+</html>
