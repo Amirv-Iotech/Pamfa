@@ -107,12 +107,12 @@ $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error()
 	                                    <tbody>
                                         <? while( $row_solicitud= mysql_fetch_assoc($solicitud))
 										{
-											$query_cliente = "SELECT nombre_legal FROM operador where idoperador=".$row_solicitud['idoperador']."";
+											$query_cliente = "SELECT nombre_legal FROM operador where idoperador='".$row_solicitud['idoperador']."'";
 $cliente = mysql_query($query_cliente, $inforgan_pamfa) or die(mysql_error());
 $row_cliente= mysql_fetch_assoc($cliente);
 											?>
 	                                        <tr>
-	                                        	<td><? echo $row_solicitud['idsolicitud'];?></td>
+	                                        	<td><? echo $row_solicitud['idsolicitud'].$row_solicitud['idoperador'];?></td>
 	                                        	<td><? echo $row_cliente['nombre_legal'];?></td>
 	                                        	<td><? echo date('d/m/y',$row_solicitud['fecha']);?></td>
                                                 <td>

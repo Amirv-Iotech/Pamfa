@@ -12,37 +12,37 @@
             <div class="col-lg-2 col-xs-2 campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA; min-height: 124px;">
                <label>Producto y variedad:</label>
               <div class="campos2 div4">
-                  <input class="form-control inputsf" name="producto" placeholder=""type="text"  />
+                  <input class="form-control inputsf" id="producto" name="producto" placeholder=""type="text"  />
               </div>
             </div>
             <div class="col-lg-2 col-xs-2 campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA; min-height: 124px;">
               <label>N° de productores:</label>
               <div class="campos2 div4">
-              <input  class="form-control inputsf" name="num_productores" placeholder="" type="number"  />
+              <input  class="form-control inputsf" id="num_productores" name="num_productores" placeholder="" type="number"  />
               </div>
             </div>
             <div class="col-lg-2 col-xs-2 campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA; min-height: 124px;">
              <label>N° de fincas/PMUs:</label>
              <div class="campos2 div4">
-              <input class="form-control inputsf" name="num_fincas" type="number"  placeholder=""/>
+              <input class="form-control inputsf"  id="num_fincas" name="num_fincas" type="number"  placeholder=""/>
               </div>
             </div>
             <div class="col-lg-2 col-xs-2 campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA; min-height: 124px;">
               <label>Ubucación de cultivos:</label>
               <div class=" campos2 div4">
-              <input  class="form-control inputsf" name="ubicacion_unidad" placeholder="" type="text"  />
+              <input  class="form-control inputsf" id="ubicacion_unidad" name="ubicacion_unidad" placeholder="" type="text"  />
               </div>
             </div>
             <div class="col-lg-2 col-xs-2 campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA; min-height: 124px;">
               <label>Coodernadas de las unidades:</label>
               <div class="campos2 div4">
-              <input  class="form-control inputsf" name="coordenadas" placeholder="" type="text"  />
+              <input  class="form-control inputsf" id="coordenadas" name="coordenadas" placeholder="" type="text"  />
               </div>
             </div>
             <div class="col-lg-2 col-xs-2 campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA; min-height: 124px;">
               <label>Periodo de cosecha:</label>
               <div class="campos2 div4">
-              <input  class="form-control inputsf" name="periodo_cosecha" placeholder="" type="text"  />
+              <input  class="form-control inputsf" id="periodo_cosecha" name="periodo_cosecha" placeholder="" type="text"  />
               </div>
             </div>
         </div>
@@ -50,13 +50,13 @@
             <div class="col-lg-2 col-xs-2 campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA; min-height: 124px;">
                <label> Superficie (Has):</label>
                <div class="campos2 div4">
-                <input  class="form-control inputsf" name="superficie" placeholder="" type="number" step="any" />
+                <input  class="form-control inputsf" id="superficie" name="superficie" placeholder="" type="number" step="any" />
                 </div>
             </div>
             <div class="col-lg-2 col-xs-2 campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA; min-height: 124px;">
                 <label>Aire libre- cubierto:</label>
                 <div class="campos2 div4">
-                <select class="form-control" name="libre_cubierto" >
+                <select class="form-control" id="libre_cubierto"  name="libre_cubierto" >
                   <option value="-">Seleciona</option>
                   <option value="1">Aire libre</option>
                   <option value="2">Cubierto</option>
@@ -66,7 +66,7 @@
             <div class="col-lg-2 col-xs-2 campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA; min-height: 124px;">
                 <label>Cosecha/ Recolección :</label>
                 <div class="campos2 div4">
-                <select class="form-control" name="cosecha_recoleccion" >
+                <select class="form-control"  id="cosecha_recoleccion"name="cosecha_recoleccion" >
                 <option value="-">Seleciona</option>
                 <option value="1">Si</option>
                 <option value="2">No</option>
@@ -76,7 +76,7 @@
             <div class="col-lg-2 col-xs-2 campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA; min-height: 124px;">
                 <label>Empaque/ Manipulación :</label>
                 <div class="campos2 div4">
-                <select class="form-control" name="empaque" >
+                <select class="form-control"  id="empaque" name="empaque" >
                 <option value="-">Seleciona</option>
                 <option value="1">Si</option>
                 <option value="2">No</option>
@@ -86,15 +86,17 @@
             <div class="col-lg-2 col-xs-2 campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA; min-height: 124px;">
                 <label>Numero de trabajadores:</label>
                 <div class="campos2 div4">
-                <input class="form-control" name="num_trabajadores" type="number"  placeholder=""/>
+                <input class="form-control"  id="num_trabajadores" name="num_trabajadores" type="number"  placeholder=""/>
                 </div>
             </div>
             <div class="col-lg-2 col-xs-2 campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA; min-height: 124px; ">
-                <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
-                <input type="hidden" name="insertar_prod" value="1" />
-                <input type="hidden" name="seccion" value="9" />
+                <input type="hidden" id="idsolicitud" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+                <input type="hidden"  id="insertar_prod" name="insertar_prod" value="1" />
+                <input type="hidden" id="seccion" name="seccion" value="1" />
+               
+                <input type="hidden" id="idoperador" name="idoperador" value="<? echo $row_operador['idoperador']; ?>" />
                 <div class=" col-xs-12 campos2" style="position: absolute; bottom: 35%; text-align: center;">
-                <input type="submit" value="Agregar"  />
+                <input type="button" value="agregar" name="agregar" id="agregar"  />
                 </div>
             </div>
         </div>

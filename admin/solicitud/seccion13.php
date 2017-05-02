@@ -1,7 +1,7 @@
 <fieldset><br/>
   <div class="row">
     <div class="col-lg-12 col-xs-12">
-      <form method="post" action="#" id="form13">
+      
         <div class="col-lg-12 col-xs-12">
             <h4><b>Estimado cliente favor de marcar las opciones para uso de sus datos</b></h4>            
         </div>
@@ -27,7 +27,7 @@
                  <button  type="button"  id="terminada" name="terminada"   class="btn btn-success" value="1">Solicitud terminada</button>
                  <? }?>
         </div>
-        </form>
+       
     </div>
   </div>
 </fieldset>

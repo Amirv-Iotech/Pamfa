@@ -33,7 +33,7 @@
           <div class="form-group col-lg-4 col-sm-4 campos2" style="border: solid 1px #AAAAAA; min-height: 136px">
             <label for="preg1_op2" class="form-label col-lg-12">Número de productores a certificar:</label>
             <div class="col-lg-12 div4">
-              <input placeholder="" class="form-control inputsf"   id="preg1_op2" name="preg1_op2" type="number      title="Número " value="<? echo $row_solicitud_esq['preg1_op2'];?>" />
+              <input placeholder="" class="form-control inputsf"   id="preg1_op2" name="preg1_op2" type="number "     title="Número " value="<? echo $row_solicitud_esq['preg1_op2'];?>" />
             </div>
           </div>
           <div class=" form-group col-lg-4 col-sm-4 campos2" style="border: solid 1px #AAAAAA; min-height: 136px">
@@ -152,8 +152,8 @@
             </div>
           </div>
 
-            <input type="hidden" id="idsolicitud5" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+           
             <input type="hidden" id="idsolicitud_esquema" name="idsolicitud_esquema" value="<? echo $row_solicitud_esq['idsolicitud_esquema']; ?>" />
-            <input type="hidden" id="seccion5" name="seccion5" value="5" />
+           
   </div><!-- /row-============  /ROW ====-->
 </fieldset>

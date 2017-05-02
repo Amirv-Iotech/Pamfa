@@ -78,7 +78,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 <div class="panel-heading clearfix"><br>
 
 
-<form id="myform" action="#seccion1" method="post" class="form-horizontal" enctype="multipart/form-data">
+
 	<div class="row" id="seccion1">
 		<div class="col-lg-12">
 			<p style="font-size:25px; text-align:center;">Solicitud de certificación de producto</p>
@@ -115,8 +115,8 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 		</div>
 	</div>
     
-  <input type="hidden" id="fecha1" name="fecha1" value="<? echo time();?>" />
-  </form>
+  
+  
 	<fieldset> 
     <div id="seccion1" class="row" style="border: solid 1px #AAAAAA; background-color: #ecfbe7">
         <div class="col-md-12" style="text-align: center; background-color:#dbf573e6">
@@ -212,7 +212,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 
 <fieldset>
 	<div id="seccion2" class="row" style="background-color: #ecfbe7; border: solid 1px #AAAAAA;">
-  <form id="myform2" action="#seccion2" method="post" class="form-horizontal" enctype="multipart/form-data">
+ 
 	<div class=" form-group col-md-12 campos2" style="margin:0px;">
 		<div class="col-md-3 col-sm-6" style="padding: 0px 0px; border: solid 1px #AAAAAA;">
 		  <div class="col-md-12" style="background-color:#dbf573e6; height:120px; overflow: hidden; text-overflow:ellipsis;">
@@ -275,7 +275,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 				<label  class="form-label" for="reponsable" >Nombre del responsable de la aplicación de la norma en la entidad legal:</label>
 			</div>
 			<div class="col-lg-12 col-md-12 campos">
-				<input placeholder="" class="form-control inputsf"  id="responsable" onchange="loadLog2()" name="responsable" value="<? echo $row_solicitud['responsable'];?>"  title="Responsable "  />
+				<input placeholder="" class="form-control inputsf"  id="responsable" name="responsable" value="<? echo $row_solicitud['responsable'];?>"  title="Responsable "  />
 			</div>
         </div>
 		<div class="col-lg-6 col-md-6" style="padding: 0px 0px; border:solid 1px #AAAAAA;">
@@ -283,15 +283,17 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 				<label  class="form-label"  for="personal" >Nombre del personal que realizó la autoevaluación/auditoria interna en la entidad legal:</label>
 			</div>
 			<div class="col-lg-12 col-md-12 campos">
-				<input placeholder="" class="form-control inputsf"  id="personal" onchange="loadLog2()" name="personal" value="<? echo $row_solicitud['personal'];?>"  title="Personal "/>
+				<input placeholder="" class="form-control inputsf"  id="personal"  name="personal" value="<? echo $row_solicitud['personal'];?>"  title="Personal "/>
 			</div>
         </div>
       </div>
-
-       <input type="hidden" id="idoperador" name="idoperador" value="<? echo $row_operador['idoperador']; ?>" />
-      <input type="hidden"  id="idsolicitud" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
-        <input type="hidden" id="seccion" name="seccion2" value="2" />
-      </form>
+<input type="hidden" id="idsolicitud" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+                <input type="hidden" name="insertar_prod" value="1" />
+                <input type="hidden" id="seccion" name="seccion" value="1" />
+               
+                <input type="hidden" id="idoperador" name="idoperador" value="<? echo $row_operador['idoperador']; ?>" />
+      
+        
 </div>
 </fieldset>	
 <?php include("seccion3.php");?>
@@ -326,14 +328,14 @@ window.addEventListener("beforeunload", function(event) {
             var post_fecha = $('#fecha').val();
             var seccion=1;           
             //Seccion2
-            var post_personal = $('#personal').val();
+            var personal = $('#personal').val();
             var post_num_ggn = $('#num_ggn').val();
             var post_num_gln = $('#num_gln').val();
             var post_num_coc = $('#num_coc').val();
             var post_num_mex_cal_sup = $('#num_mex_cal_sup').val();
             var post_num_primus = $('#num_primus').val();
             var post_num_senasica = $('#num_senasica').val();
-            var post_responsable = $('#responsable').val();
+            var responsable= $('#responsable').val();
             //seccion 3
             var post_organismo = $('#organismo').val();
             var post_fecha_inicio = $('#fecha_inicio').val();
@@ -493,7 +495,7 @@ window.addEventListener("beforeunload", function(event) {
                 $.ajax({  
                      url:"cerebro.php",  
                      method:"POST",
-                    data:{persona:post_persona, seccion:seccion, idoperador:post_idoperador, idsolicitud:post_idsolicitud, fecha:post_fecha, personal:post_personal, num_ggn:post_num_ggn, num_gln:post_num_gln, num_coc:post_num_coc, num_mex_cal_sup:post_num_mex_cal_sup, num_primus:post_num_primus, num_senasica:post_num_senasica, responsable:post_responsable,organismo:post_organismo, fecha_inicio:post_fecha_inicio, fecha_fin:post_fecha_fin, idcert_anterior:post_idcert_anterior, esq_tipo1_op1: esq_tipo1_op1, preg1_op2:preg1_op2, preg2_op2:preg2_op2, preg3_op2:preg3_op2,  preg1_tipo2:preg1_tipo2, preg2_tipo2:preg2_tipo2, preg3_tipo2:preg3_tipo2, esq_tipo2_op1:esq_tipo2_op1, preg4_tipo2:preg4_tipo2, preg5_tipo2:preg5_tipo2, preg6:preg6, preg7:preg7, preg8:preg8, idsolicitud_esquema:idsolicitud_esquema,primus:primus, idmex_pliego:idmex_pliego, idmex_alcance:idmex_alcance, idsrrc:idsrrc, srrc_preg1:srrc_preg1, srrc_preg2:srrc_preg2, empresa:empresa, rfc:rfc, direccion:direccion, direccion2:direccion2, cp:cp, tel:tel, idprocesadora:idprocesadora, inf_comercializacion:inf_comercializacion, idioma_aud:idioma_aud, idioma_inf:idioma_inf, respuesta4:respuesta4, respuesta5:respuesta5, terminada:terminada},
+                    data:{persona:post_persona, seccion:seccion, idoperador:post_idoperador, idsolicitud:post_idsolicitud, fecha:post_fecha, personal:personal, num_ggn:post_num_ggn, num_gln:post_num_gln, num_coc:post_num_coc, num_mex_cal_sup:post_num_mex_cal_sup, num_primus:post_num_primus, num_senasica:post_num_senasica,responsable:responsable,organismo:post_organismo, fecha_inicio:post_fecha_inicio, fecha_fin:post_fecha_fin, idcert_anterior:post_idcert_anterior, esq_tipo1_op1: esq_tipo1_op1, preg1_op2:preg1_op2, preg2_op2:preg2_op2, preg3_op2:preg3_op2,  preg1_tipo2:preg1_tipo2, preg2_tipo2:preg2_tipo2, preg3_tipo2:preg3_tipo2, esq_tipo2_op1:esq_tipo2_op1, preg4_tipo2:preg4_tipo2, preg5_tipo2:preg5_tipo2, preg6:preg6, preg7:preg7, preg8:preg8, idsolicitud_esquema:idsolicitud_esquema,primus:primus, idmex_pliego:idmex_pliego, idmex_alcance:idmex_alcance, idsrrc:idsrrc, srrc_preg1:srrc_preg1, srrc_preg2:srrc_preg2, empresa:empresa, rfc:rfc, direccion:direccion, direccion2:direccion2, cp:cp, tel:tel, idprocesadora:idprocesadora, inf_comercializacion:inf_comercializacion, idioma_aud:idioma_aud, idioma_inf:idioma_inf, respuesta4:respuesta4, respuesta5:respuesta5, terminada:terminada},
                      dataType:"text",  
                      success:function(data)  
                      {  
@@ -520,59 +522,45 @@ function cambiar(){
 
  }
  </script>
- <!--
+ 
 
 
+<script type="text/javascript">
 
-<!--
-<script>
-function loadLog4() {  
-  var idioma_aud = document.getElementById('idioma_aud').vaue;
-  var idioma_inf = document.getElementById('idioma_inf').value;
-  var idsolicitud12 = document.getElementById('idsolicitud12').value;
-  var seccion = 12;
-  var xhttp = new XMLHttpRequest();
-  xhttp.open("POST", "cerebro.php", true);
-  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send("idioma_aud="+idioma_aud+"&idioma_inf="+idioma_inf+"&idsolicitud="+idsolicitud12+"&seccion="+seccion+"");
-}
+$(document).ready(function() {
+
+$('.error').hide();
+
+	$("#agregar").click(function() {
+
+		 var producto = $('#producto').val();
+            var num_productores = $('#num_productores').val();
+            var num_fincas= $('#num_fincas').val();
+            //seccion 3
+            var ubicacion_unidad= $('#ubicacion_unidad').val();
+            var coordenadas = $('#coordenadas').val();
+            var periodo_cosecha = $('#periodo_cosecha').val();
+            var superficie = $('#superficie').val();
+			var libre_cubierto= $('#libre_cubierto').val();
+            var cosecha_recoleccion = $('#cosecha_recoleccion').val();
+            var empaque = $('#empaque').val();
+            var num_trabajadores = $('#num_trabajadores').val();
+ var idsolicitud = $('#idsolicitud').val();
+  var insertar_prod = $('#insertar_prod').val();
+	  
+                $.ajax({  
+                     url:"cerebro.php",  
+                     method:"POST",
+                    data:{producto:producto,num_productores:num_productores,num_fincas:num_fincas,ubicacion_unidad:ubicacion_unidad,coordenadas:coordenadas,periodo_cosecha:periodo_cosecha,superficie:superficie,libre_cubierto:libre_cubierto,cosecha_recoleccion:cosecha_recoleccion,empaque:empaque,num_trabajadores:num_trabajadores,idsolicitud:idsolicitud,insertar_prod:insertar_prod},
+			success: function() { 
+		       
+		    }
+		});
+		return false;
+	});
+});
+
+
 </script>
-<script>
-function loadLog() {
-	var idoperador1= document.getElementById('idoperador1').value;
-	var idsolicitud1= document.getElementById('idsolicitud1').value;
-  var nombre= document.getElementById('persona1').value;
-	var fecha1= document.getElementById('fecha1').value;
-	var seccion1=1;
-
-  var xhttp = new XMLHttpRequest();
-  xhttp.open("POST", "cerebro.php", true);
-  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send("persona="+nombre+"&seccion1="+seccion1+"&idoperador1="+idoperador1+"&idsolicitud1="+idsolicitud1+"&fecha1="+fecha1+"");
-}
-</script>
-
-<script>
-  function loadLog2(){
-    var seccion2=2;
-    var idoperador2= document.getElementById('idoperador2').value;
-    var idsolicitud2= document.getElementById('idsolicitud2').value;
-   // var seccion2= document.getElementById('seccion2').value;
-    var num_ggn=document.getElementById('num_ggn').value;
-    var num_gln=document.getElementById('num_gln').value;
-    var num_coc=document.getElementById('num_coc').value;
-    var num_mex_cal_sup=document.getElementById('num_mex_cal_sup').value;
-    var num_primus=document.getElementById('num_primus').value;
-    var num_senasica=document.getElementById('num_senasica').value;
-    var responsable=document.getElementById('responsable').value;
-    var personal=document.getElementById('personal').value;
-
-    var xhttp2 = new XMLHttpRequest();
-    xhttp2.open("POST","cerebro.php", true);
-    xhttp2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp2.send("idoperador2="+idoperador2+"&seccion2="+seccion2+"&idsolicitud2="+idsolicitud2+"&num_ggn="+num_ggn+"&num_gln="+num_gln+"&num_coc="+num_coc+"&num_mex_cal_sup="+num_mex_cal_sup+"&num_primus="+num_primus+"&num_senasica="+num_senasica+"&responsable="+responsable+"&personal="+personal+"");
-  }
-</script>
--->
 <?php include("includes/footer.php");?>
 </html>

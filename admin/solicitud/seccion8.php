@@ -1,7 +1,7 @@
 <fieldset>
 </br>
   <div class="row" id="seccion8" style="background-color: #ecfbe7; border: solid 1px #AAAAAA; border-bottom-width:2px;">
-    <form method="post" action="#seccion8">
+    
       <div class="col-lg-12 col-xs-12 campos2">
           <div class="col-lg-12 col-xs-12 campos2" style="text-align: center;background-color: #dbf573e6; border: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
             <h4><b> Sistema de reducción de riesgos de comtaminación</b></h4>
@@ -41,6 +41,6 @@
               </div>
           </div>
       </div>
-    </form>
+   
   </div>
 </fieldset>
