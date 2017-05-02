@@ -533,7 +533,7 @@ $('.error').hide();
 
 	$("#agregar").click(function() {
 
-		 var producto = $('#producto').val();
+		        var producto = $('#producto').val();
             var num_productores = $('#num_productores').val();
             var num_fincas= $('#num_fincas').val();
             //seccion 3
@@ -541,19 +541,19 @@ $('.error').hide();
             var coordenadas = $('#coordenadas').val();
             var periodo_cosecha = $('#periodo_cosecha').val();
             var superficie = $('#superficie').val();
-			var libre_cubierto= $('#libre_cubierto').val();
+			      var libre_cubierto= $('#libre_cubierto').val();
             var cosecha_recoleccion = $('#cosecha_recoleccion').val();
             var empaque = $('#empaque').val();
             var num_trabajadores = $('#num_trabajadores').val();
- var idsolicitud = $('#idsolicitud').val();
-  var insertar_prod = $('#insertar_prod').val();
+            var idsolicitud = $('#idsolicitud').val();
+            var insertar_prod = $('#insertar_prod').val();
 	  
                 $.ajax({  
                      url:"cerebro.php",  
                      method:"POST",
                     data:{producto:producto,num_productores:num_productores,num_fincas:num_fincas,ubicacion_unidad:ubicacion_unidad,coordenadas:coordenadas,periodo_cosecha:periodo_cosecha,superficie:superficie,libre_cubierto:libre_cubierto,cosecha_recoleccion:cosecha_recoleccion,empaque:empaque,num_trabajadores:num_trabajadores,idsolicitud:idsolicitud,insertar_prod:insertar_prod},
-			success: function() { 
-		       
+		            	success: function() { 
+		                        $('#tabla_ajax').load("tabla.php"); //Recargamos la Tabla(Para que se muestren los Nuevos Resultados)
 		    }
 		});
 		return false;
