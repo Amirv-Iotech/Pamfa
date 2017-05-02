@@ -77,8 +77,8 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 <div class="panel panel-white">
 <div class="panel-heading clearfix"><br>
 
+<input type="" id="ruta" name="ruta" value="<? echo "tabla.php?idsolicitud=". $row_solicitud['idsolicitud']."";?>" />
 
-<form id="myform" action="#seccion1" method="post" class="form-horizontal" enctype="multipart/form-data">
 	<div class="row" id="seccion1">
 		<div class="col-lg-12">
 			<p style="font-size:25px; text-align:center;">Solicitud de certificación de producto</p>
@@ -116,7 +116,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 	</div>
     
   <input type="hidden" id="fecha1" name="fecha1" value="<? echo time();?>" />
-  </form>
+  
 	<fieldset> 
     <div id="seccion1" class="row" style="border: solid 1px #AAAAAA; background-color: #ecfbe7">
         <div class="col-md-12" style="text-align: center; background-color:#dbf573e6">
@@ -211,7 +211,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 
 <fieldset>
 	<div id="seccion2" class="row" style="background-color: #ecfbe7; border: solid 1px #AAAAAA;">
-  <form id="myform2" action="#seccion2" method="post" class="form-horizontal" enctype="multipart/form-data">
+  
 	<div class=" form-group col-md-12 campos2" style="margin:0px;">
 		<div class="col-md-3 col-sm-6" style="padding: 0px 0px; border: solid 1px #AAAAAA;">
 		  <div class="col-md-12" style="background-color:#dbf573e6; height:120px; overflow: hidden; text-overflow:ellipsis;">
@@ -287,10 +287,13 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
         </div>
       </div>
 
-       <input type="hidden" id="idoperador" name="idoperador" value="<? echo $row_operador['idoperador']; ?>" />
-      <input type="hidden"  id="idsolicitud" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
-        <input type="hidden" id="seccion" name="seccion2" value="2" />
-      </form>
+      
+      
+      <input type="hidden" id="idsolicitud" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+                <input type="hidden" name="insertar_prod" value="1" />
+                <input type="hidden" id="seccion" name="seccion" value="1" />
+               
+                <input type="hidden" id="idoperador" name="idoperador" value="<? echo $row_operador['idoperador']; ?>" />
 </div>
 </fieldset>	
 <?php include("seccion3.php");?>
@@ -314,7 +317,6 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 </div>
 </div>
 </div>
-
 
 <script>
 window.addEventListener("beforeunload", function(event) {    
@@ -511,59 +513,45 @@ function cambiar(){
 
  }
  </script>
- <!--
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+$('.error').hide();
+
+	$("#agregar").click(function() {
+
+		        var producto = $('#producto').val();
+            var num_productores = $('#num_productores').val();
+            var num_fincas= $('#num_fincas').val();
+            //seccion 3
+            var ubicacion_unidad= $('#ubicacion_unidad').val();
+            var coordenadas = $('#coordenadas').val();
+            var periodo_cosecha = $('#periodo_cosecha').val();
+            var superficie = $('#superficie').val();
+			      var libre_cubierto= $('#libre_cubierto').val();
+            var cosecha_recoleccion = $('#cosecha_recoleccion').val();
+            var empaque = $('#empaque').val();
+            var num_trabajadores = $('#num_trabajadores').val();
+            var idsolicitud = $('#idsolicitud').val();
+            var insertar_prod = $('#insertar_prod').val();
+			var ruta = $('#ruta').val();
+	  
+                $.ajax({  
+                     url:"cerebro.php",  
+                     method:"POST",
+                    data:{producto:producto,num_productores:num_productores,num_fincas:num_fincas,ubicacion_unidad:ubicacion_unidad,coordenadas:coordenadas,periodo_cosecha:periodo_cosecha,superficie:superficie,libre_cubierto:libre_cubierto,cosecha_recoleccion:cosecha_recoleccion,empaque:empaque,num_trabajadores:num_trabajadores,idsolicitud:idsolicitud,insertar_prod:insertar_prod},
+		            	success: function() { 
+		                        $('#tabla_ajax').load(ruta); //Recargamos la Tabla(Para que se muestren los Nuevos Resultados)
+		    }
+		});
+		return false;
+	});
+});
 
 
-
-<!--
-<script>
-function loadLog4() {  
-  var idioma_aud = document.getElementById('idioma_aud').vaue;
-  var idioma_inf = document.getElementById('idioma_inf').value;
-  var idsolicitud12 = document.getElementById('idsolicitud12').value;
-  var seccion = 12;
-  var xhttp = new XMLHttpRequest();
-  xhttp.open("POST", "cerebro.php", true);
-  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send("idioma_aud="+idioma_aud+"&idioma_inf="+idioma_inf+"&idsolicitud="+idsolicitud12+"&seccion="+seccion+"");
-}
 </script>
-<script>
-function loadLog() {
-	var idoperador1= document.getElementById('idoperador1').value;
-	var idsolicitud1= document.getElementById('idsolicitud1').value;
-  var nombre= document.getElementById('persona1').value;
-	var fecha1= document.getElementById('fecha1').value;
-	var seccion1=1;
 
-  var xhttp = new XMLHttpRequest();
-  xhttp.open("POST", "cerebro.php", true);
-  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send("persona="+nombre+"&seccion1="+seccion1+"&idoperador1="+idoperador1+"&idsolicitud1="+idsolicitud1+"&fecha1="+fecha1+"");
-}
-</script>
 
-<script>
-  function loadLog2(){
-    var seccion2=2;
-    var idoperador2= document.getElementById('idoperador2').value;
-    var idsolicitud2= document.getElementById('idsolicitud2').value;
-   // var seccion2= document.getElementById('seccion2').value;
-    var num_ggn=document.getElementById('num_ggn').value;
-    var num_gln=document.getElementById('num_gln').value;
-    var num_coc=document.getElementById('num_coc').value;
-    var num_mex_cal_sup=document.getElementById('num_mex_cal_sup').value;
-    var num_primus=document.getElementById('num_primus').value;
-    var num_senasica=document.getElementById('num_senasica').value;
-    var responsable=document.getElementById('responsable').value;
-    var personal=document.getElementById('personal').value;
-
-    var xhttp2 = new XMLHttpRequest();
-    xhttp2.open("POST","cerebro.php", true);
-    xhttp2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp2.send("idoperador2="+idoperador2+"&seccion2="+seccion2+"&idsolicitud2="+idsolicitud2+"&num_ggn="+num_ggn+"&num_gln="+num_gln+"&num_coc="+num_coc+"&num_mex_cal_sup="+num_mex_cal_sup+"&num_primus="+num_primus+"&num_senasica="+num_senasica+"&responsable="+responsable+"&personal="+personal+"");
-  }
-</script>
--->
 <?php include("includes/footer.php");?>
 </html>

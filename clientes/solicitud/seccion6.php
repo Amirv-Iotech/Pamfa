@@ -6,7 +6,7 @@
        <h4> <b>PrimusGFS</b></h4>
       </div>
       <div class="col-lg-12 col-xs-12 campos2">
-           <form method="post" action="#seccion6">
+           
         <? 
                 $query_primus = sprintf("SELECT * FROM primusgfs order by idprimus asc");
                 $primus = mysql_query($query_primus, $inforgan_pamfa) or die(mysql_error());
@@ -55,7 +55,7 @@
             <?
                $control++; }
             ?>
-            </form>
+            
         </div>
     </div>
 

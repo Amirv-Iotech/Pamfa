@@ -2,7 +2,7 @@
 	</br>
 	
 	<div class="row" id="seccion4"  style="background-color: #ecfbe7; border: solid 1px #AAAAAA; border-bottom-width:2px;">
-		<form method="post" action="#seccion4">
+		
 		<div class=" form-group col-lg-12 co-sm-12 campos" style="background-color: #dbf573e6; border: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
 			<b> Datos de Facturación</b>
 		</div>
@@ -68,10 +68,8 @@
 				</div>
 			</div>
 		</div>
-		<input type="hidden" id="seccion4" name="seccion4" value="1" />
- 
-  <input type="hidden" id="idsolicitud4" name="idsolicitud4" value="<?php echo $_POST['idsolicitud'];?>" />
+		
      
-		</form>
+		
 	</div>
 </fieldset>

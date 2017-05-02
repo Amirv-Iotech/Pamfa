@@ -152,8 +152,8 @@
             </div>
           </div>
 
-            <input type="hidden" id="idsolicitud5" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+            
             <input type="hidden" id="idsolicitud_esquema" name="idsolicitud_esquema" value="<? echo $row_solicitud_esq['idsolicitud_esquema']; ?>" />
-            <input type="hidden" id="seccion5" name="seccion5" value="5" />
+            
   </div><!-- /row-============  /ROW ====-->
 </fieldset>
