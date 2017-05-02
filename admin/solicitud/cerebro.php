@@ -33,17 +33,21 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   return $theValue;
 }
 }
+
 /////////////////inser seccion1
 if ($_POST['persona']!=NULL) {
 	
+
+	
 if ($_POST['seccion']==1) {
+	
 
  $query_solicitud = sprintf("SELECT * FROM solicitud where idsolicitud=%s ",GetSQLValueString($_POST['idsolicitud'], "text"));
 $solicitud  = mysql_query($query_solicitud , $inforgan_pamfa) or die(mysql_error());
 $row_solicitud = mysql_fetch_assoc($solicitud );
 $total_solicitud = mysql_num_rows($solicitud);
 
-echo  $query_solicitud;
+
 if($total_solicitud<1)
 {
 	$f=time();
@@ -83,7 +87,7 @@ else{
 	GetSQLValueString($_POST['idsolicitud'], "int"));
 	
 	 $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
- 
+
 //seccion2
 	$insertSQL2 = sprintf("update solicitud set num_ggn=%s,num_gln=%s,num_coc=%s,num_mex_cal_sup=%s,num_primus=%s,num_senasica=%s,responsable=%s,personal=%s WHERE idsolicitud=%s",
  GetSQLValueString($_POST['num_ggn'], "text"),
@@ -99,7 +103,7 @@ else{
 
  $Result2 = mysql_query($insertSQL2, $inforgan_pamfa) or die(mysql_error());
  
- 
+
 	//SECCION 6
 	$insertSQL6 = sprintf("update solicitud set idprimus=%s WHERE idsolicitud=%s",
              GetSQLValueString($_POST['primus'], "text"),				
@@ -271,8 +275,7 @@ else{
 
 }
 
- if($_POST['seccion']==9)
-{
+ 
 if($_POST['insertar_prod'])
 {
 
@@ -306,5 +309,5 @@ if($_POST['insertar_prod'])
   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
 
 }
-}
+
 ///////fin
