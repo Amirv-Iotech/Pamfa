@@ -2,7 +2,7 @@
 </br>
   <div class="row" id="seccion10">
     <div class=" col-lg-12 col-xs-12">
-      <form method="post" action="#seccion10">
+      
       <div class=" col-lg-12 col-xs-12 campos2" style="background-color: #ecfbe7; border: solid 1px #AAAAAA; border-bottom-width:2px;" >
         <div class=" col-lg-12 col-xs-12 campos2" style="text-align: center;background-color: #dbf573e6; border: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
           <h4><b>Información del centro de empaque / manipulacion / procesadora </b></h4>
@@ -51,7 +51,7 @@
         </div>
           <input type="hidden" id="idprocesadora" name="idprocesadora" value="<? echo $row_procesadora['idprocesadora']; ?>" />
         </div>
-      </form>
+      
     </div>
   </div>
 </fieldset>
