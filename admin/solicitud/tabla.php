@@ -2,63 +2,71 @@
 <?php require_once('../../Connections/inforgan_pamfa.php');
  include("cerebro.php");
   
+  if($_GET["idsolicitud"])
+  {
+$query_solicitud = sprintf("SELECT * FROM solicitud WHERE idsolicitud=%s ", GetSQLValueString( $_GET["idsolicitud"], "int"));
+$solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error());
+$row_solicitud= mysql_fetch_assoc($solicitud);
+  }
+  else{
 $query_solicitud = sprintf("SELECT * FROM solicitud WHERE idsolicitud=%s ", GetSQLValueString( $_POST["idsolicitud"], "int"));
 $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error());
 $row_solicitud= mysql_fetch_assoc($solicitud);
-
+  }
 	//consulta todos los cultivos
  $query_cultivos = sprintf("SELECT * FROM cultivos WHERE idsolicitud = %s", GetSQLValueString($row_solicitud["idsolicitud"], "int"));
+ 
 ?>
 <div class="table-responsive">
 <table class="table table-hover">
 <thead>
   <th>
-                    <label>Producto y variedad:</label>
-                    <? echo $_POST["idsolicitud"]; ?>
+                    <label><strong>Producto y variedad:</strong></label>
+                  
 
   </th>
   <th>
-                  <label>Nº de Productores:</label>
+                  <label><strong>Nº de Productores:</strong></label>
 
   </th>
   <th>
-                  <label>Nº de Fincas:</label>
+                  <label><strong>Nº de Fincas:</strong></label>
 
   </th>
   <th>
-                  <label>Ubicación de cultivos:</label>
+                  <label><strong>Ubicación de cultivos:</strong></label>
 
   </th>
   <th>
-                  <label>Coordenadas de las unidades</label>
+                  <label><strong>Coordenadas de las unidades</strong></label>
 
   </th>
   <th>
-                  <label>Superficie (Ha.)</label>
+                  <label><strong>Superficie (Ha.)</strong></label>
 
   </th>
   <th>
-                    <label>Periodo de cosecha</label>
+                    <label><strong>Periodo de cosecha</strong></label>
 
   </th>
   <th>
-                  <label>Aire libre- Cubierto</label>
+                  <label><strong>Aire libre- Cubierto</strong></label>
 
   </th>
   <th>
-                  <label>Cosecha/ Recolección</label>
+                  <label><strong>Cosecha/ Recolección</strong></label>
 
   </th>
   <th>
-                  <label>Empaque/ Manipulación</label>
+                  <label><strong>Empaque/ Manipulación</strong></label>
 
   </th>
   <th>
-                  <label>Número de trabajadores</label>
+                  <label><strong>Número de trabajadores</strong></label>
 
   </th>
   <th>
-                  <label>Eliminar</label>
+                  <label><strong>Eliminar</strong></label>
 
   </th>
 </thead>
@@ -116,12 +124,12 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
 
                               </td>
                               <td>
-                          <form id="form3" name="form3" method="post" action="">
-                          <input type="hidden" name="eliminar" value="1" />
-                          <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
-                          <input type="hidden" name="idcultivos" value="<? echo $row_cultivos['idcultivos']; ?>" />
-                          <input type="hidden" name="seccion" value="9" />       
-                          <input type="image" name="imageField3" id="imageField3" src="../../images/delete.png" title="REMOVER" width="30px" height="30px" style="padding-top: 0px;" />
+                         <form method="post" action="#seccion9">
+                          <input type="hidden" id="eliminar"name="eliminar" value="1" />
+                          <input type="hidden" id="idsolicitud" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+                          <input type="hidden" id="idcultivos" name="idcultivos" value="<? echo $row_cultivos['idcultivos']; ?>" />
+                                
+                          <input type="image" name="borrar" id="borrar" src="../../images/delete.png" title="REMOVER" width="30px" height="30px" style="padding-top: 0px;" />
                           </form>
                               </td>
                             </tr>                                               

@@ -89,7 +89,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 			<p class="solicitud">Fecha de solicitud </p>
 		</div>
 		<div class="col-lg-2 col-md-2 col-xs-6 fechas" style="border-bottom:solid 1px #AAAAAA;">
-			
+			 <input type="hidden" id="ruta" name="ruta" value="<? echo "tabla.php?idsolicitud=". $row_solicitud['idsolicitud']."";?>" />
 			<input  id="fecha1" name="fecha1"  disabled="disabled" type="text" placeholder=""  <? if(isset($row_solicitud['fecha'])){?>value="<? echo date('d/m/y',$row_solicitud['fecha']);?>"<? }else{ ?> value="<? echo date('d/m/y',time());?>"<? }?>  style="font-size: 18px; text-align:center; width: 100%"/>
 			
 		<?	$f="";
@@ -292,6 +292,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
                 <input type="hidden" id="seccion" name="seccion" value="1" />
                
                 <input type="hidden" id="idoperador" name="idoperador" value="<? echo $row_operador['idoperador']; ?>" />
+                
       
         
 </div>
@@ -547,13 +548,14 @@ $('.error').hide();
             var num_trabajadores = $('#num_trabajadores').val();
             var idsolicitud = $('#idsolicitud').val();
             var insertar_prod = $('#insertar_prod').val();
+			var ruta = $('#ruta').val();
 	  
                 $.ajax({  
                      url:"cerebro.php",  
                      method:"POST",
                     data:{producto:producto,num_productores:num_productores,num_fincas:num_fincas,ubicacion_unidad:ubicacion_unidad,coordenadas:coordenadas,periodo_cosecha:periodo_cosecha,superficie:superficie,libre_cubierto:libre_cubierto,cosecha_recoleccion:cosecha_recoleccion,empaque:empaque,num_trabajadores:num_trabajadores,idsolicitud:idsolicitud,insertar_prod:insertar_prod},
 		            	success: function() { 
-		                        $('#tabla_ajax').load("tabla.php"); //Recargamos la Tabla(Para que se muestren los Nuevos Resultados)
+		                        $('#tabla_ajax').load(ruta); //Recargamos la Tabla(Para que se muestren los Nuevos Resultados)
 		    }
 		});
 		return false;
@@ -562,5 +564,34 @@ $('.error').hide();
 
 
 </script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+$('.error').hide();
+
+	$("#borrar").click(function() {
+
+		       
+            var idcultivos = $('#idcultivos').val();
+            var idsolicitud = $('#idsolicitud').val();
+            var eliminar = $('#eliminar').val();
+			var ruta = $('#ruta').val();
+	  
+                $.ajax({  
+                     url:"cerebro.php",  
+                     method:"POST",
+                    data:{idcultivos :idcultivos ,idsolicitud:idsolicitud,eliminar:eliminar},
+		            	success: function() { 
+		                        $('#tabla_ajax').load(ruta); //Recargamos la Tabla(Para que se muestren los Nuevos Resultados)
+		    }
+		});
+		return false;
+	});
+});
+
+
+</script>
+
 <?php include("includes/footer.php");?>
 </html>

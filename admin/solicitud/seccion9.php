@@ -90,7 +90,7 @@
                 </div>
             </div>
             <div class="col-lg-2 col-xs-2 campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA; min-height: 124px; ">
-                <input type="" id="idsolicitud" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+                <input type="hidden" id="idsolicitud" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
                 <input type="hidden"  id="insertar_prod" name="insertar_prod" value="1" />
                 <input type="hidden" id="seccion" name="seccion" value="1" />
                
@@ -106,11 +106,11 @@
 
 
 <!-- TABLA ======= TABLA=====-->
-<div class="col-lg-12 col-xs-12" style="background-color: red" id="tabla_ajax">
+<div class="col-lg-12 col-xs-12" style="background-color: #ecfbe7; border: solid 1px #AAAAAA; border-bottom-width:2px;" id="tabla_ajax" >
 
           <?php
 
-           include('tabla.php'); ?>
+           include('tabla.php');?>
           </div>
 
     </div><!-- tabla -->
