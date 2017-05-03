@@ -1,28 +1,19 @@
 
 <?php require_once('../../Connections/inforgan_pamfa.php');
  include("cerebro.php");
-  $sol="";
-  if($_GET["idsolicitud"])
-  {$sol=$_GET["idsolicitud"];
   
-  }
-  if($_POST["idsolicitud"])
-  {$sol=$_POST["idsolicitud"];
- 
-	  }
-  if($row_solicitud['idsolicitud'])
+  if($_GET["idsolicitud"])
   {
-	  $sol=$row_solicitud['idsolicitud'];
-	 
-  }
-$query_solicitud = sprintf("SELECT * FROM solicitud WHERE idsolicitud=%s ", GetSQLValueString( $sol, "int"));
+$query_solicitud = sprintf("SELECT * FROM solicitud WHERE idsolicitud=%s ", GetSQLValueString( $_GET["idsolicitud"], "int"));
 $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error());
 $row_solicitud= mysql_fetch_assoc($solicitud);
-
-
-
-
- 	//consulta todos los cultivos
+  }
+  else{
+$query_solicitud = sprintf("SELECT * FROM solicitud WHERE idsolicitud=%s ", GetSQLValueString( $_POST["idsolicitud"], "int"));
+$solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error());
+$row_solicitud= mysql_fetch_assoc($solicitud);
+  }
+	//consulta todos los cultivos
  $query_cultivos = sprintf("SELECT * FROM cultivos WHERE idsolicitud = %s", GetSQLValueString($row_solicitud["idsolicitud"], "int"));
  
 ?>
@@ -82,7 +73,6 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
 <tbody>
 <?
                     $cultivos = mysql_query($query_cultivos,  $inforgan_pamfa) or die(mysql_error());
-					$cont=0;
                     while ($row_cultivos = mysql_fetch_assoc($cultivos)) {
                     $query_a = sprintf("SELECT * FROM cultivos WHERE idcultivos = '".$row_cultivos['idcultivos']."'");
                     $a= mysql_query($query_a, $inforgan_pamfa) or die(mysql_error());
@@ -134,39 +124,16 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
 
                               </td>
                               <td>
-                         
-                         <form action="" method="post">
+                         <form method="post" action="#seccion9">
+                          <input type="hidden" id="eliminar"name="eliminar" value="1" />
                           <input type="hidden" id="idsolicitud" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
                           <input type="hidden" id="idcultivos" name="idcultivos" value="<? echo $row_cultivos['idcultivos']; ?>" />
                                 
-                          <button type="button"   name="borrar2" id="<?php echo 'borrar'.$cont; ?>" value="<?php echo $row_cultivos['idcultivos']; ?>" onclick="<?php echo 'el2'.$cont.'()'?>" >Eliminar</button>
-                         </form>
-                         
+                          <input type="image" name="borrar" id="borrar" src="../../images/delete.png" title="REMOVER" width="30px" height="30px" style="padding-top: 0px;" />
+                          </form>
                               </td>
                             </tr>                                               
-<? }
- 
-?>
-<script>
-	<?php echo 'function el2'.$cont.'(){
-	 var idcultivos = $("#borrar'.$cont.'").val();
-	 var eliminar = $("#eliminar").val();
-	 var ruta = $("#ruta").val();
-	 $.ajax({
-		 url:"cerebro.php",
-		 method:"POST",
-		 data:{idcultivos:idcultivos,eliminar:eliminar},
-		 success: function() {
-			 $("#tabla_ajax").load(ruta);
-			 }
-			 });';
-	?>
-	   //Recargamos la Tabla(Para que se muestren los Nuevos Resultados)
-}
-</script>
-<?
-$cont++;} ?>
+<? }} ?>
 </tbody>
 </table>
 </div>
- 
