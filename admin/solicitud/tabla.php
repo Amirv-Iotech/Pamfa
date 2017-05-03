@@ -9,11 +9,11 @@
   if($_POST["idsolicitud"])
   {$sol=$_POST["idsolicitud"];
  
-	  }
+    }
   if($row_solicitud['idsolicitud'])
   {
-	  $sol=$row_solicitud['idsolicitud'];
-	 
+    $sol=$row_solicitud['idsolicitud'];
+   
   }
 $query_solicitud = sprintf("SELECT * FROM solicitud WHERE idsolicitud=%s ", GetSQLValueString( $sol, "int"));
 $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error());
@@ -22,7 +22,7 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
 
 
 
- 	//consulta todos los cultivos
+  //consulta todos los cultivos
  $query_cultivos = sprintf("SELECT * FROM cultivos WHERE idsolicitud = %s", GetSQLValueString($row_solicitud["idsolicitud"], "int"));
  
 ?>
@@ -82,7 +82,7 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
 <tbody>
 <?
                     $cultivos = mysql_query($query_cultivos,  $inforgan_pamfa) or die(mysql_error());
-					$cont=0;
+          $cont=0;
                     while ($row_cultivos = mysql_fetch_assoc($cultivos)) {
                     $query_a = sprintf("SELECT * FROM cultivos WHERE idcultivos = '".$row_cultivos['idcultivos']."'");
                     $a= mysql_query($query_a, $inforgan_pamfa) or die(mysql_error());
@@ -148,20 +148,20 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
  
 ?>
 <script>
-	<?php echo 'function el2'.$cont.'(){
-	 var idcultivos = $("#borrar'.$cont.'").val();
-	 var eliminar = $("#eliminar").val();
-	 var ruta = $("#ruta").val();
-	 $.ajax({
-		 url:"cerebro.php",
-		 method:"POST",
-		 data:{idcultivos:idcultivos,eliminar:eliminar},
-		 success: function() {
-			 $("#tabla_ajax").load(ruta);
-			 }
-			 });';
-	?>
-	   //Recargamos la Tabla(Para que se muestren los Nuevos Resultados)
+  <?php echo 'function el2'.$cont.'(){
+   var idcultivos = $("#borrar'.$cont.'").val();
+   var eliminar = $("#eliminar").val();
+   var ruta = $("#ruta").val();
+   $.ajax({
+     url:"cerebro.php",
+     method:"POST",
+     data:{idcultivos:idcultivos,eliminar:eliminar},
+     success: function() {
+       $("#tabla_ajax").load(ruta);
+       }
+       });';
+  ?>
+     //Recargamos la Tabla(Para que se muestren los Nuevos Resultados)
 }
 </script>
 <?
