@@ -10,7 +10,7 @@
         <div class="col-lg-12 col-xs-12">
         Auditor
              <select name="auditor" class="plan_input" onchange="guardarTabla(this)" >
-              <option value="">Selecciona un Auditor...</option>
+              <option selected="true" disabled="disabled">Selecciona un Auditor...</option>
               <?php 
               $query_vista1 = "SELECT * FROM usuario where tipo=2 ORDER BY nombre ASC";
               $vista1 = mysql_query($query_vista1, $inforgan_pamfa) or die(mysql_error());
@@ -24,7 +24,7 @@
         <div class="col-lg-12 col-xs-12">
             Inspector
             <select name="inspector" class="plan_input" onchange="guardarTabla(this)">
-              <option value="">Selecciona una opción...</option>
+              <option selected="true" disabled="disabled" value="">Selecciona una opción...</option>
               <?php 
               $query_vista1 = "SELECT * FROM usuario where tipo=3 ORDER BY nombre ASC";
               $vista1 = mysql_query($query_vista1,  $inforgan_pamfa) or die(mysql_error());

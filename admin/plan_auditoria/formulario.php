@@ -90,7 +90,8 @@ $row_alcance= mysql_fetch_assoc($alcance);
     <div class="row" id="form_plan_aud" style="background-color: #ecfbe7; padding: 0px;">
         <div class="col-lg-12 col-xs-12" style="padding: 0px;">
 
-<input type="" id="ruta" name="ruta" value="<? echo "tabla.php?idplan_auditoria=". $row_plan_auditoria['idplan_auditoria']."";?>" />
+<input type="hidden" id="ruta" name="ruta" value="<? echo "tabla.php?idplan_auditoria=". $row_plan_auditoria['idplan_auditoria']."";?>" />
+<input type="hidden" name="ruta2" id="ruta2" value="<? echo "tabla2.php?idplan_auditoria=". $row_plan_auditoria['idplan_auditoria']."";?>">
 
             <form id="myform" action="#seccion1" method="post" class="form-horizontal" enctype="multipart/form-data">
                <div class="col-xs-12 col-lg-12" style="background-color: #dbf573e6; padding: 0px;">
@@ -269,22 +270,58 @@ var seccion =5;
   {         
             var seccion =6;
             var idusuario = ele.options[ele.selectedIndex].value;
+            alert(idusuario);
             var usuario = ele.name;
             var idplan_auditoria =$('#idplan_auditoria').val();
             var idsolicitud = $('#idsolicitud').val();
             var ruta = $('#ruta').val();
+            var ruta2= $('#ruta2').val();
                     $.ajax({
                         url:"cerebro.php",
                         method:"POST",
                         data:{seccion:seccion, idusuario:idusuario, usuario:usuario, idplan_auditoria:idplan_auditoria, idsolicitud:idsolicitud},
                         success: function() {
                           $('#tabla_ajax').load(ruta);
+                          $('#tabla_ajax2').load(ruta2);
                         }
 
                     });
 
   }
 </script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+$('.error').hide();
+
+  $("#agregar").click(function() {
+    var fecha =$('#fecha').val();
+    var horario =$('#horario').val();
+    var actividad =$('#actividad').val();
+    var responsable =$('#responsable').val();
+    var auditor=document.getElementById("auditor2").value;
+    var idplan_auditoria =$('#idplan_auditoria').val();
+    var seccion=7;
+    var idsolicitud =$('#idsolicitud').val();
+    var insertar =$('#insertar').val();
+
+      var ruta2 = $('#ruta2').val();
+    
+    alert("fecha");
+         /*       $.ajax({  
+                     url:"cerebro.php",  
+                     method:"POST",
+                    data:{seccion:seccion, idplan_auditoria:idplan_auditoria, idsolicitud:idsolicitud, insertar:insertar, fecha:fecha, horario:horario, actividad:actividad, responsable:responsable auditor:auditor},
+                  success: function() { 
+                            $('#tabla_ajax2').load(ruta2); //Recargamos la Tabla(Para que se muestren los Nuevos Resultados)
+        }
+    });*/
+  });
+});
+
+</script>
+
 
 
 
