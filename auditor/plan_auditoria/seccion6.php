@@ -9,7 +9,7 @@
         </div>
         <div class="col-lg-12 col-xs-12">
         Auditor
-             <select name="auditor" class="plan_input" onchange="this.form.submit()" >
+             <select name="auditor" class="plan_input" >
               <option value="">Selecciona un Auditor...</option>
               <?php 
               $query_vista1 = "SELECT * FROM usuario where tipo=2 ORDER BY nombre ASC";
@@ -23,7 +23,7 @@
         </div>
         <div class="col-lg-12 col-xs-12">
             Inspector
-            <select name="inspector" class="plan_input" onchange="this.form.submit()">
+            <select name="inspector" class="plan_input">
               <option value="">Selecciona una opción...</option>
               <?php 
               $query_vista1 = "SELECT * FROM usuario where tipo=3 ORDER BY nombre ASC";
