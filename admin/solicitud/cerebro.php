@@ -278,7 +278,7 @@ else{
  
 if($_POST['insertar_prod'])
 {
-
+ 
   $insertSQL = sprintf("INSERT INTO cultivos(producto,num_productores,num_fincas,ubicacion_unidad,coordenadas,periodo_cosecha,superficie,libre_cubierto,cosecha_recoleccion,empaque,num_trabajadores,idsolicitud) VALUES (%s,%s, %s,  %s, %s, %s, %s, %s, %s,%s, %s,  %s)",
              GetSQLValueString($_POST['producto'], "text"),
              GetSQLValueString($_POST['num_productores'], "text"),
@@ -298,16 +298,14 @@ if($_POST['insertar_prod'])
 }
 
 
- if($_POST['eliminar']){
+ if($_POST['idcultivos']){
 	
-	$insertSQL = sprintf("delete from cultivos where idcultivos=%s and idsolicitud=%s ",
- GetSQLValueString($_POST['idcultivos'], "text"),
-            
-			 GetSQLValueString($_POST['idsolicitud'], "int"));
-
+	$insertSQL = sprintf("delete from cultivos where idcultivos=%s  ",
+ GetSQLValueString($_POST['idcultivos'], "text"));
 
   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
 
 }
 
+///////fin
 ///////fin

@@ -67,16 +67,14 @@ echo $insertSQL;
 
 if ($_POST['seccion']==6) {
 	
-	
-
-if($_POST['auditor'])
+if($_POST['usuario']=="auditor")
 {
-	$cad=$_POST['auditor'];
+	$cad=$_POST['idusuario'];
 	$p=2;
 }
-if($_POST['inspector'])
+if($_POST['usuario']=="inspector")
 {
-	$cad=$_POST['inspector'];
+	$cad=$_POST['idusuario'];
 	$p=3;
 }
 $query_user = sprintf("SELECT * FROM usuario where idusuario=%s ",GetSQLValueString($cad, "text"));

@@ -145,7 +145,7 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
                               </td>
                             </tr>                                               
 <? }
-
+ 
 ?>
 <script>
 	<?php echo 'function el2'.$cont.'(){
