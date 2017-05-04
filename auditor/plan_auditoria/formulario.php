@@ -3,7 +3,7 @@
 <? require_once('../../Connections/inforgan_pamfa.php');
 if(!session_start())
 {
-	session_start();
+  session_start();
 }
 ?>
 
@@ -57,11 +57,11 @@ $operador = mysql_query($query_operador, $inforgan_pamfa) or die(mysql_error());
 $row_operador= mysql_fetch_assoc($operador);
 
 
-	$query_solicitud = "SELECT * FROM solicitud where idsolicitud='".$_POST['idsolicitud']."'";
+  $query_solicitud = "SELECT * FROM solicitud where idsolicitud='".$_POST['idsolicitud']."'";
 $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error());
 $row_solicitud= mysql_fetch_assoc($solicitud);
-	
-	
+  
+  
 
 $query_cert_anterior = sprintf("SELECT * FROM cert_anterior WHERE idsolicitud=%s order by idcert_anterior asc limit 1", GetSQLValueString( $row_solicitud["idsolicitud"], "int"));
 $cert_anterior = mysql_query($query_cert_anterior, $inforgan_pamfa) or die(mysql_error());
@@ -89,6 +89,10 @@ $row_alcance= mysql_fetch_assoc($alcance);
 <div class="content" >
     <div class="row" id="form_plan_aud" style="background-color: #ecfbe7; padding: 0px;">
         <div class="col-lg-12 col-xs-12" style="padding: 0px;">
+
+<input type="hidden" id="ruta" name="ruta" value="<? echo "tabla.php?idplan_auditoria=". $row_plan_auditoria['idplan_auditoria']."";?>" />
+<input type="hidden" name="ruta2" id="ruta2" value="<? echo "tabla2.php?idplan_auditoria=". $row_plan_auditoria['idplan_auditoria']."";?>">
+
             <form id="myform" action="#seccion1" method="post" class="form-horizontal" enctype="multipart/form-data">
                <div class="col-xs-12 col-lg-12" style="background-color: #dbf573e6; padding: 0px;">
                   <h3 align="center">Plan de auditoria de certificación</h3>
@@ -99,12 +103,12 @@ $row_alcance= mysql_fetch_assoc($alcance);
                 <div class="col-lg-12 col-xs-12 datos">
                     <label class="col-lg-3 col-xs-3">Razón social:</label>
                     <div class="col-lg-9 col-xs-9" >
-                    <input disabled class=" plan_input" id="nombre_legal" name="nombre_legal" type="text" title="Nombre completo" value="<? echo $row_operador['nombre_legal'];?>" /></div>
+                    <input  disabled   class=" plan_input" id="nombre_legal" name="nombre_legal" type="text" title="Nombre completo" value="<? echo $row_operador['nombre_legal'];?>" /></div>
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">
                     <label class="col-lg-3 col-xs-3">Dirección de la entidad legal: calle y número:</label>
                     <div class="col-xs-9 col-lg-9">
-                    <input disabled class=" plan_input" id="direccion" name="direccion" value="<? echo $row_operador['direccion'];?>"  title="Dirección"  /></div>
+                    <input disabled  class=" plan_input" id="direccion" name="direccion" value="<? echo $row_operador['direccion'];?>"  title="Dirección"  /></div>
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">
                     <label class="col-lg-3 col-xs-3">Colonia:</label>
@@ -115,7 +119,7 @@ $row_alcance= mysql_fetch_assoc($alcance);
                 <div class="col-lg-12 col-xs-12 datos">
                     <label class="col-lg-3 col-xs-3">C.P.:</label>
                     <div class="col-lg-9 col-xs-9">
-                    <input disabled class="plan_input" id="cp" name="cp" type="text" title="Codigo postal " value="<? echo $row_operador['cp'];?>"  />
+                    <input  disabled class="plan_input" id="cp" name="cp" type="text" title="Codigo postal " value="<? echo $row_operador['cp'];?>"  />
                     </div>
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">
@@ -158,7 +162,7 @@ $row_alcance= mysql_fetch_assoc($alcance);
                 <div class="col-lg-12 col-xs-12 datos">                                
                     <label class="col-lg-3 col-xs-3">Centro de manipulación:</label>  
                     <div class="col-lg-9 col-xs-9">  
-                    <inputdisabled class="plan_input" id="procesadora" name="procesadora" type="text" title="Estado " value="<? echo $row_procesadora['empresa'];?>" />
+                    <input disabled class="plan_input" id="procesadora" name="procesadora" type="text" title="Estado " value="<? echo $row_procesadora['empresa'];?>" />
                     </div>
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">
@@ -248,9 +252,9 @@ var seccion =5;
                      method:"POST",
                     data:{procesadora:procesadora, producto:producto, fecha_emision:fecha_emision, fecha_auditoria:fecha_auditoria, tipo1:tipo1, rancho_invernadero:rancho_invernadero, superficie:superficie, producto_proce:producto_proce, manip:manip, esq1:esq1, num_pgfs:num_pgfs, num_pamfa:num_pamfa, num_globalgg:num_globalgg, num_coc:num_coc, prod:prod, otro:otro, objetivo:objetivo, alcance:alcance, criterio:criterio, idioma_aud:idioma_aud, idioma_inf:idioma_inf, idsolicitud:idsolicitud,idplan_auditoria:idplan_auditoria, idsolicitud_esquema:idsolicitud_esquema, seccion:5},
                      dataType:"text",  
-                     success:function(data)  
+                      success:function(data)  
                      {  
-                         event.returnValue = "AnthonySS";
+                          event.returnValue = "AnthonySS";
                   
 
    }  
@@ -261,7 +265,83 @@ var seccion =5;
 });
 </script>
 
+<script type="text/javascript">
+  function guardarTabla(ele) 
+  {         
+            var seccion =6;
+            var idusuario = ele.options[ele.selectedIndex].value;
+            alert(idusuario);
+            var usuario = ele.name;
+            var idplan_auditoria =$('#idplan_auditoria').val();
+            var idsolicitud = $('#idsolicitud').val();
+            var ruta = $('#ruta').val();
+            var ruta2= $('#ruta2').val();
+                    $.ajax({
+                        url:"cerebro.php",
+                        method:"POST",
+                        data:{seccion:seccion, idusuario:idusuario, usuario:usuario, idplan_auditoria:idplan_auditoria, idsolicitud:idsolicitud},
+                        success: function() {
+                          $('#tabla_ajax').load(ruta);
+                          $('#tabla_ajax2').load(ruta2);
+                        }
 
+                    });
+
+  }
+</script>
+<script type="text/javascript">
+/*
+
+  $("#agregar").click(function() {
+    var fecha =$('#fecha').val();
+    var horario =$('#horario').val();
+    var actividad =$('#actividad').val();
+    var responsable =$('#responsable').val();
+    var auditor=document.getElementById("auditor2").value;
+    var idplan_auditoria =$('#idplan_auditoria').val();
+    var seccion=7;
+    var idsolicitud =$('#idsolicitud').val();
+    var insertar =$('#insertar').val();
+    var ruta2 = $('#ruta2').val();
+    alert(fecha);
+                $.ajax({  
+                     url:"cerebro.php",  
+                     method:"POST",
+                    data:{seccion:seccion, idplan_auditoria:idplan_auditoria, idsolicitud:idsolicitud, insertar:insertar, fecha:fecha, horario:horario, actividad:actividad, responsable:responsable, auditor:auditor},
+                  success: function() { 
+                            $('#tabla_ajax2').load(ruta2); //Recargamos la Tabla(Para que se muestren los Nuevos Resultados)
+        }
+    });
+  });
+*/
+</script>
+
+
+<script>
+var count = 0;
+$( "body" ).on( "click", "#agregar", function() {
+var fecha =$('#fecha').val();
+    var horario =$('#horario').val();
+    var actividad =$('#actividad').val();
+    var responsable =$('#responsable').val();
+    var auditor=document.getElementById("auditor2").value;
+    var idplan_auditoria =$('#idplan_auditoria').val();
+    var seccion=7;
+    var idsolicitud =$('#idsolicitud').val();
+    var insertar =$('#insertar').val();
+    var ruta2 = $('#ruta2').val();
+    alert(fecha);
+                $.ajax({  
+                     url:"cerebro.php",  
+                     method:"POST",
+                    data:{seccion:seccion, idplan_auditoria:idplan_auditoria, idsolicitud:idsolicitud, insertar:insertar, fecha:fecha, horario:horario, actividad:actividad, responsable:responsable, auditor:auditor},
+                  success: function() { 
+                            $('#tabla_ajax2').load(ruta2); //Recargamos la Tabla(Para que se muestren los Nuevos Resultados)
+        }
+    });
+
+});
+</script>
 
 
 

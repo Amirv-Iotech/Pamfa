@@ -11,7 +11,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   }
 
   $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
-
+ 
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
@@ -65,65 +65,71 @@ echo $insertSQL;
 /////////////////inser seccion6
 
 if ($_POST['seccion']==6) {
-	
-	
+  
+if($_POST['usuario']=="auditor")
+{
+  $cad=$_POST['idusuario'];
+  $p=2;
+}
+if($_POST['usuario']=="inspector")
+{
+  $cad=$_POST['idusuario'];
+  $p=3;
+}
 
-if($_POST['auditor'])
-{
-	$cad=$_POST['auditor'];
-	$p=2;
-}
-if($_POST['inspector'])
-{
-	$cad=$_POST['inspector'];
-	$p=3;
-}
 $query_user = sprintf("SELECT * FROM usuario where idusuario=%s ",GetSQLValueString($cad, "text"));
 $user  = mysql_query($query_user , $inforgan_pamfa) or die(mysql_error());
 $row_user= mysql_fetch_assoc($user );
 
+$query_userAu= sprintf("SELECT * FROM plan_auditoria_equipo WHERE idplan_auditoria = %s and idauditor=%s",
+                GetSQLValueString($_POST['idplan_auditoria'], "text"),       
+                GetSQLValueString($_POST['idusuario'], "text"));
+$pla_Au = mysql_query($query_userAu,$inforgan_pamfa) or die(mysql_error());
+$row_userAu= mysql_fetch_assoc($pla_Au);
+$total_solicitud = mysql_num_rows($pla_Au);
 
-
+if($total_solicitud==0){
 
   $insertSQL = sprintf("INSERT INTO plan_auditoria_equipo (idauditor,puesto,email,tel,idplan_auditoria) VALUES (%s,%s,%s,%s,%s)",
              GetSQLValueString($cad, "text"),
-			 GetSQLValueString($p, "text"),
-			 GetSQLValueString($row_user['email'], "text"),
-			 GetSQLValueString($row_user['tel'], "text"),
-			 GetSQLValueString($_POST['idplan_auditoria'], "text"));
+       GetSQLValueString($p, "text"),
+       GetSQLValueString($row_user['email'], "text"),
+       GetSQLValueString($row_user['tel'], "text"),
+       GetSQLValueString($_POST['idplan_auditoria'], "text"));
 
 
   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
+}
 }
 ///////fin
 /////////////////inser seccion7
 
 
 if ($_POST['seccion']==7) {
- 
-if($_POST['insertar'])
-{
 
+ 
+if($_POST['insertar']==1)
+{
   $insertSQL = sprintf("INSERT INTO agenda(fecha,horario,actividad,responsable,auditor,idplan_auditoria) VALUES (%s,%s, %s,  %s, %s,%s)",
              GetSQLValueString($_POST['fecha'], "text"),
              GetSQLValueString($_POST['horario'], "text"),
-			 GetSQLValueString($_POST['actividad'], "text"),
+       GetSQLValueString($_POST['actividad'], "text"),
              GetSQLValueString($_POST['responsable'], "text"),
-			 GetSQLValueString($_POST['auditor'], "text"),
-			 GetSQLValueString($_POST['idplan_auditoria'], "text"));
-						 
+       GetSQLValueString($_POST['auditor'], "text"),
+       GetSQLValueString($_POST['idplan_auditoria'], "text"));
+             
 }
-else if($_POST['eliminar']){
-	
-	$insertSQL = sprintf("delete from agenda where idagenda=%s and idplan_auditoria=%s ",
- GetSQLValueString($_POST['idagenda'], "text"),
-            
-			 GetSQLValueString($_POST['idplan_auditoria'], "int"));
-}
-echo $insertSQL;
   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
 
 }
+if($_POST['idagenda']){
+  
+  $insertSQL = sprintf("delete from agenda where idagenda=%s",
+   GetSQLValueString($_POST['idagenda'], "text"));
+  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
+
+}
+
 ///////fin
 
 
