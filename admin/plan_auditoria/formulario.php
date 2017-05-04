@@ -289,11 +289,8 @@ var seccion =5;
 
   }
 </script>
-
 <script type="text/javascript">
-$(document).ready(function() {
-
-$('.error').hide();
+/*
 
   $("#agregar").click(function() {
     var fecha =$('#fecha').val();
@@ -305,24 +302,46 @@ $('.error').hide();
     var seccion=7;
     var idsolicitud =$('#idsolicitud').val();
     var insertar =$('#insertar').val();
-
-      var ruta2 = $('#ruta2').val();
-    
-    alert("fecha");
-         /*       $.ajax({  
+    var ruta2 = $('#ruta2').val();
+    alert(fecha);
+                $.ajax({  
                      url:"cerebro.php",  
                      method:"POST",
-                    data:{seccion:seccion, idplan_auditoria:idplan_auditoria, idsolicitud:idsolicitud, insertar:insertar, fecha:fecha, horario:horario, actividad:actividad, responsable:responsable auditor:auditor},
+                    data:{seccion:seccion, idplan_auditoria:idplan_auditoria, idsolicitud:idsolicitud, insertar:insertar, fecha:fecha, horario:horario, actividad:actividad, responsable:responsable, auditor:auditor},
                   success: function() { 
                             $('#tabla_ajax2').load(ruta2); //Recargamos la Tabla(Para que se muestren los Nuevos Resultados)
         }
-    });*/
+    });
   });
-});
-
+*/
 </script>
 
 
+<script>
+var count = 0;
+$( "body" ).on( "click", "#agregar", function() {
+var fecha =$('#fecha').val();
+    var horario =$('#horario').val();
+    var actividad =$('#actividad').val();
+    var responsable =$('#responsable').val();
+    var auditor=document.getElementById("auditor2").value;
+    var idplan_auditoria =$('#idplan_auditoria').val();
+    var seccion=7;
+    var idsolicitud =$('#idsolicitud').val();
+    var insertar =$('#insertar').val();
+    var ruta2 = $('#ruta2').val();
+    alert(fecha);
+                $.ajax({  
+                     url:"cerebro.php",  
+                     method:"POST",
+                    data:{seccion:seccion, idplan_auditoria:idplan_auditoria, idsolicitud:idsolicitud, insertar:insertar, fecha:fecha, horario:horario, actividad:actividad, responsable:responsable, auditor:auditor},
+                  success: function() { 
+                            $('#tabla_ajax2').load(ruta2); //Recargamos la Tabla(Para que se muestren los Nuevos Resultados)
+        }
+    });
+
+});
+</script>
 
 
 

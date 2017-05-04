@@ -107,6 +107,7 @@ if($total_solicitud==0){
 
 
 if ($_POST['seccion']==7) {
+
  
 if($_POST['insertar']==1)
 {
@@ -119,17 +120,17 @@ if($_POST['insertar']==1)
 			 GetSQLValueString($_POST['idplan_auditoria'], "text"));
 						 
 }
-else if($_POST['eliminar']){
-	
-	$insertSQL = sprintf("delete from agenda where idagenda=%s and idplan_auditoria=%s ",
- GetSQLValueString($_POST['idagenda'], "text"),
-            
-			 GetSQLValueString($_POST['idplan_auditoria'], "int"));
-}
-echo $insertSQL;
   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
 
 }
+if($_POST['idagenda']){
+  
+  $insertSQL = sprintf("delete from agenda where idagenda=%s",
+   GetSQLValueString($_POST['idagenda'], "text"));
+  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
+
+}
+
 ///////fin
 
 
