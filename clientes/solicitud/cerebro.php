@@ -34,48 +34,47 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 /////////////////inser seccion1
-if ($_POST['persona']!=NULL) {
+echo "persona".$_GET['persona'];
+echo "dsec".$_GET['seccion'];
+$sol=0;
+
+echo "sol...".$_POST['idsolicitud'];
+$id=0;
+if($_GET['persona'])
+{
+	$_POST['persona']=$_GET['persona'];
+
+	$_POST['seccion']=$_GET['persona'];
+	$_POST['idoperador']=$_GET['idoperador'];
+	
+	
+	
+
+}
+
+
 	
 if ($_POST['seccion']==1) {
+	
+if($_GET['band'])
+{
+$query_s = sprintf("SELECT Max(idsolicitud) as id FROM solicitud  WHERE idoperador=%s",GetSQLValueString($_POST['idoperador'], "text"));
+	$s  = mysql_query($query_s , $inforgan_pamfa) or die(mysql_error());
+$row_s = mysql_fetch_assoc($s);
+	
+	
+	
+//$sol = $row_s['id'];
+$_POST['idsolicitud']=$row_s['id'];
+}
 
  $query_solicitud = sprintf("SELECT * FROM solicitud where idsolicitud=%s ",GetSQLValueString($_POST['idsolicitud'], "text"));
 $solicitud  = mysql_query($query_solicitud , $inforgan_pamfa) or die(mysql_error());
 $row_solicitud = mysql_fetch_assoc($solicitud );
 $total_solicitud = mysql_num_rows($solicitud);
 
-echo  $query_solicitud;
-if($total_solicitud<1)
-{
-	$f=time();
-  $insertSQL = sprintf("INSERT INTO solicitud (fecha, persona, idoperador,num_ggn,num_gln,num_coc,num_mex_cal_sup,num_primus,num_senasica,responsable,personal,idprimus,idmex_alcance,idmex_pliego,idsrrc,srrc_preg1,srrc_preg2,inf_comercializacion,idioma_aud,idioma_inf,respuesta4,respuesta5,terminada) VALUES (%s, %s,  %s,%s, %s,  %s,%s, %s,%s,%s, %s,%s,%s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
-             GetSQLValueString($f, "text"),
-             GetSQLValueString($_POST['persona'], "text"),
-			GetSQLValueString($_POST['idoperador'], "text"),
-			 GetSQLValueString($_POST['num_ggn'], "text"),
-             GetSQLValueString($_POST['num_gln'], "text"),
-			 GetSQLValueString($_POST['num_coc'], "text"),
-             GetSQLValueString($_POST['num_mex_cal_sup'], "text"),
-			 GetSQLValueString($_POST['num_primus'], "text"),
-             GetSQLValueString($_POST['num_senasica'], "text"),	
-	 GetSQLValueString($_POST['responsable'], "text"),
-			 GetSQLValueString($_POST['personal'], "text"),
-			 GetSQLValueString($_POST['primus'], "text"),
-			  GetSQLValueString($_POST['idmex_alcance'], "text"),
-			 GetSQLValueString($_POST['idmex_pliego'], "text"),
-			  GetSQLValueString($_POST['idsrrc'], "text"),
-			 GetSQLValueString($_POST['srrc_preg1'], "text"),
-			 GetSQLValueString($_POST['srrc_preg2'], "text"),
-			  GetSQLValueString($_POST['inf_comercializacion'], "text"),
-			   GetSQLValueString($_POST['idioma_aud'], "text"),
-			  GetSQLValueString($_POST['idioma_inf'], "text"),
-			    GetSQLValueString($_POST['respuesta4'], "text"),
-			  GetSQLValueString($_POST['respuesta5'], "text"),
-			  GetSQLValueString($_POST['terminada'], "text"));
-			
-	 $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error()); 
- 
-}
-else{
+
+if($total_solicitud==1){
 	$insertSQL = sprintf("update solicitud set fecha=%s, persona=%s, idoperador=%s WHERE idsolicitud=%s",
  GetSQLValueString($_POST['fecha'], "text"),
              GetSQLValueString($_POST['persona'], "text"),
@@ -83,7 +82,7 @@ else{
 	GetSQLValueString($_POST['idsolicitud'], "int"));
 	
 	 $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
- 
+
 //seccion2
 	$insertSQL2 = sprintf("update solicitud set num_ggn=%s,num_gln=%s,num_coc=%s,num_mex_cal_sup=%s,num_primus=%s,num_senasica=%s,responsable=%s,personal=%s WHERE idsolicitud=%s",
  GetSQLValueString($_POST['num_ggn'], "text"),
@@ -99,7 +98,7 @@ else{
 
  $Result2 = mysql_query($insertSQL2, $inforgan_pamfa) or die(mysql_error());
  
- 
+
 	//SECCION 6
 	$insertSQL6 = sprintf("update solicitud set idprimus=%s WHERE idsolicitud=%s",
              GetSQLValueString($_POST['primus'], "text"),				
@@ -269,13 +268,24 @@ else{
   $Result10 = mysql_query($insertSQL10, $inforgan_pamfa) or die(mysql_error());
 }
 
-}
 
- if($_POST['seccion']==9)
-{
+
 if($_POST['insertar_prod'])
 {
+			
 
+	$sol=0;
+	echo "insss---".$_GET['persona'];
+	
+	$query_s = sprintf("SELECT Max(idsolicitud) as id FROM solicitud  WHERE idoperador=%s",GetSQLValueString($_POST['idoperador'], "text"));
+	$s  = mysql_query($query_s , $inforgan_pamfa) or die(mysql_error());
+$row_s = mysql_fetch_assoc($s);
+	
+	
+	
+$sol = $row_s['id'];
+
+ 
   $insertSQL = sprintf("INSERT INTO cultivos(producto,num_productores,num_fincas,ubicacion_unidad,coordenadas,periodo_cosecha,superficie,libre_cubierto,cosecha_recoleccion,empaque,num_trabajadores,idsolicitud) VALUES (%s,%s, %s,  %s, %s, %s, %s, %s, %s,%s, %s,  %s)",
              GetSQLValueString($_POST['producto'], "text"),
              GetSQLValueString($_POST['num_productores'], "text"),
@@ -288,23 +298,20 @@ if($_POST['insertar_prod'])
 			 GetSQLValueString($_POST['cosecha_recoleccion'], "text"),
              GetSQLValueString($_POST['empaque'], "text"),
 			 GetSQLValueString($_POST['num_trabajadores'], "text"),
-             GetSQLValueString($_POST['idsolicitud'], "text"));
-			 echo $insertSQL;
+             GetSQLValueString($sol, "int"));
+			
   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
 						 
 }
 
 
- if($_POST['eliminar']){
+ if($_POST['idcultivos']){
 	
-	$insertSQL = sprintf("delete from cultivos where idcultivos=%s and idsolicitud=%s ",
- GetSQLValueString($_POST['idcultivos'], "text"),
-            
-			 GetSQLValueString($_POST['idsolicitud'], "int"));
-
+	$insertSQL = sprintf("delete from cultivos where idcultivos=%s  ",
+ GetSQLValueString($_POST['idcultivos'], "text"));
 
   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
 
 }
-}
+
 ///////fin

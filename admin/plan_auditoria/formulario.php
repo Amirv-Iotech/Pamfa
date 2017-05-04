@@ -89,6 +89,9 @@ $row_alcance= mysql_fetch_assoc($alcance);
 <div class="content" >
     <div class="row" id="form_plan_aud" style="background-color: #ecfbe7; padding: 0px;">
         <div class="col-lg-12 col-xs-12" style="padding: 0px;">
+
+<input type="" id="ruta" name="ruta" value="<? echo "tabla.php?idplan_auditoria=". $row_plan_auditoria['idplan_auditoria']."";?>" />
+
             <form id="myform" action="#seccion1" method="post" class="form-horizontal" enctype="multipart/form-data">
                <div class="col-xs-12 col-lg-12" style="background-color: #dbf573e6; padding: 0px;">
                   <h3 align="center">Plan de auditoria de certificación</h3>
@@ -261,6 +264,27 @@ var seccion =5;
 });
 </script>
 
+<script type="text/javascript">
+  function guardarTabla(ele) 
+  {         
+            var seccion =6;
+            var idusuario = ele.options[ele.selectedIndex].value;
+            var usuario = ele.name;
+            var idplan_auditoria =$('#idplan_auditoria').val();
+            var idsolicitud = $('#idsolicitud').val();
+            var ruta = $('#ruta').val();
+                    $.ajax({
+                        url:"cerebro.php",
+                        method:"POST",
+                        data:{seccion:seccion, idusuario:idusuario, usuario:usuario, idplan_auditoria:idplan_auditoria, idsolicitud:idsolicitud},
+                        success: function() {
+                          $('#tabla_ajax').load(ruta);
+                        }
+
+                    });
+
+  }
+</script>
 
 
 
