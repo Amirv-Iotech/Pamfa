@@ -74,38 +74,7 @@ $row_solicitud = mysql_fetch_assoc($solicitud );
 $total_solicitud = mysql_num_rows($solicitud);
 
 
-if($total_solicitud<1)
-{
-	$f=time();
-  $insertSQL = sprintf("INSERT INTO solicitud (fecha, persona, idoperador,num_ggn,num_gln,num_coc,num_mex_cal_sup,num_primus,num_senasica,responsable,personal,idprimus,idmex_alcance,idmex_pliego,idsrrc,srrc_preg1,srrc_preg2,inf_comercializacion,idioma_aud,idioma_inf,respuesta4,respuesta5,terminada) VALUES (%s, %s,  %s,%s, %s,  %s,%s, %s,%s,%s, %s,%s,%s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
-             GetSQLValueString($f, "text"),
-             GetSQLValueString($_POST['persona'], "text"),
-			GetSQLValueString($_POST['idoperador'], "text"),
-			 GetSQLValueString($_POST['num_ggn'], "text"),
-             GetSQLValueString($_POST['num_gln'], "text"),
-			 GetSQLValueString($_POST['num_coc'], "text"),
-             GetSQLValueString($_POST['num_mex_cal_sup'], "text"),
-			 GetSQLValueString($_POST['num_primus'], "text"),
-             GetSQLValueString($_POST['num_senasica'], "text"),	
-	 GetSQLValueString($_POST['responsable'], "text"),
-			 GetSQLValueString($_POST['personal'], "text"),
-			 GetSQLValueString($_POST['primus'], "text"),
-			  GetSQLValueString($_POST['idmex_alcance'], "text"),
-			 GetSQLValueString($_POST['idmex_pliego'], "text"),
-			  GetSQLValueString($_POST['idsrrc'], "text"),
-			 GetSQLValueString($_POST['srrc_preg1'], "text"),
-			 GetSQLValueString($_POST['srrc_preg2'], "text"),
-			  GetSQLValueString($_POST['inf_comercializacion'], "text"),
-			   GetSQLValueString($_POST['idioma_aud'], "text"),
-			  GetSQLValueString($_POST['idioma_inf'], "text"),
-			    GetSQLValueString($_POST['respuesta4'], "text"),
-			  GetSQLValueString($_POST['respuesta5'], "text"),
-			  GetSQLValueString($_POST['terminada'], "text"));
-			
-	 $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error()); 
-	 
-}
-else{
+if($total_solicitud==1){
 	$insertSQL = sprintf("update solicitud set fecha=%s, persona=%s, idoperador=%s WHERE idsolicitud=%s",
  GetSQLValueString($_POST['fecha'], "text"),
              GetSQLValueString($_POST['persona'], "text"),
@@ -303,6 +272,8 @@ else{
 
 if($_POST['insertar_prod'])
 {
+			
+
 	$sol=0;
 	echo "insss---".$_GET['persona'];
 	

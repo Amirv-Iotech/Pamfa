@@ -41,18 +41,53 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
 mysql_select_db($database_pamfa, $inforgan_pamfa);
  include("includes/header.php");
- include("cerebro.php");?>
-<?php
 
+
+$query_solicitud2 = sprintf("SELECT * FROM solicitud WHERE idoperador=%s order by idsolicitud asc limit 1", GetSQLValueString( $_SESSION["idoperador"], "int"));
+$solicitud2 = mysql_query($query_solicitud2, $inforgan_pamfa) or die(mysql_error());
+$total_solicitud2 = mysql_num_rows($solicitud2);
+if($total_solicitud2==0){
+
+ $query_s = sprintf("SELECT Max(idsolicitud) as id FROM solicitud  WHERE idoperador=%s",GetSQLValueString($_SESSION["idoperador"], "text"));
+  $s  = mysql_query($query_s , $inforgan_pamfa) or die(mysql_error());
+$row_s = mysql_fetch_assoc($s);  
+$sol = $row_s['id'];
+
+
+}
+ else {$query_s = sprintf("SELECT Max(idsolicitud) as id FROM solicitud  WHERE idoperador=%s",GetSQLValueString($_SESSION["idoperador"], "text"));
+  $s  = mysql_query($query_s , $inforgan_pamfa) or die(mysql_error());
+$row_s = mysql_fetch_assoc($s);  
+
+$query_sa = sprintf("SELECT terminada FROM solicitud  WHERE idsolicitud=%s ",GetSQLValueString($row_s['id'], "text"));
+  $sa  = mysql_query($query_sa , $inforgan_pamfa) or die(mysql_error());
+$row_sa = mysql_fetch_assoc($sa);  
+if($row_sa['terminada']==1){
+  $sol=NULL;
+}else{
+  $sol="1";
+}
+}
+
+$sola="";
+ if($sol==NULL){
+  include("cerebro2.php");
+ }
+ if($sola!=NULL){
+  $query_solicitud = sprintf("SELECT * FROM solicitud WHERE idsolicitud=%s order by idsolicitud asc limit 1", GetSQLValueString( $sola, "int"));
+$solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error());
+$row_solicitud= mysql_fetch_assoc($solicitud);
+
+ }
+ else {
+  $query_solicitud = sprintf("SELECT * FROM solicitud WHERE idoperador=%s and terminada is NULL order by idsolicitud asc limit 1", GetSQLValueString( $_SESSION["idoperador"], "int"));
+$solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error());
+$row_solicitud= mysql_fetch_assoc($solicitud);
+
+ }
 $query_operador = sprintf("SELECT * FROM operador WHERE idoperador=%s", GetSQLValueString( $_SESSION["idoperador"], "int"));
 $operador = mysql_query($query_operador, $inforgan_pamfa) or die(mysql_error());
 $row_operador= mysql_fetch_assoc($operador);
-
-
-	
-$query_solicitud = sprintf("SELECT * FROM solicitud WHERE idoperador=%s and terminada is NULL order by idsolicitud asc limit 1", GetSQLValueString( $_SESSION["idoperador"], "int"));
-$solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error());
-$row_solicitud= mysql_fetch_assoc($solicitud);
 
 $query_cert_anterior = sprintf("SELECT * FROM cert_anterior WHERE idsolicitud=%s order by idcert_anterior asc limit 1", GetSQLValueString( $row_solicitud["idsolicitud"], "int"));
 $cert_anterior = mysql_query($query_cert_anterior, $inforgan_pamfa) or die(mysql_error());
@@ -77,7 +112,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 <div class="panel panel-white">
 <div class="panel-heading clearfix"><br>
 
-<input type="" id="ruta" name="ruta" value="<? echo "tabla.php?band=1&seccion=1&idoperador=".$row_operador['idoperador']."";?>" />
+<input type="" id="ruta" name="ruta" value="<? echo "tabla.php?idsolicitud=".$row_solicitud['idsolicitud']."&seccion=1&idoperador=".$row_operador['idoperador']."";?>" />
 
 	<div class="row" id="seccion1">
 		<div class="col-lg-12">
