@@ -270,7 +270,6 @@ var seccion =5;
   {         
             var seccion =6;
             var idusuario = ele.options[ele.selectedIndex].value;
-            alert(idusuario);
             var usuario = ele.name;
             var idplan_auditoria =$('#idplan_auditoria').val();
             var idsolicitud = $('#idsolicitud').val();
@@ -330,7 +329,6 @@ var fecha =$('#fecha').val();
     var idsolicitud =$('#idsolicitud').val();
     var insertar =$('#insertar').val();
     var ruta2 = $('#ruta2').val();
-    alert(fecha);
                 $.ajax({  
                      url:"cerebro.php",  
                      method:"POST",

@@ -53,7 +53,7 @@
                    <button class=" col-md-6 btn btn-success btn-lg">Administrador</button></a>
                 </div></li>
                 <li><div class="col-md-12">
-                  <a href="admin/login.php"><button class=" col-md-6 btn btn-info btn-lg">Auditor</button>
+                  <a href="auditor/login.php"><button class=" col-md-6 btn btn-info btn-lg">Auditor</button>
                 </div></li>
                 </ul>
               </div>
