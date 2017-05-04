@@ -77,7 +77,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 <div class="panel panel-white">
 <div class="panel-heading clearfix"><br>
 
-<input type="" id="ruta" name="ruta" value="<? echo "tabla.php?idsolicitud=". $row_solicitud['idsolicitud']."";?>" />
+<input type="" id="ruta" name="ruta" value="<? echo "tabla.php?band=1&seccion=1&idoperador=".$row_operador['idoperador']."";?>" />
 
 	<div class="row" id="seccion1">
 		<div class="col-lg-12">
@@ -289,11 +289,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 
       
       
-      <input type="hidden" id="idsolicitud" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
-                <input type="hidden" name="insertar_prod" value="1" />
-                <input type="hidden" id="seccion" name="seccion" value="1" />
-               
-                <input type="hidden" id="idoperador" name="idoperador" value="<? echo $row_operador['idoperador']; ?>" />
+     
 </div>
 </fieldset>	
 <?php include("seccion3.php");?>
@@ -536,11 +532,13 @@ $('.error').hide();
             var idsolicitud = $('#idsolicitud').val();
             var insertar_prod = $('#insertar_prod').val();
 			var ruta = $('#ruta').val();
+			 var idoperador = $('#idoperador').val();
+			
 	  
                 $.ajax({  
                      url:"cerebro.php",  
                      method:"POST",
-                    data:{producto:producto,num_productores:num_productores,num_fincas:num_fincas,ubicacion_unidad:ubicacion_unidad,coordenadas:coordenadas,periodo_cosecha:periodo_cosecha,superficie:superficie,libre_cubierto:libre_cubierto,cosecha_recoleccion:cosecha_recoleccion,empaque:empaque,num_trabajadores:num_trabajadores,idsolicitud:idsolicitud,insertar_prod:insertar_prod},
+                    data:{producto:producto,num_productores:num_productores,num_fincas:num_fincas,ubicacion_unidad:ubicacion_unidad,coordenadas:coordenadas,periodo_cosecha:periodo_cosecha,superficie:superficie,libre_cubierto:libre_cubierto,cosecha_recoleccion:cosecha_recoleccion,empaque:empaque,num_trabajadores:num_trabajadores,idsolicitud:idsolicitud,insertar_prod:insertar_prod,idoperador:idoperador},
 		            	success: function() { 
 		                        $('#tabla_ajax').load(ruta); //Recargamos la Tabla(Para que se muestren los Nuevos Resultados)
 		    }

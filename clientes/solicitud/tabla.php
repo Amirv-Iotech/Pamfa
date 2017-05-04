@@ -4,16 +4,24 @@
   $sol="";
   if($_GET["idsolicitud"])
   {$sol=$_GET["idsolicitud"];
-  
+  echo "get".$sol;
   }
-  if($_POST["idsolicitud"])
+  else if($_POST["idsolicitud"])
   {$sol=$_POST["idsolicitud"];
- 
+ echo "post".$sol;
 	  }
-  if($row_solicitud['idsolicitud'])
+  else if($row_solicitud['idsolicitud'])
   {
 	  $sol=$row_solicitud['idsolicitud'];
-	 
+	 echo "NORMAL".$sol;
+  }
+  else{
+	$query_s = sprintf("SELECT Max(idsolicitud) as id FROM solicitud  WHERE idoperador=10 and terminada is null");
+	$s  = mysql_query($query_s , $inforgan_pamfa) or die(mysql_error());
+$row_s = mysql_fetch_assoc($s);  
+$sol=$row_s ['id'];
+
+echo "ID".$sol;
   }
 $query_solicitud = sprintf("SELECT * FROM solicitud WHERE idsolicitud=%s ", GetSQLValueString( $sol, "int"));
 $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error());
