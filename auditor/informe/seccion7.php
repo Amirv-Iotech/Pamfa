@@ -1,9 +1,3 @@
-
-<?
- $query_informe = "SELECT * FROM informe_firma where idinforme='".$_POST['idinforme']."' and firma is null";
-$informe  = mysql_query($query_informe , $inforgan_pamfa) or die(mysql_error());
-$total_informe = mysql_num_rows($informe); 
-?>
 <fieldset>
 <div class="row" style="background-color: #ecfbe7">
   <div class="col-lg-12" style="background-color: #dbf573e6;">
@@ -30,9 +24,9 @@ $total_informe = mysql_num_rows($informe);
       <input type="hidden" name="idinforme" value="<? echo $_POST['idinforme']; ?>" />
       <input type="hidden" name="insertar" value="1" />
       <input type="hidden" name="seccion" value="7" />
-      <? if($total_informe==1)
-	  {?>
-      <input type="submit" value="Agregar.<? echo $total_informe;?>" class="btn btn-success" />
+      <? if($row_inf['dictamen_ifa']!="aprobado")
+    {?>
+      <input type="submit" value="Agregar" class="btn btn-success" />
       <? }?>
   </div>
 </form>
@@ -70,8 +64,8 @@ $total_informe = mysql_num_rows($informe);
                         <input type="hidden" name="idinforme_hallazgo" value="<? echo $row_informe['idinforme_hallazgo']; ?>" /> 
                         <input type="hidden" name="idinforme" value="<? echo $row_informe['idinforme']; ?>" />
                         <input type="hidden" name="seccion" value="7" />
-                          <? if($total_informe==1)
-	  {?>
+                          <? if($row_inf['dictamen_ifa']!="aprobado")
+    {?>
       <input type="image" name="imageField3" id="imageField3" src="../../images/delete.png" title="REMOVER" width="30" height="30" />
       <? }?>
                       </form>
@@ -85,7 +79,6 @@ $total_informe = mysql_num_rows($informe);
   </form>
 </div>
 <!-- /Parte 1 -->
-
 
 
 <div class="col-md-12" style="padding: 0px;">
@@ -115,8 +108,8 @@ $total_informe = mysql_num_rows($informe);
         <input type="hidden" name="idinforme" value="<? echo $_POST['idinforme']; ?>" />
         <input type="hidden" name="insertar" value="1" />
         <input type="hidden" name="seccion" value="7" />
-        <? if($total_informe==1)
-	  {?>
+        <? if($row_inf['dictamen_coc']!="aprobado")
+    {?>
       <input type="submit" value="Agregar" class="btn btn-success" />
       <? }?>
     </div>
@@ -154,8 +147,8 @@ $total_informe = mysql_num_rows($informe);
                       <input type="hidden" name="idinforme_hallazgo" value="<? echo $row_informe['idinforme_hallazgo']; ?>" /> 
                       <input type="hidden" name="idinforme" value="<? echo $row_informe['idinforme']; ?>" />
                       <input type="hidden" name="seccion" value="7" />
-                         <? if($total_informe==1)
-	  {?>
+                        <? if($row_inf['dictamen_coc']!="aprobado")
+    {?>
       <input type="image" name="imageField3" id="imageField3" src="../../images/delete.png" title="REMOVER" width="30" height="30" />
       <? }?>
                     </form>
@@ -195,8 +188,8 @@ $total_informe = mysql_num_rows($informe);
         <input type="hidden" name="idinforme" value="<? echo $_POST['idinforme']; ?>" />
         <input type="hidden" name="insertar" value="1" />
         <input type="hidden" name="seccion" value="7" />
-       <? if($total_informe==1)
-	  {?>
+       <? if($row_inf['dictamen_mexcalsup']!="aprobado")
+    {?>
       <input type="submit" value="Agregar" class="btn btn-success" />
       <? }?>
       </div>
@@ -233,8 +226,8 @@ $total_informe = mysql_num_rows($informe);
                   <input type="hidden" name="idinforme_hallazgo" value="<? echo $row_informe['idinforme_hallazgo']; ?>" /> 
                   <input type="hidden" name="idinforme" value="<? echo $row_informe['idinforme']; ?>" />
                   <input type="hidden" name="seccion" value="7" />
-                  <? if($total_informe==1)
-	  {?>
+                  <? if($row_inf['dictamen_mexcalsup']!="aprobado")
+    {?>
       <input type="image" name="imageField3" id="imageField3" src="../../images/delete.png" title="REMOVER" width="30" height="30" />
       <? }?>
                  
@@ -248,7 +241,8 @@ $total_informe = mysql_num_rows($informe);
       </div>
       </form>
     </div>
-    
+
+  </div>
 </div>
 </div>
 </fieldset>
@@ -274,15 +268,15 @@ $total_informe = mysql_num_rows($informe);
          </tr>
          <tr>
          <th colspan="1" >
-       <input placeholder="escribe aquí"  class="form-control"  name="num_incumplimiento_ifa"  			title="Incumplimiento " type="text" value=""  />
+       <input placeholder="escribe aquí"  class="form-control"  name="num_incumplimiento_ifa"       title="Incumplimiento " type="text" value=""  />
          </th>
          
          <th colspan="1" >
-       <input placeholder="escribe aquí"  class="form-control"  name="requisito_ifa"  			title="Requisito " type="text" value=""  />
+       <input placeholder="escribe aquí"  class="form-control"  name="requisito_ifa"        title="Requisito " type="text" value=""  />
          </th>
          
          <th colspan="2" >
-       <input placeholder="escribe aquí"  class="form-control"  name="hallazgo_ifa"  			title="hallazgo " type="text" value=""  />
+       <input placeholder="escribe aquí"  class="form-control"  name="hallazgo_ifa"       title="hallazgo " type="text" value=""  />
          </th>
           
         
@@ -313,7 +307,7 @@ $total_informe = mysql_num_rows($informe);
             <?
             while($row_informe= mysql_fetch_assoc($informe))
       {
-      	?>
+        ?>
          <tr>
          <th colspan="1" >
       <? echo $row_informe['num_incumplimiento_ifa'];?>
@@ -357,7 +351,7 @@ $total_informe = mysql_num_rows($informe);
          </tr>
          <tr>
          <th colspan="1" >
-       <input placeholder="escribe aquí"  class="form-control"  name="observacion_ifa"  			title="observacion " type="text" value="<? echo $row_inf['observacion_ifa']; ?>"  />
+       <input placeholder="escribe aquí"  class="form-control"  name="observacion_ifa"        title="observacion " type="text" value="<? echo $row_inf['observacion_ifa']; ?>"  />
          </th>
          
          <th colspan="1" >
@@ -398,15 +392,15 @@ $total_informe = mysql_num_rows($informe);
          </tr>
          <tr>
          <th colspan="1" >
-       <input placeholder="escribe aquí"  class="form-control"  name="num_incumplimiento_coc"  			title="Incumplimiento " type="text" value=""  />
+       <input placeholder="escribe aquí"  class="form-control"  name="num_incumplimiento_coc"       title="Incumplimiento " type="text" value=""  />
          </th>
          
          <th colspan="1" >
-       <input placeholder="escribe aquí"  class="form-control"  name="requisito_coc"  			title="Requisito " type="text" value=""  />
+       <input placeholder="escribe aquí"  class="form-control"  name="requisito_coc"        title="Requisito " type="text" value=""  />
          </th>
          
          <th colspan="2" >
-       <input placeholder="escribe aquí"  class="form-control"  name="hallazgo_coc"  			title="hallazgo " type="text" value=""  />
+       <input placeholder="escribe aquí"  class="form-control"  name="hallazgo_coc"       title="hallazgo " type="text" value=""  />
          </th>
           
         
@@ -437,7 +431,7 @@ $total_informe = mysql_num_rows($informe);
             <?
             while($row_informe= mysql_fetch_assoc($informe))
       {
-      	?>
+        ?>
          <tr>
          <th colspan="1" >
       <? echo $row_informe['num_incumplimiento_coc'];?>
@@ -481,7 +475,7 @@ $total_informe = mysql_num_rows($informe);
          </tr>
          <tr>
          <th colspan="1" >
-       <input placeholder="escribe aquí"  class="form-control"  name="observacion_coc"  			title="observacion " type="text" value="<? echo $row_inf['observacion_coc']; ?>"  />
+       <input placeholder="escribe aquí"  class="form-control"  name="observacion_coc"        title="observacion " type="text" value="<? echo $row_inf['observacion_coc']; ?>"  />
          </th>
          
          <th colspan="1" >
@@ -522,15 +516,15 @@ $total_informe = mysql_num_rows($informe);
          </tr>
          <tr>
          <th colspan="1" >
-       <input placeholder="escribe aquí"  class="form-control"  name="num_incumplimiento_mexcalsup"  			title="Incumplimiento " type="text" value=""  />
+       <input placeholder="escribe aquí"  class="form-control"  name="num_incumplimiento_mexcalsup"       title="Incumplimiento " type="text" value=""  />
          </th>
          
          <th colspan="1" >
-       <input placeholder="escribe aquí"  class="form-control"  name="requisito_mexcalsup"  			title="Requisito " type="text" value=""  />
+       <input placeholder="escribe aquí"  class="form-control"  name="requisito_mexcalsup"        title="Requisito " type="text" value=""  />
          </th>
          
          <th colspan="2" >
-       <input placeholder="escribe aquí"  class="form-control"  name="hallazgo_mexcalsup"  			title="hallazgo " type="text" value=""  />
+       <input placeholder="escribe aquí"  class="form-control"  name="hallazgo_mexcalsup"       title="hallazgo " type="text" value=""  />
          </th>
           
         
@@ -561,7 +555,7 @@ $total_informe = mysql_num_rows($informe);
             <?
             while($row_informe= mysql_fetch_assoc($informe))
       {
-      	?>
+        ?>
          <tr>
          <th colspan="1" >
       <? echo $row_informe['num_incumplimiento_mexcalsup'];?>
@@ -605,7 +599,7 @@ $total_informe = mysql_num_rows($informe);
          </tr>
          <tr>
          <th colspan="1" >
-       <input placeholder="escribe aquí"  class="form-control"  name="observacion_mexcalsup"  			title="observacion " type="text" value="<? echo $row_inf['observacion_mexcalsup']; ?>"  />
+       <input placeholder="escribe aquí"  class="form-control"  name="observacion_mexcalsup"        title="observacion " type="text" value="<? echo $row_inf['observacion_mexcalsup']; ?>"  />
          </th>
          
          <th colspan="1" >
@@ -635,4 +629,4 @@ $total_informe = mysql_num_rows($informe);
               
           </fieldset>
 -->
-	
+  

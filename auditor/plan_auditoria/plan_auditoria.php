@@ -147,7 +147,7 @@ $row_cliente= mysql_fetch_assoc($cliente);
 {?>
  <td>
                                                 <form action="" method="post">
-                                                 <button data-toggle="tooltip" title="Por Firmar" type="submit" name="firma" disabled  value="1"class="btn btn-danger"><i class="fa fa-clock-o" aria-hidden="true"></i>
+                                                 <button data-toggle="tooltip" title="Por Firmar" type="submit" name="firma"   value="1"class="btn btn-danger"><i class="fa fa-clock-o" aria-hidden="true"></i>
 </button>
                                                  <input type="hidden" name="idplan_auditoria" value="<? echo $row_plan_auditoria['idplan_auditoria']; ?>" />
                                                  
@@ -155,7 +155,7 @@ $row_cliente= mysql_fetch_assoc($cliente);
 
  <td>
                                                 
-                                                  <button data-toggle="tooltip" title="Firmada" type="button" name="firmada" disabled  value="1"class="btn btn-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                  <button data-toggle="tooltip" title="Firmada" type="button" name="firmada"   value="1"class="btn btn-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 </button> 
                                                  
 </form></td><? }?>

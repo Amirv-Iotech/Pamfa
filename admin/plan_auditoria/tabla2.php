@@ -85,13 +85,21 @@
               $cont=0;
               while($row_agenda= mysql_fetch_assoc($agenda))
                 {
-					       
+					         if($total_agenda==1)
+                {
+	            $query_vista2 = "select nombre,apellidos from usuario where idusuario = (SELECT idauditor FROM plan_auditoria_equipo where idauditor='".$row_agenda['auditor']."') ";
+                $vista2 = mysql_query($query_vista2,  $inforgan_pamfa) or die(mysql_error());
+                $row_vista2= mysql_fetch_assoc($vista2);
+                ?>
+	<?
+}
+					else{
             ?>
   <?
 						$query_vista2 = "select nombre,apellidos from usuario where idusuario in (SELECT idauditor FROM plan_auditoria_equipo where idauditor='".$row_agenda['auditor']."')";
                 $vista2 = mysql_query($query_vista2,  $inforgan_pamfa) or die(mysql_error());
                 $row_vista2= mysql_fetch_assoc($vista2);
-					
+					}
                
             ?>
             <tr>
