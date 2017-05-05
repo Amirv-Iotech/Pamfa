@@ -130,14 +130,14 @@ $row_cliente= mysql_fetch_assoc($cliente);
 </button>
                                                  <input type="hidden" name="idinforme" value="<? echo $row_informe['idinforme'];  ?>" />
                                                  
-</form></td><? }?>
+</form></td><? }else {?>
 
  <td>
                                                 
                                                  <button data-toggle="tooltip" title="Firmada" type="button" name="firmada"   value="1"class="btn btn-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 </button>
                                                  
-</form></td>
+</form></td><? }?>
 
  <td>
  <table>
@@ -146,7 +146,7 @@ $row_cliente= mysql_fetch_assoc($cliente);
  <label>GLOBALG.A.P IFA</label>
  </td>
  <td>
- <button type="button" name="aprobar"  value="1" <? if($row_informe['dictamen_ifa']=='rechazo'){?> class="btn btn-danger" data-toggle="tooltip" title="Rechazado" <? }else {?> class="btn btn-info" data-toggle="tooltip" title="Aprobado" <? }?>><? 
+ <button type="button" name="aprobar"  value="1" <? if($row_informe['dictamen_ifa']!='aprobado'){?> class="btn btn-danger" data-toggle="tooltip" title="Rechazado" <? }else {?> class="btn btn-info" data-toggle="tooltip" title="Aprobado" <? }?>><? 
                                             if($row_informe['dictamen_ifa']=='aprobado'){
                                             echo '<i class="fa fa-check-square-o fa-4x" aria-hidden="true"></i>';}
                                           else {echo '<i class="fa fa-window-close-o fa-4x" aria-hidden="true"></i>';}
@@ -179,7 +179,7 @@ $row_cliente= mysql_fetch_assoc($cliente);
  <label>GLOBALG.A.P CoC</label>
  </td>
  <td>
- <button type="button" name="aprobar"  value="1" <? if($row_informe['dictamen_coc']=='rechazo'){?> class="btn btn-danger" data-toggle="tooltip" title="Rechazado" <? }else {?> class="btn btn-info" data-toggle="tooltip" title="Aprobado" <? }?>> <?
+ <button type="button" name="aprobar"  value="1" <? if($row_informe['dictamen_coc']!='aprobado'){?> class="btn btn-danger" data-toggle="tooltip" title="Rechazado" <? }else {?> class="btn btn-info" data-toggle="tooltip" title="Aprobado" <? }?>> <?
                                             if($row_informe['dictamen_coc']=='aprobado'){
                                             echo '<i class="fa fa-check-square-o fa-4x" aria-hidden="true"></i>';}
                                           else  { echo '<i class="fa fa-window-close-o fa-4x" aria-hidden="true"></i>';}
@@ -215,7 +215,7 @@ $row_cliente= mysql_fetch_assoc($cliente);
  <label>México Calidad Suprema</label>
  </td>
  <td>
- <button type="button" name="aprobar"  value="1" <? if($row_informe['dictamen_mexcalsup']=='rechazo'){ ?> class="btn btn-danger" data-toggle="tooltip" title="Rechazado" <? }else {?> class="btn btn-info" data-toggle="tooltip" title="Aprobado" <? }?> > <? 
+ <button type="button" name="aprobar"  value="1" <? if($row_informe['dictamen_mexcalsup']!='aprobado'){ ?> class="btn btn-danger" data-toggle="tooltip" title="Rechazado" <? }else {?> class="btn btn-info" data-toggle="tooltip" title="Aprobado" <? }?> > <? 
                                           if($row_informe['dictamen_mexcalsup']=='aprobado'){
                                             echo '<i class="fa fa-check-square-o" aria-hidden="true"></i>';}
                                           else {echo '<i class="fa fa-window-close-o" aria-hidden="true"></i>';}

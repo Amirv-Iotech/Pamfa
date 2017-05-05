@@ -40,15 +40,14 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
 mysql_select_db($database_pamfa, $inforgan_pamfa);
 
-if (isset($_POST['aprobar'])) {
+if (isset($_POST['firma'])) {
 		
 $f=date('d/m/y',time());
-	$insertSQL = sprintf("update informe set aprobado=%s,idaprobado=%s,fecha_aprobado=%s WHERE idplan_auditoria=%s",
+	$insertSQL = sprintf("update informe set firma_cliente=%s,fecha_firma_cliente=%s WHERE idinforme=%s",
 
              GetSQLValueString(1, "text"),
-			 GetSQLValueString($_SESSION["idusuario"], "text"),
 			 GetSQLValueString($f, "text"),
-	GetSQLValueString($_POST['idplan_auditoria'], "int"));
+	GetSQLValueString($_POST['idinforme'], "int"));
 
   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
   
@@ -126,7 +125,7 @@ $row_cliente= mysql_fetch_assoc($cliente);
 {?>
  <td>
                                               <form action="" method="post">
-                                                 <button data-toggle="tooltip" title="Por Firmar" type="submit" name="firma" disabled  value="1"class="btn btn-danger"><i class="fa fa-clock-o" aria-hidden="true"></i>
+                                                 <button data-toggle="tooltip" title="Por Firmar" type="submit" name="firma"   value="1"class="btn btn-danger"><i class="fa fa-clock-o" aria-hidden="true"></i>
 </button>
                                                  <input type="hidden" name="idinforme" value="<? echo $row_informe['idinforme'];  ?>" />
                                                  
@@ -145,7 +144,7 @@ $row_cliente= mysql_fetch_assoc($cliente);
  <label>GLOBALG.A.P IFA</label>
  </td>
  <td>
- <button type="button" name="aprobar"  value="1" <? if($row_informe['dictamen_ifa']=='rechazo'){?> class="btn btn-danger" data-toggle="tooltip" title="Rechazado" <? }else {?> class="btn btn-info" data-toggle="tooltip" title="Aprobado" <? }?>><? 
+ <button type="button" name="aprobar"  value="1" <? if($row_informe['dictamen_ifa']!='aprobado'){?> class="btn btn-danger" data-toggle="tooltip" title="Rechazado" <? }else {?> class="btn btn-info" data-toggle="tooltip" title="Aprobado" <? }?>><? 
                                             if($row_informe['dictamen_ifa']=='aprobado'){
                                             echo '<i class="fa fa-check-square-o fa-4x" aria-hidden="true"></i>';}
                                           else {echo '<i class="fa fa-window-close-o fa-4x" aria-hidden="true"></i>';}
@@ -172,7 +171,7 @@ $row_cliente= mysql_fetch_assoc($cliente);
  <label>GLOBALG.A.P CoC</label>
  </td>
  <td>
- <button type="button" name="aprobar"  value="1" <? if($row_informe['dictamen_coc']=='rechazo'){?> class="btn btn-danger" data-toggle="tooltip" title="Rechazado" <? }else {?> class="btn btn-info" data-toggle="tooltip" title="Aprobado" <? }?>> <?
+ <button type="button" name="aprobar"  value="1" <? if($row_informe['dictamen_coc']!='aprobado'){?> class="btn btn-danger" data-toggle="tooltip" title="Rechazado" <? }else {?> class="btn btn-info" data-toggle="tooltip" title="Aprobado" <? }?>> <?
                                             if($row_informe['dictamen_coc']=='aprobado'){
                                             echo '<i class="fa fa-check-square-o fa-4x" aria-hidden="true"></i>';}
                                           else  { echo '<i class="fa fa-window-close-o fa-4x" aria-hidden="true"></i>';}
@@ -201,7 +200,7 @@ $row_cliente= mysql_fetch_assoc($cliente);
  <label>México Calidad Suprema</label>
  </td>
 <td>
- <button type="button" name="aprobar"  value="1" <? if($row_informe['dictamen_mexcalsup']=='rechazo'){ ?> class="btn btn-danger" data-toggle="tooltip" title="Rechazado" <? }else {?> class="btn btn-info" data-toggle="tooltip" title="Aprobado" <? }?> > <? 
+ <button type="button" name="aprobar"  value="1" <? if($row_informe['dictamen_mexcalsup']!='aprobado'){ ?> class="btn btn-danger" data-toggle="tooltip" title="Rechazado" <? }else {?> class="btn btn-info" data-toggle="tooltip" title="Aprobado" <? }?> > <? 
                                           if($row_informe['dictamen_mexcalsup']=='aprobado'){
                                             echo '<i class="fa fa-check-square-o" aria-hidden="true"></i>';}
                                           else {echo '<i class="fa fa-window-close-o" aria-hidden="true"></i>';}
