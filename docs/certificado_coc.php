@@ -232,10 +232,10 @@ while($row_cert_productos2= mysql_fetch_assoc($cert_productos2))
   { 
     $mpdf->WriteHTML('
      <tr style="background-color:#b4db9b">
-        <td style="text-align:center; font-size:16px" colspan="3">1'.$row_cert_productos2['producto'].'
+        <td style="text-align:center; font-size:16px" colspan="3">'.$row_cert_productos2['producto'].'
         </td>
     
-          <td style="text-align:center; font-size:16px" colspan="3">2'.$row_cert_productos2['destino'].'
+          <td style="text-align:center; font-size:16px" colspan="3">'.$row_cert_productos2['destino'].'
           </td></tr>');
     
     

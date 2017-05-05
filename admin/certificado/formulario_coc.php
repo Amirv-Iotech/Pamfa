@@ -137,7 +137,7 @@ $row_cert= mysql_fetch_assoc($cert);
                           <h3>Versión:</h3>        
                       </div>
                       <div class="col-lg-8">
-                          <input placeholder=""   class="plan_input" id=version" name="version"       title="version " type="text" value="<? echo $row_cert['version_coc']; ?>"  />     
+                          <input placeholder=""   class="plan_input" id="version" name="version"       title="version " type="text" value="<? echo $row_cert['version_coc']; ?>"  />     
                       </div>
                       <div class="col-lg-4">
                             <h3>Fecha de desición de certificación:</h3>        

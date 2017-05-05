@@ -57,7 +57,7 @@ if (isset($_POST['desautorizar'])) {
 	
 	
 $f=date('d/m/y',time());
-	$insertSQL = sprintf("update solicitud set autorizada=NULL,nombre_autorizo=NULL,fecha_autorizo=NULL WHERE idsolicitud=%s",
+	$insertSQL = sprintf("update  set autorizada=NULL,nombre_autorizo=NULL,fecha_autorizo=NULL WHERE idsolicitud=%s",
 
             
 	
@@ -125,18 +125,20 @@ $row_cliente= mysql_fetch_assoc($cliente);
 {?>
  <td>
                                               <form action="" method="post">
-                                                 <button data-toggle="tooltip" title="Por Firmar" type="submit" name="firma"   value="1"class="btn btn-danger"><i class="fa fa-clock-o" aria-hidden="true"></i>
+                                                 <button data-toggle="tooltip" title="Por Firmar" type="submit" name="firma"   value="1" class="btn btn-danger"><i class="fa fa-clock-o" aria-hidden="true"></i>
 </button>
                                                  <input type="hidden" name="idinforme" value="<? echo $row_informe['idinforme'];  ?>" />
                                                  
-</form></td><? }?>
+</form></td><? } else { ?>
+
+  
 
  <td>
                                                 
                                                  <button data-toggle="tooltip" title="Firmada" type="button" name="firmada" disabled  value="1"class="btn btn-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 </button> 
 </form></td>
-
+<? }?>
  <td>
  <table>
  <tr>
