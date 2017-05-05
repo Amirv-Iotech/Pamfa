@@ -116,7 +116,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 		</div>
 	</div>
     
-  <input type="" id="fecha1" name="fecha1" value="<? echo time();?>" />
+  <input type="hidden" id="fecha1" name="fecha1" value="<? echo time();?>" />
   </form>
 	<fieldset> 
     <div id="seccion1" class="row" style="border: solid 1px #AAAAAA; background-color: #ecfbe7">

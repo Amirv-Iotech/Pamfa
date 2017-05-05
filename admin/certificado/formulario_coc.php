@@ -138,13 +138,15 @@ $row_cert= mysql_fetch_assoc($cert);
                       </div>
                       <div class="col-lg-8">
                           <input placeholder=""   class="plan_input" id="version" name="version"       title="version " type="text" value="<? echo $row_cert['version_coc']; ?>"  />     
-                      </div>
+                      </div><div class="col-lg-12 col-xs-12">
                       <div class="col-lg-4">
                             <h3>Fecha de desición de certificación:</h3>        
                       </div>
                       <div class="col-lg-8">
                           <label><h3><? echo date('d/m/y',$row_inf['fecha_dictamen_coc']);?></h3>  </label>     
-                      </div><div class="col-lg-12">
+                      </div>
+                      </div>
+                      <div class="col-lg-12">
                       <div class="col-lg-4">
                         <h3>Valido desde:</h3>
                       </div>
@@ -162,7 +164,7 @@ $row_cert= mysql_fetch_assoc($cert);
                       </div>
                       <div class="col-lg-8">
     	                   <input    class="plan_input" id="fecha_impresion" name="fecha_impresion"  	placeholder=""		title="impresion " type="date" value="<? echo $row_cert['fecha_impresion_coc']; ?>"  />
-                      </div>
+                      </div><div class="col-lg-12 col-xs-12">
 		                  <div class="col-lg-4">
     	                   <h3>Acreditación ema:</h3>
                       </div>
@@ -173,7 +175,7 @@ $row_cert= mysql_fetch_assoc($cert);
                           <input type="hidden" id="insertar_coc" name="insertar_coc" value="1" />
                          <input type="hidden" id="idinforme" name="idinforme" value="<? echo $row_inf['idinforme']; ?>" />
                           <input type="hidden" id="idcertificado" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
-                      </div>
+                      </div></div>
                       </div>
                       </div>            
 	                 </form>	
@@ -207,7 +209,6 @@ $row_cert= mysql_fetch_assoc($cert);
       $cert_productos= mysql_query($query_cert_productos, $inforgan_pamfa) or die(mysql_error());
       $row_cert_productos= mysql_fetch_assoc($cert_productos);
       $total_cert_productos = mysql_num_rows($cert_productos);    
-    echo $row_cultivos['idcultivos'];   
       if($total_cert_productos>0){?>          
     <form action="" method="post" > 
     <tr>

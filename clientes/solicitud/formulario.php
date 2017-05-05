@@ -112,7 +112,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 <div class="panel panel-white">
 <div class="panel-heading clearfix"><br>
 
-<input type="" id="ruta" name="ruta" value="<? echo "tabla.php?idsolicitud=".$row_solicitud['idsolicitud']."&seccion=1&idoperador=".$row_operador['idoperador']."";?>" />
+<input type="hidden" id="ruta" name="ruta" value="<? echo "tabla.php?idsolicitud=".$row_solicitud['idsolicitud']."&seccion=1&idoperador=".$row_operador['idoperador']."";?>" />
 
 	<div class="row" id="seccion1">
 		<div class="col-lg-12">

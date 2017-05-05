@@ -68,7 +68,6 @@ else{
 			 GetSQLValueString($_POST['acreditacion'], "text"),
 			  GetSQLValueString($_POST['idcertificado'], "text"));
 }
-echo $insertSQL;
  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
 }
 
@@ -90,15 +89,6 @@ $certificado = mysql_query($query_certificado, $inforgan_pamfa) or die(mysql_err
 $total_certificado = mysql_num_rows($certificado);
 
 ?><br><?
-echo $_POST['idcertificado'].
-			 $_POST['producto'].
-			$_POST['nombre_cientifico'].
-            $_POST['ggn'].
-			 $_POST['pamfa'].
-			$_POST['centro_manipulacion'].
-			$_POST['cosecha_excluida'].
-			$_POST['emplazamientos'].
-			$_POST['prod_paralela'];
 if($total_certificado<1)
 {
 	
