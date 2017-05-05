@@ -127,25 +127,25 @@ $row_cert= mysql_fetch_assoc($cert);
       <h3>Valido desde:</h3>
   </div>
   <div class="col-lg-8">
-    <input   class="form-control"  id="fecha_inicial"  name="fecha_inicial"        title="desde " type="date" value="<? echo $row_cert['fecha_inicial_mexcalsup']; ?>"  />
+    <input    class="plan_input"  id="fecha_inicial"  name="fecha_inicial"        title="desde " type="date" value="<? echo $row_cert['fecha_inicial_mexcalsup']; ?>"  />
   </div>
   <div class="col-lg-4">
       <h3>Hasta:</h3>
   </div>
   <div class="col-lg-8">
-    <input   class="form-control"  id="fecha_final"  name="fecha_final"       title="Hasta " type="date" value="<? echo $row_cert['fecha_final_mexcalsup']; ?>"  />
+    <input    class="plan_input"  id="fecha_final"  name="fecha_final"       title="Hasta " type="date" value="<? echo $row_cert['fecha_final_mexcalsup']; ?>"  />
   </div>
   <div class="col-lg-4">
     <h3>Fecha de impresión:</h3>
   </div>
   <div class="col-lg-8">
-    <input   class="form-control"  id="fecha_impresion" name="fecha_impresion"   placeholder="escribe aquí"  onchange= title="impresion " type="date" value="<? echo $row_cert['fecha_impresion_mexcalsup']; ?>"  />
+    <input    class="plan_input"  id="fecha_impresion" name="fecha_impresion"   placeholder="escribe aquí"  onchange= title="impresion " type="date" value="<? echo $row_cert['fecha_impresion_mexcalsup']; ?>"  />
   </div>
   <div class="col-lg-4">
             <h3>Acreditación ema:</h3>
   </div>
   <div class="col-lg-8">
-      <input   class="form-control"  id="acreditacion" name="acreditacion"    placeholder="escribe aquí"  onchange=title="acreditacion " type="text" value="<? echo $row_cert['acreditacion_mexcalsup']; ?>"  />
+      <input    class="plan_input"  id="acreditacion" name="acreditacion"    placeholder="escribe aquí"  onchange=title="acreditacion " type="text" value="<? echo $row_cert['acreditacion_mexcalsup']; ?>"  />
   </div>
     <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
     <input type="hidden" name="insertar_mex" value="1" />

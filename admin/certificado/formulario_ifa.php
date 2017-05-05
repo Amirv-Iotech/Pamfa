@@ -135,7 +135,7 @@ $row_cert= mysql_fetch_assoc($cert);
       <h3>Versión:</h3>
   </div>
   <div class="col-lg-8">
-      <input placeholder=""  class="form-control"  id="version" name="version"       title="version " type="text" value="<? echo $row_cert['version_ifa']; ?>"  />
+      <input placeholder=""   class="plan_input"  id="version" name="version"       title="version " type="text" value="<? echo $row_cert['version_ifa']; ?>"  />
   </div>
   <div class="col-lg-4">
       <h3>Fecha de decisión de certificación:</h3>
@@ -148,26 +148,26 @@ $row_cert= mysql_fetch_assoc($cert);
     <h3>Valido desde:</h3>
   </div>
   <div class="col-lg-8 col-xs-8" style="padding:0px">
-    <input   class="form-control"  id="fecha_inicial"  name="fecha_inicial"        title="desde " type="date" value="<? echo $row_cert['fecha_inicial_ifa']; ?>"  />
+    <input    class="plan_input"  id="fecha_inicial"  name="fecha_inicial"        title="desde " type="date" value="<? echo $row_cert['fecha_inicial_ifa']; ?>"  />
   </div>
   </div>
   <div class="col-lg-4">
     <h3>Hasta:</h3>
   </div>
   <div class="col-lg-8">
-    <input   class="form-control"  id="fecha_final" name="fecha_final"        title="Hasta " type="date" value="<? echo $row_cert['fecha_final_ifa']; ?>"  />
+    <input    class="plan_input"  id="fecha_final" name="fecha_final"        title="Hasta " type="date" value="<? echo $row_cert['fecha_final_ifa']; ?>"  />
   </div>
   <div class="col-lg-4">
     <h3>Fecha de impresión:</h3>
   </div>
   <div class="col-lg-8">
-      <input   class="form-control" id="fecha_impresion"  name="fecha_impresion"   placeholder=""   title="impresion " type="date" value="<? echo $row_cert['fecha_impresion_ifa']; ?>"  />
+      <input    class="plan_input" id="fecha_impresion"  name="fecha_impresion"   placeholder=""   title="impresion " type="date" value="<? echo $row_cert['fecha_impresion_ifa']; ?>"  />
   </div>
   <div class="col-lg-4">
       <h3>Acreditación ema:</h3>
   </div>
   <div class="col-lg-8">
-      <input   class="form-control"  id="acreditacion" name="acreditacion"    placeholder=""   title="acreditacion " type="text" value="<? echo $row_cert['acreditacion_ifa']; ?>"  />
+      <input    class="plan_input"  id="acreditacion" name="acreditacion"    placeholder=""   title="acreditacion " type="text" value="<? echo $row_cert['acreditacion_ifa']; ?>"  />
       <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
       <input type="hidden" id="insertar" name="insertar" value="1" />
      <input type="hidden" id="idinforme" name="idinforme" value="<? echo $row_inf['idinforme']; ?>" />   <input type="hidden" id="idcertificado" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
@@ -200,28 +200,28 @@ $row_cert= mysql_fetch_assoc($cert);
         <form action="" method="post" > 
      <tr>
         <td>
-          <input  class="form-control" name="producto" type="text" value="<? echo $row_cert_productos['producto'];?>"  />
+          <input   class="plan_input" name="producto" type="text" value="<? echo $row_cert_productos['producto'];?>"  />
         </td>
     <td>
-          <input  class="form-control" name="nombre_cientifico" placeholder="" type="text" value="<? echo $row_cert_productos['nombre_cientifico'];?>"  />
+          <input   class="plan_input" name="nombre_cientifico" placeholder="" type="text" value="<? echo $row_cert_productos['nombre_cientifico'];?>"  />
          </td>
          <td>
-          <input  class="form-control" name="ggn" type="text" value="<? if($row_plan_aud['num_globalgg']!=NULL){echo $row_plan_aud['num_globalgg'];} else { echo $row_cert_productos['ggn'];}?>"  />
+          <input   class="plan_input" name="ggn" type="text" value="<? if($row_plan_aud['num_globalgg']!=NULL){echo $row_plan_aud['num_globalgg'];} else { echo $row_cert_productos['ggn'];}?>"  />
          </td>
          <td>
-          <input  class="form-control" name="pamfa" type="text" value="<? echo $row_cert_productos['pamfa'];?>"  />
+          <input   class="plan_input" name="pamfa" type="text" value="<? echo $row_cert_productos['pamfa'];?>"  />
           </td>
           <td>
-            <input class="form-control" name="centro_manipulacion" type="text" value="<?  echo $row_cert_productos['centro_manipulacion'];?>"  />
+            <input  class="plan_input" name="centro_manipulacion" type="text" value="<?  echo $row_cert_productos['centro_manipulacion'];?>"  />
           </td>
           <td>
-            <input class="form-control" name="cosecha_excluida" placeholder=""type="text" value="<? echo $row_cert_productos['cosecha_excluida'];?>"  />
+            <input  class="plan_input" name="cosecha_excluida" placeholder=""type="text" value="<? echo $row_cert_productos['cosecha_excluida'];?>"  />
           </td>
           <td>
-            <input class="form-control"  name="emplazamientos" placeholder=""type="number" value="<? echo $row_cert_productos['emplazamientos'];?>"  />
+            <input  class="plan_input"  name="emplazamientos" placeholder=""type="number" value="<? echo $row_cert_productos['emplazamientos'];?>"  />
           </td>
           <td>
-            <input class="form-control" name="prod_paralela" type="text" value="<? echo $row_cert_productos['prod_paralela'];?>"  />
+            <input  name="prod_paralela" type="text" value="<? echo $row_cert_productos['prod_paralela'];?>"  />
           </td>
           
           
@@ -242,28 +242,28 @@ $row_cert= mysql_fetch_assoc($cert);
   <form action="" method="post" > 
      <tr>
         <td>
-          <input class="form-control" name="producto" type="text" value="<? echo $row_cultivos['producto'];?>"  />
+          <input  class="plan_input" name="producto" type="text" value="<? echo $row_cultivos['producto'];?>"  />
         </td>
     <td>
-          <input class="form-control"  name="nombre_cientifico" placeholder="" type="text" value="<? echo $row_cert_productos['nombre_cientifico'];?>"  />
+          <input  class="plan_input"  name="nombre_cientifico" placeholder="" type="text" value="<? echo $row_cert_productos['nombre_cientifico'];?>"  />
          </td>
          <td>
-          <input class="form-control"  name="ggn" type="text" value="<? echo $row_plan_aud['num_globalgg'];?>"  />
+          <input  class="plan_input"  name="ggn" type="text" value="<? echo $row_plan_aud['num_globalgg'];?>"  />
          </td>
          <td>
-          <input class="form-control" name="pamfa" type="text" value="<? echo $row_plan_aud['num_pamfa'];?>"  />
+          <input  class="plan_input" name="pamfa" type="text" value="<? echo $row_plan_aud['num_pamfa'];?>"  />
           </td>
           <td>
-            <input class="form-control" name="centro_manipulacion" type="text" value="<? if ($row_cultivos['empaque']==1){ echo $row_procesadora['empresa'];}else {echo "No";}?>"  />
+            <input  class="plan_input" name="centro_manipulacion" type="text" value="<? if ($row_cultivos['empaque']==1){ echo $row_procesadora['empresa'];}else {echo "No";}?>"  />
           </td>
           <td>
-            <input class="form-control" name="cosecha_excluida" placeholder=""type="text" value="<? echo $row_cert_productos['cosecha_excluida'];?>"  />
+            <input  class="plan_input" name="cosecha_excluida" placeholder=""type="text" value="<? echo $row_cert_productos['cosecha_excluida'];?>"  />
           </td>
           <td>
-            <input class="form-control" name="emplazamientos" placeholder=""type="number" value="<? echo $row_cert_productos['emplazamientos'];?>"  />
+            <input  class="plan_input" name="emplazamientos" placeholder=""type="number" value="<? echo $row_cert_productos['emplazamientos'];?>"  />
           </td>
           <td>
-            <input class="form-control" name="prod_paralela" type="text" value="<? if ($row_sol_esq['preg7']=="Si"){ echo "Si";}else {echo "No";}?>"  />
+            <input  class="plan_input" name="prod_paralela" type="text" value="<? if ($row_sol_esq['preg7']=="Si"){ echo "Si";}else {echo "No";}?>"  />
           </td>
           <td>
             <input type="submit" value="Agregar"  />

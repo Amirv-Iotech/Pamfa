@@ -137,7 +137,7 @@ $row_cert= mysql_fetch_assoc($cert);
                           <h3>Versión:</h3>        
                       </div>
                       <div class="col-lg-8">
-                          <input placeholder=""  class="form-control" id=version" name="version"       title="version " type="text" value="<? echo $row_cert['version_coc']; ?>"  />     
+                          <input placeholder=""   class="plan_input" id=version" name="version"       title="version " type="text" value="<? echo $row_cert['version_coc']; ?>"  />     
                       </div>
                       <div class="col-lg-4">
                             <h3>Fecha de desición de certificación:</h3>        
@@ -161,7 +161,7 @@ $row_cert= mysql_fetch_assoc($cert);
     	                   <h3>Fecha de impresión:</h3>
                       </div>
                       <div class="col-lg-8">
-    	                   <input   class="form-control" id="fecha_impresion" name="fecha_impresion"  	placeholder=""		title="impresion " type="date" value="<? echo $row_cert['fecha_impresion_coc']; ?>"  />
+    	                   <input    class="plan_input" id="fecha_impresion" name="fecha_impresion"  	placeholder=""		title="impresion " type="date" value="<? echo $row_cert['fecha_impresion_coc']; ?>"  />
                       </div>
 		                  <div class="col-lg-4">
     	                   <h3>Acreditación ema:</h3>
@@ -212,19 +212,19 @@ $row_cert= mysql_fetch_assoc($cert);
     <form action="" method="post" > 
     <tr>
       <td>
-        <input   class="form-control" name="producto" type="text" value="<? echo $row_cert_productos['producto'];?>"  />
+        <input    class="plan_input" name="producto" type="text" value="<? echo $row_cert_productos['producto'];?>"  />
       </td>
       <td>
-        <input class="form-control" name="nombre_cientifico" placeholder="" type="text" value="<? echo $row_cert_productos['nombre_cientifico'];?>"  />
+        <input  class="plan_input" name="nombre_cientifico" placeholder="" type="text" value="<? echo $row_cert_productos['nombre_cientifico'];?>"  />
       </td>
       <td>
-        <input class="form-control" name="coc" type="text" value="<? if($row_plan_aud['num_coc']!=NULL){echo $row_plan_aud['num_coc'];} else { echo $row_cert_productos['coc'];}?>"  />
+        <input  class="plan_input" name="coc" type="text" value="<? if($row_plan_aud['num_coc']!=NULL){echo $row_plan_aud['num_coc'];} else { echo $row_cert_productos['coc'];}?>"  />
       </td>
       <td>
-          <input class="form-control" name="pamfa" type="text" value="<? echo $row_cert_productos['pamfa'];?>"  />
+          <input  class="plan_input" name="pamfa" type="text" value="<? echo $row_cert_productos['pamfa'];?>"  />
       </td>                            
       <td>
-          <input class="form-control" name="prod_paralela" type="text" value="<? echo $row_cert_productos['prod_paralela'];?>"  />
+          <input  class="plan_input" name="prod_paralela" type="text" value="<? echo $row_cert_productos['prod_paralela'];?>"  />
       </td>                   
       <td>
           <input type="submit" value="Agregar"  />
@@ -241,21 +241,21 @@ $row_cert= mysql_fetch_assoc($cert);
   <form action="" method="post" > 
      <tr>
         <td>
-          <input class="form-control" name="producto" type="text" value="<? echo $row_cultivos['producto'];?>"  />
+          <input  class="plan_input" name="producto" type="text" value="<? echo $row_cultivos['producto'];?>"  />
         </td>
     <td>
-          <input class="form-control" name="nombre_cientifico" placeholder="" type="text" value="<? echo $row_cert_productos['nombre_cientifico'];?>"  />
+          <input  class="plan_input" name="nombre_cientifico" placeholder="" type="text" value="<? echo $row_cert_productos['nombre_cientifico'];?>"  />
          </td>
          <td>
-          <input class="form-control" name="coc" type="text" value="<? echo $row_plan_aud['num_coc'];?>"  />
+          <input  class="plan_input" name="coc" type="text" value="<? echo $row_plan_aud['num_coc'];?>"  />
          </td>
          <td>
-          <input class="form-control" name="pamfa" type="text" value="<? echo $row_plan_aud['num_pamfa'];?>"  />
+          <input  class="plan_input" name="pamfa" type="text" value="<? echo $row_plan_aud['num_pamfa'];?>"  />
           </td>
           
          
           <td>
-            <input class="form-control" name="prod_paralela" type="text" value="<? if ($row_sol_esq['preg7']=="Si"){ echo "Si";}else {echo "No";}?>"  />
+            <input  class="plan_input" name="prod_paralela" type="text" value="<? if ($row_sol_esq['preg7']=="Si"){ echo "Si";}else {echo "No";}?>"  />
           </td>
           <td>
             <input type="submit" value="Agregar"  />
@@ -296,10 +296,10 @@ $row_cert= mysql_fetch_assoc($cert);
                             <form action="" method="post" > 
                              <tr>
                                 <td>
-                                  <input class="form-control" name="producto" type="text" value="<? echo $row_cert_productos['producto'];?>"  />
+                                  <input  class="plan_input" name="producto" type="text" value="<? echo $row_cert_productos['producto'];?>"  />
                                 </td>
                             <td>
-                                  <input class="form-control" name="destino" placeholder="" type="text" value="<? echo $row_cert_productos['destino'];?>"  />
+                                  <input  class="plan_input" name="destino" placeholder="" type="text" value="<? echo $row_cert_productos['destino'];?>"  />
                                  </td>      
                                   
                                   <td>
