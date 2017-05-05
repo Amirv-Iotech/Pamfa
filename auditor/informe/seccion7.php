@@ -1,6 +1,6 @@
 
 <?
- $query_informe = "SELECT * FROM informe_firma where idinforme='".$_POST['idinforme']."' and firma is null";
+ $query_informe = "SELECT * FROM informe_firma where idinforme='".$_POST['idinforme']."' and firma is null and idauditor='".$_SESSION['idusuario']."'";
 $informe  = mysql_query($query_informe , $inforgan_pamfa) or die(mysql_error());
 $total_informe = mysql_num_rows($informe); 
 ?>

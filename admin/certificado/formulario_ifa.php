@@ -290,8 +290,10 @@ $row_cert= mysql_fetch_assoc($cert);
       <input type="submit" value="Ver certificado" class="btn btn-success" />
       <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
       <input type="hidden" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
+      <input type="hidden" id="idinforme" name="idinforme" value="<? echo $row_inf['idinforme']; ?>" />   
     </form> 
-      <input type="hidden" id="idinforme" name="idinforme" value="<? echo $row_inf['idinforme']; ?>" />   <input type="hidden" id="idcertificado" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
+      <input type="hidden" id="idinforme" name="idinforme" value="<? echo $row_inf['idinforme']; ?>" />   
+      <input type="hidden" id="idcertificado" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
   </div>
 </div>
 </div>

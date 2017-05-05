@@ -95,6 +95,7 @@ $mpdf->WriteHTML('
   <table>
   <tr>
     <td rowspan="2">
+
       <img src="../images/izquierdo.png" width="100%"/>
     </td>
     <td valign="top">
@@ -148,7 +149,9 @@ $mpdf->WriteHTML('
               Numero de emplazamientos
               </td><td>
               Producción paralela
-              </td></tr>
+              </td></tr>');
+              while($row_cert_productos= mysql_fetch_assoc($cert_productos))
+  {$mpdf->WriteHTML('
                <tr style="background-color:#b4db9b">
                   <td>'.$row_cert_productos['producto'].'
                   </td>
@@ -166,7 +169,9 @@ $mpdf->WriteHTML('
                     </td>
                     <td>'.$row_cert_productos['prod_paralela'].'
                     </td>
-                  </tr>    
+                  </tr>');
+                    }
+  $mpdf->WriteHTML('  
               </table>
               </td>
             </tr>
