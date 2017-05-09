@@ -137,43 +137,45 @@ $row_cert= mysql_fetch_assoc($cert);
                           <h3>Versión:</h3>        
                       </div>
                       <div class="col-lg-8">
-                          <input placeholder=""   class="plan_input" id="version" name="version"       title="version " type="text" value="<? echo $row_cert['version_coc']; ?>"  />     
-                      </div>
+                          <input placeholder=""   class="plan_input" id="version" name="version" onchange="autosave()" title="version " type="text" value="<? echo $row_cert['version_coc']; ?>"  />     
+                      </div><div class="col-lg-12 col-xs-12">
                       <div class="col-lg-4">
                             <h3>Fecha de desición de certificación:</h3>        
                       </div>
                       <div class="col-lg-8">
                           <label><h3><? echo date('d/m/y',$row_inf['fecha_dictamen_coc']);?></h3>  </label>     
-                      </div><div class="col-lg-12">
+                      </div>
+                      </div>
+                      <div class="col-lg-12">
                       <div class="col-lg-4">
                         <h3>Valido desde:</h3>
                       </div>
                       <div class="col-lg-8">
-                        <input   class=" form-control" id="fecha_inicial" name="fecha_inicial"        title="desde " type="date" value="<? echo $row_cert['fecha_inicial_coc']; ?>"  />
+                        <input   class=" form-control" id="fecha_inicial" name="fecha_inicial"  onchange="autosave()"      title="desde " type="date" value="<? echo $row_cert['fecha_inicial_coc']; ?>"  />
                       </div></div>
                       <div class="col-lg-4">
                           <h3>Hasta:</h3>
                       </div>
                       <div class="col-lg-8">
-                          <input   class=" form-control" id="fecha_final" name="fecha_final"        title="Hasta " type="date" value="<? echo $row_cert['fecha_final_coc']; ?>"  />
+                          <input   class=" form-control" id="fecha_final" name="fecha_final" onchange="autosave()"       title="Hasta " type="date" value="<? echo $row_cert['fecha_final_coc']; ?>"  />
                       </div>
                       <div class="col-lg-4">                  
     	                   <h3>Fecha de impresión:</h3>
                       </div>
                       <div class="col-lg-8">
-    	                   <input    class="plan_input" id="fecha_impresion" name="fecha_impresion"  	placeholder=""		title="impresion " type="date" value="<? echo $row_cert['fecha_impresion_coc']; ?>"  />
-                      </div>
+    	                   <input    class="plan_input" id="fecha_impresion" name="fecha_impresion"  onchange="autosave()"	placeholder=""		title="impresion " type="date" value="<? echo $row_cert['fecha_impresion_coc']; ?>"  />
+                      </div><div class="col-lg-12 col-xs-12">
 		                  <div class="col-lg-4">
     	                   <h3>Acreditación ema:</h3>
                       </div>
                       <div class="col-lg-8">
-    	                   <input   class=" form-control" id="acreditacion" name="acreditacion"  	placeholder=""		title="acreditacion " type="text" value="<? echo $row_cert['acreditacion_coc']; ?>"  />
+    	                   <input   class=" form-control" id="acreditacion" name="acreditacion" onchange="autosave()"placeholder=""		title="acreditacion " type="text" value="<? echo $row_cert['acreditacion_coc']; ?>"  />
 	                   
                           <input type="hidden" id="idsolicitud" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
                           <input type="hidden" id="insertar_coc" name="insertar_coc" value="1" />
                          <input type="hidden" id="idinforme" name="idinforme" value="<? echo $row_inf['idinforme']; ?>" />
                           <input type="hidden" id="idcertificado" name="idcertificado" value="<? echo $row_cert['idcertificado']; ?>" />
-                      </div>
+                      </div></div>
                       </div>
                       </div>            
 	                 </form>	
@@ -207,7 +209,6 @@ $row_cert= mysql_fetch_assoc($cert);
       $cert_productos= mysql_query($query_cert_productos, $inforgan_pamfa) or die(mysql_error());
       $row_cert_productos= mysql_fetch_assoc($cert_productos);
       $total_cert_productos = mysql_num_rows($cert_productos);    
-    echo $row_cultivos['idcultivos'];   
       if($total_cert_productos>0){?>          
     <form action="" method="post" > 
     <tr>
@@ -347,7 +348,6 @@ var insertar_coc =$('#insertar_coc').val();
 var idcertificado =$('#idcertificado').val();
 var idinforme =$('#idinforme').val();
 
-
   {  
                 $.ajax({  
                      url:"cerebro.php",  
@@ -365,6 +365,32 @@ var idinforme =$('#idinforme').val();
 
  
 });
+</script>
+
+<script>
+function autosave() {
+var version =$('#version').val();
+var fecha_inicial =$('#fecha_inicial').val();
+var fecha_final =$('#fecha_final').val();
+var fecha_impresion =$('#fecha_impresion').val();
+var acreditacion =$('#acreditacion').val();
+var insertar_coc =$('#insertar_coc').val();
+var idcertificado =$('#idcertificado').val();
+var idinforme =$('#idinforme').val();
+
+  {  
+                $.ajax({  
+                     url:"cerebro.php",  
+                     method:"POST",
+                    data:{version:version,fecha_inicial:fecha_inicial,fecha_final:fecha_final,fecha_impresion:fecha_impresion,acreditacion:acreditacion,insertar_coc:insertar_coc,idcertificado:idcertificado,idinforme:idinforme},
+                     dataType:"text",  
+                      success:function(data)  
+                     {  
+                          event.returnValue = "AnthonySS";
+   }  
+                });  
+           }
+    }
 </script>
 
 <?php include("includes/footer.php");?>

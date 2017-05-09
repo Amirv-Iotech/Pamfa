@@ -111,41 +111,45 @@ $row_cert= mysql_fetch_assoc($cert);
   <div class="col-lg-12" style="background-color: #dbf573e6; padding: 0px">
   <br/><br/><br/><br/><br/>
   </div>
-  <div class="col-lg-4">
+  <div class="col-lg-4" style="text-align: left;">
     <h3>Razón social:</h3>
   </div>
-  <div class="col-lg-8">
+  <div class="col-lg-8" style="text-align: left;">
     <label><h3><? echo $row_operador['nombre_legal'];?></h3> </label>
   </div>
-  <div class="col-lg-4">
+  <div class="col-lg-4" style="text-align: left;">
         <h3>Dirección:</h3>
   </div>
-  <div class="col-lg-8">
+  <div class="col-lg-8" style="text-align: left;">
     <label><h3><? echo $row_operador['direccion'].",".$row_operador['colonia'].",".$row_operador['municipio'].",".$row_operador['estado'];?></h3>  </label>
   </div>
-  <div class="col-lg-4">
+  <div class="col-lg-12 col-xs-12">
+  <div class="col-lg-4" style="text-align: left;">
       <h3>Valido desde:</h3>
   </div>
   <div class="col-lg-8">
     <input    class="plan_input"  id="fecha_inicial"  name="fecha_inicial"        title="desde " type="date" value="<? echo $row_cert['fecha_inicial_mexcalsup']; ?>"  />
   </div>
-  <div class="col-lg-4">
+  </div>
+  <div class="col-lg-12 col-xs-12">
+  <div class="col-lg-4" style="text-align: left;">
       <h3>Hasta:</h3>
   </div>
   <div class="col-lg-8">
     <input    class="plan_input"  id="fecha_final"  name="fecha_final"       title="Hasta " type="date" value="<? echo $row_cert['fecha_final_mexcalsup']; ?>"  />
-  </div>
-  <div class="col-lg-4">
+  </div></div>
+  <div class="col-xs-12 col-lg-12">
+  <div class="col-lg-4" style="text-align: left;">
     <h3>Fecha de impresión:</h3>
   </div>
   <div class="col-lg-8">
-    <input    class="plan_input"  id="fecha_impresion" name="fecha_impresion"   placeholder="escribe aquí"  onchange= title="impresion " type="date" value="<? echo $row_cert['fecha_impresion_mexcalsup']; ?>"  />
-  </div>
-  <div class="col-lg-4">
+    <input    class="plan_input"  id="fecha_impresion" name="fecha_impresion"   placeholder="escribe aquí" title="impresion " type="date" value="<? echo $row_cert['fecha_impresion_mexcalsup']; ?>"  />
+  </div></div>
+  <div class="col-lg-4" style="text-align: left;">
             <h3>Acreditación ema:</h3>
   </div>
   <div class="col-lg-8">
-      <input    class="plan_input"  id="acreditacion" name="acreditacion"    placeholder="escribe aquí"  onchange=title="acreditacion " type="text" value="<? echo $row_cert['acreditacion_mexcalsup']; ?>"  />
+      <input    class="plan_input"  id="acreditacion" name="acreditacion"    placeholder="escribe aquí" title="acreditacion " type="text" value="<? echo $row_cert['acreditacion_mexcalsup']; ?>"  />
   </div>
     <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
     <input type="hidden" name="insertar_mex" value="1" />

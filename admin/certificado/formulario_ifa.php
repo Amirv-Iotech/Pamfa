@@ -157,12 +157,13 @@ $row_cert= mysql_fetch_assoc($cert);
   <div class="col-lg-8">
     <input    class="plan_input"  id="fecha_final" name="fecha_final"        title="Hasta " type="date" value="<? echo $row_cert['fecha_final_ifa']; ?>"  />
   </div>
+  <div class="col-lg-12 col-xs-12" style="padding: 0px;">
   <div class="col-lg-4">
     <h3>Fecha de impresión:</h3>
   </div>
   <div class="col-lg-8">
       <input    class="plan_input" id="fecha_impresion"  name="fecha_impresion"   placeholder=""   title="impresion " type="date" value="<? echo $row_cert['fecha_impresion_ifa']; ?>"  />
-  </div>
+  </div></div>
   <div class="col-lg-4">
       <h3>Acreditación ema:</h3>
   </div>

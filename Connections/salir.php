@@ -1,14 +1,14 @@
 <?php
 if(isset($_GET['c']))
 {
-header("Location: ../clientes/login.php");	
+header("Location: ../index.php");	
 }
 else if(isset($_GET['a']))
 {
-header("Location: ../auditor/login.php");	
+header("Location: ../index.php");	
 }
 else{
-  	header("Location: ../admin/login.php");
+  	header("Location: ../index.php");
 }
    	session_start();
  	session_destroy();
