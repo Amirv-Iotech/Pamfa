@@ -201,7 +201,7 @@ $row_cert= mysql_fetch_assoc($cert);
                                   </th>
                                   <th></th>
                                 </thead>
-                                <tbody>
+                                <tbody> 
   <? $cont=1;
     while($row_cultivos= mysql_fetch_assoc($cultivos))
     {
