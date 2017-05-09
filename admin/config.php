@@ -151,6 +151,12 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
     <input type="hidden" name="op" value="1"/>
     </form>
     </ul>
+     <ul class="nav navbar-nav">
+       <form action="" method="post">
+    <input class="btn btn-warning navbar-btn" type="submit" value="Usuarios"/>
+    <input type="hidden" name="op" value="6"/>
+    </form>
+    </ul>
     <ul class="nav navbar-nav">
        <form action="" method="post">
     <input class="btn btn-warning navbar-btn" type="submit" value="México Calidad Suprema"/>
@@ -189,9 +195,7 @@ else if(!empty($_POST['op'])&&$_POST['op']==2){include('configuracion/cal_sup.ph
 else if(!empty($_POST['op'])&&$_POST['op']==3){include('configuracion/esquemas.php');}
 else if(!empty($_POST['op'])&&$_POST['op']==4){include('configuracion/primus.php');}
 else if(!empty($_POST['op'])&&$_POST['op']==5){include('configuracion/srrc.php');}
-else if(!empty($_POST['op'])&&$_POST['op']==6){include('configuracion/arancel.php');}
-else if(!empty($_POST['op'])&&$_POST['op']==7){include('configuracion/tipo_ciclo.php');}
-else if(!empty($_POST['op'])&&$_POST['op']==8){include('configuracion/subproducto.php');}?>
+else if(!empty($_POST['op'])&&$_POST['op']==6){include('configuracion/usuarios.php');}?>
 
 </div>
 </div>

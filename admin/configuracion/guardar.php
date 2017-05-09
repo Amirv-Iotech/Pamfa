@@ -62,6 +62,47 @@ $insertSQL = "DELETE FROM operador WHERE idoperador=".$_POST['idoperador']."";
 	
 }
 
+
+if(!empty($_POST['guardar6'])){
+	$insertSQL = sprintf("INSERT INTO usuario (username,password,nombre,apellidos,email,tel,clase,tipo) VALUES ( %s, %s,%s, %s, %s, %s,%s, %s)",
+	
+	 GetSQLValueString($_POST['username'], "text"),
+ GetSQLValueString($_POST['password'], "text"),
+ GetSQLValueString($_POST['nombre'], "text"),
+ GetSQLValueString($_POST['apellidos'], "text"),
+  GetSQLValueString($_POST['email'], "text"),
+ GetSQLValueString($_POST['tel'], "text"),
+ GetSQLValueString("administrador", "text"),
+ GetSQLValueString($_POST['tipo'], "text"));
+
+
+
+
+  $Result1 = mysql_query($insertSQL,$inforgan_pamfa) or die(mysql_error());
+}
+if(!empty($_POST['update6'])){
+		$insertSQL = sprintf("Update usuario SET username=%s,password=%s,nombre=%s,apellidos=%s,email=%s,tel=%s,tipo=%s WHERE idusuario=%s",
+ GetSQLValueString($_POST['username'], "text"),
+ GetSQLValueString($_POST['password'], "text"),
+ GetSQLValueString($_POST['nombre'], "text"),
+ GetSQLValueString($_POST['apellidos'], "text"),
+  GetSQLValueString($_POST['email'], "text"),
+ GetSQLValueString($_POST['tel'], "text"),
+ GetSQLValueString($_POST['tipo'], "text"),
+ GetSQLValueString($_POST['idusuario'], "text"));
+
+
+
+
+  $Result1= mysql_query($insertSQL ,$inforgan_pamfa) or die(mysql_error());
+}
+if(!empty($_POST['eliminar6'])){
+	
+$insertSQL = "DELETE FROM usuario WHERE idusuario=".$_POST['idusuario']."";
+  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
+	
+}
+
 if(!empty($_POST['guardar2'])){
 	$t_aux="";
 	if($_POST['tipo']==1){$t_aux="alcance";}
