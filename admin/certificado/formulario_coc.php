@@ -137,7 +137,7 @@ $row_cert= mysql_fetch_assoc($cert);
                           <h3>Versión:</h3>        
                       </div>
                       <div class="col-lg-8">
-                          <input placeholder=""   class="plan_input" id="version" name="version"       title="version " type="text" value="<? echo $row_cert['version_coc']; ?>"  />     
+                          <input placeholder=""   class="plan_input" id="version" name="version" onchange="autosave()" title="version " type="text" value="<? echo $row_cert['version_coc']; ?>"  />     
                       </div><div class="col-lg-12 col-xs-12">
                       <div class="col-lg-4">
                             <h3>Fecha de desición de certificación:</h3>        
@@ -151,25 +151,25 @@ $row_cert= mysql_fetch_assoc($cert);
                         <h3>Valido desde:</h3>
                       </div>
                       <div class="col-lg-8">
-                        <input   class=" form-control" id="fecha_inicial" name="fecha_inicial"        title="desde " type="date" value="<? echo $row_cert['fecha_inicial_coc']; ?>"  />
+                        <input   class=" form-control" id="fecha_inicial" name="fecha_inicial"  onchange="autosave()"      title="desde " type="date" value="<? echo $row_cert['fecha_inicial_coc']; ?>"  />
                       </div></div>
                       <div class="col-lg-4">
                           <h3>Hasta:</h3>
                       </div>
                       <div class="col-lg-8">
-                          <input   class=" form-control" id="fecha_final" name="fecha_final"        title="Hasta " type="date" value="<? echo $row_cert['fecha_final_coc']; ?>"  />
+                          <input   class=" form-control" id="fecha_final" name="fecha_final" onchange="autosave()"       title="Hasta " type="date" value="<? echo $row_cert['fecha_final_coc']; ?>"  />
                       </div>
                       <div class="col-lg-4">                  
     	                   <h3>Fecha de impresión:</h3>
                       </div>
                       <div class="col-lg-8">
-    	                   <input    class="plan_input" id="fecha_impresion" name="fecha_impresion"  	placeholder=""		title="impresion " type="date" value="<? echo $row_cert['fecha_impresion_coc']; ?>"  />
+    	                   <input    class="plan_input" id="fecha_impresion" name="fecha_impresion"  onchange="autosave()"	placeholder=""		title="impresion " type="date" value="<? echo $row_cert['fecha_impresion_coc']; ?>"  />
                       </div><div class="col-lg-12 col-xs-12">
 		                  <div class="col-lg-4">
     	                   <h3>Acreditación ema:</h3>
                       </div>
                       <div class="col-lg-8">
-    	                   <input   class=" form-control" id="acreditacion" name="acreditacion"  	placeholder=""		title="acreditacion " type="text" value="<? echo $row_cert['acreditacion_coc']; ?>"  />
+    	                   <input   class=" form-control" id="acreditacion" name="acreditacion" onchange="autosave()"placeholder=""		title="acreditacion " type="text" value="<? echo $row_cert['acreditacion_coc']; ?>"  />
 	                   
                           <input type="hidden" id="idsolicitud" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
                           <input type="hidden" id="insertar_coc" name="insertar_coc" value="1" />
@@ -348,7 +348,6 @@ var insertar_coc =$('#insertar_coc').val();
 var idcertificado =$('#idcertificado').val();
 var idinforme =$('#idinforme').val();
 
-
   {  
                 $.ajax({  
                      url:"cerebro.php",  
@@ -366,6 +365,32 @@ var idinforme =$('#idinforme').val();
 
  
 });
+</script>
+
+<script>
+function autosave() {
+var version =$('#version').val();
+var fecha_inicial =$('#fecha_inicial').val();
+var fecha_final =$('#fecha_final').val();
+var fecha_impresion =$('#fecha_impresion').val();
+var acreditacion =$('#acreditacion').val();
+var insertar_coc =$('#insertar_coc').val();
+var idcertificado =$('#idcertificado').val();
+var idinforme =$('#idinforme').val();
+
+  {  
+                $.ajax({  
+                     url:"cerebro.php",  
+                     method:"POST",
+                    data:{version:version,fecha_inicial:fecha_inicial,fecha_final:fecha_final,fecha_impresion:fecha_impresion,acreditacion:acreditacion,insertar_coc:insertar_coc,idcertificado:idcertificado,idinforme:idinforme},
+                     dataType:"text",  
+                      success:function(data)  
+                     {  
+                          event.returnValue = "AnthonySS";
+   }  
+                });  
+           }
+    }
 </script>
 
 <?php include("includes/footer.php");?>
