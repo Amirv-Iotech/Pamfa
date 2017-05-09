@@ -110,7 +110,7 @@ $row_cert= mysql_fetch_assoc($cert);
 					<div class="row" id="form_ifa" style="background-color: #ecfbe7; padding: 0px">
 						<div class="col-md-12" style=" background-color: #ecfbe7; padding: 0px;">
             <div class="col-lg-12" style="background-color: #dbf573e6; padding: 0px">
-            <br/><br/><br/
+            <br/><br/><br/>
             </div>
               <div class="panel panel-white" style="background-color: #ecfbe7; padding: 0px">
                 <div class="panel-heading clearfix"><br>

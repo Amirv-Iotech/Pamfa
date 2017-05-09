@@ -128,7 +128,7 @@ $row_cert= mysql_fetch_assoc($cert);
       <h3>Valido desde:</h3>
   </div>
   <div class="col-lg-8">
-    <input    class="plan_input"  id="fecha_inicial"  name="fecha_inicial"        title="desde " type="date" value="<? echo $row_cert['fecha_inicial_mexcalsup']; ?>"  />
+    <input    class="plan_input"  id="fecha_inicial"  name="fecha_inicial"    onchange="autosave()"    title="desde " type="date" value="<? echo $row_cert['fecha_inicial_mexcalsup']; ?>"  />
   </div>
   </div>
   <div class="col-lg-12 col-xs-12">
@@ -136,20 +136,20 @@ $row_cert= mysql_fetch_assoc($cert);
       <h3>Hasta:</h3>
   </div>
   <div class="col-lg-8">
-    <input    class="plan_input"  id="fecha_final"  name="fecha_final"       title="Hasta " type="date" value="<? echo $row_cert['fecha_final_mexcalsup']; ?>"  />
+    <input    class="plan_input"  id="fecha_final"  name="fecha_final"    onchange="autosave()"   title="Hasta " type="date" value="<? echo $row_cert['fecha_final_mexcalsup']; ?>"  />
   </div></div>
   <div class="col-xs-12 col-lg-12">
   <div class="col-lg-4" style="text-align: left;">
     <h3>Fecha de impresión:</h3>
   </div>
   <div class="col-lg-8">
-    <input    class="plan_input"  id="fecha_impresion" name="fecha_impresion"   placeholder="escribe aquí" title="impresion " type="date" value="<? echo $row_cert['fecha_impresion_mexcalsup']; ?>"  />
+    <input    class="plan_input"  id="fecha_impresion" name="fecha_impresion"  onchange="autosave()" placeholder="escribe aquí" title="impresion " type="date" value="<? echo $row_cert['fecha_impresion_mexcalsup']; ?>"  />
   </div></div>
   <div class="col-lg-4" style="text-align: left;">
             <h3>Acreditación ema:</h3>
   </div>
   <div class="col-lg-8">
-      <input    class="plan_input"  id="acreditacion" name="acreditacion"    placeholder="escribe aquí" title="acreditacion " type="text" value="<? echo $row_cert['acreditacion_mexcalsup']; ?>"  />
+      <input    class="plan_input"  id="acreditacion" name="acreditacion"  onchange="autosave()"  placeholder="escribe aquí" title="acreditacion " type="text" value="<? echo $row_cert['acreditacion_mexcalsup']; ?>"  />
   </div>
     <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
     <input type="hidden" name="insertar_mex" value="1" />
@@ -238,6 +238,34 @@ var idinforme =$('#idinforme').val();
 });
 </script>
 
+<script>
+function autosave() {
+var fecha_inicial =$('#fecha_inicial').val();
+var fecha_final =$('#fecha_final').val();
+var fecha_impresion =$('#fecha_impresion').val();
+var acreditacion =$('#acreditacion').val();
+var insertar_mex =$('#insertar_mex').val();
+var idcertificado =$('#idcertificado').val();
+var idinforme =$('#idinforme').val();
+
+
+  {  
+                $.ajax({  
+                     url:"cerebro.php",  
+                     method:"POST",
+                    data:{fecha_inicial:fecha_inicial,fecha_final:fecha_final,fecha_impresion:fecha_impresion,acreditacion:acreditacion,insertar_mex:insertar_mex,idcertificado:idcertificado,idinforme:idinforme},
+                     dataType:"text",  
+                      success:function(data)  
+                     {  
+                          event.returnValue = "AnthonySS";
+                  
+
+   }  
+                });  
+           }
+
+}
+</script>
 
 
 <?php include("includes/footer.php");?>
