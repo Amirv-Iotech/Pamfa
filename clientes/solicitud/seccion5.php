@@ -1,6 +1,6 @@
 <fieldset>
 </br>
-  <div class="row" id="seccion5"  style="background-color: #ecfbe7; border: solid 1px #AAAAAA; border-bottom-width:2px; text-align:left;">
+  <div id="seccion5"  class="row"  <? if($s5==1){?> style="background-color:#CF3" <? } else{?>style="background-color: #ecfbe7; <? }?>border: solid 1px #AAAAAA; border-bottom-width:2px; text-align:left;">
     <div class="col-lg-12 col-sm-12" style="border: solid 1px #AAAAAA; text-align: center; background-color: #dbf573e6;">
       <h4>Favor de seleccionar el esquema de certificación que usted esta solicitando:</h4>
     </div>      
@@ -20,7 +20,7 @@
                   <?
                     if($row_esquema['opcion']==1)
                   {?>
-                  <input   type="radio" <? if ($row_solicitud_esq['esq_tipo1_op1']==$row_esquema['idesquema']){?> checked="checked"<? }?>  value="<? echo $row_esquema['idesquema'];?>" id="esq_tipo1_op1" name="esq_tipo1_op1"/><? echo $row_esquema['esquema'];?>
+                  <input   type="checkbox" <? if ($row_solicitud_esq['esq_tipo1_op1']==$row_esquema['idesquema']){?> checked="checked"<? }?>  value="<? echo $row_esquema['idesquema'];?>" id="esq_tipo1_op1" name="esq_tipo1_op1"/><? echo $row_esquema['esquema'];?>
                   <? }?></div><?
                 }
         ?>        
@@ -33,7 +33,7 @@
           <div class="form-group col-lg-4 col-sm-4 campos2" style="border: solid 1px #AAAAAA; min-height: 136px">
             <label for="preg1_op2" class="form-label col-lg-12">Número de productores a certificar:</label>
             <div class="col-lg-12 div4">
-              <input placeholder="" class="form-control inputsf"   id="preg1_op2" name="preg1_op2" type="number      title="Número " value="<? echo $row_solicitud_esq['preg1_op2'];?>" />
+              <input placeholder="" class="form-control inputsf"   id="preg1_op2" name="preg1_op2" type="number"      title="Número " value="<? echo $row_solicitud_esq['preg1_op2'];?>" />
             </div>
           </div>
           <div class=" form-group col-lg-4 col-sm-4 campos2" style="border: solid 1px #AAAAAA; min-height: 136px">
@@ -75,7 +75,7 @@
           <label for="num_unid_prod2" >GLOBALG.A.P. CADENA DE CUSTODIA (CoC):</label>
         </div>
         <div class="form-group col-lg-12 col-xs-12 campos2">
-            <?$query_esquema = sprintf("SELECT * FROM esquemas where tipo =2 order by tipo,opcion asc");
+            <? $query_esquema = sprintf("SELECT * FROM esquemas where tipo =2 order by tipo,opcion asc");
               $esquema = mysql_query($query_esquema, $inforgan_pamfa) or die(mysql_error());
             ?>
           <div class="col-lg-12 col-xs-12 campos2">
@@ -85,7 +85,7 @@
                   {
             ?>
                     <div class="col-lg-6 col-xs-6 campos2" style="border: solid 1px #AAAAAA;">
-                      <label><input   type="radio"  <?php if ($row_solicitud_esq['esq_tipo2_op1']==$row_esquema['idesquema']){?> checked="checked"<? }?> value="<? echo $row_esquema['idesquema'];?>" id="esq_tipo2_op1" name="esq_tipo2_op1"/><? echo $row_esquema['esquema'];?></label>
+                      <label><input   type="checkbox"  <?php if ($row_solicitud_esq['esq_tipo2_op1']==$row_esquema['idesquema']){?> checked="checked"<? }?> value="<? echo $row_esquema['idesquema'];?>" id="esq_tipo2_op1" name="esq_tipo2_op1"/><? echo $row_esquema['esquema'];?></label>
                     </div>
                 <?}
                 }?>

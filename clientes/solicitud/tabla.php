@@ -4,24 +4,24 @@
   $sol="";
   if($_GET["idsolicitud"])
   {$sol=$_GET["idsolicitud"];
-  echo "get".$sol;
+ 
   }
   else if($_POST["idsolicitud"])
   {$sol=$_POST["idsolicitud"];
- echo "post".$sol;
+ 
 	  }
   else if($row_solicitud['idsolicitud'])
   {
 	  $sol=$row_solicitud['idsolicitud'];
-	 echo "NORMAL".$sol;
+	
   }
   else{
-	$query_s = sprintf("SELECT Max(idsolicitud) as id FROM solicitud  WHERE idoperador=10 and terminada is null");
+	$query_s = sprintf("SELECT Max(idsolicitud) as id FROM solicitud  WHERE idoperador='".$_GET['idoperador']."' and terminada is null");
 	$s  = mysql_query($query_s , $inforgan_pamfa) or die(mysql_error());
 $row_s = mysql_fetch_assoc($s);  
 $sol=$row_s ['id'];
 
-echo "ID".$sol;
+
   }
 $query_solicitud = sprintf("SELECT * FROM solicitud WHERE idsolicitud=%s ", GetSQLValueString( $sol, "int"));
 $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error());
@@ -34,7 +34,7 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
  $query_cultivos = sprintf("SELECT * FROM cultivos WHERE idsolicitud = %s", GetSQLValueString($row_solicitud["idsolicitud"], "int"));
  
 ?>
-<div class="table-responsive">
+<div class="table-responsive"  <? if($s9==1){?> style="background-color:#CF3" <? } else{?>style="background-color: #ecfbe7; <? }?> ">
 <table class="table table-hover">
 <thead>
   <th>
@@ -146,6 +146,7 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
                          <form action="" method="post">
                           <input type="hidden" id="idsolicitud" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
                           <input type="hidden" id="idcultivos" name="idcultivos" value="<? echo $row_cultivos['idcultivos']; ?>" />
+                           <input type="hidden" id="<?php echo 'empaque'.$cont; ?>" name="empaque" value="<? echo $row_a['empaque']; ?>" />
                                 
                           <button type="button"   name="borrar2" id="<?php echo 'borrar'.$cont; ?>" value="<?php echo $row_cultivos['idcultivos']; ?>" onclick="<?php echo 'el2'.$cont.'()'?>" >Eliminar</button>
                          </form>
@@ -159,18 +160,27 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
 	<?php echo 'function el2'.$cont.'(){
 	 var idcultivos = $("#borrar'.$cont.'").val();
 	 var eliminar = $("#eliminar").val();
+	 var empaque = $("#empaque'.$cont.'").val();
+	
 	 var ruta = $("#ruta").val();
+	  var ruta2 = $("#ruta2").val();
+	   var ruta3 = $("#ruta3").val();
 	 $.ajax({
 		 url:"cerebro.php",
 		 method:"POST",
-		 data:{idcultivos:idcultivos,eliminar:eliminar},
+		 data:{idcultivos:idcultivos,empaque:empaque},
 		 success: function() {
 			 $("#tabla_ajax").load(ruta);
+			 
+			  
+			    $("#tabla_ajax2").load(ruta2);
+				 $("#tabla_ajax3").load(ruta3);
 			 }
-			 });';
+			 });
+			 }';
 	?>
 	   //Recargamos la Tabla(Para que se muestren los Nuevos Resultados)
-}
+
 </script>
 <?
 $cont++;} ?>

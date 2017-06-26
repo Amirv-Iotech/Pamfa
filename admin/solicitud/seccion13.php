@@ -30,4 +30,5 @@
        
     </div>
   </div>
+    <input type="button" name="obs" value="Agregar observaciones" id="obs" />
 </fieldset>

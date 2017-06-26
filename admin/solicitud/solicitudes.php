@@ -1,6 +1,8 @@
 <? require_once('../../Connections/inforgan_pamfa.php');
-
+if(!session_start())
+{
 	session_start();
+}
 
 ?>
 
@@ -112,7 +114,7 @@ $cliente = mysql_query($query_cliente, $inforgan_pamfa) or die(mysql_error());
 $row_cliente= mysql_fetch_assoc($cliente);
 											?>
 	                                        <tr>
-	                                        	<td><? echo $row_solicitud['idsolicitud'].$row_solicitud['idoperador'];?></td>
+	                                        	<td><? echo $row_solicitud['idsolicitud'];?></td>
 	                                        	<td><? echo $row_cliente['nombre_legal'];?></td>
 	                                        	<td><? echo date('d/m/y',$row_solicitud['fecha']);?></td>
                                                 <td>

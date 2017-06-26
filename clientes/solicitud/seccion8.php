@@ -1,6 +1,6 @@
 <fieldset>
 </br>
-  <div class="row" id="seccion8" style="background-color: #ecfbe7; border: solid 1px #AAAAAA; border-bottom-width:2px;">
+  <div  id="seccion8"  class="row"  <? if($s8==1){?> style="background-color:#CF3" <? } else{?>style="background-color: #ecfbe7; <? }?>border: solid 1px #AAAAAA; border-bottom-width:2px;">
     
       <div class="col-lg-12 col-xs-12 campos2">
           <div class="col-lg-12 col-xs-12 campos2" style="text-align: center;background-color: #dbf573e6; border: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
@@ -8,7 +8,16 @@
           </div>            
           <? $query_srrc = sprintf("SELECT * FROM srrc order by idsrrc asc");
             $srrc = mysql_query($query_srrc, $inforgan_pamfa) or die(mysql_error());
+			$sel_r="";
+			$query_riesgos = sprintf("SELECT * FROM solicitud_srrc where idsolicitud='".$row_solicitud['idsolicitud']."'");
+                $riesgos = mysql_query($query_riesgos, $inforgan_pamfa) or die(mysql_error());
+				 while($row_riesgos= mysql_fetch_assoc($riesgos))
+                {
+					$sel_r=$sel_r.$row_riesgos['idsrrc'];
+				}
+			
             $aux=0;
+			$r=0;
           ?>
           <div class="col-lg-12 col-xs-12 campos2">
           <?
@@ -16,14 +25,15 @@
             {
               if($aux<='2'){
           ?>  <div class="col-lg-4 col-xs-4 campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA;">
-              <label><input id="idsrrc" <? if ($row_solicitud['idsrrc']==$row_srrc['idsrrc']){?> checked="checked"<? }?>  type="radio" value="<? echo $row_srrc['idsrrc'];?>" name="idsrrc"><? echo $row_srrc['seccion'];?></label></div>
-            <?}
-            else {?>
+              <label><input id="<? echo"idsrrc".$r?>" <? if($sel_r>1){ if (strstr ($sel_r, $row_srrc['idsrrc'])!== false){?> checked="checked"<? }}?>  type="checkbox" value="<? echo $row_srrc['idsrrc'];?>" name="<? echo"idsrrc".$r?>"><? echo $row_srrc['seccion'];?></label></div>
+            <? }
+            else { ?>
               <div class="col-lg-6 col-xs-6 campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA;">
-              <label><input id="idsrrc" <? if ($row_solicitud['idsrrc']==$row_srrc['idsrrc']){?> checked="checked"<? }?>  type="radio" value="<? echo $row_srrc['idsrrc'];?>" name="idsrrc"><? echo $row_srrc['seccion'];?></label></div>
-            <?}
+              <label><input id="<? echo"idsrrc".$r?>" <? if($sel_r>1){ if (strstr ($sel_r, $row_srrc['idsrrc'])!== false){?> checked="checked"<? }}?>  type="checkbox" value="<? echo $row_srrc['idsrrc'];?>" name="<? echo"idsrrc".$r?>"><? echo $row_srrc['seccion'];?></label></div>
+            <? }
             $aux++;
-            }?>
+           
+		   $r++; }?>
           </div>
           <div class="col-lg-12 col-xs-12 campos2">
               <div class="col-lg-6 col-xs-6 campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA; min-height: 87px;">

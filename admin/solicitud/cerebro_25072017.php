@@ -1,8 +1,7 @@
-
 <?php require_once('../../Connections/inforgan_pamfa.php'); ?>
 <?php
 error_reporting(0);
-mysql_select_db($database_pamfa, $inforgan_pamfa);
+mysql_select_db($database_pamfa, $nforgan_pamfa);
 
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
@@ -34,39 +33,14 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   return $theValue;
 }
 }
+
 /////////////////inser seccion1
-
-$sol=0;
-
-
-$id=0;
-if($_GET['persona'])
-{
-	$_POST['persona']=$_GET['persona'];
-
-	$_POST['seccion']=$_GET['persona'];
-	$_POST['idoperador']=$_GET['idoperador'];
+if ($_POST['persona']!=NULL) {
 	
-	
-	
-
-}
-
 
 	
 if ($_POST['seccion']==1) {
 	
-if($_GET['band'])
-{
-$query_s = sprintf("SELECT Max(idsolicitud) as id FROM solicitud  WHERE idoperador=%s",GetSQLValueString($_POST['idoperador'], "text"));
-	$s  = mysql_query($query_s , $inforgan_pamfa) or die(mysql_error());
-$row_s = mysql_fetch_assoc($s);
-	
-	
-	
-//$sol = $row_s['id'];
-$_POST['idsolicitud']=$row_s['id'];
-}
 
  $query_solicitud = sprintf("SELECT * FROM solicitud where idsolicitud=%s ",GetSQLValueString($_POST['idsolicitud'], "text"));
 $solicitud  = mysql_query($query_solicitud , $inforgan_pamfa) or die(mysql_error());
@@ -74,7 +48,38 @@ $row_solicitud = mysql_fetch_assoc($solicitud );
 $total_solicitud = mysql_num_rows($solicitud);
 
 
-if($total_solicitud==1){
+if($total_solicitud<1)
+{
+	$f=time();
+  $insertSQL = sprintf("INSERT INTO solicitud (fecha, persona, idoperador,num_ggn,num_gln,num_coc,num_mex_cal_sup,num_primus,num_senasica,responsable,personal,idprimus,idmex_alcance,idmex_pliego,idsrrc,srrc_preg1,srrc_preg2,inf_comercializacion,idioma_aud,idioma_inf,respuesta4,respuesta5,terminada) VALUES (%s, %s,  %s,%s, %s,  %s,%s, %s,%s,%s, %s,%s,%s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+             GetSQLValueString($f, "text"),
+             GetSQLValueString($_POST['persona'], "text"),
+			GetSQLValueString($_POST['idoperador'], "text"),
+			 GetSQLValueString($_POST['num_ggn'], "text"),
+             GetSQLValueString($_POST['num_gln'], "text"),
+			 GetSQLValueString($_POST['num_coc'], "text"),
+             GetSQLValueString($_POST['num_mex_cal_sup'], "text"),
+			 GetSQLValueString($_POST['num_primus'], "text"),
+             GetSQLValueString($_POST['num_senasica'], "text"),	
+	 GetSQLValueString($_POST['responsable'], "text"),
+			 GetSQLValueString($_POST['personal'], "text"),
+			 GetSQLValueString($_POST['primus'], "text"),
+			  GetSQLValueString($_POST['idmex_alcance'], "text"),
+			 GetSQLValueString($_POST['idmex_pliego'], "text"),
+			  GetSQLValueString($_POST['idsrrc'], "text"),
+			 GetSQLValueString($_POST['srrc_preg1'], "text"),
+			 GetSQLValueString($_POST['srrc_preg2'], "text"),
+			  GetSQLValueString($_POST['inf_comercializacion'], "text"),
+			   GetSQLValueString($_POST['idioma_aud'], "text"),
+			  GetSQLValueString($_POST['idioma_inf'], "text"),
+			    GetSQLValueString($_POST['respuesta4'], "text"),
+			  GetSQLValueString($_POST['respuesta5'], "text"),
+			  GetSQLValueString($_POST['terminada'], "text"));
+			
+	 $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error()); 
+ 
+}
+else{
 	$insertSQL = sprintf("update solicitud set fecha=%s, persona=%s, idoperador=%s WHERE idsolicitud=%s",
  GetSQLValueString($_POST['fecha'], "text"),
              GetSQLValueString($_POST['persona'], "text"),
@@ -100,104 +105,25 @@ if($total_solicitud==1){
  
 
 	//SECCION 6
-	
-	$insertSQL6 = sprintf(" delete from solicitud_primus where idsolicitud=%s",
-            				
-	GetSQLValueString($_POST['idsolicitud'], "int"));
-	 $Result6 = mysql_query($insertSQL6, $inforgan_pamfa) or die(mysql_error());
-	 
-	
-	 
-	 for($x=0;$x<7;$x++)
-{
-	if($_POST['primus'.$x])
-	{
-		$insertSQL6 = sprintf("insert into solicitud_primus (idprimus, idsolicitud) VALUES (%s, %s)",
-             GetSQLValueString($_POST['primus'.$x], "int"),				
-	GetSQLValueString($_POST['idsolicitud'], "int"));
-	
-	
-	 $Result6 = mysql_query($insertSQL6, $inforgan_pamfa) or die(mysql_error());
-	}
-	}
-	
-	/*$insertSQL6 = sprintf("update solicitud set idprimus=%s WHERE idsolicitud=%s",
+	$insertSQL6 = sprintf("update solicitud set idprimus=%s WHERE idsolicitud=%s",
              GetSQLValueString($_POST['primus'], "text"),				
-	GetSQLValueString($_POST['idsolicitud'], "int"));*/
-	
-	
-	// $Result6 = mysql_query($insertSQL6, $inforgan_pamfa) or die(mysql_error());
+	GetSQLValueString($_POST['idsolicitud'], "int"));
+	 $Result6 = mysql_query($insertSQL6, $inforgan_pamfa) or die(mysql_error());
   
 	//SECCION 7
-	
-	$insertSQL7 = sprintf(" delete from solicitud_mexcalsup where idsolicitud=%s",
-                                
-     GetSQLValueString($_POST['idsolicitud'], "int"));
-     $Result7 = mysql_query($insertSQL7, $inforgan_pamfa) or die(mysql_error());
-	
-	  for($x=0;$x<2 ;$x++)
-{
-     if($_POST['idmex_alcance'.$x])
-     {
-          $insertSQL7 = sprintf("insert into solicitud_mexcalsup (idmex_alcance, idsolicitud) VALUES (%s, %s)",
-             GetSQLValueString($_POST['idmex_alcance'.$x], "int"),                    
-     GetSQLValueString($_POST['idsolicitud'], "int"));
-     
-     
-     $Result7 = mysql_query($insertSQL7, $inforgan_pamfa) or die(mysql_error());
-     }
-     }
-     
-     for($x=0;$x<4;$x++)
-{
-     if($_POST['idmex_pliego'.$x])
-     {
-          $insertSQL7 = sprintf("insert into solicitud_mexcalsup (idmex_pliego, idsolicitud) VALUES (%s, %s)",
-             GetSQLValueString($_POST['idmex_pliego'.$x], "int"),                    
-     GetSQLValueString($_POST['idsolicitud'], "int"));
-     
-     
-     $Result7 = mysql_query($insertSQL7, $inforgan_pamfa) or die(mysql_error());
-     }
-     }
-     
-     
-	
-	/*$insertSQL7 = sprintf("update solicitud set idmex_alcance=%s,idmex_pliego=%s WHERE idsolicitud=%s",
+	$insertSQL7 = sprintf("update solicitud set idmex_alcance=%s,idmex_pliego=%s WHERE idsolicitud=%s",
              GetSQLValueString($_POST['idmex_alcance'], "text"),
 			 GetSQLValueString($_POST['idmex_pliego'], "text"),						
-	GetSQLValueString($_POST['idsolicitud'], "int"));*/
-	
-	
+	GetSQLValueString($_POST['idsolicitud'], "int"));
+	$Result7 = mysql_query($insertSQL7, $inforgan_pamfa) or die(mysql_error());
+ 
 	//SECCION 8
-	/*$insertSQL8 = sprintf("update solicitud set idsrrc=%s,srrc_preg1=%s,srrc_preg2=%s WHERE idsolicitud=%s",
+	$insertSQL8 = sprintf("update solicitud set idsrrc=%s,srrc_preg1=%s,srrc_preg2=%s WHERE idsolicitud=%s",
              GetSQLValueString($_POST['idsrrc'], "text"),
 			 GetSQLValueString($_POST['srrc_preg1'], "text"),
 			 GetSQLValueString($_POST['srrc_preg2'], "text"),
 	GetSQLValueString($_POST['idsolicitud'], "int"));
-	*/
-	$insertSQL8 = sprintf(" delete from solicitud_srrc where idsolicitud=%s",
-            				
-	GetSQLValueString($_POST['idsolicitud'], "int"));
 	 $Result8 = mysql_query($insertSQL8, $inforgan_pamfa) or die(mysql_error());
-	 
-	
-	 
-	 for($x=0;$x<5;$x++)
-{
-	if($_POST['idsrrc'.$x])
-	{
-		$insertSQL8 = sprintf("insert into solicitud_srrc (idsrrc, idsolicitud) VALUES (%s, %s)",
-             GetSQLValueString($_POST['idsrrc'.$x], "int"),				
-	GetSQLValueString($_POST['idsolicitud'], "int"));
-	
-	
-	 $Result8 = mysql_query($insertSQL8, $inforgan_pamfa) or die(mysql_error());
-	}
-	}
-	
-	
-	
   
  
 
@@ -347,23 +273,11 @@ else{
   $Result10 = mysql_query($insertSQL10, $inforgan_pamfa) or die(mysql_error());
 }
 
+}
 
-
+ 
 if($_POST['insertar_prod'])
 {
-			
-
-	$sol=0;
-	echo "insss---".$_GET['persona'];
-	
-	$query_s = sprintf("SELECT Max(idsolicitud) as id FROM solicitud  WHERE idoperador=%s",GetSQLValueString($_POST['idoperador'], "text"));
-	$s  = mysql_query($query_s , $inforgan_pamfa) or die(mysql_error());
-$row_s = mysql_fetch_assoc($s);
-	
-	
-	
-$sol = $row_s['id'];
-
  
   $insertSQL = sprintf("INSERT INTO cultivos(producto,num_productores,num_fincas,ubicacion_unidad,coordenadas,periodo_cosecha,superficie,libre_cubierto,cosecha_recoleccion,empaque,num_trabajadores,idsolicitud) VALUES (%s,%s, %s,  %s, %s, %s, %s, %s, %s,%s, %s,  %s)",
              GetSQLValueString($_POST['producto'], "text"),
@@ -377,149 +291,21 @@ $sol = $row_s['id'];
 			 GetSQLValueString($_POST['cosecha_recoleccion'], "text"),
              GetSQLValueString($_POST['empaque'], "text"),
 			 GetSQLValueString($_POST['num_trabajadores'], "text"),
-             GetSQLValueString($sol, "int"));
-			
+             GetSQLValueString($_POST['idsolicitud'], "text"));
+			 echo $insertSQL;
   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
-	
-	$query_c = sprintf("SELECT Max(idcultivos) as id FROM cultivos  WHERE idsolicitud=%s",GetSQLValueString($sol, "text"));
-	$c  = mysql_query($query_c , $inforgan_pamfa) or die(mysql_error());
-$row_c = mysql_fetch_assoc($c);
-	
-	
-	
-$idcultivo = $row_c['id'];
- if($_POST['empaque']==2){
-	$insertSQL = sprintf("INSERT INTO anexo_p(p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,idsolicitud,idcultivo) VALUES (%s,%s, %s,  %s, %s, %s, %s, %s, %s,%s, %s,  %s,  %s,  %s,  %s,  %s,  %s,  %s,  %s,  %s,  %s)",
-             GetSQLValueString($_POST['idoperador'], "text"),
-			 GetSQLValueString($_POST['p2'], "text"),
-			 GetSQLValueString($_POST['p3'], "text"),
-			 GetSQLValueString($_POST['p4'], "text"),
-			 GetSQLValueString($_POST['ubicacion_unidad'], "text"),
-			 GetSQLValueString($_POST['p6'], "text"),
-			 GetSQLValueString($_POST['p7'], "text"),
-			 GetSQLValueString($_POST['num_trabajadores'], "text"),
-			 GetSQLValueString($_POST['producto'], "text"),
-			 GetSQLValueString($_POST['p10'], "text"),
-			 GetSQLValueString($_POST['libre_cubierto'], "text"),
-			 GetSQLValueString($_POST['superficie'], "text"),
-			 GetSQLValueString($_POST['p13'], "text"),
-			 GetSQLValueString($_POST['p14'], "text"),
-			 GetSQLValueString($_POST['p15'], "text"),
-			 GetSQLValueString($_POST['p16'], "text"),
-			 GetSQLValueString($_POST['p17'], "text"),
-			 GetSQLValueString($_POST['p18'], "text"),
-			 GetSQLValueString($_POST['coordenadas'], "text"),
-            
-             GetSQLValueString($sol, "int"),
-			  GetSQLValueString($idcultivo, "int"));
-			
-  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
-}
- else{
-	  
-  $query_e = sprintf("SELECT * FROM procesadora where idsolicitud=%s ",GetSQLValueString($_POST['idsolicitud'], "text"));
-$e = mysql_query($query_e , $inforgan_pamfa) or die(mysql_error());
-$row_e = mysql_fetch_assoc($e );
-
-
-  
-	$insertSQL = sprintf("INSERT INTO anexo_e(p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,idsolicitud,idcultivo) VALUES (%s,%s, %s,  %s, %s, %s, %s, %s, %s,%s, %s,  %s,  %s,  %s,  %s,  %s,  %s,  %s,  %s,  %s,  %s)",
-             GetSQLValueString($_POST['idoperador'], "text"),
-			  GetSQLValueString($row_e ['empresa'].",".$row_e ['direccion'].",".$row_e ['direccion2'], "text"),
-			 GetSQLValueString($_POST['p3'], "text"),
-			 GetSQLValueString($_POST['p4'], "text"),
-			 GetSQLValueString($row_e ['tel'], "text"),
-			 GetSQLValueString($_POST['num_trabajadores'], "text"),
-			 GetSQLValueString($_POST['rfc'], "text"),
-			 GetSQLValueString($_POST['producto'], "text"),
-			 GetSQLValueString($_POST['p9'], "text"),
-			 
-			
-			 GetSQLValueString($_POST['p10'], "text"),
-			  GetSQLValueString($_POST['p11'], "text"),
-			   GetSQLValueString($_POST['p12'], "text"),
-			 
-			 GetSQLValueString($_POST['p13'], "text"),
-			 GetSQLValueString($_POST['p14'], "text"),
-			 GetSQLValueString($_POST['p15'], "text"),
-			 GetSQLValueString($_POST['p16'], "text"),
-			 GetSQLValueString($_POST['p17'], "text"),
-			 GetSQLValueString($_POST['p18'], "text"),
-			 GetSQLValueString($_POST['coordenadas'], "text"),
-            
-             GetSQLValueString($sol, "int"),
-			  GetSQLValueString($idcultivo, "int"));
-			 
-			 
-			 
-			
-  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
-  }
+						 
 }
 
 
  if($_POST['idcultivos']){
-	 
 	
 	$insertSQL = sprintf("delete from cultivos where idcultivos=%s  ",
  GetSQLValueString($_POST['idcultivos'], "text"));
 
   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
-  
-  $insertSQL = sprintf("delete from anexo_p where idcultivo=%s  ",
- GetSQLValueString($_POST['idcultivos'], "int"));
 
-  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
-   $insertSQL = sprintf("delete from anexo_e where idcultivo=%s  ",
- GetSQLValueString($_POST['idcultivos'], "int"));
-
-  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
 }
 
 ///////fin
-/*
-if($_POST['insertar_anexo_p'])
-{
-			
-
-	$sol=0;
-	echo "insss---".$_GET['persona'];
-	
-	$query_s = sprintf("SELECT Max(idsolicitud) as id FROM solicitud  WHERE idoperador=%s",GetSQLValueString($_POST['idoperador'], "text"));
-	$s  = mysql_query($query_s , $inforgan_pamfa) or die(mysql_error());
-$row_s = mysql_fetch_assoc($s);
-	
-	
-	
-$sol = $row_s['id'];
-
- 
-  $insertSQL = sprintf("INSERT INTO anexo_p(p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,idsolicitud) VALUES (%s,%s, %s,  %s, %s, %s, %s, %s, %s,%s, %s,  %s,  %s,  %s,  %s,  %s,  %s,  %s,  %s,  %s)",
-             GetSQLValueString($_POST['p1'], "text"),
-			 GetSQLValueString($_POST['p2'], "text"),
-			 GetSQLValueString($_POST['p3'], "text"),
-			 GetSQLValueString($_POST['p4'], "text"),
-			 GetSQLValueString($_POST['p5'], "text"),
-			 GetSQLValueString($_POST['p6'], "text"),
-			 GetSQLValueString($_POST['p7'], "text"),
-			 GetSQLValueString($_POST['p8'], "text"),
-			 GetSQLValueString($_POST['p9'], "text"),
-			 GetSQLValueString($_POST['p10'], "text"),
-			 GetSQLValueString($_POST['p11'], "text"),
-			 GetSQLValueString($_POST['p12'], "text"),
-			 GetSQLValueString($_POST['p13'], "text"),
-			 GetSQLValueString($_POST['p14'], "text"),
-			 GetSQLValueString($_POST['p15'], "text"),
-			 GetSQLValueString($_POST['p16'], "text"),
-			 GetSQLValueString($_POST['p17'], "text"),
-			 GetSQLValueString($_POST['p18'], "text"),
-			 GetSQLValueString($_POST['p19'], "text"),
-            
-             GetSQLValueString($sol, "int"));
-			
-  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
-						 
-}
-*/
-
-/////////////////
+///////fin

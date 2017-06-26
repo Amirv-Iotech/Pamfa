@@ -1,5 +1,6 @@
 <fieldset>
-	<div id="seccion3" class="row" style="background-color: #ecfbe7; border: solid 1px #AAAAAA; border-bottom-width:2px;">
+
+	<div id="seccion3"  class="row"  <? if($s3==1){?> style="background-color:#CF3" <? } else{?>style="background-color: #ecfbe7; <? }?>border: solid 1px #AAAAAA; border-bottom-width:2px;">
 		<div class="col-lg-12 col-sm-12 campos2"  style="padding-right: 0px; padding-left: 0px;">			
 			<div class="col-lg-12 col-sm-12 campos" style="background-color: #dbf573e6; border: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
 				<b>Si certificó anteriormente con otro organismo de certificacion indique:</b>

@@ -1,39 +1,8 @@
 <fieldset>
-</br><?
-$sel2=0;
-$query_solp2 = sprintf("SELECT * FROM solicitud_primus where idsolicitud='".$row_solicitud['idsolicitud']."'");
-                $solp2 = mysql_query($query_solp2, $inforgan_pamfa) or die(mysql_error());
-				 while($row_solp2= mysql_fetch_assoc($solp2))
-                {
-					if($row_solp2['idprimus']>3){
-					$sel2=$sel2+1;
-					
-				}
-				
-				}
-				
-$query_solp2 = sprintf("SELECT * FROM solicitud_mexcalsup where idsolicitud='".$row_solicitud['idsolicitud']."'");
-                $solp2 = mysql_query($query_solp2, $inforgan_pamfa) or die(mysql_error());
-				 while($row_solp2= mysql_fetch_assoc($solp2))
-                {
-					if($row_solp2['idmex_alcance']==2){
-					$sel2=$sel2+1;
-					
-				}
-				}
-$query_solp2 = sprintf("SELECT * FROM solicitud_srrc where idsolicitud='".$row_solicitud['idsolicitud']."'");
-                $solp2 = mysql_query($query_solp2, $inforgan_pamfa) or die(mysql_error());
-				 while($row_solp2= mysql_fetch_assoc($solp2))
-                {
-					if($row_solp2['idsrrc']==3){
-					$sel2=$sel2+1;
-					echo "entra";
-				}
-				
-				}?>
-  <div class="row" id="seccion10"  <? if ($sel2<1){?> style="display:none" <? }else {?> style="display:block"<? } ?> >
+</br>
+  <div class="row" id="seccion10">
     <div class=" col-lg-12 col-xs-12">
-      <form method="post" action="#seccion10">
+      
       <div class=" col-lg-12 col-xs-12 campos2" style="background-color: #ecfbe7; border: solid 1px #AAAAAA; border-bottom-width:2px;" >
         <div class=" col-lg-12 col-xs-12 campos2" style="text-align: center;background-color: #dbf573e6; border: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
           <h4><b>Información del centro de empaque / manipulacion / procesadora </b></h4>
@@ -82,7 +51,7 @@ $query_solp2 = sprintf("SELECT * FROM solicitud_srrc where idsolicitud='".$row_s
         </div>
           <input type="hidden" id="idprocesadora" name="idprocesadora" value="<? echo $row_procesadora['idprocesadora']; ?>" />
         </div>
-      </form>
+      
     </div>
   </div>
 </fieldset>

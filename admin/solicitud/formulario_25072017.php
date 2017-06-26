@@ -77,10 +77,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 <div class="panel panel-white">
 <div class="panel-heading clearfix"><br>
 
-<input type="hidden" id="ruta" name="ruta" value="<? echo "tabla.php?idsolicitud=".$row_solicitud['idsolicitud']."&seccion=1&idoperador=".$row_operador['idoperador']."";?>" />
-<input type="hidden" id="ruta2" name="ruta2" value="<? echo "tabla_anexo.php?idsolicitud=".$row_solicitud['idsolicitud']."&seccion=1&idoperador=".$row_operador['idoperador']."";?>" />
-<input type="hidden" id="ruta3" name="ruta3" value="<? echo "tabla_anexo_alm.php?idsolicitud=".$row_solicitud['idsolicitud']."&seccion=1&idoperador=".$row_operador['idoperador']."";?>" />
-<input type="hidden" id="ruta4" name="ruta4" value="<? echo "tabla_observaciones.php?idsolicitud=".$row_solicitud['idsolicitud']."&seccion=1&idoperador=".$row_operador['idoperador']."";?>" />
+
 
 	<div class="row" id="seccion1">
 		<div class="col-lg-12">
@@ -92,8 +89,8 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 			<p class="solicitud">Fecha de solicitud </p>
 		</div>
 		<div class="col-lg-2 col-md-2 col-xs-6 fechas" style="border-bottom:solid 1px #AAAAAA;">
-			
-			<input  id="fecha1" name="fecha1"  disabled="disabled" type="text" placeholder=""  <? if(isset($row_solicitud['fecha'])){?>value="<? echo date('d/m/y',$row_solicitud['fecha']);?>"<? }else{ ?> value="<? echo date('d/m/y',time());?>"<? }?>  style="font-size: 18px; text-align:center; width:100%"/>
+			 <input type="hidden" id="ruta" name="ruta" value="<? echo "tabla.php?idsolicitud=". $row_solicitud['idsolicitud']."";?>" />
+			<input  id="fecha1" name="fecha1"  disabled="disabled" type="text" placeholder=""  <? if(isset($row_solicitud['fecha'])){?>value="<? echo date('d/m/y',$row_solicitud['fecha']);?>"<? }else{ ?> value="<? echo date('d/m/y',time());?>"<? }?>  style="font-size: 18px; text-align:center; width: 100%"/>
 			
 		<?	$f="";
 		if(isset($row_solicitud['fecha']))
@@ -103,10 +100,10 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
         <input type="hidden" name="fecha" id="fecha" value="<? echo $f?>"/>
 		</div>
 
-		<div class="col-lg-4 col-md-4 col-xs-4 fechas">
-			<p class="solicitud">   Nombre de la persona que llena la solicitud: </p>
+		<div class="col-lg-4 col-md-4 col-xs-6 fechas">
+			<p class="solicitud">Nombre de la persona que llena la solicitud: </p>
 		</div>
-		<div class="col-lg-3 col-md-6 col-xs-6 fechas">
+		<div class="col-lg-4 col-md-4 col-xs-6 fechas">
 			<p class="solicitud"> <input id="persona" name="persona" type="text" placeholder=""  title="Nombre " value="<? echo $row_solicitud['persona'];?>" style="font-size: 18px; text-align:center; width:100%"/></p>
 		</div>
 		<div class="col-lg-12 col-xs-12">
@@ -118,7 +115,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 		</div>
 	</div>
     
-  <input type="hidden" id="fecha1" name="fecha1" value="<? echo time();?>" />
+  
   
 	<fieldset> 
     <div id="seccion1" class="row" style="border: solid 1px #AAAAAA; background-color: #ecfbe7">
@@ -129,14 +126,14 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
       		<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6 campos" style="border-right: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
             <label for="nombre_legal" class="form-label col-lg-12 col-md-12 col-sm-12 col-xs-12">Nombre de la entidad legal (empresa o persona):</label>
   			  <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 campos">
-          	<input disabled="disabled" class="inputsf form-control" name="nombre_legal" type="text" 	title="Nombre completo " value="<? echo $row_operador['nombre_legal'];?>"  />
+          	<input  disabled="disabled"  class="inputsf form-control" name="nombre_legal" type="text" 	title="Nombre completo " value="<? echo $row_operador['nombre_legal'];?>"  />
       	   </div>
   			 </div>
 
       	 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6 campos" style="margin-right: 0px; margin-left: 0px;">
           	<label for="nombre_representante" class="form-label col-lg-12 col-md-12 col-sm-12 col-xs-12">Nombre del representante legal:</label>
           	<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 campos">
-          	<input  disabled="disabled" class="inputsf form-control" name="nombre_representante" value="<? echo $row_operador['nombre_representante'];?>"  title="Nombre " />
+          	<input disabled="disabled" class="inputsf form-control" name="nombre_representante" value="<? echo $row_operador['nombre_representante'];?>"  title="Nombre " />
         	</div>
     		  </div>
         </div>
@@ -162,7 +159,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
             <div class=" form-group col-lg-2 col-md-2 campos" style="border-right: solid 1px #AAAAAA;margin-right: 0px; margin-left: 0px;" >
             	<label for="cp" class="form-label col-lg-4 col-sm-4">C.P.:</label>
             	<div class="col-lg-8 col-sm-8">
-            	<input disabled="disabled" class="form-control inputsf" name="cp" type="text" title="Codigo postal " value="<?php echo $row_operador['cp'];?>"  />
+            	<input  disabled="disabled" class="form-control inputsf" name="cp" type="text" title="Codigo postal " value="<?php echo $row_operador['cp'];?>"  />
       	     </div>
     		  </div>
     		<div class="form-group col-lg-4 col-md-4 col-sm-4 campos" style="border-right: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;" >
@@ -202,10 +199,11 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
     		</div>
 
         <div class="form-group col-lg-3 col-md-3 col-sm-3 campos" style="border-right: solid 0px #AAAAAA; margin-right: 0px; margin-left: 0px;">
+        
         <div class="col-lg-4 col-sm-4 campos">
         	<label for="fax" class="form-label">Fax:</label></div>
         	<div class="col-lg-8 col-sm-8 campos">
-        	<input disabled="disabled" class="form-control inputsf" name="fax" value="<? echo  $row_operador['fax'];?>" title="Fax "  />
+        	<input  disabled="disabled" class="form-control inputsf" name="fax" value="<? echo  $row_operador['fax'];?>" title="Fax "  />
         	</div>
     		</div>
         </div>
@@ -214,7 +212,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 
 <fieldset>
 	<div id="seccion2" class="row" style="background-color: #ecfbe7; border: solid 1px #AAAAAA;">
-  
+ 
 	<div class=" form-group col-md-12 campos2" style="margin:0px;">
 		<div class="col-md-3 col-sm-6" style="padding: 0px 0px; border: solid 1px #AAAAAA;">
 		  <div class="col-md-12" style="background-color:#dbf573e6; height:120px; overflow: hidden; text-overflow:ellipsis;">
@@ -277,7 +275,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 				<label  class="form-label" for="reponsable" >Nombre del responsable de la aplicación de la norma en la entidad legal:</label>
 			</div>
 			<div class="col-lg-12 col-md-12 campos">
-				<input placeholder="" class="form-control inputsf"  id="responsable" onchange="loadLog2()" name="responsable" value="<? echo $row_solicitud['responsable'];?>"  title="Responsable "  />
+				<input placeholder="" class="form-control inputsf"  id="responsable" name="responsable" value="<? echo $row_solicitud['responsable'];?>"  title="Responsable "  />
 			</div>
         </div>
 		<div class="col-lg-6 col-md-6" style="padding: 0px 0px; border:solid 1px #AAAAAA;">
@@ -285,161 +283,34 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 				<label  class="form-label"  for="personal" >Nombre del personal que realizó la autoevaluación/auditoria interna en la entidad legal:</label>
 			</div>
 			<div class="col-lg-12 col-md-12 campos">
-				<input placeholder="" class="form-control inputsf"  id="personal" onchange="loadLog2()" name="personal" value="<? echo $row_solicitud['personal'];?>"  title="Personal "/>
+				<input placeholder="" class="form-control inputsf"  id="personal"  name="personal" value="<? echo $row_solicitud['personal'];?>"  title="Personal "/>
 			</div>
         </div>
       </div>
-
+<input type="hidden" id="idsolicitud" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+                <input type="hidden" name="insertar_prod" value="1" />
+                <input type="hidden" id="seccion" name="seccion" value="1" />
+               
+                <input type="hidden" id="idoperador" name="idoperador" value="<? echo $row_operador['idoperador']; ?>" />
+                
       
-      
-     
+        
 </div>
 </fieldset>	
- 
-<?
- include("seccion3.php");?>
+<?php include("seccion3.php");?>
 <?php include("seccion4.php");?>
 <?php include("seccion5.php");?>
 <?php include("seccion6.php");?>
 <?php include("seccion7.php");?>
-
-<?php include("seccion8.php");
-				
-for($d=0;$d<$total_primus;$d++){
-?>
- <script type="text/javascript"> 
-
- <? echo '
-
-$(document).ready(function(){  
-    $("#primus'.$d.'").click(function() {  
-       if(($("#primus2").is(":checked"))|| ($("#primus3").is(":checked"))|| ($("#primus4").is(":checked"))|| ($("#primus5").is(":checked")) || ($("#primus6").is(":checked")) ||($("#idmex_alcance0").is(":checked"))||($("#idsrrc1").is(":checked"))) {  ';
-  echo "document.getElementById('seccion10').style.display = 'block';";
-echo'
-    } else {  ';			echo "document.getElementById('seccion10').style.display = 'none';";echo ' 
-	        } 
-		if(($("#primus0").is(":checked"))|| ($("#primus1").is(":checked")) ||($("#idmex_alcance1").is(":checked"))|| ($("#idsrrc0").is(":checked"))|| ($("#idsrrc2").is(":checked")) ||($("#idsrrc3").is(":checked"))|| ($("#idsrrc4").is(":checked"))) {  ';
-  echo "document.getElementById('seccion9').style.display = 'block';";
-echo'
-    } else {  ';			echo "document.getElementById('seccion9').style.display = 'none';";echo '
-        }  
-    });    
-});';?>
-			</script><? 
-}
-
-//////////////////
-for($d=0;$d<2;$d++){
-?>
- <script type="text/javascript"> 
-
- <? echo '
-
-$(document).ready(function(){  
-    $("#idmex_alcance'.$d.'").click(function() {  
-       if(($("#idmex_alcance1").is(":checked"))) {  ';
-  echo "document.getElementById('seccion9').style.display = 'block';";
-echo'
-    } else  if(($("#primus0").is(":checked"))|| ($("#primus1").is(":checked"))|| ($("#idsrrc0").is(":checked"))|| ($("#idsrrc2").is(":checked")) ||($("#idsrrc3").is(":checked"))|| ($("#idsrrc4").is(":checked"))){  ';			echo "document.getElementById('seccion9').style.display = 'block';";echo ' 
-	        } else { ';			echo "document.getElementById('seccion9').style.display = 'none';";echo ' }
-			
-			
-	 if(($("#idmex_alcance0").is(":checked"))) {  ';
-  echo "document.getElementById('seccion10').style.display = 'block';";
-echo'
-    } else  if(($("#primus2").is(":checked"))|| ($("#primus3").is(":checked"))|| ($("#primus4").is(":checked"))|| ($("#primus5").is(":checked")) || ($("#primus6").is(":checked"))||($("#idsrrc1").is(":checked"))){  ';			echo "document.getElementById('seccion10').style.display = 'block';";echo ' 
-	        } else { ';			echo "document.getElementById('seccion10').style.display = 'none';";echo ' }
-    });    
-});';?>
-			</script><? 
-}
-//////////////////
-for($d=0;$d<6;$d++){
-?>
- <script type="text/javascript"> 
-
- <? echo '
-
-$(document).ready(function(){  
-    $("#idsrrc'.$d.'").click(function() {  
-       if(($("#primus0").is(":checked"))|| ($("#primus1").is(":checked"))||($("#idmex_alcance1").is(":checked"))|| ($("#idsrrc0").is(":checked"))|| ($("#idsrrc2").is(":checked")) ||($("#idsrrc3").is(":checked"))|| ($("#idsrrc4").is(":checked"))) {  ';
-  echo "document.getElementById('seccion9').style.display = 'block';";
-echo'
-    } else  if(($("#idsrrc1").is(":checked"))){  ';			echo "document.getElementById('seccion9').style.display = 'none';";echo ' 
-	        } else { ';			echo "document.getElementById('seccion9').style.display = 'none';";echo ' }
-			
-			
-	 if(($("#idsrrc1").is(":checked"))) {  ';
-  echo "document.getElementById('seccion10').style.display = 'block';";
-echo'
-    } else  if(($("#primus2").is(":checked"))|| ($("#primus3").is(":checked"))|| ($("#primus4").is(":checked"))|| ($("#primus5").is(":checked")) || ($("#primus6").is(":checked"))||($("#idmex_alcance0").is(":checked"))){  ';			echo "document.getElementById('seccion10').style.display = 'block';";echo ' 
-	        } else { ';			echo "document.getElementById('seccion10').style.display = 'none';";echo ' }
-    });    
-});';?>
-			</script><? 
-}
-
-
-
-
-include("seccion9.php");
-?>
-
+<?php include("seccion8.php");?>
+<?php include("seccion9.php");?>
 <?php include("seccion10.php");?>
 <?php include("seccion11.php");?>
 <?php include("seccion12.php");?>
+<?php include("seccion13.php");?>
 
-<?php include("anexo_producto.php");?>
-<script type="text/javascript"> 
 
- <? echo '
 
-$(document).ready(function(){  
-    $("#anexo").click(function() { '; echo '
- if (!$("#anexo_producto").is(":visible"))
-   $("#anexo_producto").show();
-else   
-   $("#anexo_producto").hide();';
-	echo ' 
-    });    
-});';?>
-			</script>
-            
-            
-            <?php include("anexo_alm.php");?>
-<script type="text/javascript"> 
-
- <? echo '
-
-$(document).ready(function(){  
-    $("#anexo2").click(function() { '; echo '
- if (!$("#anexo_alm").is(":visible"))
-   $("#anexo_alm").show();
-else   
-   $("#anexo_alm").hide();';
-	echo ' 
-    });    
-});';?>
-			</script>
-            
-<?php include("seccion13.php");
-
-?>
- <?php include("observaciones.php");?>
-<script type="text/javascript"> 
-
- <? echo '
-
-$(document).ready(function(){  
-    $("#obs").click(function() { '; echo '
- if (!$("#observaciones").is(":visible"))
-   $("#observaciones").show();
-else   
-   $("#observaciones").hide();';
-	echo ' 
-    });    
-});';?>
-			</script>
 
 </div>
 </div>
@@ -447,26 +318,25 @@ else
 </div>
 </div>
 </div>
+
 
 <script>
 window.addEventListener("beforeunload", function(event) {    
 
-          var tp = $('#pr').val();
-			
-		    var post_idoperador = $('#idoperador').val();  
+            var post_idoperador = $('#idoperador').val();  
             var post_idsolicitud = $('#idsolicitud').val();
             var post_persona = $('#persona').val();
             var post_fecha = $('#fecha').val();
             var seccion=1;           
             //Seccion2
-            var post_personal = $('#personal').val();
+            var personal = $('#personal').val();
             var post_num_ggn = $('#num_ggn').val();
             var post_num_gln = $('#num_gln').val();
             var post_num_coc = $('#num_coc').val();
             var post_num_mex_cal_sup = $('#num_mex_cal_sup').val();
             var post_num_primus = $('#num_primus').val();
             var post_num_senasica = $('#num_senasica').val();
-            var post_responsable = $('#responsable').val();
+            var responsable= $('#responsable').val();
             //seccion 3
             var post_organismo = $('#organismo').val();
             var post_fecha_inicio = $('#fecha_inicio').val();
@@ -541,102 +411,22 @@ window.addEventListener("beforeunload", function(event) {
                 preg8=porNombre7[i].value;}
               }
 
+            /*var preg6 = $('#preg6').val();
+            var preg7 = $('#preg7').val();
+            var preg8 = $('#preg8').val();*/
             var idsolicitud_esquema = $('#idsolicitud_esquema').val();
-			/*
-			for(var t=0;t<tp;t++)
-			{
-				
-				
-				
-            var porNombrex=document.getElementById("primus".t);
-			if(porNombrex.checked){
-				eval("var primus" + t + " = 'porNombrex.value'"); 
-                }
-			}*/
+
             //Seccion 6
-			var primus0="";
-            var porNombrex=document.getElementById("primus0");
-			if(porNombrex.checked){
-                primus0=porNombrex.value;}
-				
-				
-				
-               
-			   var primus1="";
-            var porNombrex1=document.getElementById("primus1");
-			if(porNombrex1.checked){
-                primus1=porNombrex1.value;}
-              
-			   var primus2="";
-            var porNombrex2=document.getElementById("primus2");
-			if(porNombrex2.checked){
-                primus2=porNombrex2.value;}
-     
-				
-			   var primus3="";
-            var porNombrex3=document.getElementById("primus3");
-			if(porNombrex3.checked){
-                primus3=porNombrex3.value;}
-              
-			   var primus4="";
-            var porNombrex4=document.getElementById("primus4");
-			if(porNombrex4.checked){
-                primus4=porNombrex4.value;}
-              
-			   var primus5="";
-            var porNombrex5=document.getElementById("primus5");
-			if(porNombrex5.checked){
-                primus5=porNombrex5.value;}
-              
-			   var primus6="";
-            var porNombrex6=document.getElementById("primus6");
-			if(porNombrex6.checked){
-                primus6=porNombrex6.value;}
-				
-              
-			
-			  
-			/* var primus="";
+			 var primus="";
             var porNombre8=document.getElementsByName("primus");
             for(var i=0;i<porNombre8.length;i++)
               {
                 if(porNombre8[i].checked){
                 primus=porNombre8[i].value;}
               }
-*/
+
             //var primus = $('#primus').val();
             //Seccion 7
-			
-			  var idmex_alcance0="";
-            var porNombrex7=document.getElementById("idmex_alcance0");
-			if(porNombrex7.checked){
-                idmex_alcance0=porNombrex7.value;}
-				 
-				 var idmex_alcance1="";
-            var porNombrex8=document.getElementById("idmex_alcance1");
-			if(porNombrex8.checked){
-                idmex_alcance1=porNombrex8.value;}
-				
-				 var idmex_pliego0="";
-            var porNombrex9=document.getElementById("idmex_pliego0");
-			if(porNombrex9.checked){
-                idmex_pliego0=porNombrex9.value;}
-				 
-				 var idmex_pliego1="";
-            var porNombrex10=document.getElementById("idmex_pliego1");
-			if(porNombrex10.checked){
-                idmex_pliego1=porNombrex10.value;}
-				 var idmex_pliego2="";
-            var porNombrex11=document.getElementById("idmex_pliego2");
-			if(porNombrex11.checked){
-                idmex_pliego2=porNombrex11.value;}
-				 
-				 var idmex_pliego3="";
-            var porNombrex12=document.getElementById("idmex_pliego3");
-			if(porNombrex12.checked){
-                idmex_pliego3=porNombrex12.value;}
-				
-			/*
 			 var idmex_pliego="";
             var porNombre9=document.getElementsByName("idmex_pliego");
             for(var i=0;i<porNombre9.length;i++)
@@ -644,50 +434,25 @@ window.addEventListener("beforeunload", function(event) {
                 if(porNombre9[i].checked){
                 idmex_pliego=porNombre9[i].value;}
               }
-			  */
-			  
-			  /* var idmex_alcance="";
+			   var idmex_alcance="";
             var porNombre10=document.getElementsByName("idmex_alcance");
             for(var i=0;i<porNombre10.length;i++)
               {
                 if(porNombre10[i].checked){
                 idmex_alcance=porNombre10[i].value;}
               }
-			*/
+			
             //var idmex_pliego = $('#idmex_pliego').val();
             //var idmex_alcance = $('#idmex_alcance').val();
             //Seccion 8
 			
-			 var idsrrc0="";
-            var porNombrex13=document.getElementById("idsrrc0");
-			if(porNombrex13.checked){
-                idsrrc0=porNombrex13.value;}
-				 
-				 var idsrrc1="";
-            var porNombrex14=document.getElementById("idsrrc1");
-			if(porNombrex14.checked){
-                idsrrc1=porNombrex14.value;}
-				 var idsrrc2="";
-            var porNombrex15=document.getElementById("idsrrc2");
-			if(porNombrex15.checked){
-                idsrrc2=porNombrex15.value;}
-				 
-				 var idsrrc3="";
-            var porNombrex16=document.getElementById("idsrrc3");
-			if(porNombrex16.checked){
-                idsrrc3=porNombrex16.value;}
-				 var idsrrc4="";
-            var porNombrex17=document.getElementById("idsrrc4");
-			if(porNombrex17.checked){
-                idsrrc4=porNombrex17.value;}
-			/* var idsrrc="";
+			 var idsrrc="";
             var porNombre11=document.getElementsByName("idsrrc");
             for(var i=0;i<porNombre11.length;i++)
               {
                 if(porNombre11[i].checked){
                 idsrrc=porNombre11[i].value;}
               }
-			  */
            // var idsrrc = $('#idsrrc').val();
             var srrc_preg1 = $('#srrc_preg1').val();
             var srrc_preg2 = $('#srrc_preg2').val();
@@ -724,20 +489,25 @@ window.addEventListener("beforeunload", function(event) {
               }
             //var respuesta4 = $('#respuesta4').val();
             //var respuesta5 = $('#respuesta5').val();
+			
+			
             var terminada = 1;
             {  
                 $.ajax({  
                      url:"cerebro.php",  
                      method:"POST",
-                    data:{persona:post_persona, seccion:seccion, idoperador:post_idoperador, idsolicitud:post_idsolicitud, fecha:post_fecha, personal:post_personal, num_ggn:post_num_ggn, num_gln:post_num_gln, num_coc:post_num_coc, num_mex_cal_sup:post_num_mex_cal_sup, num_primus:post_num_primus, num_senasica:post_num_senasica, responsable:post_responsable,organismo:post_organismo, fecha_inicio:post_fecha_inicio, fecha_fin:post_fecha_fin, idcert_anterior:post_idcert_anterior, esq_tipo1_op1: esq_tipo1_op1, preg1_op2:preg1_op2, preg2_op2:preg2_op2, preg3_op2:preg3_op2,  preg1_tipo2:preg1_tipo2, preg2_tipo2:preg2_tipo2, preg3_tipo2:preg3_tipo2, esq_tipo2_op1:esq_tipo2_op1, preg4_tipo2:preg4_tipo2, preg5_tipo2:preg5_tipo2, preg6:preg6, preg7:preg7, preg8:preg8, idsolicitud_esquema:idsolicitud_esquema,primus0:primus0,primus1:primus1,primus2:primus2,primus3:primus3,primus4:primus4,primus5:primus5,primus6:primus6, idmex_pliego0:idmex_pliego0,idmex_pliego1:idmex_pliego1,idmex_pliego2:idmex_pliego2,idmex_pliego3:idmex_pliego3, idmex_alcance0:idmex_alcance0,idmex_alcance1:idmex_alcance1, idsrrc0:idsrrc0,idsrrc1:idsrrc1,idsrrc2:idsrrc2,idsrrc3:idsrrc3,idsrrc4:idsrrc4, srrc_preg1:srrc_preg1, srrc_preg2:srrc_preg2, empresa:empresa, rfc:rfc, direccion:direccion, direccion2:direccion2, cp:cp, tel:tel, idprocesadora:idprocesadora, inf_comercializacion:inf_comercializacion, idioma_aud:idioma_aud, idioma_inf:idioma_inf, respuesta4:respuesta4, respuesta5:respuesta5, terminada:terminada},
+                    data:{persona:post_persona, seccion:seccion, idoperador:post_idoperador, idsolicitud:post_idsolicitud, fecha:post_fecha, personal:personal, num_ggn:post_num_ggn, num_gln:post_num_gln, num_coc:post_num_coc, num_mex_cal_sup:post_num_mex_cal_sup, num_primus:post_num_primus, num_senasica:post_num_senasica,responsable:responsable,organismo:post_organismo, fecha_inicio:post_fecha_inicio, fecha_fin:post_fecha_fin, idcert_anterior:post_idcert_anterior, esq_tipo1_op1: esq_tipo1_op1, preg1_op2:preg1_op2, preg2_op2:preg2_op2, preg3_op2:preg3_op2,  preg1_tipo2:preg1_tipo2, preg2_tipo2:preg2_tipo2, preg3_tipo2:preg3_tipo2, esq_tipo2_op1:esq_tipo2_op1, preg4_tipo2:preg4_tipo2, preg5_tipo2:preg5_tipo2, preg6:preg6, preg7:preg7, preg8:preg8, idsolicitud_esquema:idsolicitud_esquema,primus:primus, idmex_pliego:idmex_pliego, idmex_alcance:idmex_alcance, idsrrc:idsrrc, srrc_preg1:srrc_preg1, srrc_preg2:srrc_preg2, empresa:empresa, rfc:rfc, direccion:direccion, direccion2:direccion2, cp:cp, tel:tel, idprocesadora:idprocesadora, inf_comercializacion:inf_comercializacion, idioma_aud:idioma_aud, idioma_inf:idioma_inf, respuesta4:respuesta4, respuesta5:respuesta5, terminada:terminada},
                      dataType:"text",  
                      success:function(data)  
-                     {   
+                     {  
                           event.returnValue = "AnthonySS";
+                  
+
    }  
                 });  
            }
 
+ 
 });
 </script>
 <script type="text/javascript">
@@ -753,6 +523,9 @@ function cambiar(){
 
  }
  </script>
+ 
+
+
 <script type="text/javascript">
 
 $(document).ready(function() {
@@ -760,7 +533,7 @@ $(document).ready(function() {
 $('.error').hide();
 
 	$("#agregar").click(function() {
-	
+
 		        var producto = $('#producto').val();
             var num_productores = $('#num_productores').val();
             var num_fincas= $('#num_fincas').val();
@@ -776,19 +549,13 @@ $('.error').hide();
             var idsolicitud = $('#idsolicitud').val();
             var insertar_prod = $('#insertar_prod').val();
 			var ruta = $('#ruta').val();
-			var ruta2 = $('#ruta2').val();
-			var ruta3 = $('#ruta3').val();
-			 var idoperador = $('#idoperador').val();
-			
 	  
                 $.ajax({  
                      url:"cerebro.php",  
                      method:"POST",
-                    data:{producto:producto,num_productores:num_productores,num_fincas:num_fincas,ubicacion_unidad:ubicacion_unidad,coordenadas:coordenadas,periodo_cosecha:periodo_cosecha,superficie:superficie,libre_cubierto:libre_cubierto,cosecha_recoleccion:cosecha_recoleccion,empaque:empaque,num_trabajadores:num_trabajadores,idsolicitud:idsolicitud,insertar_prod:insertar_prod,idoperador:idoperador},
+                    data:{producto:producto,num_productores:num_productores,num_fincas:num_fincas,ubicacion_unidad:ubicacion_unidad,coordenadas:coordenadas,periodo_cosecha:periodo_cosecha,superficie:superficie,libre_cubierto:libre_cubierto,cosecha_recoleccion:cosecha_recoleccion,empaque:empaque,num_trabajadores:num_trabajadores,idsolicitud:idsolicitud,insertar_prod:insertar_prod},
 		            	success: function() { 
-		                        $('#tabla_ajax').load(ruta); //Recargamos la Tabla(Para que se muestren los Nuevos Resultados) 
-								$('#tabla_ajax2').load(ruta2);
-								$('#tabla_ajax3').load(ruta3); 
+		                        $('#tabla_ajax').load(ruta); //Recargamos la Tabla(Para que se muestren los Nuevos Resultados)
 		    }
 		});
 		return false;
@@ -797,48 +564,26 @@ $('.error').hide();
 
 
 </script>
-
-
 <script type="text/javascript">
 
 $(document).ready(function() {
 
 $('.error').hide();
 
-	$("#agregar2").click(function() {
-	
-		        var p1 = $('#p1').val();
-				var p2 = $('#p2').val();
-			    var p3 = $('#p3').val();
-    		  var p4 = $('#p4').val();
-			    var p5 = $('#p5').val();
-			  var p6 = $('#p6').val();
-			    var p7 = $('#p7').val();
-			  var p8 = $('#p8').val();
-			    var p9 = $('#p9').val();
-			  var p10 = $('#p10').val();
-		    var p11 = $('#p11').val();
-			  var p12 = $('#p12').val();
-		    var p13 = $('#p13').val();
-			  var p14 = $('#p14').val();
-			    var p15 = $('#p15').val();
-			  var p16 = $('#p16').val();
-		    var p17 = $('#p17').val();
-			  var p18 = $('#p18').val();
-			    var p19 = $('#p19').val();
-         
+	$("#borrar").click(function() {
+
+		       
+            var idcultivos = $('#idcultivos').val();
             var idsolicitud = $('#idsolicitud').val();
-            var insertar_anexo_p = $('#insertar_anexo_p').val();
-			var ruta2 = $('#ruta2').val();
-			 var idoperador = $('#idoperador').val();
-			
+            var eliminar = $('#eliminar').val();
+			var ruta = $('#ruta').val();
 	  
                 $.ajax({  
                      url:"cerebro.php",  
                      method:"POST",
-                    data:{p1:p1,p2:p2,p3:p3,p4:p4,p5:p5,p6:p6,p7:p7,p8:p8,p9:p9,p10:p10,p11:p11,p12:p12,p13:p13,p14:p14,p15:p15,p16:p16,p17:p17,p18:p18,p19:p19,idsolicitud:idsolicitud,insertar_anexo_p:insertar_anexo_p,idoperador:idoperador},
+                    data:{idcultivos :idcultivos ,idsolicitud:idsolicitud,eliminar:eliminar},
 		            	success: function() { 
-		                        $('#tabla_ajax2').load(ruta2); //Recargamos la Tabla(Para que se muestren los Nuevos Resultados)
+		                        $('#tabla_ajax').load(ruta); //Recargamos la Tabla(Para que se muestren los Nuevos Resultados)
 		    }
 		});
 		return false;
@@ -848,42 +593,5 @@ $('.error').hide();
 
 </script>
 
-<? ///////////observa//
- ?>
-<script type="text/javascript">
-
-$(document).ready(function() {
-
-$('.error').hide();
-
-	$("#agregar3").click(function() {
-	
-		        var observacion = $('#observacion').val();
-				var seccion_sol = $('#seccion_sol').val();
-			    var fecha_obs = $('#fecha_obs').val();
-    		  var estado = $('#estado').val();
-			   
-         
-            var idsolicitud = $('#idsolicitud').val();
-            var insertar_solicitud_obs = $('#insertar_solicitud_obs').val();
-			var ruta4 = $('#ruta4').val();
-			
-			
-	  
-                $.ajax({  
-                     url:"cerebro.php",  
-                     method:"POST",
-                    data:{observacion:observacion,seccion_sol:seccion_sol,fecha_obs:fecha_obs,estado:estado,idsolicitud:idsolicitud,insertar_solicitud_obs:insertar_solicitud_obs},
-		            	success: function() { 
-		                        $('#tabla_ajax4').load(ruta4); //Recargamos la Tabla(Para que se muestren los Nuevos Resultados)
-		    }
-		});
-		return false;
-	});
-});
-
-
-</script>
-
-<?php  include("includes/footer.php");?>
+<?php include("includes/footer.php");?>
 </html>
