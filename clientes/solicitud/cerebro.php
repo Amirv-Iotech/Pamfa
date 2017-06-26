@@ -523,3 +523,59 @@ $sol = $row_s['id'];
 */
 
 /////////////////
+if($_POST['idanexo_p']){
+	
+	
+	 $insertSQL = sprintf("UPDATE anexo_p SET p1=%s,p2=%s,p3=%s,p4=%s,p5=%s,p6=%s,p7=%s,p8=%s,p9=%s,p10=%s,p11=%s,p12=%s,p13=%s,p14=%s,p15=%s,p16=%s,p17=%s,p18=%s,p19=%s WHERE idanexo_p=%s",
+             GetSQLValueString($_POST['p1'], "text"),
+			 GetSQLValueString($_POST['p2'],"text"),
+			 GetSQLValueString($_POST['p3'], "text"),
+			 GetSQLValueString($_POST['p4'], "text"),
+			 GetSQLValueString($_POST['p5'], "text"),
+			 GetSQLValueString($_POST['p6'], "text"),
+			 GetSQLValueString($_POST['p7'], "text"),
+			 GetSQLValueString($_POST['p8'], "text"),
+			 GetSQLValueString($_POST['p9'], "text"),
+			 GetSQLValueString($_POST['p10'], "text"),
+			 GetSQLValueString($_POST['p11'], "text"),
+			 GetSQLValueString($_POST['p12'], "text"),
+			 GetSQLValueString($_POST['p13'], "text"),
+			 GetSQLValueString($_POST['p14'], "text"),
+			 GetSQLValueString($_POST['p15'], "text"),
+			 GetSQLValueString($_POST['p16'], "text"),
+			 GetSQLValueString($_POST['p17'], "text"),
+			 GetSQLValueString($_POST['p18'], "text"),
+			 GetSQLValueString($_POST['p19'], "text"),
+            
+             GetSQLValueString($_POST['idanexo_p'], "int"));
+			print_r ( $insertSQL);
+  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
+}
+if($_POST['idanexo_e']){
+	
+	
+	 $insertSQL = sprintf("UPDATE anexo_e SET p1=%s,p2=%s,p3=%s,p4=%s,p5=%s,p6=%s,p7=%s,p8=%s,p9=%s,p10=%s,p11=%s,p12=%s,p13=%s,p14=%s,p15=%s,p16=%s,p17=%s,p18=%s,p19=%s WHERE idanexo_e=%s",
+             GetSQLValueString($_POST['p1'], "text"),
+			 GetSQLValueString($_POST['p2'],"text"),
+			 GetSQLValueString($_POST['p3'], "text"),
+			 GetSQLValueString($_POST['p4'], "text"),
+			 GetSQLValueString($_POST['p5'], "text"),
+			 GetSQLValueString($_POST['p6'], "text"),
+			 GetSQLValueString($_POST['p7'], "text"),
+			 GetSQLValueString($_POST['p8'], "text"),
+			 GetSQLValueString($_POST['p9'], "text"),
+			 GetSQLValueString($_POST['p10'], "text"),
+			 GetSQLValueString($_POST['p11'], "text"),
+			 GetSQLValueString($_POST['p12'], "text"),
+			 GetSQLValueString($_POST['p13'], "text"),
+			 GetSQLValueString($_POST['p14'], "text"),
+			 GetSQLValueString($_POST['p15'], "text"),
+			 GetSQLValueString($_POST['p16'], "text"),
+			 GetSQLValueString($_POST['p17'], "text"),
+			 GetSQLValueString($_POST['p18'], "text"),
+			 GetSQLValueString($_POST['p19'], "text"),
+            
+             GetSQLValueString($_POST['idanexo_e'], "int"));
+			
+  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
+}
