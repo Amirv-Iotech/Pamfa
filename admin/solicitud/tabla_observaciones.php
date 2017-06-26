@@ -104,6 +104,8 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
                 <option value="11"  <? if($row_solicitud_obs['seccion_sol']==11){ ?> selected="selected" <? }?>>Seccion 11</option>
                 <option value="12"  <? if($row_solicitud_obs['seccion_sol']==12){ ?> selected="selected" <? }?>>Seccion 12</option>
                 <option value="13"  <? if($row_solicitud_obs['seccion_sol']==13){ ?> selected="selected" <? }?>>Seccion 13</option>
+                 <option value="14"  <? if($row_solicitud_obs['seccion_sol']==14){ ?> selected="selected" <? }?>>Anexo producción</option>
+                  <option value="13"  <? if($row_solicitud_obs['seccion_sol']==15){ ?> selected="selected" <? }?>>Anexo Almacén</option>
                 
                 </select>
                               </td>

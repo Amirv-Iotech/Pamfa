@@ -37,6 +37,8 @@
                 <option value="11" >Seccion 11</option>
                 <option value="12" >Seccion 12</option>
                 <option value="13" >Seccion 13</option>
+                  <option value="14" >Seccion 14</option>
+                <option value="15" >Seccion 15</option>
                 
                 </select> </div>
             </div>
