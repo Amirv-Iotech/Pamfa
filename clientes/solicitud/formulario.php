@@ -62,7 +62,7 @@ $row_s = mysql_fetch_assoc($s);
 $query_sa = sprintf("SELECT terminada FROM solicitud  WHERE idsolicitud=%s ",GetSQLValueString($row_s['id'], "text"));
   $sa  = mysql_query($query_sa , $inforgan_pamfa) or die(mysql_error());
 $row_sa = mysql_fetch_assoc($sa);  
-if($row_sa['terminada']==1){
+if($row_sa['terminada']==1 ){
   $sol=NULL;
 }else{
   $sol="1";

@@ -133,66 +133,66 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
                     while ($row_anexo_e = mysql_fetch_assoc($anexo_e)) {
                    
                             ?>
-                            <form action="" method="post" id="<? echo "f".$cont ?>">
+                           
                             <tr>
                               <td> 
-              <input class="form-control inputsf" id="<? echo "p1".$cont ?>" name="p1" placeholder=""type="text" value="<? if($row_anexo_e['p1']==NULL){ echo $row_operador['nombre_legal'];} else {echo $row_anexo_e['p1'];} ?>"  />
+              <input class="form-control inputsf" id="<? echo "pp1".$cont ?>" name="p1" placeholder=""type="text" value="<? if($row_anexo_e['p1']==NULL){ echo $row_operador['nombre_legal'];} else {echo $row_anexo_e['p1'];} ?>"  />
             
                               </td>
 
                            <td> 
-                                  <input class="form-control inputsf" id="<? echo "p2".$cont ?>" name="p2" placeholder=""type="text" value="<? echo $row_anexo_e['p2']; ?>"  />
+                                  <input class="form-control inputsf" id="<? echo "pp2".$cont ?>" name="p2" placeholder=""type="text" value="<? echo $row_anexo_e['p2']; ?>"  />
                               </td>
 
 <td> 
-                                   <input class="form-control inputsf" id="<? echo "p3".$cont ?>" name="p3" placeholder=""type="text" value="<? echo $row_anexo_e['p3']; ?>"  />
+                                   <input class="form-control inputsf" id="<? echo "pp3".$cont ?>" name="p3" placeholder=""type="text" value="<? echo $row_anexo_e['p3']; ?>"  />
                               </td>
 <td> 
-                                   <input class="form-control inputsf" id="<? echo "p4".$cont ?>" name="p4" placeholder=""type="text" value="<? echo $row_anexo_e['p4']; ?>"  />                              </td>
+                                   <input class="form-control inputsf" id="<? echo "pp4".$cont ?>" name="p4" placeholder=""type="text" value="<? echo $row_anexo_e['p4']; ?>"  />                              </td>
 <td> 
-                                  <input class="form-control inputsf" id="<? echo "p5".$cont ?>" name="p5" placeholder=""type="text" value="<? echo $row_anexo_e['p5']; ?>"  />
+                                  <input class="form-control inputsf" id="<? echo "pp5".$cont ?>" name="p5" placeholder=""type="text" value="<? echo $row_anexo_e['p5']; ?>"  />
                               </td>
 <td> 
-                                  <input class="form-control inputsf" id="<? echo "p6".$cont ?>" name="p6" placeholder=""type="text" value="<? echo $row_anexo_e['p6']; ?>"  />
+                                  <input class="form-control inputsf" id="<? echo "pp6".$cont ?>" name="p6" placeholder=""type="number" step="any" value="<? echo $row_anexo_e['p6']; ?>"  />
                               </td>
 <td> 
-                                  <input class="form-control inputsf" id="<? echo "p7".$cont ?>" name="p7" placeholder=""type="text" value="<? echo $row_anexo_e['p7']; ?>"  />
+                                  <input class="form-control inputsf" id="<? echo "pp7".$cont ?>" name="p7" placeholder=""type="text" value="<? echo $row_anexo_e['p7']; ?>"  />
                               </td>
 <td> 
-                                  <input class="form-control inputsf" id="<? echo "p8".$cont ?>" name="p8" placeholder=""type="text" value="<? echo $row_anexo_e['p8']; ?>"  />
+                                  <input class="form-control inputsf" id="<? echo "pp8".$cont ?>" name="p8" placeholder=""type="text" value="<? echo $row_anexo_e['p8']; ?>"  />
                               </td>
 <td> 
-                                   <input class="form-control inputsf" id="<? echo "p9".$cont ?>" name="p9" placeholder=""type="text" value="<? echo $row_anexo_e['p9']; ?>"  />
+                                   <input class="form-control inputsf" id="<? echo "pp9".$cont ?>" name="p9" placeholder=""type="text" value="<? echo $row_anexo_e['p9']; ?>"  />
                               </td>
 <td> 
-                                  <input class="form-control inputsf" id="<? echo "p10".$cont ?>" name="p10" placeholder=""type="text" value="<? echo $row_anexo_e['p10']; ?>"  />
+                                  <input class="form-control inputsf" id="<? echo "pp10".$cont ?>" name="p10" placeholder=""type="text" value="<? echo $row_anexo_e['p10']; ?>"  />
                               </td>
 <td> 
-                                   <input class="form-control inputsf" id="<? echo "p11".$cont ?>" name="p11" placeholder=""type="text" value="<? echo $row_anexo_e['p11']; ?>"  />
+                                   <input class="form-control inputsf" id="<? echo "pp11".$cont ?>" name="p11" placeholder=""type="number" step="any" value="<? echo $row_anexo_e['p11']; ?>"  />
                               </td>
 <td> 
-                                  <input class="form-control inputsf" id="<? echo "p12".$cont ?>" name="p12" placeholder=""type="text" value="<? echo $row_anexo_e['p12']; ?>"  />
+                                  <input class="form-control inputsf" id="<? echo "pp12".$cont ?>" name="p12" placeholder=""type="text" value="<? echo $row_anexo_e['p12']; ?>"  />
                               </td>
 <td> 
-                                   <input class="form-control inputsf" id="<? echo "p13".$cont ?>" name="p13" placeholder=""type="text" value="<? echo $row_anexo_e['p13']; ?>"  />
+                                   <input class="form-control inputsf" id="<? echo "pp13".$cont ?>" name="p13" placeholder=""type="text" value="<? echo $row_anexo_e['p13']; ?>"  />
                               </td>
 <td> 
-                                   <input class="form-control inputsf" id="<? echo "p14".$cont ?>" name="p14" placeholder=""type="text" value="<? echo $row_anexo_e['p14']; ?>"  />
+                                   <input class="form-control inputsf" id="<? echo "pp14".$cont ?>" name="p14" placeholder=""type="text" value="<? echo $row_anexo_e['p14']; ?>"  />
                               </td>
 <td> 
-                                   <input class="form-control inputsf" id="<? echo "p15".$cont ?>" name="p15" placeholder=""type="text" value="<? echo $row_anexo_e['p15']; ?>"  />
+                                   <input class="form-control inputsf" id="<? echo "pp15".$cont ?>" name="p15" placeholder=""type="text" value="<? echo $row_anexo_e['p15']; ?>"  />
                               </td>
 <td> 
-                                  <input class="form-control inputsf" id="<? echo "p16".$cont ?>" name="p16" placeholder=""type="text" value="<? echo $row_anexo_e['p16']; ?>"  />
+                                  <input class="form-control inputsf" id="<? echo "pp16".$cont ?>" name="p16" placeholder=""type="text" value="<? echo $row_anexo_e['p16']; ?>"  />
                               </td>
 <td> 
-                                  <input class="form-control inputsf" id="<? echo "p17".$cont ?>" name="p17" placeholder=""type="text" value="<? echo $row_anexo_e['p17']; ?>"  />
+                                  <input class="form-control inputsf" id="<? echo "pp17".$cont ?>" name="p17" placeholder=""type="text" value="<? echo $row_anexo_e['p17']; ?>"  />
                               </td>
 <td> 
-                                  <input class="form-control inputsf" id="<? echo "p18".$cont ?>" name="p18" placeholder=""type="text" value="<? echo $row_anexo_e['p18']; ?>"  />
+                                  <input class="form-control inputsf" id="<? echo "pp18".$cont ?>" name="p18" placeholder=""type="text" value="<? echo $row_anexo_e['p18']; ?>"  />
                               </td>
 <td> 
-                                  <input class="form-control inputsf" id="<? echo "p19".$cont ?>" name="p19" placeholder=""type="text" value="<? echo $row_anexo_e['p19']; ?>"  />
+                                  <input class="form-control inputsf" id="<? echo "pp19".$cont ?>" name="p19" placeholder=""type="text" value="<? echo $row_anexo_e['p19']; ?>"  />
                               </td>
 <? /*
                               <td>
@@ -215,7 +215,7 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
                                 
                               
                                 
-                          <button type="button"   name="act2" id="<?php echo 'act'.$cont; ?>" value="<?php echo $row_anexo_e['idanexo_e']; ?>" onclick="<?php echo 'el3'.$cont.'()'?>" >Agregar</button>
+                          <button type="button"   name="act1" id="<?php echo 'act1'.$cont; ?>" value="<?php echo $row_anexo_e['idanexo_e']; ?>" onclick="<?php echo 'el4'.$cont.'()'?>" >Agregar</button>
                         
                          
                               </td>
@@ -224,27 +224,30 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
  
 ?>
 <script type="text/javascript"> 
-	<?php echo 'function el3'.$cont.'(){
-	 var idanexo_e = $("#act'.$cont.'").val();
-	 var p1 = $("#p1'.$cont.'").val();
-				var p2 = $("#p2'.$cont.'").val();
-			    var p3 = $("#p3'.$cont.'").val();
-    		  var p4 = $("#p4'.$cont.'").val();
-			    var p5 = $("#p5'.$cont.'").val();
-			  var p6 = $("#p6'.$cont.'").val();
-			    var p7 = $("#p7'.$cont.'").val();
-			  var p8 = $("#p8'.$cont.'").val();
-			    var p9 = $("#p9'.$cont.'").val();
-			  var p10 = $("#p10'.$cont.'").val();
-		    var p11 = $("#p11'.$cont.'").val();
-			  var p12 = $("#p12'.$cont.'").val();
-		    var p13 = $("#p13'.$cont.'").val();
-			  var p14 = $("#p14'.$cont.'").val();
-			    var p15 = $("#p15'.$cont.'").val();
-			  var p16 = $("#p16'.$cont.'").val();
-		    var p17 = $("#p17'.$cont.'").val();
-			  var p18 = $("#p18'.$cont.'").val();
-			    var p19 = $("#p19'.$cont.'").val();
+	<?php echo 'function el4'.$cont.'(){
+	
+
+	 var idanexo_e = $("#act1'.$cont.'").val();
+	 	alert(idanexo_e);
+	 var p1 = $("#pp1'.$cont.'").val();
+				var p2 = $("#pp2'.$cont.'").val();
+			    var p3 = $("#pp3'.$cont.'").val();
+    		  var p4 = $("#pp4'.$cont.'").val();
+			    var p5 = $("#pp5'.$cont.'").val();
+			  var p6 = $("#pp6'.$cont.'").val();
+			    var p7 = $("#pp7'.$cont.'").val();
+			  var p8 = $("#pp8'.$cont.'").val();
+			    var p9 = $("#pp9'.$cont.'").val();
+			  var p10 = $("#pp10'.$cont.'").val();
+		    var p11 = $("#pp11'.$cont.'").val();
+			  var p12 = $("#pp12'.$cont.'").val();
+		    var p13 = $("#pp13'.$cont.'").val();
+			  var p14 = $("#pp14'.$cont.'").val();
+			    var p15 = $("#pp15'.$cont.'").val();
+			  var p16 = $("#pp16'.$cont.'").val();
+		    var p17 = $("#pp17'.$cont.'").val();
+			  var p18 = $("#pp18'.$cont.'").val();
+			    var p19 = $("#pp19'.$cont.'").val();
 	
 	 var ruta3 = $("#ruta3").val();
 	 $.ajax({
@@ -267,14 +270,12 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
  <? echo '
 
 $(document).ready(function(){  
-   $("#act'.$cont.'").click(function() { '; echo '
-    var idanexo_e = $("#act'.$cont.'").val();
-alert(idanexo_e);
-alert("#act'.$cont.'"); 
+   $("#act1'.$cont.'").click(function() { '; echo '
+    var idanexo_e = $("#act1'.$cont.'").val();
     });    
 });';?>
 			</script>
- </form>
+ 
 <?
 $cont++;} ?>
 </tbody>

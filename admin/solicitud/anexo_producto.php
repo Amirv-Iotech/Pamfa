@@ -1,21 +1,10 @@
 <fieldset>
 </br>
 <?
-$sel1=0;
-$query_solp1 = sprintf("SELECT * FROM solicitud_primus where idsolicitud='".$row_solicitud['idsolicitud']."'");
-                $solp1 = mysql_query($query_solp1, $inforgan_pamfa) or die(mysql_error());
-				 while($row_solp1= mysql_fetch_assoc($solp1))
-                {
-					if($row_solp1['idprimus']==3|| $row_solp1['idprimus']==4){
-					$sel1=$sel1+1;
-					}
-						
-			
-			
-				}
+
 				
 ?>
-  <div class="row" id="anexo_producto" <? if ($sel1<1){?> style="display:none" <? }else {?> style="display:block"<? } ?>>
+  <div class="row" id="anexo_producto" style="display:none" >
   <div class="col-lg-12 col-xs-12">
     <div class="col-lg-12 col-xs-12 campos2" style="background-color: #ecfbe7; border: solid 1px #AAAAAA; border-bottom-width:2px;">
       <div class="col-lg-12 col-xs-12 campos2" style="text-align: center;background-color: #dbf573e6; border: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">

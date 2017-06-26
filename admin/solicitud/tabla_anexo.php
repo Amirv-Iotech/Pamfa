@@ -133,7 +133,7 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
                     while ($row_anexo_p = mysql_fetch_assoc($anexo_p)) {
                    
                             ?>
-                            <form action="" method="post" id="<? echo "f".$cont ?>">
+                            
                             <tr>
                               <td> 
               <input class="form-control inputsf" id="<? echo "p1".$cont ?>" name="p1" placeholder=""type="text" value="<? if($row_anexo_p['p1']==NULL){ echo $row_operador['nombre_legal'];} else {echo $row_anexo_p['p1'];} ?>"  />
@@ -159,7 +159,7 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
                                   <input class="form-control inputsf" id="<? echo "p7".$cont ?>" name="p7" placeholder=""type="text" value="<? echo $row_anexo_p['p7']; ?>"  />
                               </td>
 <td> 
-                                  <input class="form-control inputsf" id="<? echo "p8".$cont ?>" name="p8" placeholder=""type="text" value="<? echo $row_anexo_p['p8']; ?>"  />
+                                  <input class="form-control inputsf" id="<? echo "p8".$cont ?>" name="p8" placeholder=""type="number" value="<? echo $row_anexo_p['p8']; ?>"  />
                               </td>
 <td> 
                                    <input class="form-control inputsf" id="<? echo "p9".$cont ?>" name="p9" placeholder=""type="text" value="<? echo $row_anexo_p['p9']; ?>"  />
@@ -174,7 +174,7 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
                                   <input class="form-control inputsf" id="<? echo "p12".$cont ?>" name="p12" placeholder=""type="text" value="<? echo $row_anexo_p['p12']; ?>"  />
                               </td>
 <td> 
-                                   <input class="form-control inputsf" id="<? echo "p13".$cont ?>" name="p13" placeholder=""type="text" value="<? echo $row_anexo_p['p13']; ?>"  />
+                                   <input class="form-control inputsf" id="<? echo "p13".$cont ?>" name="p13" placeholder=""type="number"  step="any" value="<? echo $row_anexo_p['p13']; ?>"  />
                               </td>
 <td> 
                                    <input class="form-control inputsf" id="<? echo "p14".$cont ?>" name="p14" placeholder=""type="text" value="<? echo $row_anexo_p['p14']; ?>"  />
@@ -210,7 +210,7 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
                          
                          
                           <input type="hidden" id="idsolicitud" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
-                          <input type="hidden" id="idanexo_p" name="idanexo_p" value="<? echo $row_anexo_p['idanexo_p']; ?>" />
+                          <input type="hidden" id="<?php echo 'idanexo_p'.$cont; ?>" name="idanexo_p" value="<? echo $row_anexo_p['idanexo_p']; ?>" />
                                 
                                 
                               
@@ -270,11 +270,11 @@ $(document).ready(function(){
    $("#act'.$cont.'").click(function() { '; echo '
     var idanexo_p = $("#act'.$cont.'").val();
 alert(idanexo_p);
-alert("#act'.$cont.'"); 
+alert("#idanexo_p'.$cont.'"); 
     });    
 });';?>
 			</script>
- </form>
+
 <?
 $cont++;} ?>
 </tbody>
