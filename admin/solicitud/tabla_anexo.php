@@ -269,8 +269,7 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
 $(document).ready(function(){  
    $("#act'.$cont.'").click(function() { '; echo '
     var idanexo_p = $("#act'.$cont.'").val();
-alert(idanexo_p);
-alert("#idanexo_p'.$cont.'"); 
+
     });    
 });';?>
 			</script>

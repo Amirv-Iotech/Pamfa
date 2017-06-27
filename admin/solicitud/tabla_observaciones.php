@@ -64,6 +64,10 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
   
  
   <th>
+                  <label><strong>Actualizar</strong></label>
+
+  </th>
+   <th>
                   <label><strong>Eliminar</strong></label>
 
   </th>
@@ -75,13 +79,13 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
                     while ($row_solicitud_obs = mysql_fetch_assoc($solicitud_obs)) {
                    
                             ?>
-                            <form action="" method="post" id="<? echo "f".$cont ?>">
+                         
                             <tr>
                             <td>
-                             <label><? echo $cont+1 ?></label>
+                             <label><? echo $cont+1; ?></label>
                              </td>
                               <td> 
-              <input class="form-control inputsf" id="<? echo "observacion".$cont ?>" name="observacion" type="text" value="<? echo $row_solicitud_obs['observacion'] ?>"  />
+              <input class="form-control inputsf" id="<? echo "observacion".$cont;?>" name="observacion" type="text" value="<? echo $row_solicitud_obs['observacion'] ?>"  disabled="disabled" />
             
                               </td>
 
@@ -89,7 +93,7 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
                                  
                                  
                                   
-                                   <select class="form-control"  id="<? echo "seccion_sol".$cont ?>" name="seccion_sol"  >
+                                   <select class="form-control"  id="<? echo "seccion_sol".$cont;?>" name="seccion_sol" disabled="disabled"  >
                 <option value="-">Seleciona</option>
                 <option value="1" <? if($row_solicitud_obs['seccion_sol']==1){ ?> selected="selected" <? }?>>Seccion 1</option>
                 <option value="2"  <? if($row_solicitud_obs['seccion_sol']==2){ ?> selected="selected" <? }?>>Seccion 2</option>
@@ -111,28 +115,36 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
                               </td>
 
 <td> 
-                                   <input class="form-control inputsf" id="<? echo "fecha_obs".$cont ?>" type="date" 	name="fecha_obs" value="<?php echo $row_solicitud_obs['fecha_obs'];?>"  />
+                                   <input class="form-control inputsf" id="<? echo "fecha_obs".$cont; ?>" type="date" 	name="fecha_obs" value="<?php echo $row_solicitud_obs['fecha_obs'];?>"  disabled="disabled" />
                               </td>
 <td> 
-                                 <select class="form-control"  id="<? echo "estado".$cont ?>" name="seccion_sol"  >
+                                 <select class="form-control"  id="<? echo "estado".$cont;?>" name="seccion"  >
                 <option value="-">Seleciona</option>
                 <option value="1" <? if($row_solicitud_obs['estado']==1){ ?> selected="selected" <? }?>>Pendiente</option>
                 <option value="2"  <? if($row_solicitud_obs['estado']==2){ ?> selected="selected" <? }?>>Atendida</option>
                
                                               </td>
-<td> 
-                             
+
+                               <td>
+                         
+                      
+                          <input type="hidden" id="idsolicitud" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+                          <input type="hidden" id="<?php echo "idsolicitud_obs_a".$cont;?>" name="<?php echo 'idsolicitud_obs_a'?>"  value="<? echo $row_solicitud_obs['idsolicitud_obs']; ?>" />
+                          <input type="hidden" id="<?php echo 'actualiza_solicitud_obs'?>" name="<?php echo 'actualiza_solicitud_obs'?>"  value="1" />
+                                
+                          <button type="button"   name="act20" id="<?php echo 'act20'.$cont; ?>" value="<?php echo $row_solicitud_obs['idsolicitud_obs']; ?>" onclick="<?php echo 'el3'.$cont.'()'?>" >Actualizar</button>
+                        
+                              </td>
 
                               <td>
                          
-                         <form action="" method="post">
-                          <input type="hidden" id="idsolicitud" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
-                          <input type="hidden" id="<?php echo 'idsolicitud_obs'.$cont;?>" name="<?php echo 'idsolicitud_obs'.$cont;?>"  value="<? echo $row_solicitud_obs['idsolicitud_obs']; ?>" />
-                                
-                          <button type="button"   name="borrar2" id="<?php echo 'borrar'.$cont; ?>" value="<?php echo $row_solicitud_obs['idsolicitud_obs']; ?>" onclick="<?php echo 'el3'.$cont.'()'?>" >Eliminar</button>
+                      
+                                <input type="hidden" id="<?php echo "idsolicitud_obs".$cont;?>" name="<?php echo 'idsolicitud_obs'?>"  value="<? echo $row_solicitud_obs['idsolicitud_obs']; ?>" />
+                          <button type="button"   name="borrar2" id="<?php echo 'borrar'.$cont; ?>" value="<?php echo $row_solicitud_obs['idsolicitud_obs']; ?>" onclick="<?php echo 'el7'.$cont.'()'?>" >Eliminar</button>
                          
                          
                               </td>
+                              
 							  
                              
                             </tr>                                               
@@ -140,9 +152,9 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
  
 ?>
 <script type="text/javascript"> 
-	<?php echo 'function el3'.$cont.'(){
+	<?php echo 'function el7'.$cont.'(){
 	 var idsolicitud_obs = $("#idsolicitud_obs'.$cont.'").val();
-	alert(idsolicitud_obs);
+
 	
 	 var ruta4 = $("#ruta4").val();
 	 $.ajax({
@@ -160,7 +172,33 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
 	   //Recargamos la Tabla(Para que se muestren los Nuevos Resultados)
 
 </script>
- </form>
+<script type="text/javascript"> 
+	<?php echo 'function el3'.$cont.'(){
+		
+	   var idsolicitud_obs_a = $("#idsolicitud_obs_a'.$cont.'").val();
+	   var actualiza_solicitud_obs = $("#actualiza_solicitud_obs").val();
+	   var observacion= $("#observacion'.$cont.'").val();
+	   var seccion_sol= $("#seccion_sol'.$cont.'").val();
+	   var fecha_obs= $("#fecha_obs'.$cont.'").val();
+	   var estado= $("#estado'.$cont.'").val();
+	
+	
+	 var ruta4 = $("#ruta4").val();
+	 $.ajax({
+		 url:"cerebro.php",
+		 method:"POST",
+		 data:{idsolicitud_obs_a:idsolicitud_obs_a,actualiza_solicitud_obs:actualiza_solicitud_obs,observacion:observacion,seccion_sol:seccion_sol,fecha_obs:fecha_obs,estado:estado},
+		 success: function() {
+			 $("#tabla_ajax4").load(ruta4);
+		    }
+			 });
+	}
+	
+	';
+	?>
+	   //Recargamos la Tabla(Para que se muestren los Nuevos Resultados)
+
+</script>
 <?
 $cont++;} ?>
 </tbody>

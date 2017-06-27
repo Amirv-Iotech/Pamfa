@@ -228,7 +228,7 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
 	
 
 	 var idanexo_e = $("#act1'.$cont.'").val();
-	 	alert(idanexo_e);
+	 
 	 var p1 = $("#pp1'.$cont.'").val();
 				var p2 = $("#pp2'.$cont.'").val();
 			    var p3 = $("#pp3'.$cont.'").val();
