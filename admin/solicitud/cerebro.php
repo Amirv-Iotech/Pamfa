@@ -412,7 +412,7 @@ if($_POST['insertar_prod'])
 	$sol=0;
 	echo "insss---".$_GET['persona'];
 	
-	$query_s = sprintf("SELECT Max(idsolicitud) as id FROM solicitud  WHERE idoperador=%s and terminada=1",GetSQLValueString($_POST['idoperador'], "text"));
+	$query_s = sprintf("SELECT Max(idsolicitud) as id FROM solicitud  WHERE idoperador=%s",GetSQLValueString($_POST['idoperador'], "text"));
 	$s  = mysql_query($query_s , $inforgan_pamfa) or die(mysql_error());
 $row_s = mysql_fetch_assoc($s);
 	
@@ -577,7 +577,8 @@ $sol = $row_s['id'];
 						 
 }
 */
- /////////////////
+
+/////////////////
 if($_POST['idanexo_p']){
 	
 	

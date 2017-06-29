@@ -33,8 +33,8 @@ $query_solp1 = sprintf("SELECT * FROM solicitud_mexcalsup where idsolicitud='".$
 				}
 				
 ?>
-  <div  id="seccion9" <? if ($sel1<1){?> style="display:none" <? }else {?> style="display:block"<? } ?>   >
-  <div class="col-lg-12 col-xs-12" >
+  <div class="row" id="seccion9" <? if ($sel1<1){?> style="display:none" <? }else {?> style="display:block"<? } ?>>
+  <div class="col-lg-12 col-xs-12">
     <div class="col-lg-12 col-xs-12 campos2" style="background-color: #ecfbe7; border: solid 1px #AAAAAA; border-bottom-width:2px;">
       <div class="col-lg-12 col-xs-12 campos2" style="text-align: center;background-color: #dbf573e6; border: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
           <h3><b>Información de los cultivos</b></h3>
@@ -140,7 +140,7 @@ $query_solp1 = sprintf("SELECT * FROM solicitud_mexcalsup where idsolicitud='".$
 
 
 <!-- TABLA ======= TABLA=====-->
-<div class="col-lg-12 col-xs-12" <? if($s9==1){?> style="background-color:#CF3" <? } else{?>style="background-color: #ecfbe7; <? }?> border: solid 1px #AAAAAA; border-bottom-width:2px; id="tabla_ajax" >
+<div class="col-lg-12 col-xs-12" style="background-color: #ecfbe7; border: solid 1px #AAAAAA; border-bottom-width:2px;" id="tabla_ajax" >
 
           <?php
 
