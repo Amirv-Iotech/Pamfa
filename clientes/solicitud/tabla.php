@@ -4,16 +4,17 @@
   $sol="";
   if($_GET["idsolicitud"])
   {$sol=$_GET["idsolicitud"];
+  echo "get";
  
   }
   else if($_POST["idsolicitud"])
   {$sol=$_POST["idsolicitud"];
- 
+ echo "post".$_POST["idsolicitud"];
 	  }
   else if($row_solicitud['idsolicitud'])
   {
 	  $sol=$row_solicitud['idsolicitud'];
-	
+	echo "row";
   }
   else{
 	$query_s = sprintf("SELECT Max(idsolicitud) as id FROM solicitud  WHERE idoperador='".$_GET['idoperador']."' and terminada is null");
@@ -21,7 +22,7 @@
 $row_s = mysql_fetch_assoc($s);  
 $sol=$row_s ['id'];
 
-
+echo "qery";
   }
 $query_solicitud = sprintf("SELECT * FROM solicitud WHERE idsolicitud=%s ", GetSQLValueString( $sol, "int"));
 $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error());

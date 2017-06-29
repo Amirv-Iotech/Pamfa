@@ -19,7 +19,7 @@ include('includes/header.php');
 								</div>
 								<div class="card-content">
 									<p class="category">Nueva</p>
-									<h3 class="title"><a href="../clientes/solicitud/formulario.php">Solicitud</a></h3>
+									<h3 class="title"><a href="../clientes/solicitud/menu_solicitud.php">Solicitud</a></h3>
 								</div>
 								<? /*<div class="card-footer">
 									<div class="stats">

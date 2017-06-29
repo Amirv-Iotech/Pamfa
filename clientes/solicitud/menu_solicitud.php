@@ -57,12 +57,28 @@ $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error()
 
 	        <div class="content">
 	            <div class="container-fluid">
+                <?
+                $query_solicitud2 = sprintf("SELECT * FROM solicitud WHERE idoperador=%s and terminada=2 order by idsolicitud asc limit 1", GetSQLValueString( $_SESSION["idoperador"], "int"));
+$solicitud2 = mysql_query($query_solicitud2, $inforgan_pamfa) or die(mysql_error());
+$total_solicitud2 = mysql_num_rows($solicitud2);
+
+if($total_solicitud2==0){
+
+ ?> 
+                 <form action="formulario.php" method="post">
+                                                 <button data-toggle="tooltip" title="Ver" type="submit" name="Ver"  value="1"class="btn btn-success"><i class="fa fa-plus-circle fa-4x" aria-hidden="true"></i></button>
+                                                 
+</form><?
+
+
+}?>
 	                <div class="row">
 	                    <div class="col-md-12">
 	                        <div class="card">
-	                            <div class="card-header" data-background-color="green">
-	                                <h4 class="title">Solicitudes anteriores</h4>
-	                                <p class="category">Bitacora de tus solicitudes</p>
+	                            <div class="card-header" data-background-color="red">
+	                                <h4 class="title">Solicitudes Con observaciones </h4>
+	                                <p class="category">Por favor atienda las observaciones destectadas en estas solicitudes </p>
+                                       
 	                            </div>
 	                            <div class="card-content table-responsive">
                                

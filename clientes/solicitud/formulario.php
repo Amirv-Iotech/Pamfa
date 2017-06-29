@@ -41,7 +41,14 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
 mysql_select_db($database_pamfa, $inforgan_pamfa);
  include("includes/header.php");
-
+if(isset($_POST['idsolicitud']))
+{
+	 $query_solicitud = sprintf("SELECT * FROM solicitud WHERE idsolicitud=%s order by idsolicitud asc limit 1", GetSQLValueString( $_POST['idsolicitud'], "int"));
+$solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error());
+$row_solicitud= mysql_fetch_assoc($solicitud);
+echo "f ". $query_solicitud;
+}
+else{
 
 $query_solicitud2 = sprintf("SELECT * FROM solicitud WHERE idoperador=%s order by idsolicitud asc limit 1", GetSQLValueString( $_SESSION["idoperador"], "int"));
 $solicitud2 = mysql_query($query_solicitud2, $inforgan_pamfa) or die(mysql_error());
@@ -87,6 +94,8 @@ $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error()
 $row_solicitud= mysql_fetch_assoc($solicitud);
 
  }
+ 
+}
 $query_operador = sprintf("SELECT * FROM operador WHERE idoperador=%s", GetSQLValueString( $_SESSION["idoperador"], "int"));
 $operador = mysql_query($query_operador, $inforgan_pamfa) or die(mysql_error());
 $row_operador= mysql_fetch_assoc($operador);
