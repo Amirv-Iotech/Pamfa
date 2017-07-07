@@ -169,10 +169,38 @@ $row_alcance= mysql_fetch_assoc($alcance);
                     <label class="col-lg-3 col-xs-3">Producto:</label>
                     <?  $query_prod = sprintf("SELECT * FROM cultivos WHERE idsolicitud=%s order by idcultivos", GetSQLValueString( $_POST["idsolicitud"], "int"));
                       $prod = mysql_query($query_prod, $inforgan_pamfa) or die(mysql_error());
-                      while($row_prod= mysql_fetch_assoc($prod))
+					  
+					 
+$array = array();
+$c=0;
+ $productos="";
+while($row_prod= mysql_fetch_assoc($prod))
+{
+	
+	$array[$c]=$row_prod['producto'];
+	$c++;
+}
+$a1="";$a2="";
+$productos=$array[0].",";
+ for($rr=0;$rr<$c;$rr++)
                       {
-                        $productos=$row_prod['producto'].",".$productos;
-                      }?>
+						                       
+                     for($r=0;$r<$c;$r++)
+                      {
+						  $a1=$array[$rr];$a2=$array[$r];
+						
+						  if($a1!=$a2)
+						  {
+							  
+
+if (stripos( $productos,$a1) === false) {
+    $productos=$a1.",".$productos;
+} 
+                       
+						  }
+                      }
+					  echo $rr;
+					  }?>
                       <div class="col-lg-9 col-xs-9">
                       <input disabled class="plan_input" id="producto" name="producto" type="text" title="Telefono " value="<? echo $productos;?>"  />
                       </div>
@@ -323,7 +351,14 @@ var fecha =$('#fecha').val();
     var horario =$('#horario').val();
     var actividad =$('#actividad').val();
     var responsable =$('#responsable').val();
-    var auditor=document.getElementById("auditor2").value;
+    var auditor="";
+	
+	  var porNombre13=document.getElementById("auditor2").value;;
+            for(var i=0;i<porNombre13.length;i++)
+              {
+                if(porNombre13[i].selected){
+               auditor=porNombre13[i].value;}
+              }
     var idplan_auditoria =$('#idplan_auditoria').val();
     var seccion=7;
     var idsolicitud =$('#idsolicitud').val();

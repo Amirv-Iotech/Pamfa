@@ -39,10 +39,18 @@
        <input placeholder="escribe aquí"  class="plan_input"  id="responsable" name="responsable"        title="Responsable " type="text" value=""  />
 
       </div>
-      <div class="col-lg-2 col-xs-4">
+      <div class="col-lg-2 col-xs-4"><?
+      $query_eq = sprintf("SELECT * FROM plan_auditoria_equipo where idplan_auditoria=%s ", GetSQLValueString( $sol, "int"));
+            $eq = mysql_query($query_eq, $inforgan_pamfa) or die(mysql_error());
+			$total_eq = mysql_num_rows($eq);
+		?>
+           
+
       <label>Auditor</label>
-        <select name="auditor2" id="auditor2" class="plan_input" >
-        <option value="">Selecciona una opción...</option>
+    
+
+        <select class="selectpicker" multiple title="Selecciona"  name="auditor2" id="auditor2" style="color:#f5f5f5;"  >
+       
         <?php 
         $query_vista1 = "select idusuario, nombre,apellidos from usuario where idusuario in(SELECT idauditor FROM plan_auditoria_equipo where idplan_auditoria='".$sol."') ";
         $vista1 = mysql_query($query_vista1,  $inforgan_pamfa) or die(mysql_error());
@@ -51,6 +59,7 @@
         <option  value="<?php echo $row_vista1['idusuario'];?>"><?php echo $row_vista1['nombre']." ".$row_vista1['apellidos'];?></option>
         <?php }?>
         </select>
+       
       </div>
       <div class="col-lg-2 col-xs-4">
         <input type="hidden" name="idplan_auditoria" value="<? echo $sol; ?>" />           <input type="hidden" name="idsolicitud" id="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />

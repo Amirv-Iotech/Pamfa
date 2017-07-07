@@ -411,7 +411,11 @@ if($_POST['insertar_prod'])
 
 	$sol=0;
 	echo "insss---".$_GET['persona'];
-	
+	if(isset($_POST['idsolicitud']))
+	{
+		$sol = $_POST['idsolicitud'];
+	}
+	else{
 	$query_s = sprintf("SELECT Max(idsolicitud) as id FROM solicitud  WHERE idoperador=%s",GetSQLValueString($_POST['idoperador'], "text"));
 	$s  = mysql_query($query_s , $inforgan_pamfa) or die(mysql_error());
 $row_s = mysql_fetch_assoc($s);
@@ -419,7 +423,7 @@ $row_s = mysql_fetch_assoc($s);
 	
 	
 $sol = $row_s['id'];
-
+	}
  
   $insertSQL = sprintf("INSERT INTO cultivos(producto,num_productores,num_fincas,ubicacion_unidad,coordenadas,periodo_cosecha,superficie,libre_cubierto,cosecha_recoleccion,empaque,num_trabajadores,idsolicitud) VALUES (%s,%s, %s,  %s, %s, %s, %s, %s, %s,%s, %s,  %s)",
              GetSQLValueString($_POST['producto'], "text"),
