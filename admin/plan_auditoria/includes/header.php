@@ -21,7 +21,6 @@
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
 
-
     <!--  Material Dashboard CSS    -->
     <link href="../assets/css/material-dashboard.css" rel="stylesheet"/>
 
@@ -36,17 +35,8 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
   
 	<link href="../assets/css/solicitud.css" rel="stylesheet"/>
-
-<link   href="../assets/css/bootstrap-select.min.css" rel="stylesheet">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/js/bootstrap-select.min.js"></script>
-
-<!-- (Optional) Latest compiled and minified JavaScript translation files -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/js/i18n/defaults-*.min.js"></script>
-
-    
-    
+     <link href="../assets/css/bootstrap-select.css" rel="stylesheet"/>
+    <link href="../assets/css/bootstrap-select.min.css" rel="stylesheet"/>
 </head>
 
 <body>

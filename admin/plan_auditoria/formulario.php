@@ -324,7 +324,16 @@ var seccion =5;
     var horario =$('#horario').val();
     var actividad =$('#actividad').val();
     var responsable =$('#responsable').val();
-    var auditor=document.getElementById("auditor2").value;
+    var auditor="";
+	 var valor="";
+	 var porNombre13=document.getElementById("auditor2");
+            for(var i=0;i<porNombre13.length;i++)
+              {
+                if(porNombre13[i].selected){
+               valor=porNombre13[i].value+', '+valor;}
+              }
+	 auditor=valor;
+  
     var idplan_auditoria =$('#idplan_auditoria').val();
     var seccion=7;
     var idsolicitud =$('#idsolicitud').val();
@@ -339,12 +348,13 @@ var seccion =5;
                             $('#tabla_ajax2').load(ruta2); //Recargamos la Tabla(Para que se muestren los Nuevos Resultados)
         }
     });
-  });
-*/
+  });*/
+
 </script>
 
 
 <script>
+
 var count = 0;
 $( "body" ).on( "click", "#agregar", function() {
 var fecha =$('#fecha').val();
@@ -352,13 +362,18 @@ var fecha =$('#fecha').val();
     var actividad =$('#actividad').val();
     var responsable =$('#responsable').val();
     var auditor="";
-	
-	  var porNombre13=document.getElementById("auditor2").value;;
+	 var valor="";
+	 var porNombre13=document.getElementById("auditor2");
             for(var i=0;i<porNombre13.length;i++)
               {
                 if(porNombre13[i].selected){
-               auditor=porNombre13[i].value;}
+               valor=porNombre13[i].value+', '+valor;
+			  }
               }
+			  var tam=valor.length-2;
+			 
+			  var valr=valor.substr(0,tam)
+	 auditor=valr;
     var idplan_auditoria =$('#idplan_auditoria').val();
     var seccion=7;
     var idsolicitud =$('#idsolicitud').val();

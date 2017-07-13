@@ -48,6 +48,8 @@
 
 	<!-- Material Dashboard javascript methods -->
 	<script src="../assets/js/material-dashboard.js"></script>
+    <script src="../assets/js/bootstrap-select.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
 
 	<!-- Material Dashboard DEMO methods, don't include it in your project! -->
 	<script src="../assets/js/demo.js"></script>
