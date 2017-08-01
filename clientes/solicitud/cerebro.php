@@ -361,7 +361,6 @@ if($_POST['insertar_prod'])
 			
 
 	$sol=0;
-	echo "insss---".$_GET['persona'];
 	if($_POST['idsolicitud'])
 	{
 		$sol = $_POST['idsolicitud'];

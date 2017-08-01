@@ -55,19 +55,19 @@
                         <label>Esquema de Certificación</label>
                       </div>
                       <div class="col-xs-6">
-                        <label><input disabled   type="checkbox" <? if ($row_solicitud_esq['esq_tipo1_op1']!=NULL){?> checked="checked"<? }?>  value="1" id="esq1" name="esq1">GLOBALG A.P. IFA</label>
+                        <label><input   type="checkbox" <? if ($row_solicitud_esq['esq_tipo1_op1']!=NULL){?> checked="checked"<? }?>  value="1" id="esq1" name="esq1">GLOBALG A.P. IFA</label>
                       </div>
                       <div class="col-xs-6">
-                           <label><input disabled  type="checkbox" <? if ($row_solicitud_esq['esq_tipo2_op1']!=NULL){?> checked="checked"<? }?>  value="1" id="esq1" name="esq1">GLOBALG A.P. Cadena de Custodia</label>
+                           <label><input   type="checkbox" <? if ($row_solicitud_esq['esq_tipo2_op1']!=NULL){?> checked="checked"<? }?>  value="1" id="esq1" name="esq1">GLOBALG A.P. Cadena de Custodia</label>
                       </div>
                       <div class="col-xs-6">
-                          <label><input disabled  type="checkbox" <? if ($row_solicitud['idprimus']!=NULL){?> checked="checked"<? }?>  value="1" id="esq1" name="esq1">PrimusGFS</label>
+                          <label><input   type="checkbox" <? if ($row_solicitud['idprimus']!=NULL){?> checked="checked"<? }?>  value="1" id="esq1" name="esq1">PrimusGFS</label>
                       </div>
                       <div class="col-xs-6">
-                          <label><input  disabled type="checkbox" <? if ($row_solicitud['idmex_pliego']!=NULL){?> checked="checked"<? }?>  value="1" id="esq1" name="esq1">Pliego de condiciones México Calidad Suprema</label>
+                          <label><input   type="checkbox" <? if ($row_solicitud['idmex_pliego']!=NULL){?> checked="checked"<? }?>  value="1" id="esq1" name="esq1">Pliego de condiciones México Calidad Suprema</label>
                       </div>
                       <div class="col-xs-12">
-                          <label><input  disabled type="checkbox" <? if ($row_solicitud['idsrrc']!=NULL){?> checked="checked"<? }?>  value="1" id="esq1" name="esq1">Sistema  Reduccion de Riesgos de contaminación</label>
+                          <label><input   type="checkbox" <? if ($row_solicitud['idsrrc']!=NULL){?> checked="checked"<? }?>  value="1" id="esq1" name="esq1">Sistema  Reduccion de Riesgos de contaminación</label>
                       </div>
                         <hr class="col-lg-12">
                     <div class="col-lg-6 col-xs-6">
@@ -104,19 +104,19 @@
                     </div>
                     <div class="col-lg-6 col-xs-6">
                       <label>Alcance</label>
-                       <input disabled  class="plan_input"  id="alcance" name="alcance"       title="Alcance " value="<? echo $row_alcance['descripcion'];?>"  />
+                       <input placeholder="escribe aquí"  class="plan_input"  id="alcance" name="alcance"       title="Alcance " value="<? echo $row_alcance['descripcion'];?>"  />
                     </div>
                     <div class="col-lg-6 col-xs-6">
                         <label>Criterios de Evaluación </label>
-                         <input placeholder="escribe aquí"  class="plan_input"  id="criterio" name="criterio"     title="Evaluación " value="<? echo $row_plan_auditoria['criterio'];?>"  />
+                         <input placeholder="escribe aquí"  class="plan_input"  id="criterio" name="criterio"        title="Evaluación " value="<? echo $row_plan_auditoria['criterio'];?>"  />
                     </div>
                     <div class="col-lg-6 col-xs-6">
                         <label class="col-lg-12 col-xs-12">Idioma en que se realizará la auditoria y a utilizar para el informe:</label>
                         <div class="col-lg-6 col-xs-6">
-                         <input disabled  class="plan_input"  id="idioma_aud" name="idioma_aud"  type="text" title="Idioma " value="<? echo $row_solicitud['idioma_aud'];?>"  />
+                         <input placeholder="Auditoria"  class="plan_input"  id="idioma_aud" name="idioma_aud"  type="text" title="Idioma " value="<? echo $row_solicitud['idioma_aud'];?>"  />
                         </div>
                         <div class="col-lg-6 col-xs-6">
-                         <input disabled class="plan_input"  id="idioma_inf" name="idioma_inf" type="text" title="Idioma " value="<? echo $row_solicitud['idioma_inf'];?>"  />
+                         <input placeholder="informe"  class="plan_input"  id="idioma_inf" name="idioma_inf" type="text" title="Idioma " value="<? echo $row_solicitud['idioma_inf'];?>"  />
                         </div>
                        
                         <input type="hidden" name="idsolicitud_esquema" id="idsolicitud_esquema" value="<? echo $row_solicitud_esq['idsolicitud_esquema']; ?>" />
@@ -125,7 +125,7 @@
                   </div>
             </div>
         </div>
- <input id="idsolicitud" type="hidden" name="idsolicitud" value="<? echo $_POST['idsolicitud']; ?>" /> 
+
       </form>
       <input type="hidden" name="idplan_auditoria" id="idplan_auditoria" value="<? echo $row_plan_auditoria['idplan_auditoria']; ?>" />
   </div>

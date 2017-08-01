@@ -89,8 +89,8 @@ $query_solp1 = sprintf("SELECT * FROM solicitud_mexcalsup where idsolicitud='".$
             <div class="col-lg-2 col-xs-2 campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA; min-height: 124px;">
                 <label>Aire libre- cubierto:</label>
                 <div class="campos2 div4">
-                <select class="form-control" id="libre_cubierto"  name="libre_cubierto" >
-                  <option value="-">Seleciona</option>
+                <select class="form-control" id="libre_cubierto"  name="libre_cubierto" title="Selecciona">
+                 
                   <option value="1">Aire libre</option>
                   <option value="2">Cubierto</option>
                 </select>
@@ -99,8 +99,8 @@ $query_solp1 = sprintf("SELECT * FROM solicitud_mexcalsup where idsolicitud='".$
             <div class="col-lg-2 col-xs-2 campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA; min-height: 124px;">
                 <label>Cosecha/ Recolección :</label>
                 <div class="campos2 div4">
-                <select class="form-control"  id="cosecha_recoleccion"name="cosecha_recoleccion" >
-                <option value="-">Seleciona</option>
+                <select class="form-control"  id="cosecha_recoleccion"name="cosecha_recoleccion" title="Selecciona" >
+               
                 <option value="1">Si</option>
                 <option value="2">No</option>
                 </select>
@@ -109,8 +109,8 @@ $query_solp1 = sprintf("SELECT * FROM solicitud_mexcalsup where idsolicitud='".$
             <div class="col-lg-2 col-xs-2 campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA; min-height: 124px;">
                 <label>Empaque/ Manipulación :</label>
                 <div class="campos2 div4">
-                <select class="form-control"  id="empaque" name="empaque" >
-                <option value="-">Seleciona</option>
+                <select class="form-control"  id="empaque" name="empaque" title="Selecciona">
+              
                 <option value="1">Si</option>
                 <option value="2">No</option>
                 </select>

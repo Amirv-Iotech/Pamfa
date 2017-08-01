@@ -43,7 +43,8 @@
 
 	<!--  Notifications Plugin    -->
 	<script src="../assets/js/bootstrap-notify.js"></script>
-
+ <script src="../assets/js/bootstrap-select.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
 	
 
 	<!-- Material Dashboard javascript methods -->

@@ -86,7 +86,7 @@ $Result1 = mysql_query($insertSQL6, $inforgan_pamfa) or die(mysql_error());
   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
  
 }
-echo "band ".$_POST['actualiza_solicitud_obs'];
+
 if($_POST['actualiza_solicitud_obs']){
 	
 	
@@ -97,7 +97,7 @@ if($_POST['actualiza_solicitud_obs']){
 			 GetSQLValueString($_POST['fecha_obs'], "text"),
              GetSQLValueString($_POST['estado'], "text"),
 			GetSQLValueString($_POST["idsolicitud_obs_a"], "text"));
-			echo $insertSQL;
+		
 			
   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
 }
@@ -410,7 +410,7 @@ if($_POST['insertar_prod'])
 			
 
 	$sol=0;
-	echo "insss---".$_GET['persona'];
+	
 	if(isset($_POST['idsolicitud']))
 	{
 		$sol = $_POST['idsolicitud'];
@@ -445,12 +445,14 @@ $sol = $row_s['id'];
 	$c  = mysql_query($query_c , $inforgan_pamfa) or die(mysql_error());
 $row_c = mysql_fetch_assoc($c);
 	
-	
+	$query_nom = sprintf("SELECT nombre_legal FROM operador where idoperador=%s ",GetSQLValueString($_POST['idoperador'], "text"));
+$nom = mysql_query($query_nom , $inforgan_pamfa) or die(mysql_error());
+$row_nom = mysql_fetch_assoc($nom );
 	
 $idcultivo = $row_c['id'];
  if($_POST['empaque']==2){
 	$insertSQL = sprintf("INSERT INTO anexo_p(p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,idsolicitud,idcultivo) VALUES (%s,%s, %s,  %s, %s, %s, %s, %s, %s,%s, %s,  %s,  %s,  %s,  %s,  %s,  %s,  %s,  %s,  %s,  %s)",
-             GetSQLValueString($_POST['idoperador'], "text"),
+             GetSQLValueString($row_nom['nombre_legal'], "text"),
 			 GetSQLValueString($_POST['p2'], "text"),
 			 GetSQLValueString($_POST['p3'], "text"),
 			 GetSQLValueString($_POST['p4'], "text"),
@@ -481,10 +483,13 @@ $idcultivo = $row_c['id'];
 $e = mysql_query($query_e , $inforgan_pamfa) or die(mysql_error());
 $row_e = mysql_fetch_assoc($e );
 
+ $query_nom = sprintf("SELECT nombre_legal FROM operador where idoperador=%s ",GetSQLValueString($_POST['idoperador'], "text"));
+$nom = mysql_query($query_nom , $inforgan_pamfa) or die(mysql_error());
+$row_nom = mysql_fetch_assoc($nom );
 
   
 	$insertSQL = sprintf("INSERT INTO anexo_e(p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,idsolicitud,idcultivo) VALUES (%s,%s, %s,  %s, %s, %s, %s, %s, %s,%s, %s,  %s,  %s,  %s,  %s,  %s,  %s,  %s,  %s,  %s,  %s)",
-             GetSQLValueString($_POST['idoperador'], "text"),
+             GetSQLValueString($row_nom['nombre_legal'], "text"),
 			  GetSQLValueString($row_e ['empresa'].",".$row_e ['direccion'].",".$row_e ['direccion2'], "text"),
 			 GetSQLValueString($_POST['p3'], "text"),
 			 GetSQLValueString($_POST['p4'], "text"),

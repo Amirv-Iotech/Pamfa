@@ -1,7 +1,7 @@
 <?php require_once('../Connections/inforgan_pamfa.php'); ?>
 <?php
 error_reporting(0);
-mysql_select_db($database_pamfa, $nforgan_pamfa);
+mysql_select_db($database_pamfa, $inforgan_pamfa);
 
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
@@ -80,10 +80,7 @@ $row_inf= mysql_fetch_assoc($inf);
 $query_solicitud_esq = sprintf("select *from esquemas where idesquema=(SELECT esq_tipo1_op1 FROM solicitud_esquema WHERE idsolicitud=%s order by idsolicitud_esquema asc limit 1)", GetSQLValueString($_POST["idsolicitud"], "int"));
 $solicitud_esq = mysql_query($query_solicitud_esq, $inforgan_pamfa) or die(mysql_error());
 $row_solicitud_esq= mysql_fetch_assoc($solicitud_esq);
-
-?>
-
-<? include('mpdf.php');
+include('mpdf.php');
 $mpdf=new mPDF('','Letter-L', 0, '', 2, 0, 0,0, 0, 0);
 if(isset($_POST['cliente']))
 {

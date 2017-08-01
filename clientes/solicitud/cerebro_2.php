@@ -1,7 +1,7 @@
 <?php require_once('../../Connections/inforgan_pamfa.php'); ?>
 <?php
 error_reporting(0);
-mysql_select_db($database_pamfa, $nforgan_pamfa);
+mysql_select_db($database_pamfa, $inforgan_pamfa);
 
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 

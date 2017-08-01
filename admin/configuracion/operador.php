@@ -153,7 +153,9 @@
            $query_u= "SELECT  * FROM operador order by nombre_legal asc ";
           $u = mysql_query($query_u,$inforgan_pamfa) or die(mysql_error());
           while($row_u = mysql_fetch_assoc($u)){ 
-          ?>
+         
+		  ?>
+          
           <tr>
             <td><label><? echo $row_u['nombre_legal'];?></label></td>
             <td><label><? echo $row_u['nombre_representante'];?></label></td>
@@ -190,6 +192,7 @@
                 </form>
             </td>
           </tr>
+          
         <? }?>
         </tbody>
     </table>

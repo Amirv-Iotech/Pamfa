@@ -46,7 +46,7 @@ if(isset($_POST['idsolicitud']))
 	 $query_solicitud = sprintf("SELECT * FROM solicitud WHERE idsolicitud=%s order by idsolicitud asc limit 1", GetSQLValueString( $_POST['idsolicitud'], "int"));
 $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error());
 $row_solicitud= mysql_fetch_assoc($solicitud);
-echo "f ". $query_solicitud;
+
 }
 else{
 
@@ -144,7 +144,7 @@ $s15="";
 for($x=0;$x<$c;$x++)
 {
 	
-	echo $array[$x];
+	
 	if($array[$x]==1)
 	{$s1=1;
 	}

@@ -101,7 +101,8 @@ $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error()
 	                                    <thead >
 	                                    	<th>Id</th>
 	                                    	<th>Cliente</th>
-	                                    	<th>Fecha</th>
+	                                    	<th>Fecha solcitud</th>
+                                            <th colspan="3">Contrato</th>
                                             <th></th>
                                             <th>Estado</th>
 											
@@ -116,7 +117,24 @@ $row_cliente= mysql_fetch_assoc($cliente);
 	                                        <tr>
 	                                        	<td><? echo $row_solicitud['idsolicitud'];?></td>
 	                                        	<td><? echo $row_cliente['nombre_legal'];?></td>
-	                                        	<td><? echo date('d/m/y',$row_solicitud['fecha']);?></td>
+	                                        	<td><? echo date('d/m/y',$row_solicitud['fecha']);?></td> <td bgcolor="#CCFF66">
+                                                <form action="../../docs/contrato.php" method="post">
+                                                 <button data-toggle="tooltip" title="Ver" type="submit" name="Ver"  value="1" class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                                                 <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+                                                 
+</form></td>
+ <td bgcolor="#CCFF66">
+                                                <form action="presupuesto.php" method="post">
+                                                 <button data-toggle="tooltip" title="Presupuesto" type="submit" name="Ver"  value="1" class="btn btn-success"><i class="fa fa-dollar " aria-hidden="true"></i></button>
+                                                 <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+                                                 
+</form></td>
+ <td bgcolor="#CCFF66">
+                                                <form action="contrato_firma.php" method="post">
+                                                 <button data-toggle="tooltip" title="firmar" type="submit" name="Ver"  value="1" class="btn btn-success"><i class="fa fa-pencil " aria-hidden="true"></i></button>
+                                                 <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+                                                 
+</form></td>
                                                 <td>
                                                 <form action="formulario.php" method="post">
                                                  <button data-toggle="tooltip" title="Ver" type="submit" name="Ver"  value="1" class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>

@@ -168,7 +168,7 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
                                   <input class="form-control inputsf" id="<? echo "p10".$cont ?>" name="p10" placeholder=""type="text" value="<? echo $row_anexo_p['p10']; ?>"  />
                               </td>
 <td> 
-                                   <input class="form-control inputsf" id="<? echo "p11".$cont ?>" name="p11" placeholder=""type="text" value="<? echo $row_anexo_p['p11']; ?>"  />
+                                   <input class="form-control inputsf" id="<? echo "p11".$cont ?>" name="p11" placeholder=""type="text" value="<? if($row_anexo_p['p11']==1){echo "Libre";}else { echo "Cubierto"; }?>"  />
                               </td>
 <td> 
                                   <input class="form-control inputsf" id="<? echo "p12".$cont ?>" name="p12" placeholder=""type="text" value="<? echo $row_anexo_p['p12']; ?>"  />

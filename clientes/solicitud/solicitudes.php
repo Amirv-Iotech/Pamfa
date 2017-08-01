@@ -72,6 +72,7 @@ $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error()
 	                                    	<th>Id</th>
 	                                    	<th>Cliente</th>
 	                                    	<th>Fecha</th>
+                                            <th >Contrato</th>
                                             <th></th>
 											
 	                                    </thead>
@@ -83,7 +84,23 @@ $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error()
 	                                        <tr>
 	                                        	<td><? echo $row_solicitud['idsolicitud'];?></td>
 	                                        	<td><? echo $row_cliente['nombre_legal'];?></td>
-	                                        	<td><? echo date('d/m/y',$row_solicitud['fecha']);?></td>
+	                                        	<td><? echo date('d/m/y',$row_solicitud['fecha']);?></td><? /*
+                                                <td><form action="../../docs/contrato.php" method="post">
+                                                 <button data-toggle="tooltip" title="Ver" type="submit" name="Ver"  value="1" class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                                                 <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+                                                 
+</form></td>*/?>
+<? $query_cont = sprintf("SELECT * FROM contrato WHERE idsolicitud=%s", GetSQLValueString($row_solicitud['idsolicitud'], "text"));
+$cont = mysql_query($query_cont,$inforgan_pamfa) or die(mysql_error());
+$row_cont = mysql_fetch_assoc($cont);
+?>
+
+ <td bgcolor="#CCFF66">
+                                                <form action="contrato_firma.php" method="post">
+                                                 <button <? if($row_cont['fecha_firma_admin']==NULL){?> disabled="disabled"<? } ?> data-toggle="tooltip" title="firmar" type="submit" name="Ver"  value="1" class="btn btn-success"><i class="fa fa-pencil " aria-hidden="true"></i></button>
+                                                 <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+                                                 
+</form></td>
                                                 <td>
                                                 <form action="formulario_vista.php" method="post">
                                                  <button data-toggle="tooltip" title="Ver" type="submit" name="Ver"  value="1"class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>

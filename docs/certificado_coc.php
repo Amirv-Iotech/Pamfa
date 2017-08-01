@@ -1,7 +1,7 @@
 <?php require_once('../Connections/inforgan_pamfa.php'); ?>
 <?php
 error_reporting(0);
-mysql_select_db($database_pamfa, $nforgan_pamfa);
+mysql_select_db($database_pamfa, $inforgan_pamfa);
 
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
@@ -75,11 +75,7 @@ $query_inf = sprintf("SELECT * FROM informe WHERE idinforme=(select idinforme fr
 $inf= mysql_query($query_inf, $inforgan_pamfa) or die(mysql_error());
 $row_inf= mysql_fetch_assoc($inf);
 }
-
-
-?>
-
-<? include('mpdf.php');
+include('mpdf.php');
 $mpdf=new mPDF('','Letter-L', 0, '', 2, 0, 0,0, 0, 0);
 if(isset($_POST['cliente']))
 {

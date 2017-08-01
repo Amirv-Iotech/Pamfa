@@ -775,6 +775,7 @@ $('.error').hide();
             var num_trabajadores = $('#num_trabajadores').val();
             var idsolicitud = $('#idsolicitud').val();
             var insertar_prod = $('#insertar_prod').val();
+			
 			var ruta = $('#ruta').val();
 			var ruta2 = $('#ruta2').val();
 			var ruta3 = $('#ruta3').val();
@@ -789,6 +790,7 @@ $('.error').hide();
 		                        $('#tabla_ajax').load(ruta); //Recargamos la Tabla(Para que se muestren los Nuevos Resultados) 
 								$('#tabla_ajax2').load(ruta2);
 								$('#tabla_ajax3').load(ruta3); 
+								
 		    }
 		});
 		return false;

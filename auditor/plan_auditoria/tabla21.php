@@ -14,7 +14,6 @@
     $sol=$row_solicitud['idplan_auditoria'];
    
   } 
-  
  ?>
  <form method="post" action="#seccion6"><br />
       <div class="col-lg-12 col-xs-12" style="background-color: #dbf573e6; padding: 0px;">
@@ -41,22 +40,17 @@
 
       </div>
       <div class="col-lg-2 col-xs-4">
-           
-
       <label>Auditor</label>
-    
-
-         <select class="selectpicker" multiple="multiple" title="Selecciona.."  name="auditor2[]" id="auditor2"  >
-       
+        <select name="auditor2" id="auditor2" class="plan_input" >
+        <option value="">Selecciona una opción...</option>
         <?php 
         $query_vista1 = "select idusuario, nombre,apellidos from usuario where idusuario in(SELECT idauditor FROM plan_auditoria_equipo where idplan_auditoria='".$sol."') ";
         $vista1 = mysql_query($query_vista1,  $inforgan_pamfa) or die(mysql_error());
         while($row_vista1 = mysql_fetch_assoc($vista1)){
         ?>
-        <option  value="<?php echo $row_vista1['nombre']." ".$row_vista1['apellidos'];?>"><?php echo $row_vista1['nombre']." ".$row_vista1['apellidos'];?></option>
+        <option  value="<?php echo $row_vista1['idusuario'];?>"><?php echo $row_vista1['nombre']." ".$row_vista1['apellidos'];?></option>
         <?php }?>
         </select>
-       
       </div>
       <div class="col-lg-2 col-xs-4">
         <input type="hidden" name="idplan_auditoria" value="<? echo $sol; ?>" />           <input type="hidden" name="idsolicitud" id="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
@@ -83,22 +77,37 @@
             </th>
           </thead>
 
-          <tbody>
-            <? 
+          <<? 
             $query_agenda = sprintf("SELECT * FROM agenda where idplan_auditoria='".$sol."'");
                 $agenda = mysql_query($query_agenda, $inforgan_pamfa) or die(mysql_error());
                 $total_agenda = mysql_num_rows($agenda);
               $cont=0;
               while($row_agenda= mysql_fetch_assoc($agenda))
                 {
-                
+                   if($total_agenda==1)
+                {
+              $query_vista2 = "select nombre,apellidos from usuario where idusuario = (SELECT idauditor FROM plan_auditoria_equipo where idauditor='".$row_agenda['auditor']."') ";
+                $vista2 = mysql_query($query_vista2,  $inforgan_pamfa) or die(mysql_error());
+                $row_vista2= mysql_fetch_assoc($vista2);
+                ?> 
+  <?
+}
+          else{
+            ?> 
+        
+  <?
+            $query_vista2 = "select nombre,apellidos from usuario where idusuario in (SELECT idauditor FROM plan_auditoria_equipo where idauditor='".$row_agenda['auditor']."')";
+                $vista2 = mysql_query($query_vista2,  $inforgan_pamfa) or die(mysql_error());
+                $row_vista2= mysql_fetch_assoc($vista2);
+          }
+               
             ?>
             <tr>
               <td><? echo $row_agenda['fecha'];?></td>
               <td><? echo $row_agenda['horario'];?></td>
               <td><? echo $row_agenda['actividad'];?></td>
               <td><? echo $row_agenda['responsable'];?></td>
-              <td><? echo $row_agenda['auditor'];?></td>
+              <td><? echo $row_vista2['nombre']." ". $row_vista2['apellidos'];?></td>
               <td>
               <form id="form3" name="form3" method="post" action="#seccion7">
                   <input type="hidden" id"eliminar" name="eliminar" value="1" />
@@ -148,16 +157,7 @@ $('.error').hide();
     var horario =$('#horario').val();
     var actividad =$('#actividad').val();
     var responsable =$('#responsable').val();
-    var valor="";
-	 var porNombre13=document.getElementById("auditor2");
-            for(var i=0;i<porNombre13.length;i++)
-              {
-                if(porNombre13[i].selected){
-               valor=porNombre13[i].value+', '+valor;}
-              }
-			 var tam=valor.length-2;
-			 var valr=valor.substr(0,tam)
-	 auditor=valr;
+    var auditor=document.getElementById("auditor2").value;
     var idplan_auditoria =$('#idplan_auditoria').val();
     var seccion=7;
     var idsolicitud =$('#idsolicitud').val();
@@ -169,14 +169,10 @@ $('.error').hide();
                      method:"POST",
                     data:{seccion:seccion, idplan_auditoria:idplan_auditoria, idsolicitud:idsolicitud, insertar:insertar, fecha:fecha, horario:horario, actividad:actividad, responsable:responsable auditor:auditor},
                   success: function() { 
-				  
                             $('#tabla_ajax2').load(ruta2); //Recargamos la Tabla(Para que se muestren los Nuevos Resultados)
         }
     });
   });
 });
 
-</script>
-<script>
- $('#auditor2').selectpicker('refresh');
 </script>

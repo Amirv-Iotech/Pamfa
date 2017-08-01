@@ -1,7 +1,7 @@
 <?php require_once('../Connections/inforgan_pamfa.php'); ?>
 <?php
-error_reporting(0);
-mysql_select_db($database_pamfa, $nforgan_pamfa);
+
+mysql_select_db($database_pamfa, $inforgan_pamfa);
 
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
@@ -68,9 +68,8 @@ $row_inf= mysql_fetch_assoc($inf);
 $query_solicitud = sprintf("select *from solicitud where idsolicitud=%s  limit 1", GetSQLValueString($_POST["idsolicitud"], "int"));
 $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error());
 $row_solicitud= mysql_fetch_assoc($solicitud);
-?>
+include('mpdf.php');
 
-<? include('mpdf.php');
 $mpdf=new mPDF('','Letter-L', 0, '', 2, 0, 0,0, 0, 0);
 if(isset($_POST['cliente']))
 {

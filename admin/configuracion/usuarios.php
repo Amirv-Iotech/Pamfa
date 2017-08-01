@@ -95,6 +95,10 @@
            $query_u= "SELECT  * FROM usuario order by idusuario asc ";
           $u = mysql_query($query_u,$inforgan_pamfa) or die(mysql_error());
           while($row_u = mysql_fetch_assoc($u)){ 
+		   if($row_u['idusuario']>0 && $row_u['idusuario']<4  )
+		  {
+		  }
+		  else{
           ?>
           <tr>
             <td><label><? echo $row_u['username'];?></label></td>
@@ -122,7 +126,7 @@
                 </form>
             </td>
           </tr>
-        <? }?>
+        <? } }?>
         </tbody>
     </table>
   </div>
