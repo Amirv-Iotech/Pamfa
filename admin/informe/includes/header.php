@@ -89,7 +89,7 @@
 				<div class="container-fluid">
 					<div class="navbar-header">
 						
-						<a class="navbar-brand" href="#">PAMFA S.A. </a> <? if($dac=='formulario.php')
+						<a class="navbar-brand" href="#">PAMFA A.C. </a> <? if($dac=='formulario.php')
 						{?>
                         <form action="../informe/informes.php" method="post" >
       

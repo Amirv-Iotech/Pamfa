@@ -121,10 +121,7 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
 
   </th>
   
-  <th>
-                  <label><strong>Eliminar</strong></label>
-
-  </th>
+  <th><strong>Guardar</strong></th>
 </thead>
 <tbody>
 <?

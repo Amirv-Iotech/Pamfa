@@ -115,7 +115,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 				<div class="container-fluid">
 					<div class="navbar-header">
 						
-						<a class="navbar-brand" href="#">PAMFA S.A. </a>
+						<a class="navbar-brand" href="#">PAMFA A.C. </a>
                         <? if($dac=='formulario.php')
 						{?>
                         <form action="../solicitud/solicitudes.php" method="post" >

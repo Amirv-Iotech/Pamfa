@@ -126,7 +126,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#">PAMFA S.A. </a><form action="../plan_auditoria/plan_auditoria.php" method="post" >
+						<a class="navbar-brand" href="#">PAMFA A.C. </a><form action="../plan_auditoria/plan_auditoria.php" method="post" >
       
       <input type="submit" value="Regresar"  />
             

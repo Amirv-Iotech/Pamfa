@@ -181,13 +181,14 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
 	   var seccion_sol= $("#seccion_sol'.$cont.'").val();
 	   var fecha_obs= $("#fecha_obs'.$cont.'").val();
 	   var estado= $("#estado'.$cont.'").val();
-	
+	    var idsolicitud = $("#idsolicitud").val();
+	alert(idsolicitud);
 	
 	 var ruta4 = $("#ruta4").val();
 	 $.ajax({
 		 url:"cerebro.php",
 		 method:"POST",
-		 data:{idsolicitud_obs_a:idsolicitud_obs_a,actualiza_solicitud_obs:actualiza_solicitud_obs,observacion:observacion,seccion_sol:seccion_sol,fecha_obs:fecha_obs,estado:estado},
+		 data:{idsolicitud_obs_a:idsolicitud_obs_a,actualiza_solicitud_obs:actualiza_solicitud_obs,observacion:observacion,seccion_sol:seccion_sol,fecha_obs:fecha_obs,estado:estado,idsolicitud:idsolicitud},
 		 success: function() {
 			 $("#tabla_ajax4").load(ruta4);
 		    }

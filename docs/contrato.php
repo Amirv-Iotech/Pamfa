@@ -129,6 +129,7 @@ if($n==1){$mes="Enero";}if($n==2){$mes="Febrero";}if($n==3){$mes="Marzo";}if($n=
 $an=substr($row_cont['fecha_firma_admin'],6,7);
 
 $an=$an+2000;
+if($an==2000){$an="";}
 ////temporal en espera de firmas digitales
 $firmado="";
 if($row_cont['fecha_firma_admin']){

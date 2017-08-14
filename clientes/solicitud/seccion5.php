@@ -51,28 +51,9 @@
         </div>
       </div>   
     </div> 
-    <div class="col-lg-12 col-sm-12 campos2">
-      <div class="col-lg-6 col-sm-6 campos2" style="min-height:">
-        <div class="col-lg-6 col-sm-6 campos2" style="border: solid 1px #AAAAAA; min-height:154px;">
-          <div>
-            <label for="preg1_tipo2" >Número total de unidades de produccion: Ranchos, huertos o invernaderos</label>
-          </div>
-          <div class="div4">
-            <input placeholder="" class="form-control inputsf"  id="preg1_tipo2" name="preg1_tipo2" type="number"       title="Número " value="<? echo $row_solicitud_esq['preg1_tipo2'];?>" />
-          </div>
-        </div>
-        <div class="col-lg-6 col-sm-6 campos2" style="border: solid 1px #AAAAAA; min-height:154px;">
-          <div>
-            <label for="preg2_tipo2" >Número de unidades de producción a certifcar:</label>
-          </div>
-          <div class="div4">
-            <input placeholder=" "  class="form-control inputsf"  id="preg2_tipo2" name="preg2_tipo2" type="number"       title="Número " value="<? echo $row_solicitud_esq['preg2_tipo2'];?>"  />
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 col-sm-6 col-xs-12 campos2" style="min-height: ;"><!--unid2-->
+     <div class="col-lg-6 col-sm-6 col-xs-12 campos2" style="min-height: ;"><!--unid2-->
         <div class=" col-lg-12 col-xs-12 campos2" style="border: solid 1px #AAAAAA; text-align: center;">
-          <label for="num_unid_prod2" >GLOBALG.A.P. CADENA DE CUSTODIA (CoC):</label>
+          <label for="num_unid_prod2" ><strong>GLOBALG.A.P. CADENA DE CUSTODIA (CoC):<strong></label>
         </div>
         <div class="form-group col-lg-12 col-xs-12 campos2">
             <? $query_esquema = sprintf("SELECT * FROM esquemas where tipo =2 order by tipo,opcion asc");
@@ -106,6 +87,26 @@
                   </div>
             </div>
           </div><!-- /div unid 2-->
+     
+    
+      <div class="col-lg-6 col-sm-6 campos2" style="min-height:">
+        <div class="col-lg-6 col-sm-6 campos2" style="border: solid 1px #AAAAAA; min-height:154px;">
+          <div>
+            <label for="preg1_tipo2" >Número total de unidades de produccion: Ranchos, huertos o invernaderos</label>
+          </div>
+          <div class="div4">
+            <input placeholder="" class="form-control inputsf"  id="preg1_tipo2" name="preg1_tipo2" type="number"       title="Número " value="<? echo $row_solicitud_esq['preg1_tipo2'];?>" />
+          </div>
+        </div>
+        <div class="col-lg-6 col-sm-6 campos2" style="border: solid 1px #AAAAAA; min-height:154px;">
+          <div>
+            <label for="preg2_tipo2" >Número de unidades de producción a certifcar:</label>
+          </div>
+          <div class="div4">
+            <input placeholder=" "  class="form-control inputsf"  id="preg2_tipo2" name="preg2_tipo2" type="number"       title="Número " value="<? echo $row_solicitud_esq['preg2_tipo2'];?>"  />
+          </div>
+        </div>
+      </div>
           
           <div class="col-lg-12 col-xs-12 campos2">
             <div class="col-lg-10 col-xs-10 campos2" style="border: solid 1px #AAAAAA; min-height: 26px;">

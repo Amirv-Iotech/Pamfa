@@ -52,56 +52,7 @@ if($_GET['persona'])
 
 }
  
-if($_POST['insertar_solicitud_obs']==1)
-{
-$query_obs = sprintf("SELECT * FROM solicitud_obs where idsolicitud=%s ",GetSQLValueString($_POST['idsolicitud'], "text"));
-$obs  = mysql_query($query_obs , $inforgan_pamfa) or die(mysql_error());
 
-$total_obs = mysql_num_rows($obs);
-
-
-
-
-$insertSQL6 = sprintf("insert into solicitud_obs (idsolicitud, observacion,seccion_sol,fecha_obs,estado,idusuario) VALUES (%s, %s,%s, %s,%s,%s)",
-             GetSQLValueString($_POST['idsolicitud'], "int"),
-			 GetSQLValueString($_POST['observacion'], "text"),
-             GetSQLValueString($_POST['seccion_sol'], "text"),
-			 GetSQLValueString($_POST['fecha_obs'], "text"),
-             GetSQLValueString($_POST['estado'], "text"),
-			GetSQLValueString($_POST["idusuario"], "text"));
-			
-						  
-$Result1 = mysql_query($insertSQL6, $inforgan_pamfa) or die(mysql_error());
-
-
-
-}
-
- if($_POST['idsolicitud_obs']){
-	 
-	
-	$insertSQL = sprintf("delete from solicitud_obs where idsolicitud_obs=%s  ",
- GetSQLValueString($_POST['idsolicitud_obs'], "text"));
-
-  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
- 
-}
-
-if($_POST['actualiza_solicitud_obs']){
-	
-	
-	 $insertSQL = sprintf("UPDATE solicitud_obs SET observacion=%s,seccion_sol=%s,fecha_obs=%s,estado=%s WHERE idsolicitud_obs=%s",
-            
-			 GetSQLValueString($_POST['observacion'], "text"),
-             GetSQLValueString($_POST['seccion_sol'], "text"),
-			 GetSQLValueString($_POST['fecha_obs'], "text"),
-             GetSQLValueString($_POST['estado'], "text"),
-			GetSQLValueString($_POST["idsolicitud_obs_a"], "text"));
-		
-			
-  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
-}
-	
 if ($_POST['seccion']==1) {
 	
 if($_GET['band'])
@@ -263,7 +214,7 @@ if($total_solicitud==1){
 	 $Result12 = mysql_query($insertSQL12, $inforgan_pamfa) or die(mysql_error());
  
 	//SECCION 13
-	$query_obs = sprintf("SELECT * FROM solicitud_obs where idsolicitud=%s ",GetSQLValueString($_POST['idsolicitud'], "text"));
+		$query_obs = sprintf("SELECT * FROM solicitud_obs where idsolicitud=%s and estado=1",GetSQLValueString($_POST['idsolicitud'], "text"));
 $obs  = mysql_query($query_obs , $inforgan_pamfa) or die(mysql_error());
 
 $total_obs = mysql_num_rows($obs);
@@ -271,6 +222,9 @@ if($total_obs>0)
 {
 	$_POST['terminada']=2;
 }
+else{ $_POST['terminada']=1;
+}
+
 	$insertSQL13 = sprintf("update solicitud set respuesta4=%s,respuesta5=%s,terminada=%s WHERE idsolicitud=%s",
             GetSQLValueString($_POST['respuesta4'], "text"),
 			  GetSQLValueString($_POST['respuesta5'], "text"),
@@ -643,4 +597,74 @@ if($_POST['idanexo_e']){
              GetSQLValueString($_POST['idanexo_e'], "int"));
 			
   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
+}
+if($_POST['insertar_solicitud_obs']==1)
+{
+$query_obs = sprintf("SELECT * FROM solicitud_obs where idsolicitud=%s ",GetSQLValueString($_POST['idsolicitud'], "text"));
+$obs  = mysql_query($query_obs , $inforgan_pamfa) or die(mysql_error());
+
+$total_obs = mysql_num_rows($obs);
+
+
+
+
+$insertSQL6 = sprintf("insert into solicitud_obs (idsolicitud, observacion,seccion_sol,fecha_obs,estado,idusuario) VALUES (%s, %s,%s, %s,%s,%s)",
+             GetSQLValueString($_POST['idsolicitud'], "int"),
+			 GetSQLValueString($_POST['observacion'], "text"),
+             GetSQLValueString($_POST['seccion_sol'], "text"),
+			 GetSQLValueString($_POST['fecha_obs'], "text"),
+             GetSQLValueString($_POST['estado'], "text"),
+			GetSQLValueString($_POST["idusuario"], "text"));
+			
+						  
+$Result1 = mysql_query($insertSQL6, $inforgan_pamfa) or die(mysql_error());
+
+
+
+}
+
+ if($_POST['idsolicitud_obs']){
+	 
+	
+	$insertSQL = sprintf("delete from solicitud_obs where idsolicitud_obs=%s  ",
+ GetSQLValueString($_POST['idsolicitud_obs'], "text"));
+
+  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
+ 
+}
+
+if($_POST['actualiza_solicitud_obs']){
+	
+	
+	 $insertSQL = sprintf("UPDATE solicitud_obs SET observacion=%s,seccion_sol=%s,fecha_obs=%s,estado=%s WHERE idsolicitud_obs=%s",
+            
+			 GetSQLValueString($_POST['observacion'], "text"),
+             GetSQLValueString($_POST['seccion_sol'], "text"),
+			 GetSQLValueString($_POST['fecha_obs'], "text"),
+             GetSQLValueString($_POST['estado'], "text"),
+			GetSQLValueString($_POST["idsolicitud_obs_a"], "text"));
+		
+			
+  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
+ 
+	$query_obs = sprintf("SELECT * FROM solicitud_obs where idsolicitud=%s and estado=1",GetSQLValueString($_POST['idsolicitud'], "text"));
+$obs  = mysql_query($query_obs , $inforgan_pamfa) or die(mysql_error());
+
+$total_obs = mysql_num_rows($obs);
+if($total_obs>0)
+{
+	$_POST['terminada']=2;
+}
+else{ $_POST['terminada']=1;
+}
+
+	$insertSQL13 = sprintf("update solicitud set terminada=%s WHERE idsolicitud=%s",
+           
+			  GetSQLValueString($_POST['terminada'], "text"),									
+	GetSQLValueString($_POST['idsolicitud'], "int")); 
+	   $Result13 = mysql_query($insertSQL13, $inforgan_pamfa) or die(mysql_error());
+
+	
+
+
 }

@@ -85,7 +85,7 @@
 				<div class="container-fluid">
 					<div class="navbar-header">
 						
-						<a class="navbar-brand" href="#">PAMFA S.A. </a>
+						<a class="navbar-brand" href="#">PAMFA A.C. </a>
 					</div>
 					
 				</div>
