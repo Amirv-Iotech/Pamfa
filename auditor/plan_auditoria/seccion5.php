@@ -104,7 +104,7 @@
                     </div>
                     <div class="col-lg-6 col-xs-6">
                       <label>Alcance</label>
-                       <input disabled  class="plan_input"  id="alcance" name="alcance"       title="Alcance " value="<? echo $row_alcance['descripcion'];?>"  />
+                     <input   class="plan_input"  id="alcance" name="alcance"       title="Alcance " value="<? echo$row_plan_auditoria['alcance'];?>"  />
                     </div>
                     <div class="col-lg-6 col-xs-6">
                         <label>Criterios de Evaluación </label>

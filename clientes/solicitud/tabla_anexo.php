@@ -38,7 +38,7 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
  
 ?>
 <div class="table-responsive">
-<table class="table table-hover">
+<table class="table table-hover" title="<? echo $ob15;  ?>">
 <thead>
   <th >
                     <label><strong>Nombre de la entidad legal que realiza la producción (persona fisica o moral):</strong></label>
@@ -121,7 +121,10 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
 
   </th>
   
-  <th><strong>Guardar</strong></th>
+  <th>
+                  <label><strong>Guardar</strong></label>
+
+  </th>
 </thead>
 <tbody>
 <?
@@ -165,7 +168,7 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
                                   <input class="form-control inputsf" id="<? echo "p10".$cont ?>" name="p10" placeholder=""type="text" value="<? echo $row_anexo_p['p10']; ?>"  />
                               </td>
 <td> 
-                                   <input class="form-control inputsf" id="<? echo "p11".$cont ?>" name="p11" placeholder=""type="text" value="<? echo $row_anexo_p['p11']; ?>"  />
+                                   <input class="form-control inputsf" id="<? echo "p11".$cont ?>" name="p11" placeholder=""type="text" value="<? if($row_anexo_p['p11']==1){echo "Libre";}else { echo "Cubierto"; }?>"  />
                               </td>
 <td> 
                                   <input class="form-control inputsf" id="<? echo "p12".$cont ?>" name="p12" placeholder=""type="text" value="<? echo $row_anexo_p['p12']; ?>"  />
@@ -212,11 +215,13 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
                                 
                               
                                 
-                          <button type="button"   name="act2" id="<?php echo 'act'.$cont; ?>" value="<?php echo $row_anexo_p['idanexo_p']; ?>" onclick="<?php echo 'el3'.$cont.'()'?>" >Agregar</button>
+                          <button type="button"   name="act2" id="<?php echo 'act'.$cont; ?>" value="<?php echo $row_anexo_p['idanexo_p']; ?>" onclick="<?php echo 'el3'.$cont.'()'?>" >Guardar</button>
                         
                          
                               </td>
-                            </tr>                                               
+                              
+                            </tr>    
+                                                                       
 <? 
  
 ?>
@@ -272,8 +277,45 @@ $(document).ready(function(){
 			</script>
 
 <?
-$cont++;} ?>
+$cont++;} ?><tr> <td>
+                         
+                         
+                          <input type="hidden" id="idsolicitud" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+                           <input type="hidden" id="insertar" name="insertar" value="1" />
+                          
+                                
+                                
+                              
+                                
+                          <button type="button"   name="act2" id="<?php echo 'act'.$cont; ?>" value="<?php echo $row_anexo_p['idanexo_p']; ?>" onclick="el4()" >Agregar</button>
+                        
+                         
+                              </td></tr>
 </tbody>
 </table>
+<script type="text/javascript"> 
+	<?php echo 'function el4(){
+	
+			    var idsolicitud = $("#idsolicitud").val();
+				 var insertar = $("#insertar").val();
+				 var idoperador = $("#idoperador").val();
+				 alert(idoperador);
+	
+	 var ruta2 = $("#ruta2").val();
+	 $.ajax({
+		 url:"cerebro.php",
+		 method:"POST",
+		 data:{insertar:insertar,idsolicitud:idsolicitud, idoperador:idoperador},
+		 success: function() {
+			 $("#tabla_ajax2").load(ruta2);
+			 }
+			 });
+	}
+	
+	';
+	?>
+	   //Recargamos la Tabla(Para que se muestren los Nuevos Resultados)
+
+</script>
 </div>
  

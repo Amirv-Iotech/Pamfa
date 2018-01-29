@@ -60,6 +60,22 @@ include('../../includes/header.php');
 							</div>
 						</div>
                         <div class="col-lg-3 col-md-6 col-sm-6">
+							<div class="card card-stats">
+								<div class="card-header" data-background-color="red">
+									<i class="material-icons">assignment</i>
+								</div>
+								<div class="card-content">
+									<p class="category">Ver</p>
+									<h3 class="title"><a href="../../listas_verificacion/listas_verif_pmenu.php">Listas de verificación</a></h3>
+								</div>
+								<? /*<div class="card-footer">
+									<div class="stats">
+										<i class="material-icons">date_range</i> Last 24 Hours
+									</div>
+								</div>*/ ?>
+							</div>
+						</div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
                         <style>.card .card-header {
     background-color: #f5ec2c;
 }</style>

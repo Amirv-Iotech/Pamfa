@@ -192,6 +192,12 @@ if($total_solicitud==1){
 	
 	
 	 $Result8 = mysql_query($insertSQL8, $inforgan_pamfa) or die(mysql_error());
+	  $insertSQL8 = sprintf("update solicitud set srrc_preg1=%s,srrc_preg2=%s WHERE idsolicitud=%s",
+            
+			 GetSQLValueString($_POST['srrc_preg1'], "text"),
+			 GetSQLValueString($_POST['srrc_preg2'], "text"),
+	GetSQLValueString($_POST['idsolicitud'], "int"));
+	 $Result8 = mysql_query($insertSQL8, $inforgan_pamfa) or die(mysql_error());
 	}
 	}
 	
@@ -271,30 +277,95 @@ $total_solicitud = mysql_num_rows($solicitud);
 
 if($total_solicitud<1)
 {
+	  $e="";
+	 for($x=0;$x<3;$x++)
+{
+	if($_POST['esq_tipo1_op1'.$x]!=NULL)
+	{
+	$e=	$_POST['esq_tipo1_op1'.$x];
+	}
+}
+$e2="";
+ for($x=0;$x<2;$x++)
+{
+	if($_POST['esq_tipo2_op1'.$x]!=NULL)
+	{
+	$e2=	$_POST['esq_tipo2_op1'.$x];
+	}
+}
+$p1="";
+if($_POST['preg61']!=NULL)
+	{
+	$p1=$_POST['preg61'];
+	}
+	
+	$p2="";
+if($_POST['preg71']!=NULL)
+	{
+	$p2=$_POST['preg71'];
+	}
 
+	$p3="";
+if($_POST['preg81']!=NULL)
+	{
+	$p3=$_POST['preg81'];
+	}
   $insertSQL5 = sprintf("INSERT INTO solicitud_esquema(idsolicitud,esq_tipo1_op1,preg1_op2,preg2_op2,preg3_op2,preg1_tipo2,preg2_tipo2,esq_tipo2_op1,preg3_tipo2,preg4_tipo2,preg5_tipo2,preg6,preg7,preg8,preg9) VALUES (%s, %s,  %s, %s, %s, %s,%s, %s,  %s, %s, %s, %s,%s, %s,%s)",
              GetSQLValueString($_POST['idsolicitud'], "text"),
-			 GetSQLValueString($_POST['esq_tipo1_op1'], "text"),
+			 GetSQLValueString($e, "text"),
              GetSQLValueString($_POST['preg1_op2'], "text"),
 			 GetSQLValueString($_POST['preg2_op2'], "text"),
              GetSQLValueString($_POST['preg3_op2'], "text"),
 			 GetSQLValueString($_POST['preg1_tipo2'], "text"),
              GetSQLValueString($_POST['preg2_tipo2'], "text"),
 			 
-			 GetSQLValueString($_POST['esq_tipo2_op1'], "text"),
+			 GetSQLValueString($e2, "text"),
 			 GetSQLValueString($_POST['preg3_tipo2'], "text"),
 			 GetSQLValueString($_POST['preg4_tipo2'], "text"),
              GetSQLValueString($_POST['preg5_tipo2'], "text"),
-			 GetSQLValueString($_POST['preg6'], "text"),
-             GetSQLValueString($_POST['preg7'], "text"),
-			 GetSQLValueString($_POST['preg8'], "text"),
+			 GetSQLValueString($p1, "text"),
+             GetSQLValueString($p2, "text"),
+			 GetSQLValueString($p3, "text"),
              GetSQLValueString($_POST['preg9'], "text"));
 						 
 }
 else{
+	$e="";
+	 for($x=0;$x<3;$x++)
+{
+	if($_POST['esq_tipo1_op1'.$x]!=NULL)
+	{
+	$e=	$_POST['esq_tipo1_op1'.$x];
+	}
+}
+$e2="";
+ for($x=0;$x<2;$x++)
+{
+	if($_POST['esq_tipo2_op1'.$x]!=NULL)
+	{
+	$e2=	$_POST['esq_tipo2_op1'.$x];
+	}
+}
+$p1="";
+if($_POST['preg61']!=NULL)
+	{
+	$p1=$_POST['preg61'];
+	}
+	
+	$p2="";
+if($_POST['preg71']!=NULL)
+	{
+	$p2=$_POST['preg71'];
+	}
+
+	$p3="";
+if($_POST['preg81']!=NULL)
+	{
+	$p3=$_POST['preg81'];
+	}
 	
 	$insertSQL5 = sprintf("update solicitud_esquema set esq_tipo1_op1=%s,preg1_op2=%s,preg2_op2=%s,preg3_op2=%s,preg1_tipo2=%s,preg2_tipo2=%s,preg3_tipo2=%s,esq_tipo2_op1=%s,preg4_tipo2=%s,preg5_tipo2=%s,preg6=%s,preg7=%s,preg8=%s,preg9=%s WHERE idsolicitud=%s and idsolicitud_esquema=%s",
-			GetSQLValueString($_POST['esq_tipo1_op1'], "text"),
+			GetSQLValueString($e, "text"),
              GetSQLValueString($_POST['preg1_op2'], "text"),
 			 GetSQLValueString($_POST['preg2_op2'], "text"),
              GetSQLValueString($_POST['preg3_op2'], "text"),
@@ -303,13 +374,13 @@ else{
 			 
 			 
 			 GetSQLValueString($_POST['preg3_tipo2'], "text"),
-			 GetSQLValueString($_POST['esq_tipo2_op1'], "text"),
+			 GetSQLValueString($e2, "text"),
 			 GetSQLValueString($_POST['preg4_tipo2'], "text"),
 			 
              GetSQLValueString($_POST['preg5_tipo2'], "text"),
-			 GetSQLValueString($_POST['preg6'], "text"),
-             GetSQLValueString($_POST['preg7'], "text"),
-			 GetSQLValueString($_POST['preg8'], "text"),
+			 GetSQLValueString($p1, "text"),
+             GetSQLValueString($p2, "text"),
+			 GetSQLValueString($p3, "text"),
              GetSQLValueString($_POST['preg9'], "text"),
 			 GetSQLValueString($_POST['idsolicitud'], "int"),
 			 GetSQLValueString($_POST['idsolicitud_esquema'], "int"));
@@ -322,12 +393,12 @@ $row_solicitud10 = mysql_fetch_assoc($solicitud10 );
 $total_solicitud10 = mysql_num_rows($solicitud10);
 
 
-if($total_solicitud10<1)
+	if($total_solicitud10<1)
 {
 
-  $insertSQL10 = sprintf("INSERT INTO procesadora(empresa,rfc,direccion,direccion2,cp,tel,idsolicitud) VALUES (%s, %s,  %s, %s, %s, %s, %s)",
+  $insertSQL10 = sprintf("INSERT INTO procesadora(empresa,rfc2,direccion,direccion2,cp,tel,idsolicitud) VALUES (%s, %s,  %s, %s, %s, %s, %s)",
              GetSQLValueString($_POST['empresa'], "text"),
-			 GetSQLValueString($_POST['rfc'], "text"),
+			 GetSQLValueString($_POST['rfc2'], "text"),
              GetSQLValueString($_POST['direccion'], "text"),
 			 GetSQLValueString($_POST['direccion2'], "text"),
              GetSQLValueString($_POST['cp'], "text"),
@@ -337,9 +408,9 @@ if($total_solicitud10<1)
 }
 else{
 	
-	$insertSQL10 = sprintf("UPDATE procesadora SET empresa=%s,rfc=%s,direccion=%s,direccion2=%s,cp=%s,tel=%s WHERE idsolicitud=%s AND idprocesadora=%s",
+	$insertSQL10 = sprintf("UPDATE procesadora SET empresa=%s,rfc2=%s,direccion=%s,direccion2=%s,cp=%s,tel=%s WHERE idsolicitud=%s AND idprocesadora=%s",
  GetSQLValueString($_POST['empresa'], "text"),
-			 GetSQLValueString($_POST['rfc'], "text"),
+			 GetSQLValueString($_POST['rfc2'], "text"),
              GetSQLValueString($_POST['direccion'], "text"),
 			 GetSQLValueString($_POST['direccion2'], "text"),
              GetSQLValueString($_POST['cp'], "text"),
@@ -347,6 +418,7 @@ else{
 			 GetSQLValueString($_POST['idsolicitud'], "int"),
 			 GetSQLValueString($_POST['idprocesadora'], "int"));
 }
+
 
 
 //
@@ -667,4 +739,18 @@ else{ $_POST['terminada']=1;
 	
 
 
+}
+ if($_POST['insertar']){
+	 
+	$query_o = sprintf("SELECT * FROM operador where idoperador=%s",GetSQLValueString($_POST['idoperador'], "text"));
+$o  = mysql_query($query_o , $inforgan_pamfa) or die(mysql_error());
+$row_o = mysql_fetch_assoc($o);
+
+	$insertSQL = sprintf("insert into anexo_p (idsolicitud,p1) values(%s,%s) ",
+
+ GetSQLValueString($_POST['idsolicitud'], "text"),
+  GetSQLValueString($row_o['nombre_legal'], "text"));
+
+  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
+ 
 }

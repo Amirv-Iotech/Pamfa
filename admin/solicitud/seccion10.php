@@ -49,7 +49,7 @@ $query_solp2 = sprintf("SELECT * FROM solicitud_srrc where idsolicitud='".$row_s
         <div class="col-lg-6 col-sm-6 campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA;">
           <label> rfc</label>
           <div class=" form-group col-xs-12 campos2">
-                    <input  class="form-control inputsf" id="rfc" placeholder="" name="rfc" type="text"      title="Número " value="<? echo $row_procesadora['rfc'];?>" />
+                    <input  class="form-control inputsf" id="rfc2" placeholder="" name="rfc2" type="text"      title="Número " value="<? echo $row_procesadora['rfc2'];?>" />
                     </div>
 
         </div>

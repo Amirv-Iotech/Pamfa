@@ -2,6 +2,7 @@
 <? $dac = basename($_SERVER['PHP_SELF']);
 ?>
 <!doctype html>
+
 <html lang="en">
 <head>
 
@@ -14,7 +15,6 @@
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
-
     <!-- Bootstrap core CSS     -->
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
 

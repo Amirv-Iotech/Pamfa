@@ -27,14 +27,14 @@ $query_solp2 = sprintf("SELECT * FROM solicitud_srrc where idsolicitud='".$row_s
                 {
 					if($row_solp2['idsrrc']==3){
 					$sel2=$sel2+1;
-					echo "entra";
+					
 				}
 				
 				}?>
   <div class="row" id="seccion10"  <? if ($sel2<1){?> style="display:none" <? }else {?> style="display:block"<? } ?> >
     <div class=" col-lg-12 col-xs-12">
       <form method="post" action="#seccion10">
-      <div class=" col-lg-12 col-xs-12 campos2"  <? if($s10==1){?> style="background-color:#CF3" <? } else{?>style="background-color: #ecfbe7; <? }?> border: solid 1px #AAAAAA; border-bottom-width:2px;">
+      <div class=" col-lg-12 col-xs-12 campos2"  <? if($s10==1){?> style="background-color:#CF3" title="<? echo $ob10;  ?>"<? } else{?>style="background-color: #ecfbe7; <? }?> border: solid 1px #AAAAAA; border-bottom-width:2px;">
         <div class=" col-lg-12 col-xs-12 campos2" style="text-align: center;background-color: #dbf573e6; border: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
           <h4><b>Información del centro de empaque / manipulacion / procesadora </b></h4>
         </div>
@@ -49,7 +49,7 @@ $query_solp2 = sprintf("SELECT * FROM solicitud_srrc where idsolicitud='".$row_s
         <div class="col-lg-6 col-sm-6 campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA;">
           <label> rfc</label>
           <div class=" form-group col-xs-12 campos2">
-                    <input  class="form-control inputsf" id="rfc" placeholder="" name="rfc" type="text"      title="Número " value="<? echo $row_procesadora['rfc'];?>" />
+                    <input  class="form-control inputsf" id="rfc2" placeholder="" name="rfc2" type="text"      title="Número " value="<? echo $row_procesadora['rfc2'];?>" />
                     </div>
 
         </div>

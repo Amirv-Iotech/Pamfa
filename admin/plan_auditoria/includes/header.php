@@ -37,6 +37,7 @@
 	<link href="../assets/css/solicitud.css" rel="stylesheet"/>
      <link href="../assets/css/bootstrap-select.css" rel="stylesheet"/>
     <link href="../assets/css/bootstrap-select.min.css" rel="stylesheet"/>
+      <link rel="stylesheet"  href="../assets/datatables/dataTables.bootstrap.css">
 </head>
 
 <body>

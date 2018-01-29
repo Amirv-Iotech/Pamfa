@@ -55,6 +55,9 @@
                 <li><div class="col-md-12">
                   <a href="auditor/login.php"><button class=" col-md-6 btn btn-info btn-lg">Auditor</button>
                 </div></li>
+                 <li><div class="col-md-12">
+                  <a href="registro.php"><button class=" col-md-6 btn btn-info btn-lg">Nuevo cliente</button>
+                </div></li>
                 </ul>
               </div>
 

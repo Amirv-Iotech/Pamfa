@@ -182,7 +182,7 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
 	   var fecha_obs= $("#fecha_obs'.$cont.'").val();
 	   var estado= $("#estado'.$cont.'").val();
 	    var idsolicitud = $("#idsolicitud").val();
-	alert(idsolicitud);
+	
 	
 	 var ruta4 = $("#ruta4").val();
 	 $.ajax({

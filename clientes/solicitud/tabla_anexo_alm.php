@@ -38,7 +38,7 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
  
 ?>
 <div class="table-responsive">
-<table class="table table-hover">
+<table class="table table-hover" title="<? echo $ob14;  ?>">
 <thead>
   <th >
                     <label><strong>Nombre de la entidad legal que realiza la Manipulación de Producto.:</strong></label>

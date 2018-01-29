@@ -1,6 +1,6 @@
 <fieldset>
 </br>
-  <div id="seccion5"  class="row"  <? if($s5==1){?> style="background-color:#CF3" <? } else{?>style="background-color: #ecfbe7; <? }?>border: solid 1px #AAAAAA; border-bottom-width:2px; text-align:left;">
+  <div id="seccion5"  class="row"  <? if($s5==1){?> style="background-color:#CF3" title="<? echo $ob5;  ?>" <? } else{?>style="background-color: #ecfbe7; <? }?>border: solid 1px #AAAAAA; border-bottom-width:2px; text-align:left;">
     <div class="col-lg-12 col-sm-12" style="border: solid 1px #AAAAAA; text-align: center; background-color: #dbf573e6;">
       <h4>Favor de seleccionar el esquema de certificación que usted esta solicitando:</h4>
     </div>      
@@ -14,14 +14,16 @@
         </div>
         <? $query_esquema = sprintf("SELECT * FROM esquemas where tipo=1 order by tipo,opcion asc");
                 $esquema = mysql_query($query_esquema, $inforgan_pamfa) or die(mysql_error());
+              $esq=0;
                 while($row_esquema= mysql_fetch_assoc($esquema))
                 {?>
                   <div class="form-group col-lg-4 col-sm-4 campos2" style="border: solid 1px #AAAAAA; min-height: 136px;">
                   <?
                     if($row_esquema['opcion']==1)
                   {?>
-                  <input   type="checkbox" <? if ($row_solicitud_esq['esq_tipo1_op1']==$row_esquema['idesquema']){?> checked="checked"<? }?>  value="<? echo $row_esquema['idesquema'];?>" id="esq_tipo1_op1" name="esq_tipo1_op1"/><? echo $row_esquema['esquema'];?>
+                  <input   type="checkbox" <? if ($row_solicitud_esq['esq_tipo1_op1']==$row_esquema['idesquema']){?> checked="checked"<? }?>  value="<? echo $row_esquema['idesquema'];?>" id="<? echo "esq_tipo1_op1".$esq?>"  name="<? echo "esq_tipo1_op1".$esq?>"/><? echo $row_esquema['esquema'];?>
                   <? }?></div><?
+				  $esq++;
                 }
         ?>        
       </div>
@@ -58,6 +60,7 @@
         <div class="form-group col-lg-12 col-xs-12 campos2">
             <? $query_esquema = sprintf("SELECT * FROM esquemas where tipo =2 order by tipo,opcion asc");
               $esquema = mysql_query($query_esquema, $inforgan_pamfa) or die(mysql_error());
+			  $esq2=0;
             ?>
           <div class="col-lg-12 col-xs-12 campos2">
             <?  while($row_esquema= mysql_fetch_assoc($esquema))
@@ -66,9 +69,10 @@
                   {
             ?>
                     <div class="col-lg-6 col-xs-6 campos2" style="border: solid 1px #AAAAAA;">
-                      <label><input   type="checkbox"  <?php if ($row_solicitud_esq['esq_tipo2_op1']==$row_esquema['idesquema']){?> checked="checked"<? }?> value="<? echo $row_esquema['idesquema'];?>" id="esq_tipo2_op1" name="esq_tipo2_op1"/><? echo $row_esquema['esquema'];?></label>
+                      <label><input   type="checkbox"  <?php if ($row_solicitud_esq['esq_tipo2_op1']==$row_esquema['idesquema']){?> checked="checked"<? }?> value="<? echo $row_esquema['idesquema'];?>"  name="<? echo "esq_tipo2_op1".$esq2?>" id="<? echo "esq_tipo2_op1".$esq2?>" /><? echo $row_esquema['esquema'];?></label>
                     </div>
-                <?}
+                <? }
+				$esq2++;
                 }?>
           </div>
           <div class="form-group col-lg-6 col-xs-6 campos2">
@@ -124,10 +128,10 @@
                 <label for="preg6" >¿El producto se vende antes de la cosecha?</label>
             </div> 
             <div class="col-lg-1 col-xs-1 campos2" style="border: solid 1px #AAAAAA; height: 26px;">
-              <input   <? if ($row_solicitud_esq['preg6']=="Si"){?> checked="checked"<? }?> type="radio" value="Si" id="preg6" name="preg6">
+              <input   <? if ($row_solicitud_esq['preg6']=="Si"){?> checked="checked"<? }?> type="radio" value="Si" id="preg61" name="preg61">
             </div> 
             <div class="col-lg-1 col-xs-1 campos2" style="border: solid 1px #AAAAAA; height: 26px;">
-             <input   <? if ($row_solicitud_esq['preg6']=="No"){?> checked="checked"<? }?> type="radio" value="No" id="preg6" name="preg6">
+             <input   <? if ($row_solicitud_esq['preg6']=="No"){?> checked="checked"<? }?> type="radio" value="No" id="preg62" name="preg61">
             </div>
           </div>
           <div class="col-lg-12 col-xs-12 campos2">
@@ -135,10 +139,10 @@
                <label for="preg7" >¿La entidad legal realiza la producción  de ´producto certificado y no certificado, es decir produccion paralela?</label>
             </div> 
             <div class="col-lg-1 col-xs-1 campos2" style="border: solid 1px #AAAAAA; height: 26px;">
-              <input   <? if ($row_solicitud_esq['preg7']=="Si"){?> checked="checked"<? }?> type="radio" value="Si" id="preg7" name="preg7">
+              <input   <? if ($row_solicitud_esq['preg7']=="Si"){?> checked="checked"<? }?> type="radio" value="Si" id="preg71" name="preg71">
             </div> 
             <div class="col-lg-1 col-xs-1 campos2" style="border: solid 1px #AAAAAA; height:26px;">
-               <input   <? if ($row_solicitud_esq['preg7']=="No"){?> checked="checked"<? }?> type="radio" value="No" id="preg7" name="preg7">
+               <input   <? if ($row_solicitud_esq['preg7']=="No"){?> checked="checked"<? }?> type="radio" value="No" id="preg72" name="preg71">
             </div>
           </div>
           <div class="col-lg-12 col-xs-12 campos2">
@@ -146,10 +150,10 @@
               <label for="preg8" >¿La entidad legal que produce el producto, compra el mismo producto a otros proveedores, es decir, propiedad paralela?</label>
             </div> 
             <div class="col-lg-1 col-xs-1 campos2" style="border: solid 1px #AAAAAA; height: 26px;">
-               <input   <? if ($row_solicitud_esq['preg8']=="Si"){?> checked="checked"<? }?> type="radio" value="Si" id="preg8" name="preg8" >
+               <input   <? if ($row_solicitud_esq['preg8']=="Si"){?> checked="checked"<? }?> type="radio" value="Si" id="preg81" name="preg81" >
             </div> 
             <div class="col-lg-1 col-xs-1 campos2" style="border: solid 1px #AAAAAA; height: 26px;">
-               <input   <? if ($row_solicitud_esq['preg8']=="No"){?> checked="checked"<? }?> type="radio" value="No" id="preg8" name="preg8" >
+               <input   <? if ($row_solicitud_esq['preg8']=="No"){?> checked="checked"<? }?> type="radio" value="No" id="preg82" name="preg81" >
             </div>
           </div>
 

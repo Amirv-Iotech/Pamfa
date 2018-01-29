@@ -1,6 +1,6 @@
 <fieldset>
 </br>
-  <div id="seccion6" class="row"  <? if($s6==1){?> style="background-color:#CF3" <? } else{?>style="background-color: #ecfbe7; <? }?>border: solid 1px #AAAAAA; border-bottom-width:2px;">
+  <div style="display:none" id="seccion6" class="row"  <? if($s6==1){?> style="background-color:#CF3" title="<? echo $ob6;  ?>" <? } else{?>style="background-color: #ecfbe7; <? }?>border: solid 1px #AAAAAA; border-bottom-width:2px;">
     <div class="col-lg-12 col-xs-12 campos2">
       <div class="col-lg-12" style="text-align: center;background-color: #dbf573e6; border: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
        <h4> <b>PrimusGFS</b></h4>
@@ -23,7 +23,7 @@
 				$ct=0;
 					 $query_primus = sprintf("SELECT * FROM primusgfs order by idprimus asc");
                 $primus = mysql_query($query_primus, $inforgan_pamfa) or die(mysql_error());
-				$total_primus = mysql_num_rows($primus);
+				//$total_primus = mysql_num_rows($primus);
 				
 				
             ?>

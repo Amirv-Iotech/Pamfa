@@ -1,6 +1,6 @@
 <fieldset>
 </br>
-  <div  id="seccion8"  class="row"  <? if($s8==1){?> style="background-color:#CF3" <? } else{?>style="background-color: #ecfbe7; <? }?>border: solid 1px #AAAAAA; border-bottom-width:2px;">
+  <div  id="seccion8"  class="row"  <? if($s8==1){?> style="background-color:#CF3" title="<? echo $ob8;  ?>" <? } else{?>style="background-color: #ecfbe7; <? }?>border: solid 1px #AAAAAA; border-bottom-width:2px;">
     
       <div class="col-lg-12 col-xs-12 campos2">
           <div class="col-lg-12 col-xs-12 campos2" style="text-align: center;background-color: #dbf573e6; border: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">

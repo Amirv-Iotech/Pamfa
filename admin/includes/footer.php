@@ -52,7 +52,9 @@
 
 	<!-- Material Dashboard DEMO methods, don't include it in your project! -->
 	<script src="../../assets/js/demo.js"></script>
-
+<!-- DataTables -->
+<script src="../../assets/datatables/jquery.dataTables.min.js"></script>
+<script src="../../assets/datatables/dataTables.bootstrap.min.js"></script> 
 	<script type="text/javascript">
     	$(document).ready(function(){
 
@@ -61,3 +63,4 @@
 
     	});
 	</script>
+    

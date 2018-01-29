@@ -1,9 +1,10 @@
+
 <? 
 if(!empty($_POST['guardar1'])){
 	$insertSQL = sprintf("INSERT INTO operador (username,password,nombre_legal,nombre_representante,direccion,colonia,estado,pais,coordenadas,email,telefono,fax,rfc,dir_rfc,nombre_factura,email_factura,tel_factura,forma_pago,banco,digitos_tarjeta) VALUES ( %s, %s,%s, %s, %s, %s,%s, %s, %s, %s,%s, %s, %s, %s,%s, %s, %s, %s,%s,%s)",
 	
-	GetSQLValueString($_POST['rfc'], "text"),
-	GetSQLValueString("pamfa", "text"),
+	//GetSQLValueString($_POST['rfc'], "text"),
+	//GetSQLValueString("pamfa", "text"),
  GetSQLValueString($_POST['nombre_legal'], "text"),
  GetSQLValueString($_POST['nombre_representante'], "text"),
  GetSQLValueString($_POST['direccion'], "text"),
@@ -55,6 +56,14 @@ if(!empty($_POST['update1'])){
 
   $Result1= mysql_query($insertSQL ,$inforgan_pamfa) or die(mysql_error());
 }
+if(!empty($_POST['update_au'])){
+		$insertSQL = sprintf("Update operador SET password=%s WHERE idoperador=%s",
+ GetSQLValueString($_POST['pass_tem'], "text"),
+  GetSQLValueString($_POST['idoperador'], "text"));
+
+echo "ljbclbl".$insertSQL;
+  $Result1= mysql_query($insertSQL ,$inforgan_pamfa) or die(mysql_error());
+}
 if(!empty($_POST['eliminar1'])){
 	
 $insertSQL = "DELETE FROM operador WHERE idoperador=".$_POST['idoperador']."";
@@ -103,6 +112,67 @@ $insertSQL = "DELETE FROM usuario WHERE idusuario=".$_POST['idusuario']."";
 	
 }
 
+if(!empty($_POST['guardar7']) ){
+	
+	if($_POST['numero']<10 && $_POST['idformato']>2)
+	{
+		$_POST['numero']="0".$_POST['numero'];
+	}
+	if(!isset($_POST['na']))
+	{
+		$_POST['na']=NULL;
+	}
+	$insertSQL = sprintf("INSERT INTO preguntas_catalogos (numero,prefijo,inciso,subinciso,texto,criterio,nivel,tipo,idformato,ban,na) VALUES ( %s, %s,%s,%s, %s,%s, %s, %s, %s, %s, %s)",
+	
+	  GetSQLValueString($_POST['numero'], "text"),
+	  GetSQLValueString($_POST['prefijo'], "text"),
+ GetSQLValueString($_POST['inciso'], "text"),
+ GetSQLValueString($_POST['subinciso'], "text"),
+ GetSQLValueString($_POST['texto'], "text"),
+  GetSQLValueString($_POST['criterio'], "text"),
+   GetSQLValueString($_POST['nivel'], "text"),
+ GetSQLValueString($_POST['tipo'], "text"),
+  GetSQLValueString($_POST['idformato'], "text"),
+  GetSQLValueString(1, "text"),
+  GetSQLValueString($_POST['na'], "text"));
+
+
+
+
+  $Result1 = mysql_query($insertSQL,$inforgan_pamfa) or die(mysql_error());
+}
+if(!empty($_POST['update7'])|| !empty($_POST['update21'])){
+	
+	if($_POST['numero']<10 && $_POST['idformato']>2)
+	{
+		$_POST['numero']="0".$_POST['numero'];
+	}
+		$insertSQL = sprintf("Update preguntas_catalogos SET numero=%s,inciso=%s,subinciso=%s,texto=%s,criterio=%s,nivel=%s,tipo=%s,idformato=%s,ban=%s where idpregunta=%s",
+	
+	 GetSQLValueString($_POST['numero'], "text"),
+ GetSQLValueString($_POST['inciso'], "text"),
+ GetSQLValueString($_POST['subinciso'], "text"),
+ GetSQLValueString($_POST['texto'], "text"),
+  GetSQLValueString($_POST['criterio'], "text"),
+   GetSQLValueString($_POST['nivel'], "text"),
+ GetSQLValueString($_POST['tipo'], "text"),
+  GetSQLValueString($_POST['idformato'], "text"),
+   GetSQLValueString(1, "text"),
+ GetSQLValueString($_POST['idpregunta'], "text"));
+
+
+
+
+  $Result1= mysql_query($insertSQL ,$inforgan_pamfa) or die(mysql_error());
+}
+if(!empty($_POST['eliminar7'])){
+	
+$insertSQL = "DELETE FROM preguntas_catalogos WHERE idpregunta=".$_POST['idpregunta']."";
+  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
+	
+}
+
+
 if(!empty($_POST['guardar2'])){
 	$t_aux="";
 	if($_POST['tipo']==1){$t_aux="alcance";}
@@ -119,7 +189,7 @@ $insertSQL = sprintf("INSERT INTO mex_cal_sup (descripcion, ".$t_aux.") VALUES (
   $Result1 = mysql_query($insertSQL,$inforgan_pamfa) or die(mysql_error());
 	
 }
-if(!empty($_POST['update2'])){
+if(!empty($_POST['update2']) ){
 	
 	$insertSQL = "DELETE FROM mex_cal_sup WHERE idmex_cal_sup='".$_POST['idmex']."'";
   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());

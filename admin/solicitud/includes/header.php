@@ -35,7 +35,11 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
   
 	<link href="../assets/css/solicitud.css" rel="stylesheet"/>
-   
+     <link rel="stylesheet"  href="../assets/datatables/dataTables.bootstrap.css">
+      <link rel="stylesheet"  href="https://cdn.datatables.net/buttons/1.4.0/css/buttons.dataTables.min.css"  >
+      
+      
+ 
 </head>
 
 <body>

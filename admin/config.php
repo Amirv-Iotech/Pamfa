@@ -1,5 +1,7 @@
 <? include ("../Connections/inforgan_pamfa.php");
 
+  
+
 mysql_select_db($database_pamfa, $inforgan_pamfa);
 
  $dac = basename($_SERVER['PHP_SELF']);
@@ -63,6 +65,8 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet"  href="assets/datatables/dataTables.bootstrap.css">
+   
 </head>
 
 <body>
@@ -136,7 +140,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 					<div class="row">
 						<div class="col-md-12">
                         
-<div class="panel panel-white">
+<div class="panel panel-white ">
 <div class="panel-heading clearfix"><br>
 	<h4 class="panel-title">Configuración General</h4>
 </div>
@@ -157,7 +161,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
     <input type="hidden" name="op" value="6"/>
     </form>
     </ul>
-    <ul class="nav navbar-nav">
+   <? /* <ul class="nav navbar-nav">
        <form action="" method="post">
     <input class="btn btn-warning navbar-btn" type="submit" value="México Calidad Suprema"/>
     <input type="hidden" name="op" value="2"/>
@@ -180,6 +184,12 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
     <input class="btn btn-warning navbar-btn" type="submit" value="SRRC"/>
     <input type="hidden" name="op" value="5"/>
     </form>
+    </ul>*/?>
+    <ul class="nav navbar-nav">
+       <form action="" method="post">
+    <input class="btn btn-warning navbar-btn" type="submit" value="CATALOGOS"/>
+    <input type="hidden" name="op" value="7"/>
+    </form>
     </ul>
    
    
@@ -195,12 +205,17 @@ else if(!empty($_POST['op'])&&$_POST['op']==2){include('configuracion/cal_sup.ph
 else if(!empty($_POST['op'])&&$_POST['op']==3){include('configuracion/esquemas.php');}
 else if(!empty($_POST['op'])&&$_POST['op']==4){include('configuracion/primus.php');}
 else if(!empty($_POST['op'])&&$_POST['op']==5){include('configuracion/srrc.php');}
-else if(!empty($_POST['op'])&&$_POST['op']==6){include('configuracion/usuarios.php');}?>
+else if(!empty($_POST['op'])&&$_POST['op']==6){include('configuracion/usuarios.php');}
+else if(!empty($_POST['op'])&&$_POST['op']==7){include('configuracion/catalogos.php');}?>
+
 
 </div>
 </div>
 </div>
 </div>
+
+
+
 
 						
 							</div>
@@ -258,8 +273,86 @@ else if(!empty($_POST['op'])&&$_POST['op']==6){include('configuracion/usuarios.p
 	<!-- Material Dashboard javascript methods -->
 	<script src="assets/js/material-dashboard.js"></script>
 
-	
+	<!-- DataTables -->
+<script src="assets/datatables/jquery.dataTables.min.js"></script>
+<script src="assets/datatables/dataTables.bootstrap.min.js"></script>
 
-	
 
+<script>
+  $(function () {
+    $('#example1').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": false,
+      "info": false,
+      "autoWidth": true,
+	   "iDisplayLength": 20,
+	   //"scrollY": "700px",
+	   
+          oLanguage: {
+            "sProcessing":     "Procesando...",
+            "sLengthMenu":     "Mostrar MENU registros",
+            "sZeroRecords":    "No se encontraron resultados",
+            "sEmptyTable":     "Ningún dato disponible en esta tabla",
+            "sInfo":           "Mostrando registros del START al END de un total de TOTAL registros",
+            "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered":   "(filtrado de un total de MAX registros)",
+            "sInfoPostFix":    "",
+            "sSearch":         "Buscar:",
+            "sUrl":            "",
+            "sInfoThousands":  ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":     "Último",
+            "sNext":     "Siguiente",
+            "sPrevious": "Anterior"
+		
+            }}
+    });
+  });
+</script>	
+<script type="text/javascript"> 
+
+ <? echo '
+
+$(document).ready(function(){  
+    $("#todos").click(function() { '; echo '
+ if (!$("#tabla2").is(":visible"))
+   $("#tabla2").show();
+else   
+   $("#tabla2").hide();';
+	echo ' 
+    });    
+});';?>
+			</script>
+            <script type="text/javascript"> 
+
+ <? echo '
+
+$(document).ready(function(){  
+    $("#insertar").click(function() { '; echo '
+ if (!$("#insert").is(":visible"))
+   $("#insert").show();
+else   
+   $("#insert").hide();';
+	echo ' 
+    });    
+});';?>
+			</script>
+            <script type="text/javascript"> 
+
+ <? echo '
+
+$(document).ready(function(){  
+    $("#late").click(function() { '; echo '
+ if (!$("#espera").is(":visible"))
+   $("#espera").show();
+else   
+   $("#espera").hide();';
+	echo ' 
+    });    
+});';?>
+			</script>
 </html>

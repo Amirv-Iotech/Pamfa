@@ -1,6 +1,6 @@
 <fieldset><br/>
   <div class="row">
-    <div class="col-lg-12 col-xs-12"  <? if($s13==1){?> style="background-color:#CF3" <? } else{?>style="background-color: #ecfbe7; <? }?> border: solid 1px #AAAAAA; border-bottom-width:2px;">
+    <div class="col-lg-12 col-xs-12"  <? if($s13==1){?> style="background-color:#CF3" title="<? echo $ob13;  ?>" <? } else{?>style="background-color: #ecfbe7; <? }?> border: solid 1px #AAAAAA; border-bottom-width:2px;">
       <form method="post" action="#" id="form13">
         <div class="col-lg-12 col-xs-12">
             <h4><b>Estimado cliente favor de marcar las opciones para uso de sus datos</b></h4>            

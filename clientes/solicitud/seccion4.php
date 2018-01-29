@@ -1,7 +1,7 @@
 <fieldset>
 	</br>
 	
-	<div class="row" id="seccion4"   <? if($s4==1){?> style="background-color:#CF3" <? } else{?>style="background-color: #ecfbe7; <? }?>border: solid 1px #AAAAAA; border-bottom-width:2px;">
+	<div class="row" id="seccion4"   <? if($s4==1){?> style="background-color:#CF3" title="<? echo $ob4;  ?>"<? } else{?>style="background-color: #ecfbe7; <? }?>border: solid 1px #AAAAAA; border-bottom-width:2px;">
 		
 		<div class=" form-group col-lg-12 co-sm-12 campos" style="background-color: #dbf573e6; border: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
 			<b> Datos de Facturación</b>

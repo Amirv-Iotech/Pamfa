@@ -96,7 +96,7 @@ $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error()
 	                            </div>
 	                            <div class="card-content table-responsive">
                                
-	                                <table class="table">
+	                                <table class="table" id="example1">
                                     
 	                                    <thead >
 	                                    	<th>Id</th>
@@ -184,6 +184,51 @@ $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
 });
 </script>
-
+<script>
+$(document).ready(function() {
+   
+} );
+</script>
+<script>
+  $(function () {
+    $('#example1').DataTable({
+		
+		
+        //"dom": 'Bfrtip',
+       
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": false,
+      "info": false,
+      "autoWidth": true,
+	   //"scrollY": "700px",
+          oLanguage: {
+            "sProcessing":     "Procesando...",
+            "sLengthMenu":     "Mostrar MENU registros",
+            "sZeroRecords":    "No se encontraron resultados",
+            "sEmptyTable":     "Ningún dato disponible en esta tabla",
+            "sInfo":           "Mostrando registros del START al END de un total de TOTAL registros",
+            "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered":   "(filtrado de un total de MAX registros)",
+            "sInfoPostFix":    "",
+            "sSearch":         "Buscar:",
+            "sUrl":            "",
+            "sInfoThousands":  ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":     "Último",
+            "sNext":     "Siguiente",
+            "sPrevious": "Anterior"
+            }}
+			 
+    });
+	// buttons: [
+      //      'copy', 'csv', 'excel', 'pdf', 'print'
+        //]
+	 	
+  });
+</script>
 
 </html>

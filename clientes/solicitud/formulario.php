@@ -41,6 +41,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
 mysql_select_db($database_pamfa, $inforgan_pamfa);
  include("includes/header.php");
+ ?><iframe width="10" height="10" src="" frameborder="1"></iframe><? 
 if(isset($_POST['idsolicitud']))
 {
 	 $query_solicitud = sprintf("SELECT * FROM solicitud WHERE idsolicitud=%s order by idsolicitud asc limit 1", GetSQLValueString( $_POST['idsolicitud'], "int"));
@@ -111,86 +112,157 @@ $row_solicitud_esq= mysql_fetch_assoc($solicitud_esq);
 $query_procesadora = sprintf("SELECT * FROM procesadora WHERE idsolicitud=%s order by idprocesadora asc limit 1", GetSQLValueString( $row_solicitud["idsolicitud"], "int"));
 $procesadora = mysql_query($query_procesadora, $inforgan_pamfa) or die(mysql_error());
 $row_procesadora= mysql_fetch_assoc($procesadora);
-
+ 
+ function obser($x,$y)
+ {
+	 
+	 $lista="Observaciones:";
+	 $query_obs = sprintf("SELECT * FROM solicitud_obs WHERE idsolicitud=%s and seccion_sol=%s ", GetSQLValueString(  $x, "int"),
+	 GetSQLValueString(  $y, "int"));
+$obs = mysql_query($query_obs, $GLOBALS['inforgan_pamfa']) or die(mysql_error());
+echo  $query_obs;
+while($row_obs= mysql_fetch_assoc($obs))
+{
+	$lista= $lista."\n".$row_obs['observacion'];
+}
+return $lista;
+ }
+ 
 $query_obs = sprintf("SELECT * FROM solicitud_obs WHERE idsolicitud=%s ", GetSQLValueString(  $row_solicitud["idsolicitud"], "int"));
 $obs = mysql_query($query_obs, $inforgan_pamfa) or die(mysql_error());
 
 $seccion_obs="";
 $array = array();
 $c=0;
+//$ob[15][1]= array();
+
 while($row_obs= mysql_fetch_assoc($obs))
 {
 	$seccion_obs=$row_obs['seccion_sol'].",".$seccion_obs;
 	$array[$c]=$row_obs['seccion_sol'];
+	//$ob[$c]=$row_obs['observacion'];
 	$c++;
+	
 }
 
-$s1="";
-$s2="";
-$s3="";
-$s4="";
-$s5="";
-$s6="";
-$s7="";
-$s8="";
-$s9="";
-$s10="";
-$s11="";
-$s12="";
-$s13="";
+$s1=0;$s2=0;$s3=0;$s4=0;$s5=0;$s6=0;$s7=0;$s8=0;$s9=0;$s10=0;$s11=0;$s12=0;$s13=0;$s14=0;$s15=0;
+$ob1=0;$ob2=0;$ob3=0;$ob4=0;$ob5=0;$ob6=0;$ob7=0;$ob8=0;$ob9=0;$ob10=0;$ob11=0;$ob12=0;$ob13=0;$ob14=0;$ob15=0;
 
-$s14="";
-$s15="";
+
 for($x=0;$x<$c;$x++)
 {
 	
 	
 	if($array[$x]==1)
-	{$s1=1;
+	{
+			if($s1==0){
+	$ob1=obser($row_solicitud["idsolicitud"],1);
+	}
+		$s1=1;
+	
+	
 	}
 	if($array[$x]==2)
-	{$s2=1;
+	{
+		if($s2==0){
+	$ob2=obser($row_solicitud["idsolicitud"],2);
+	}
+		$s2=1;
 	}
 	if($array[$x]==3)
-	{$s3=1;
+	{
+		if($s3==0){
+	$ob3=obser($row_solicitud["idsolicitud"],3);
+	}
+		$s3=1;
 	}
 	if($array[$x]==4)
-	{$s4=1;
+	{
+		if($s4==0){
+	$ob4=obser($row_solicitud["idsolicitud"],4);
+	}
+		$s4=1;
 	}
 	if($array[$x]==5)
-	{$s5=1;
+	{
+		if($s5==0){
+	$ob5=obser($row_solicitud["idsolicitud"],5);
+	}
+		$s5=1;
+	
 	}
 	if($array[$x]==6)
-	{$s6=1;
+	{
+		if($s6==0){
+	$ob6=obser($row_solicitud["idsolicitud"],6);
+	}
+		$s6=1;
 	}
 	if($array[$x]==7)
-	{$s7=1;
+	{
+		if($s7==0){
+	$ob7=obser($row_solicitud["idsolicitud"],7);
+	}
+		$s7=1;
 	}
 	if($array[$x]==8)
-	{$s8=1;
+	{
+		if($s8==0){
+	$ob8=obser($row_solicitud["idsolicitud"],8);
+	}
+		$s8=1;
 	}
 	if($array[$x]==9)
-	{$s9=1;
+	{
+		if($s9==0){
+	$ob9=obser($row_solicitud["idsolicitud"],9);
+	}
+		$s9=1;
 	}
 	if($array[$x]==10)
-	{$s10=1;
+	{
+		if($s10==0){
+	$ob10=obser($row_solicitud["idsolicitud"],10);
+	}
+		$s10=1;
 	}
 	if($array[$x]==11)
-	{$s11=1;
+	{
+		if($s11==0){
+	$ob11=obser($row_solicitud["idsolicitud"],11);
+	}
+		$s11=1;
 	}
 	if($array[$x]==12)
-	{$s12=1;
+	{
+		if($s12==0){
+	$ob12=obser($row_solicitud["idsolicitud"],12);
+	}
+		$s12=1;
 	}
 	if($array[$x]==13)
-	{$s13=1;
+	{
+		if($s13==0){
+	$ob13=obser($row_solicitud["idsolicitud"],13);
+	}
+		$s13=1;
 	}
 	if($array[$x]==14)
-	{$s14=1;
+	{
+		if($s14==0){
+	$ob14=obser($row_solicitud["idsolicitud"],14);
+	}
+		$s14=1;
 	}
 	if($array[$x]==15)
-	{$s15=1;
+	{
+		if($s15==0){
+	$ob15=obser($row_solicitud["idsolicitud"],15);
+	}
+		$s15=1;
 	}
 }
+
 
 ////////
 ?> 
@@ -198,6 +270,7 @@ for($x=0;$x<$c;$x++)
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-md-12">
+                      
                         
 <div class="panel panel-white">
 <div class="panel-heading clearfix"><br>
@@ -206,7 +279,7 @@ for($x=0;$x<$c;$x++)
 <input type="hidden" id="ruta2" name="ruta2" value="<? echo "tabla_anexo.php?idsolicitud=".$row_solicitud['idsolicitud']."&seccion=1&idoperador=".$row_operador['idoperador']."";?>" />
 <input type="hidden" id="ruta3" name="ruta3" value="<? echo "tabla_anexo_alm.php?idsolicitud=".$row_solicitud['idsolicitud']."&seccion=1&idoperador=".$row_operador['idoperador']."";?>" />
 
-	 <div id="seccion1"  class="row"  <? if($s1==1){?> style="background-color:#CF3" <? } else{?>style="background-color: #ecfbe7; <? }?>border: solid 1px #AAAAAA;">
+	 <div id="seccion1"   class="row"  <? if($s1==1){?> style="background-color:#CF3" title="<? echo $ob1;  ?>"<? } else{?>style="background-color: #ecfbe7; <? }?>border: solid 1px #AAAAAA;">
 		<div class="col-lg-12">
 			<p style="font-size:25px; text-align:center;">Solicitud de certificación de producto</p>
 			<br/>
@@ -245,7 +318,7 @@ for($x=0;$x<$c;$x++)
   <input type="hidden" id="fecha1" name="fecha1" value="<? echo time();?>" />
   
 	<fieldset> 
-    <div id="seccion1" class="row"  class="row"  <? if($s1==1){?> style="background-color:#CF3" <? } else{?>style="background-color: #ecfbe7; <? }?>border: solid 1px #AAAAAA;">
+    <div id="seccion2" class="row" title="<? echo $ob2;  ?>"  <? if($s1==1){?> style="background-color:#CF3" <? } else{?>style="background-color: #ecfbe7; <? }?>border: solid 1px #AAAAAA;">
         <div class="col-md-12" style="text-align: center; background-color:#dbf573e6">
           <label class="solicitud">INFORMACIÓN DEL CLIENTE (Entidad legal y persona de contacto)</label>
         </div>
@@ -288,7 +361,7 @@ for($x=0;$x<$c;$x++)
             	<div class="col-lg-8 col-sm-8">
             	<input disabled="disabled" class="form-control inputsf" name="cp" type="text" title="Codigo postal " value="<?php echo $row_operador['cp'];?>"  />
       	     </div>
-    		  </div>
+   		    </div>
     		<div class="form-group col-lg-4 col-md-4 col-sm-4 campos" style="border-right: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;" >
         	<label for="colonia" class="form-label col-lg-4 col-sm-4">Colonia:</label>
         	<div class="col-lg-8 col-sm-4">
@@ -323,7 +396,7 @@ for($x=0;$x<$c;$x++)
         	<div class="col-lg-4 col-sm-4">
         	<input disabled="disabled" class="form-control inputsf" name="telefono" type="text" 			title="Telefono " value="<? echo  $row_operador['telefono'];?>"  />
     	    </div>
-    		</div>
+   		</div>
 
         <div class="form-group col-lg-3 col-md-3 col-sm-3 campos" style="border-right: solid 0px #AAAAAA; margin-right: 0px; margin-left: 0px;">
         <div class="col-lg-4 col-sm-4 campos">
@@ -331,14 +404,14 @@ for($x=0;$x<$c;$x++)
         	<div class="col-lg-8 col-sm-8 campos">
         	<input disabled="disabled" class="form-control inputsf" name="fax" value="<? echo  $row_operador['fax'];?>" title="Fax "  />
         	</div>
-    		</div>
-        </div>
+   		</div>
+      </div>
       </div> <!-- /ROW-->
     </fieldset>	
 
 <fieldset>
 
-	<div id="seccion2" class="row"  <? if($s2==1){?> style="background-color:#CF3" <? } else{?>style="background-color: #ecfbe7; <? }?>border: solid 1px #AAAAAA;">
+	<div id="seccion2" class="row"  <? if($s2==1){?> style="background-color:#CF3" title="<? echo $ob2;  ?>" <? } else{?>style="background-color: #ecfbe7; <? }?>border: solid 1px #AAAAAA;">
   
 	<div class=" form-group col-md-12 campos2" style="margin:0px;">
 		<div class="col-md-3 col-sm-6" style="padding: 0px 0px; border: solid 1px #AAAAAA;">
@@ -424,12 +497,70 @@ for($x=0;$x<$c;$x++)
 <?
  include("seccion3.php");?>
 <?php include("seccion4.php");?>
-<?php include("seccion5.php");?>
-<?php include("seccion6.php");?>
+<?php include("seccion5.php");
+for($d=0;$d<3;$d++){
+?>
+ <script type="text/javascript"> 
+
+ <? echo '
+
+$(document).ready(function(){  
+        $("#esq_tipo1_op1'.$d.'").click(function() {  
+		
+			 if(($("#esq_tipo1_op10").is(":checked"))|| ($("#esq_tipo1_op11").is(":checked"))|| ($("#esq_tipo1_op12").is(":checked")) || ($("#esq_tipo2_op10").is(":checked"))|| ($("#esq_tipo2_op11").is(":checked"))) {  ';
+  echo "document.getElementById('preg61').disabled = false;
+  document.getElementById('preg62').disabled = false;
+    
+              
+			 
+			document.getElementById('preg71').disabled = false; 
+			document.getElementById('preg72').disabled = false; 
+			document.getElementById('preg81').disabled = false; 
+			document.getElementById('preg82').disabled = false; ";
+echo'
+    } else {  ';			echo "  document.getElementById('preg61').disabled = true;
+	 document.getElementById('preg62').disabled = true;
+    
+        document.getElementById('preg71').disabled = true; 
+		 document.getElementById('preg72').disabled = true; 
+			document.getElementById('preg81').disabled = true; 
+			document.getElementById('preg82').disabled = true; ";echo ' 
+	        } 
+		
+	});
+	if('.$d.'<2){
+	 $("#esq_tipo2_op1'.$d.'").click(function() {  
+		
+			 if(($("#esq_tipo1_op10").is(":checked"))|| ($("#esq_tipo1_op11").is(":checked"))|| ($("#esq_tipo1_op12").is(":checked")) || ($("#esq_tipo2_op10").is(":checked"))|| ($("#esq_tipo2_op11").is(":checked"))) {  ';
+  echo "document.getElementById('preg61').disabled = false;
+  document.getElementById('preg62').disabled = false;
+    
+              
+			 
+			document.getElementById('preg71').disabled = false; 
+			document.getElementById('preg72').disabled = false; 
+			document.getElementById('preg81').disabled = false; 
+			document.getElementById('preg82').disabled = false; ";
+echo'
+    } else {  ';			echo "  document.getElementById('preg61').disabled = true;
+	 document.getElementById('preg62').disabled = true;
+    
+        document.getElementById('preg71').disabled = true; 
+		 document.getElementById('preg72').disabled = true; 
+			document.getElementById('preg81').disabled = true; 
+			document.getElementById('preg82').disabled = true; ";echo ' 
+	        } 
+		
+	});}
+	 });  ';?>
+			</script><? 
+}
+?>
+<?php  include("seccion6.php");?>
 <?php include("seccion7.php");?>
 
 <?php include("seccion8.php");
-				
+		/*		
 for($d=0;$d<$total_primus;$d++){
 ?>
  <script type="text/javascript"> 
@@ -452,11 +583,11 @@ echo'
 });';?>
 			</script><? 
 }
-
+*/?><?
 //////////////////
 for($d=0;$d<2;$d++){
 ?>
- <script type="text/javascript"> 
+<script type="text/javascript"> 
 
  <? echo '
 
@@ -481,7 +612,7 @@ echo'
 //////////////////
 for($d=0;$d<6;$d++){
 ?>
- <script type="text/javascript"> 
+<script type="text/javascript"> 
 
  <? echo '
 
@@ -583,13 +714,28 @@ window.addEventListener("beforeunload", function(event) {
             var post_idcert_anterior = $('#idcert_anterior').val();
 
                   //Seccion 5
-            var esq_tipo1_op1="";
-            var porNombre=document.getElementsByName("esq_tipo1_op1");
+           var esq_tipo1_op10="";
+            var porNombre=document.getElementsByName("esq_tipo1_op10");
             for(var i=0;i<porNombre.length;i++)
               {
                 if(porNombre[i].checked){
-                esq_tipo1_op1=porNombre[i].value;}
+                esq_tipo1_op10=porNombre[i].value;}
               }
+			   var esq_tipo1_op11="";
+            var porNombre=document.getElementsByName("esq_tipo1_op11");
+            for(var i=0;i<porNombre.length;i++)
+              {
+                if(porNombre[i].checked){
+                esq_tipo1_op11=porNombre[i].value;}
+              }
+			   var esq_tipo1_op12="";
+            var porNombre=document.getElementsByName("esq_tipo1_op12");
+            for(var i=0;i<porNombre.length;i++)
+              {
+                if(porNombre[i].checked){
+                esq_tipo1_op12=porNombre[i].value;}
+              }
+
 
             //var esq_tipo1_op1 = $('#esq_tipo1_op1').val();
             var preg1_op2 = $('#preg1_op2').val();
@@ -598,12 +744,19 @@ window.addEventListener("beforeunload", function(event) {
             var preg1_tipo2 = $('#preg1_tipo2').val();
             var preg2_tipo2 = $('#preg2_tipo2').val();
 			
-			 var esq_tipo2_op1="";
-            var porNombre2=document.getElementsByName("esq_tipo2_op1");
+		 var esq_tipo2_op10="";
+            var porNombre2=document.getElementsByName("esq_tipo2_op10");
             for(var i=0;i<porNombre2.length;i++)
               {
                 if(porNombre2[i].checked){
-                esq_tipo2_op1=porNombre2[i].value;}
+                esq_tipo2_op10=porNombre2[i].value;}
+              }
+			   var esq_tipo2_op11="";
+            var porNombre2=document.getElementsByName("esq_tipo2_op11");
+            for(var i=0;i<porNombre2.length;i++)
+              {
+                if(porNombre2[i].checked){
+                esq_tipo2_op11=porNombre2[i].value;}
               }
 
 			
@@ -626,29 +779,52 @@ window.addEventListener("beforeunload", function(event) {
             //var preg5_tipo2 = $('#preg5_tipo2').val();
             var preg4_tipo2 = $('#preg4_tipo2').val();
 			
-			 var preg6="";
-            var porNombre5=document.getElementsByName("preg6");
+			 var preg61="";
+            var porNombre5=document.getElementsByName("preg61");
             for(var i=0;i<porNombre5.length;i++)
               {
                 if(porNombre5[i].checked){
-                preg6=porNombre5[i].value;}
+                preg61=porNombre5[i].value;}
               }
 
- var preg7="";
-            var porNombre6=document.getElementsByName("preg7");
+			var preg62="";
+            var porNombre5=document.getElementsByName("preg62");
+            for(var i=0;i<porNombre5.length;i++)
+              {
+                if(porNombre5[i].checked){
+                preg62=porNombre5[i].value;}
+              }
+
+ var preg71="";
+            var porNombre6=document.getElementsByName("preg71");
             for(var i=0;i<porNombre6.length;i++)
               {
                 if(porNombre6[i].checked){
-                preg7=porNombre6[i].value;}
+                preg71=porNombre6[i].value;}
+              }
+			   var preg72="";
+            var porNombre6=document.getElementsByName("preg72");
+            for(var i=0;i<porNombre6.length;i++)
+              {
+                if(porNombre6[i].checked){
+                preg72=porNombre6[i].value;}
               }
 
-			 var preg8="";
-            var porNombre7=document.getElementsByName("preg8");
+			 var preg81="";
+            var porNombre7=document.getElementsByName("preg81");
             for(var i=0;i<porNombre7.length;i++)
               {
                 if(porNombre7[i].checked){
-                preg8=porNombre7[i].value;}
+                preg81=porNombre7[i].value;}
               }
+			   var preg82="";
+            var porNombre7=document.getElementsByName("preg82");
+            for(var i=0;i<porNombre7.length;i++)
+              {
+                if(porNombre7[i].checked){
+                preg82=porNombre7[i].value;}
+              }
+
 
             var idsolicitud_esquema = $('#idsolicitud_esquema').val();
 			/*
@@ -803,7 +979,7 @@ window.addEventListener("beforeunload", function(event) {
 
             //seccion 10
             var empresa = $('#empresa').val();
-            var rfc = $('#rfc').val();
+            var rfc2 = $('#rfc2').val();
             var direccion = $('#direccion').val();
             var direccion2 = $('#direccion2').val();
             var cp = $('#cp').val();
@@ -838,7 +1014,7 @@ window.addEventListener("beforeunload", function(event) {
                 $.ajax({  
                      url:"cerebro.php",  
                      method:"POST",
-                    data:{persona:post_persona, seccion:seccion, idoperador:post_idoperador, idsolicitud:post_idsolicitud, fecha:post_fecha, personal:post_personal, num_ggn:post_num_ggn, num_gln:post_num_gln, num_coc:post_num_coc, num_mex_cal_sup:post_num_mex_cal_sup, num_primus:post_num_primus, num_senasica:post_num_senasica, responsable:post_responsable,organismo:post_organismo, fecha_inicio:post_fecha_inicio, fecha_fin:post_fecha_fin, idcert_anterior:post_idcert_anterior, esq_tipo1_op1: esq_tipo1_op1, preg1_op2:preg1_op2, preg2_op2:preg2_op2, preg3_op2:preg3_op2,  preg1_tipo2:preg1_tipo2, preg2_tipo2:preg2_tipo2, preg3_tipo2:preg3_tipo2, esq_tipo2_op1:esq_tipo2_op1, preg4_tipo2:preg4_tipo2, preg5_tipo2:preg5_tipo2, preg6:preg6, preg7:preg7, preg8:preg8, idsolicitud_esquema:idsolicitud_esquema,primus0:primus0,primus1:primus1,primus2:primus2,primus3:primus3,primus4:primus4,primus5:primus5,primus6:primus6, idmex_pliego0:idmex_pliego0,idmex_pliego1:idmex_pliego1,idmex_pliego2:idmex_pliego2,idmex_pliego3:idmex_pliego3, idmex_alcance0:idmex_alcance0,idmex_alcance1:idmex_alcance1, idsrrc0:idsrrc0,idsrrc1:idsrrc1,idsrrc2:idsrrc2,idsrrc3:idsrrc3,idsrrc4:idsrrc4, srrc_preg1:srrc_preg1, srrc_preg2:srrc_preg2, empresa:empresa, rfc:rfc, direccion:direccion, direccion2:direccion2, cp:cp, tel:tel, idprocesadora:idprocesadora, inf_comercializacion:inf_comercializacion, idioma_aud:idioma_aud, idioma_inf:idioma_inf, respuesta4:respuesta4, respuesta5:respuesta5, terminada:terminada},
+                   data:{persona:post_persona, seccion:seccion, idoperador:post_idoperador, idsolicitud:post_idsolicitud, fecha:post_fecha, personal:post_personal, num_ggn:post_num_ggn, num_gln:post_num_gln, num_coc:post_num_coc, num_mex_cal_sup:post_num_mex_cal_sup, num_primus:post_num_primus, num_senasica:post_num_senasica, responsable:post_responsable,organismo:post_organismo, fecha_inicio:post_fecha_inicio, fecha_fin:post_fecha_fin, idcert_anterior:post_idcert_anterior, esq_tipo1_op10: esq_tipo1_op10,esq_tipo1_op11: esq_tipo1_op11,esq_tipo1_op12: esq_tipo1_op12, preg1_op2:preg1_op2, preg2_op2:preg2_op2, preg3_op2:preg3_op2,  preg1_tipo2:preg1_tipo2, preg2_tipo2:preg2_tipo2, preg3_tipo2:preg3_tipo2, esq_tipo2_op10:esq_tipo2_op10,esq_tipo2_op11:esq_tipo2_op11, preg4_tipo2:preg4_tipo2, preg5_tipo2:preg5_tipo2, preg61:preg61,preg62:preg62, preg71:preg71, preg72:preg72, preg81:preg81,preg82:preg82, idsolicitud_esquema:idsolicitud_esquema,primus0:primus0,primus1:primus1,primus2:primus2,primus3:primus3,primus4:primus4,primus5:primus5,primus6:primus6, idmex_pliego0:idmex_pliego0,idmex_pliego1:idmex_pliego1,idmex_pliego2:idmex_pliego2,idmex_pliego3:idmex_pliego3, idmex_alcance0:idmex_alcance0,idmex_alcance1:idmex_alcance1, idsrrc0:idsrrc0,idsrrc1:idsrrc1,idsrrc2:idsrrc2,idsrrc3:idsrrc3,idsrrc4:idsrrc4, srrc_preg1:srrc_preg1, srrc_preg2:srrc_preg2, empresa:empresa, rfc2:rfc2, direccion:direccion, direccion2:direccion2, cp:cp, tel:tel, idprocesadora:idprocesadora, inf_comercializacion:inf_comercializacion, idioma_aud:idioma_aud, idioma_inf:idioma_inf, respuesta4:respuesta4, respuesta5:respuesta5, terminada:terminada},
                      dataType:"text",  
                      success:function(data)  
                      {   
@@ -857,7 +1033,7 @@ function cambiar(){
  
 }
 </script>
- <script>
+<script>
  function cambioSeccion(nId){
 
  }
@@ -954,6 +1130,80 @@ $('.error').hide();
 	});
 });
 
+
+</script>
+
+<script>
+$(document).ready(function(){  
+  
+   var act1="";
+            var porNombre=document.getElementsByName("esq_tipo1_op10");
+			 var porNombre2=document.getElementsByName("esq_tipo1_op11");
+			  var porNombre3=document.getElementsByName("esq_tipo1_op12");
+			  var porNombre4=document.getElementsByName("esq_tipo2_op10");
+			  var porNombre5=document.getElementsByName("esq_tipo2_op11");
+            for(var i=0;i<porNombre.length;i++)
+              {
+                if(porNombre[i].checked){
+                //esq_tipo1_op1=porNombre[i].value;}
+				act1=1;
+         
+        } 
+      }
+	   for(var i=0;i<porNombre2.length;i++)
+              {
+                if(porNombre2[i].checked){
+                //esq_tipo1_op1=porNombre[i].value;}
+				act1=1;
+         
+        } 
+      }
+	   for(var i=0;i<porNombre3.length;i++)
+              {
+                if(porNombre3[i].checked){
+                //esq_tipo1_op1=porNombre[i].value;}
+				act1=1;
+         
+        } 
+      }
+	   for(var i=0;i<porNombre4.length;i++)
+              {
+                if(porNombre4[i].checked){
+                //esq_tipo1_op1=porNombre[i].value;}
+				act1=1;
+         
+        } 
+      }
+	   for(var i=0;i<porNombre5.length;i++)
+              {
+                if(porNombre5[i].checked){
+                //esq_tipo1_op1=porNombre[i].value;}
+				act1=1;
+         
+        } 
+      }
+	  if(act1==1)
+	  {
+  document.getElementById("preg61").disabled = false;
+    document.getElementById("preg71").disabled = false; 
+			document.getElementById("preg81").disabled = false;
+			 document.getElementById("preg62").disabled = false;
+    document.getElementById("preg72").disabled = false; 
+			document.getElementById("preg82").disabled = false;
+         
+           
+        } else {  
+            
+			document.getElementById("preg61").disabled = true;
+    document.getElementById("preg71").disabled = true; 
+			document.getElementById("preg81").disabled = true;
+			document.getElementById("preg62").disabled = true;
+    document.getElementById("preg72").disabled = true; 
+			document.getElementById("preg82").disabled = true;
+        }  
+    
+  
+});  
 
 </script>
 

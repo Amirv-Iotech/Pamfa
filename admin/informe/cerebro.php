@@ -178,3 +178,51 @@ else
 						 
 }
 
+/////mover
+if ($_POST['seccion']==12) {
+	
+	$query_pre= sprintf("select *from informe_nc where idinforme=%s and idpregunta=%s ", GetSQLValueString($_POST["idinforme"], "int")
+	, GetSQLValueString($_POST["idpregunta"], "int"));
+$pre = mysql_query($query_pre, $inforgan_pamfa) or die(mysql_error());
+$total_pre = mysql_num_rows($pre);
+if($total_pre<1)
+{
+	$insertSQL = sprintf("INSERT INTO informe_nc(referencia,punto_control,nivel,nc,evidencia,idpregunta,idinforme) VALUES (%s,%s,%s, %s,  %s, %s, %s)",
+            
+			
+			   GetSQLValueString($_POST['p5'], "text"),
+			 
+			
+			  GetSQLValueString($_POST['idpregunta'], "text"),
+			    GetSQLValueString($_POST['idinforme'], "text"));
+			 
+			 
+			 
+}
+else{
+	 $insertSQL = sprintf("Update informe_nc set nc=%s,evidencia=%s where idinforme=%s and idpregunta=%s",
+ 
+             GetSQLValueString($_POST['p4'], "text"),
+			   GetSQLValueString($_POST['p5'], "text"),
+			 
+			
+			
+			    GetSQLValueString($_POST['idinforme'], "text"),  
+				GetSQLValueString($_POST['idpregunta'], "text"));
+	}
+  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
+}
+
+///////
+if ($_POST['seccion']==88) {
+	
+$insertSQL = sprintf("Update informe set max_nc_men=%s,aspectos=%s,mejora=%s where idinforme=%s",
+ 
+             GetSQLValueString($_POST['max_nc_men'], "text"),
+             GetSQLValueString($_POST['aspectos'], "text"),
+			 GetSQLValueString($_POST['mejora'], "text"),
+			 
+			  GetSQLValueString($_POST['idinforme'], "text"));
+			 
+			   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
+}
