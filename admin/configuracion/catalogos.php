@@ -10,7 +10,7 @@
  
     <div class="col-lg-12 col-xs-12">
       <div class="col-lg-3 col-xs-3" style="background-color: #def2f5; padding:0px; border:solid 1px white;">
-       <? /* <div class="col-lg-12 col-xs-12" style="text-align: center; background-color: #07889B; color:white;">
+      <div class="col-lg-12 col-xs-12" style="text-align: center; background-color: #07889B; color:white;">
           <p><b>INGRESE LAS PREGUNTAS MCS</b></p>
         </div>
           <form action="" method="post"   >
@@ -74,8 +74,7 @@
                   <input type="hidden" name="nivel" value="" />
             </div>
         </form>
-        */ ?>
-         <p><b>INGRESE LAS PREGUNTAS GLOBALG.A.P.</b></p>
+            <p><b>INGRESE LAS PREGUNTAS GLOBALG.A.P.</b></p>
         
           <form action="" method="post"   >
             
@@ -163,8 +162,7 @@
         </div>
         
         
-        
-<? /*
+ 
 
         <div class="col-lg-9 col-xs-9" style="background-color: #def2f5; padding:0px; border:solid 1px white;">
            
@@ -225,5 +223,5 @@
     </div>
     <!-- Tabla registros-========= -->
     
-   */?>
+   
 </div>

@@ -141,9 +141,13 @@ $row_cliente= mysql_fetch_assoc($cliente);
 	                                        	
                                                 
                                                  <td>
-                                                <form action="formulario.php" method="post">
+                                                <form action="pmenu.php" method="post">
                                                  <button data-toggle="tooltip" title="Ver" type="submit" name="Ver"  value="1"class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
                                                  <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+                                                 
+<input type="hidden" name="idformato1" value="3" />
+<input type="hidden" name="idformato2" value="2" />
+<input type="hidden" name="idformato3" value="3" />
                                                    <input type="hidden" name="idinforme" value="<? echo $row_informe['idinforme']; ?>" />
 </form></td>
 <? if($row_informe['firma']!=1)

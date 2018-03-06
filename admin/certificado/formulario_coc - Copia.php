@@ -126,26 +126,26 @@ $row_cert= mysql_fetch_assoc($cert);
       <label><h3><? echo $row_operador['direccion'].",".$row_operador['colonia'].",".$row_operador['municipio'].",".$row_operador['estado'];?></h3>  </label>
   </div>
   <div class="col-lg-4">
-      <h3>Opción:</h3>
+      <h3>Número CoC:</h3>
   </div>
   <div class="col-lg-8">
       <label><h3><? if($row_solicitud_esq['esquema']!=NULL){ echo "1 ". $row_solicitud_esq['esquema'];}else { echo "2 Grupo de productores";}?></h3 ></label>
   </div>
   <div class="col-lg-4">
-      <h3>Versión:</h3>
+      <h3>Registro:</h3>
   </div>
   <div class="col-lg-8">
        <input placeholder="escribe aquí"  class="form-control"  name="version"      onchange="this.form.submit()" title="version " type="text" value="<? echo $row_cert['version_coc']; ?>"  />
   </div>
   <div class="col-lg-4">
-      <h3>Fecha de decisión de certificación:</h3>
+      <h3>Fecha de la emisión:</h3>
   </div>
   <div class="col-lg-8">
       <label><h3><? echo date('d/m/y',$row_inf['fecha_dictamen_coc']);?></h3>  </label>
   </div>
   <div class="col-lg-12">
   <div class="col-lg-4 col-xs-4" style="padding:0px">
-    <h3>Valido desde:</h3>
+    <h3>Valido a partir de:</h3>
   </div>
   <div class="col-lg-8 col-xs-8" style="padding:0px">
       <input   class="form-control"  name="fecha_inicial"  onchange="this.form.submit()"      title="desde " type="date" value="<? echo $row_cert['fecha_inicial_coc']; ?>"  />
@@ -158,14 +158,12 @@ $row_cert= mysql_fetch_assoc($cert);
       <input   class="form-control"  name="fecha_final"  onchange="this.form.submit()"      title="Hasta " type="date" value="<? echo $row_cert['fecha_final_coc']; ?>"  />
   </div>
   <div class="col-lg-4">
-    <h3>Fecha de impresión:</h3>
+    <h3>Anexo para número CoC:</h3>
   </div>
   <div class="col-lg-8">
       <input   class="form-control"  name="fecha_impresion"   placeholder="escribe aquí"  onchange="this.form.submit()" title="impresion " type="date" value="<? echo $row_cert['fecha_impresion_coc']; ?>"  />
   </div>
-  <div class="col-lg-4">
-      <h3>Acreditación ema:</h3>
-  </div>
+ 
   <div class="col-lg-8">
       <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
       <input type="hidden" name="insertar_coc" value="1" />

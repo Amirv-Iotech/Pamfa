@@ -108,7 +108,6 @@ WHERE catalogos_respuestas.respuesta='no cumple' and preguntas_catalogos.idforma
 		 method:"POST",
 		 data:{seccion:seccion,idinforme:idinforme,idpregunta:idpregunta,p1:p1,p2:p2,p3:p3,p4:p4,p5:p5},
 		 success: function() {
-			 $("#tabla_ajax3").load(ruta3);
 			 }
 			 });
 	}

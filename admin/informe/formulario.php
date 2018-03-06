@@ -331,7 +331,7 @@ if (stripos( $productos,$a1) === false) {
 
                     <label class="col-lg-3 col-xs-3">Num. máx de NC menores abiertas: </label>
                     <div class="col-lg-3 col-xs-3">
-                    <input  class="plan_input" id="max_nc_men" name="max_nc_men" type="text" value="<? echo $inf['num_max_men'];?>" onchange="<?php echo 'ginf('.$row_inf['idinforme'].')'?>" />
+                    <input  class="plan_input" id="max_nc_men" name="max_nc_men" type="text" value="<? echo $row_inf['max_nc_men'];?>" onchange="<?php echo 'ginf('.$row_inf['idinforme'].')'?>" />
                     </div>
                     
                     </div>
@@ -394,7 +394,7 @@ if (stripos( $productos,$a1) === false) {
 			var mejora =  $('#mejora').val();
           
             var idinforme =ele;
-         alert(ele);
+         
                     $.ajax({
                         url:"cerebro.php",
                         method:"POST",

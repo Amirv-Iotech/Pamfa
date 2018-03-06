@@ -62,8 +62,8 @@ if(isset($_POST['update']))
 	                    <div class="col-md-8">
 	                        <div class="card">
 	                            <div class="card-header" data-background-color="green">
-	                                <h4 class="title">Edit Profile</h4>
-									<p class="category">Complete your profile  </p>
+	                                <h4 class="title">Editar perfil</h4>
+									<p class="category">  </p>
 	                            </div>
 	                            <div class="card-content">
                                 
@@ -105,7 +105,7 @@ if(isset($_POST['update']))
 	                                        </div>
 	                                    </div>
 
-	                                  <button type="submit" class="btn btn-primary pull-right" name="update">Update Profile</button>
+	                                  <button type="submit" class="btn btn-primary pull-right" name="update">Actualizar</button>
                                         <input type="hidden" name="idusuario" value="<? echo $_SESSION['idusuario']; ?>" />
 	                                    <div class="clearfix"></div>
 	                                </form>

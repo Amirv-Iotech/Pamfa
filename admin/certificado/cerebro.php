@@ -134,25 +134,27 @@ $total_certificado = mysql_num_rows($certificado);
 if($total_certificado<1)
 {
 	
-  $insertSQL = sprintf("INSERT INTO certificado(idinforme,certificado_tipo2,version_coc,fecha_inicial_coc,fecha_final_coc,fecha_impresion_coc,acreditacion_coc) VALUES (%s,%s, %s,  %s,%s,%s, %s)",
+  $insertSQL = sprintf("INSERT INTO certificado(idinforme,certificado_tipo2,numero_coc,registro_coc,fecha_inicial_coc,fecha_final_coc,anexo_coc) VALUES (%s, %s,  %s,%s,%s, %s,%s)",
   GetSQLValueString($_POST['idinforme'], "text"),
             
              GetSQLValueString(1, "text"),
-			 GetSQLValueString($_POST['version'], "text"),
+			 GetSQLValueString($_POST['numero_coc'], "text"),
+			 GetSQLValueString($_POST['registro'], "text"),
 			 GetSQLValueString($_POST['fecha_inicial'], "text"),
              GetSQLValueString($_POST['fecha_final'], "text"),
-			 GetSQLValueString($_POST['fecha_impresion'], "text"),
-			 GetSQLValueString($_POST['acreditacion'], "text"));
+			 
+			 GetSQLValueString($_POST['anexo'], "text"));
 }
 else{
-	$insertSQL = sprintf("update certificado set version_coc=%s,fecha_inicial_coc=%s,fecha_final_coc=%s,fecha_impresion_coc=%s,acreditacion_coc=%s WHERE idcertificado=%s",
+	$insertSQL = sprintf("update certificado set numero_coc=%s,registro_coc=%s,fecha_inicial_coc=%s,fecha_final_coc=%s,anexo_coc=%s WHERE idcertificado=%s",
  
             
-			 GetSQLValueString($_POST['version'], "text"),
+			 GetSQLValueString($_POST['numero_coc'], "text"),
+			  GetSQLValueString($_POST['registro'], "text"),
 			 GetSQLValueString($_POST['fecha_inicial'], "text"),
              GetSQLValueString($_POST['fecha_final'], "text"),
-			 GetSQLValueString($_POST['fecha_impresion'], "text"),
-			 GetSQLValueString($_POST['acreditacion'], "text"),
+			
+			 GetSQLValueString($_POST['anexo'], "text"),
 			  GetSQLValueString($_POST['idcertificado'], "text"));
 }
  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
@@ -181,26 +183,26 @@ $total_certificado = mysql_num_rows($certificado);
 if($total_certificado<1)
 {
 	
-  $insertSQL = sprintf("INSERT INTO cert_producto(idcertificado,idcultivo,producto,nombre_cientifico,coc,pamfa,prod_paralela) VALUES (%s,%s,%s,%s,%s,%s,%s)",
+  $insertSQL = sprintf("INSERT INTO cert_producto(idcertificado,idcultivo,producto,etiqueta,gfsi,proceso,coc) VALUES (%s,%s,%s,%s,%s,%s,%s)",
              GetSQLValueString($_POST['idcertificado'], "int"),
 			  GetSQLValueString($_POST['idcultivo'], "int"),
 			 GetSQLValueString($_POST['producto'], "text"),
-			 GetSQLValueString($_POST['nombre_cientifico'], "text"),
-             GetSQLValueString($_POST['coc'], "text"),
-			 GetSQLValueString($_POST['pamfa'], "text"),
-			 GetSQLValueString($_POST['prod_paralela'], "text"));
+			 GetSQLValueString($_POST['etiqueta'], "text"),
+             GetSQLValueString($_POST['gfsi'], "text"),
+			 GetSQLValueString($_POST['proceso'], "text"),
+			  GetSQLValueString($_POST['coc'], "text"));
 
 			 
 }
 else{
-	$insertSQL = sprintf("update cert_producto set producto=%s,nombre_cientifico=%s,coc=%s,pamfa=%s,prod_paralela=%s WHERE idcert_producto=%s",
+	$insertSQL = sprintf("update cert_producto set producto=%s,etiqueta=%s,gfsi=%s,proceso=%s WHERE idcert_producto=%s",
  
             
 			  GetSQLValueString($_POST['producto'], "text"),
-			 GetSQLValueString($_POST['nombre_cientifico'], "text"),
-             GetSQLValueString($_POST['coc'], "text"),
-			 GetSQLValueString($_POST['pamfa'], "text"),
-			 GetSQLValueString($_POST['prod_paralela'], "text"),
+			 GetSQLValueString($_POST['etiqueta'], "text"),
+             GetSQLValueString($_POST['gfsi'], "text"),
+			 GetSQLValueString($_POST['proceso'], "text"),
+			 
              GetSQLValueString($_POST['idcert_producto'], "text"));
 }
  

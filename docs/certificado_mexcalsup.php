@@ -68,9 +68,35 @@ $row_inf= mysql_fetch_assoc($inf);
 $query_solicitud = sprintf("select *from solicitud where idsolicitud=%s  limit 1", GetSQLValueString($_POST["idsolicitud"], "int"));
 $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error());
 $row_solicitud= mysql_fetch_assoc($solicitud);
+
+ $query_m = sprintf("SELECT idmex_alcance FROM solicitud_mexcalsup WHERE idsolicitud=%s and idmex_alcance is not null ", GetSQLValueString( $row_solicitud['idsolicitud'], "int"));
+            $m= mysql_query($query_m, $inforgan_pamfa) or die(mysql_error());
+            $row_m= mysql_fetch_assoc($m);
+
+ $query_m2 = sprintf("SELECT idmex_pliego FROM solicitud_mexcalsup WHERE idsolicitud=%s  and idmex_pliego is not null ", GetSQLValueString( $row_solicitud['idsolicitud'], "int"));
+            $m2= mysql_query($query_m2, $inforgan_pamfa) or die(mysql_error());
+            $row_m2= mysql_fetch_assoc($m2);
+			
+			
+			  $query_mex = sprintf("SELECT descripcion FROM mex_cal_sup WHERE idmex_cal_sup=%s  ", GetSQLValueString( $row_m['idmex_alcance'], "int"));
+            $mex= mysql_query($query_mex, $inforgan_pamfa) or die(mysql_error());
+            $row_mex= mysql_fetch_assoc($mex);
+            $query_mexp = sprintf("SELECT descripcion FROM mex_cal_sup WHERE idmex_cal_sup=%s  ", GetSQLValueString( $row_m2['idmex_pliego'], "int"));
+            $mexp= mysql_query($query_mexp, $inforgan_pamfa) or die(mysql_error());
+            $row_mexp= mysql_fetch_assoc($mexp);
+			
+
+$objeto_DateTime = date_create_from_format('Y-m-d',$row_cert['fecha_inicial_mexcalsup']);
+$fi = date_format($objeto_DateTime, "d/m/Y");
+
+$objeto_DateTime = date_create_from_format('Y-m-d',$row_cert['fecha_final_mexcalsup']);
+$fi2 = date_format($objeto_DateTime, "d/m/Y");
+
+$objeto_DateTime = date_create_from_format('Y-m-d',$row_cert['fecha_impresion_mexcalsup']);
+$fi3 = date_format($objeto_DateTime, "d/m/Y");
 include('mpdf.php');
 
-$mpdf=new mPDF('','Letter-L', 0, '', 2, 0, 0,0, 0, 0);
+$mpdf=new mPDF('','Letter', 0, '', 0, 0, 0,0, 0, 0);
 if(isset($_POST['cliente']))
 {
 $mpdf->SetWatermarkImage('../images/borrador.png');
@@ -78,105 +104,143 @@ $mpdf->SetWatermarkImage('../images/borrador.png');
 $mpdf->showWatermarkImage = true;
 }
 $mpdf->WriteHTML('
-<table>
-  <tr>
-    <td>
-        <img src="../images/izquierdo.png" width="100%"/>
+<table  width="100%" height="1000px">
+  <tr  >
+    <td width="70%" height="1053"  style="background: #FFF url(../images/izquierdo.png) no-repeat left top" >
+        &nbsp;
     </td>
     <td valign="top">
-      <table>
-        <tr style="">
-          <td height="80px">
+      <table >
+        <tr >
+          <td colspan="2"  height="110" style="background: #FFF url(../images/top.png) no-repeat left top">
           
           </td>
-          <td> 
-          </td>
+          
         </tr>
-        <tr style="">
-          <td width="640px">
-            <b style="font-size:24px">Usuario:</b> <span style=" font-size:24px; color:gray;"> '.$row_operador['nombre_legal'].'</span>
+        <tr  >
+		<td height="50" colspan="2"></td></tr><tr >
+		
+		
+		<td colspan="2" ><table ><tr>
+		<td align="right" width="500" ></td>
+		<td align="CENTER" width="180" style="border: 5px; border: solid; border-color: RED;" bgcolor="#FFFFFF" ><font color="RED" face="Comic Sans MS,arial"><h2 align="center">num</h2></font></td>
+		<td align="CENTER" width="230"  style="border-width: 5px;border: solid; border-color: RED;" bgcolor="RED"><font color="white" face="Comic Sans MS,arial"><h2 align="center">Folio</h2></font></td></tr>
+		</table></td></tr>
+		<tr><td height="45" colspan="2"></td></tr>
+		<tr>
+          <td align="right" colspan="2" style="border-bottom:5px solid red">
+            <b style="font-size:24px">Usuario &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> 
           </td>
-          <td rowspan="3" width="140px" align="center" valign="top"> <img src="../images/mexico_calidadsuprema.png" width="150px" height="150px"/>
+		  
+		  </tr>
+		  <tr><td height="20" colspan="2"></td></tr>
+		  <tr>
+          <td align="center" colspan="2" style=" font-size:24px; color:gray;"> '.$row_operador['nombre_legal'].'</td>
         </tr>
-        <tr style="">
-          <td  height="80px" valign="top">
-          <b style="font-size:24px;">Dirección:</b><span style=" font-size:24px; color:gray;">'.$row_operador['direccion'].' '.$row_operador['colonia'].' '.$row_operador['municipio'].' '.$row_operador['estado'].' '.'</span>
+		
+		<tr><td height="50" colspan="2"></td></tr>
+		<tr>
+          <td align="right" colspan="2" style="border-bottom:5px solid red">
+            <b style="font-size:24px">Dirección &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> 
           </td>
-          </td>
-        </tr>
-        <tr style="">
-          <td height="60px">
-          <b style="font-size:20px">Valido desde:</b>'.$row_cert['fecha_inicial_mexcalsup'].'
-          </td>
-        </tr>
-        <tr style="">
-          <td height="60px">
-          <b style="font-size:20px">Valido Hasta: </b>'.$row_cert['fecha_final_mexcalsup'].'
-          </td>
-          <td>
-          </td>
-        </tr>
-        <tr style="">
-          <td height="60px">
-          <b style="font-size:20px">Fecha de impresión:</b>'.$row_cert['fecha_impresion_mexcalsup'].'
-          </td>
-          <td> 
-          </td>
-        </tr>
-        <tr style="">
-          <td height="40px" align="center">
-          <b style="font-size:20px">Pliego de condiciones:
-          </td>
-          <td> 
-          </td>
+		  
+		  </tr>
+		  <tr><td height="15" colspan="2"></td></tr>
+		  <tr>
+          <td align="center" colspan="2" style=" font-size:24px; color:gray;"> '.$row_operador['direccion'].' '.$row_operador['colonia'].' '.$row_operador['municipio'].' '.$row_operador['estado'].' '.'</td>
         </tr>
         <tr>
-        <td align="center" height="80px" valign="top">
-          <span style="font-size:20px" valign="top">Alcance:</span>');  
-            $query_mex = sprintf("SELECT descripcion FROM mex_cal_sup WHERE idmex_cal_sup=%s  ", GetSQLValueString( $row_solicitud['idmex_alcance'], "int"));
-            $mex= mysql_query($query_mex, $inforgan_pamfa) or die(mysql_error());
-            $row_mex= mysql_fetch_assoc($mex);
-            $query_mexp = sprintf("SELECT descripcion FROM mex_cal_sup WHERE idmex_cal_sup=%s  ", GetSQLValueString( $row_solicitud['idmex_pliego'], "int"));
-            $mexp= mysql_query($query_mexp, $inforgan_pamfa) or die(mysql_error());
-            $row_mexp= mysql_fetch_assoc($mexp);
-$mpdf->WriteHTML('
-              <span style="font-size:18px; color:gray">'.$row_mex['descripcion'].'</span>
+		<td height="50" colspan="2"></td></tr><tr >
+		
+		
+		<td colspan="2" ><table ><tr>
+		<td align="right" width="375" ></td>
+		<td align="CENTER" width="300"  style="border-width: 5px;border: solid; border-color: RED;" bgcolor="RED"><font color="white" face="Comic Sans MS,arial"><h2 align="center">Fecha de impresión</h2></font></td>
+		<td align="CENTER" width="200" style="border: 5px; border: solid; border-color: RED;" bgcolor="#FFFFFF" ><font c face="Comic Sans MS,arial"><h2 align="center">'.$fi3.'</h2></font></td>
+		<td width="35" style="border-width: 5px;border: solid  red" bgcolor="RED"></td>
+		</tr>
+		</table></td></tr>
+		
+		<tr>
+		<td height="50" colspan="2"></td></tr><tr >
+		
+		
+		<td colspan="2" ><table ><tr>
+		<td align="right" width="190" ></td>
+		<td align="CENTER" width="170"  style="border-width: 5px;border: solid; border-color: RED;" bgcolor="RED"><font color="white" face="Comic Sans MS,arial"><h2 align="center">Valido desde</h2></font></td>
+		<td align="CENTER" width="200" style="border: 5px; border: solid; border-color: RED;" bgcolor="#FFFFFF" ><font c face="Comic Sans MS,arial"><h2 align="center">'.$fi.'</h2></font></td>
+		
+		<td align="CENTER" width="120"  style="border-width: 5px;border: solid; border-color: RED;" bgcolor="RED"><font color="white" face="Comic Sans MS,arial"><h2 align="center">Hasta </h2></font></td>
+		<td align="CENTER" width="200" style="border: 5px; border: solid; border-color: RED;" bgcolor="#FFFFFF" ><font  face="Comic Sans MS,arial"><h2 align="center">'.$fi2.'</h2></font></td>
+		
+		<td width="30" style="border-width: 5px;border: solid  red" bgcolor="RED"></td>
+		</tr>
+		</table></td></tr>
+		
+        <tr><td height="45" colspan="2"></td></tr>
+		<tr>
+          <td align="right" colspan="2" style="border-bottom:5px solid red">
+            <b style="font-size:24px">Pliego de condiciones &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> 
+          </td>
+		  
+		  </tr>
+		  <tr><td height="20" colspan="2"></td></tr>
+		 
+        
+        <tr>
+        <td  align="center" ><font  face="Comic Sans MS,arial"><h2 align="center">Alcance:</h2></font></td>
+		<td ><font  face="Comic Sans MS,arial"><h2 align="center" color=gray>
+              '.$row_mex['descripcion'].'</h2></font>
         </td>
-        <td></td>
+       
         </tr> 
         <tr>
-          <td align="center" height="80px" valign="top">
-          <span style="font-size:20px">Pliego:</span><span style="font-size:18px; color:gray">'.$row_mexp['descripcion'].'</span>  
-          </td>
-          <td rowspan="2">  
-            <img src="../images/logo_ema.jpg" width="150px" height="150px">            
+          <td  align="center" ><font  face="Comic Sans MS,arial"><h2 align="center">
+          Pliego:</h2></font></td><td><font  face="Comic Sans MS,arial"><h2 align="center" color=gray>'.$row_mexp['descripcion'].' 
+         </h2></font></td>
+         
+        </tr>
+		 <tr>
+		 <td  height="200" colspan="2"></td></tr>
+        <tr style="">
+		 <td align="right" width="200" ></td>
+         <td align="right" width="130"  style="border-bottom:5px solid red">
           </td>
         </tr>
         <tr style="">
-          <td valign="bottom">
-          <b style="font-size:20px">__________________________________________________________</b>
+		<td align="right" width="200" ></td>
+         <td align="center" width="130"  >
+         <font  face="Comic Sans MS,arial" size="+6"  color=#088A4B><strong> Ing. Marisela Farías López </strong></font>
           </td>
+          
         </tr>
         <tr style="">
-          <td>
-          <b style="font-size:24px"> Ing. Marisela Farías López</b>
+          <td align="right" width="200" ></td>
+         <td align="right" width="50"  >
+         <font  face="Comic Sans MS,arial" size="+6"  color=#088A4B><strong> Gerente General </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
           </td>
-          <td> 
-          <b style="font-size:24px">Acreditación:</b>
-          </td>
+          
         </tr>
-        <tr style="">
-          <td>
-          <b style="font-size:24px">Gerente General</b>
-          </td>
-          <td> 
-          </td>
-        </tr>
+		
+		<tr>
+		 <td  height="70" colspan="2"></td></tr>
         <tr>
-        <td colspan="2">
-                    <span> VERIFICACIÓN Y CERTIFICACIÓN PAMFA A.C </span><BR><span style="font-size:12px"> Calle José Zamora #48 Col. Emiliano Zapata, Uruapam, Michoacán. Tel. 452 502 0849 Cel. 452 128 51 46 / certificacion@pamfa.com.mx</span>
+		<td colspan="2"><table><tr>
+        <td align="right" width="320" ></td>
+         <td align="center" width="140"  ><font  face="Comic Sans MS,arial" size="+6" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Verificación y certificación PAMFA A.C</strong> </font></td></tr>
+		 </table>
+		 </td></tr>
+		 <tr><td colspan="2"><table>
+		 <tr><td align="right" width="350" ></td>
+        <td align="right" width="150"   ><font  face="Comic Sans MS,arial"  color=#088A4B size="+5"><strong>José Zamora #48 Col. Emiliano Zapata, Uruapan, Michoacán. </strong></font></td></tr></table></td></tr>
+		 <tr><td colspan="2"><table>
+		
+		
+		
+		 <tr><td align="right" width="75" ></td> 
+		 <td align="right" width="300"   ><font  face="Comic Sans MS,arial"  color=#088A4B size="+5"><strong>Tel. (452) 182 12 91 Cel. 452 128 51 46 / certificacion@pamfa.com.mx  www.pamfa.com.mx</strong></font>
         </td>
-        </tr>
+        </tr></table></td></tr>
       </table>
     </td>
   </tr>

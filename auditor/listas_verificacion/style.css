@@ -1,0 +1,22 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: darkseagreen;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.clock {
+    max-width: 160px;
+    margin-top: 2em;
+    padding: 1em;
+}
+
+.clock input,
+.clock span {
+    border-color: #999;
+}

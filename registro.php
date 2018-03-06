@@ -42,8 +42,8 @@ if(!empty($_POST['guardar1'])){
 	$t="pamfa".time();
 	$insertSQL = sprintf("INSERT INTO operador (username,pass_tem,nombre_legal,nombre_representante,direccion,colonia,municipio,estado,pais,cp,coordenadas,email,telefono,fax,rfc,dir_rfc,nombre_factura,email_factura,tel_factura,forma_pago,banco,digitos_tarjeta) VALUES ( %s, %s,%s, %s, %s, %s,%s, %s, %s, %s,%s, %s, %s, %s,%s, %s, %s, %s,%s,%s,%s,%s)",
 	
-	GetSQLValueString($_POST['rfc'], "text"),
-	GetSQLValueString($t, "text"),
+	GetSQLValueString($_POST['username'], "text"),
+	GetSQLValueString($_POST['pass_tem'], "text"),
  GetSQLValueString($_POST['nombre_legal'], "text"),
  GetSQLValueString($_POST['nombre_representante'], "text"),
  GetSQLValueString($_POST['direccion'], "text"),
@@ -114,15 +114,16 @@ if(!empty($_POST['guardar1'])){
 	                                <p class="category">INGRESE LA SIGUIENTE INFORMACIÓN DE FACTURACIÓN/DIRECCIÓN LEGAL </p>
 	                            </div>
 	                            <div class="card-content table-responsive">
+                                 <form action="" method="post" >
  <table align="center"   >
  <tr>
-    <form action="" method="post" >
+   
           
      
               <td><label >Usuario:</label> <input class="form-control" required type="text" name="username" value="" /></td>
           
               <td> <label> Contraseña:</label><input class="form-control" required type="text" name="pass_tem" value="" /></td></tr>
-                <tr>
+                
  <tr>
    
           

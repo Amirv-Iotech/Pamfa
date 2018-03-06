@@ -1,10 +1,12 @@
 
 <? 
 if(!empty($_POST['guardar1'])){
+	
+	
 	$insertSQL = sprintf("INSERT INTO operador (username,password,nombre_legal,nombre_representante,direccion,colonia,estado,pais,coordenadas,email,telefono,fax,rfc,dir_rfc,nombre_factura,email_factura,tel_factura,forma_pago,banco,digitos_tarjeta) VALUES ( %s, %s,%s, %s, %s, %s,%s, %s, %s, %s,%s, %s, %s, %s,%s, %s, %s, %s,%s,%s)",
 	
-	//GetSQLValueString($_POST['rfc'], "text"),
-	//GetSQLValueString("pamfa", "text"),
+	GetSQLValueString($_POST['rfc'], "text"),
+	GetSQLValueString("pamfa", "text"),
  GetSQLValueString($_POST['nombre_legal'], "text"),
  GetSQLValueString($_POST['nombre_representante'], "text"),
  GetSQLValueString($_POST['direccion'], "text"),
@@ -61,7 +63,7 @@ if(!empty($_POST['update_au'])){
  GetSQLValueString($_POST['pass_tem'], "text"),
   GetSQLValueString($_POST['idoperador'], "text"));
 
-echo "ljbclbl".$insertSQL;
+
   $Result1= mysql_query($insertSQL ,$inforgan_pamfa) or die(mysql_error());
 }
 if(!empty($_POST['eliminar1'])){

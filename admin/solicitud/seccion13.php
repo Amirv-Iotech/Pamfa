@@ -31,5 +31,5 @@
     </div>
   </div>
     
-    <button type="button" name="obs" id="obs" class="btn btn-info">Agregar observaciones"</button>
+    <button type="button" name="obs" id="obs" class="btn btn-info">Agregar observaciones</button>
 </fieldset>

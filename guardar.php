@@ -42,8 +42,8 @@ if(!empty($_POST['guardar1'])){
 	$t=time();
 	$insertSQL = sprintf("INSERT INTO operador (username,pass_tem,nombre_legal,nombre_representante,direccion,colonia,municipio,estado,pais,cp,coordenadas,email,telefono,fax,rfc,dir_rfc,nombre_factura,email_factura,tel_factura,forma_pago,banco,digitos_tarjeta) VALUES ( %s, %s,%s, %s, %s, %s,%s, %s, %s, %s,%s, %s, %s, %s,%s, %s, %s, %s,%s,%s,%s,%s)",
 	
-	GetSQLValueString($_POST['rfc'], "text"),
-	GetSQLValueString("pamfa".$t, "text"),
+	GetSQLValueString($_POST['username'], "text"),
+	GetSQLValueString($_POST['pass_tem'], "text"),
  GetSQLValueString($_POST['nombre_legal'], "text"),
  GetSQLValueString($_POST['nombre_representante'], "text"),
  GetSQLValueString($_POST['direccion'], "text"),

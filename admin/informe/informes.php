@@ -74,6 +74,7 @@ $informe  = mysql_query($query_informe , $inforgan_pamfa) or die(mysql_error());
 
 
 
+
  include("includes/header.php");
  
  ?>
@@ -103,6 +104,9 @@ $informe  = mysql_query($query_informe , $inforgan_pamfa) or die(mysql_error());
                                         <? while( $row_informe= mysql_fetch_assoc($informe))
 										{
 											
+$query_informe_todas = "SELECT * FROM informe_nc  where idinforme=".$row_informe['idinforme']." and tratada=0 and tratada is null";
+$informe_todas  = mysql_query($query_informe , $inforgan_pamfa) or die(mysql_error());
+	$todas = mysql_num_rows($informe_todas);										
 											$query_solicitud = "SELECT * FROM solicitud where idsolicitud=(select idsolicitud from plan_auditoria where idplan_auditoria=(select idplan_auditoria from informe where idinforme='".$row_informe['idinforme']."')) ";
 $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error());
 $row_solicitud= mysql_fetch_assoc($solicitud);
@@ -118,7 +122,7 @@ $row_cliente= mysql_fetch_assoc($cliente);
 	                                        	
                                                 <td>
                                                 <form action="pmenu.php" method="post">
-                                                 <button data-toggle="tooltip" title="Ver" type="submit" name="Ver"  value="1"class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                                                 <button data-toggle="tooltip" title="Ver" type="submit" name="Ver"  value="1" <? if($todas>0){?>class="btn btn-success" <? }else {?> class="btn btn-danger" <? }?> ><i class="fa fa-eye" aria-hidden="true"></i></button>
                                                  <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
 <input type="hidden" name="idformato1" value="3" />
 <input type="hidden" name="idformato2" value="2" />
