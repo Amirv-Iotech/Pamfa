@@ -1,6 +1,13 @@
 <fieldset>
 
-	<div id="seccion3"  class="row"  <? if($s3==1){?> style="background-color:#CF3" title="<? echo $ob3;  ?>" <? } else{?>style="background-color: #ecfbe7; <? }?>border: solid 1px #AAAAAA; border-bottom-width:2px;">
+<? if($dac=="formulario.php"){ if($st3==1){?> <button type="button" class="btn btn-danger collapsed btn-lg btn-block" data-toggle="collapse" data-target="#demo3" aria-expanded="false"><span  style="font-size:20px">  <? echo $c13."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OBSERVACIONES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";?><i class="material-icons" style="font-size: 25px;">arrow_downward</i></span></button>
+<div id="demo3" class="collapse" style="background:#FFF">
+<?  echo $ob3;  ?>
+</div>
+<? } } ?>
+	<div id="seccion3"  class="row"  <? if($dac=="formulario.php"){if($st3==1){?> style="border:3px solid #F00"<? } else{?>style="background-color: #ecfbe7; <? }}else{?> style="background-color: #ecfbe7;"<? }?>border: solid 1px #AAAAAA;">
+
+
 		<div class="col-lg-12 col-sm-12 campos2"  style="padding-right: 0px; padding-left: 0px;">			
 			<div class="col-lg-12 col-sm-12 campos" style="background-color: #dbf573e6; border: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
 				<b>Si certificó anteriormente con otro organismo de certificacion indique:</b>

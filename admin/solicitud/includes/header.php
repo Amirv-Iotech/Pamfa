@@ -28,7 +28,7 @@
     <link href="../assets/css/style_operador.css" rel="stylesheet"/>
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="../assets/css/demo.css" rel="stylesheet" />
+   
 
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
@@ -92,13 +92,18 @@
 			<nav class="navbar navbar-transparent navbar-absolute">
 				<div class="container-fluid">
 					<div class="navbar-header">
-						
-						<a class="navbar-brand" href="#">PAMFA A.C. </a>
-                        <? if($dac=='formulario.php')
+						<button type="button" class="navbar-toggle" data-toggle="collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">PAMFA A.C.</a>
+                        <? if($dac=='formulario.php' || $dac=='contrato_firma.php')
 						{?>
                         <form action="../solicitud/solicitudes.php" method="post" >
       
-<button  type="submit" value="Regresar" class="btn btn-secondary"><i class="fa fa-caret-square-o-left" aria-hidden="true"></i>
+<button  type="submit" value="Regresar" class="btn btn-success"><i class="fa fa-caret-square-o-left" aria-hidden="true"></i>
  Regresar</button>            
             </form> <? }?>
 					</div>

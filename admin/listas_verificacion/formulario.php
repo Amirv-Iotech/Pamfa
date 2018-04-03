@@ -112,7 +112,14 @@ $row_alcance= mysql_fetch_assoc($alcance);
 
 ////////
 ?>
-
+ <form action="../listas_verificacion/listas_verif_menu.php" method="post" target="_parent">
+      
+<button  type="submit" value="Regresar" class="btn btn-success"><i class="fa fa-caret-square-o-left" aria-hidden="true"></i>
+ Regresar </button> 
+ <input type="hidden" name="idsolicitud" value="<?php echo $_POST['idsolicitud']; ?>" />
+ <input type="hidden" name="idformato" value="<?php echo $_POST['idformato']; ?>" />
+            
+            </form> 
     <div class="row" id="form_plan_aud" style="background-color: #ecfbe7; padding: 0px;">
        
     </div>

@@ -90,7 +90,13 @@
             ?>
             <div class="col-lg-4 col-xs-4">
                 Número:
-              <input class="form-control"  type="text" name="numero" value="<? if(isset($_POST['updatex'])){ echo $row_u['numero'];}?>"  size="32" style=" background-color:#e7fbfe; padding-top:10px;  background-image: none; border-radius: 10px; height: 45px;"/>
+              <input class="form-control"  type="text" name="numero" value="<? if(isset($_POST['updatex'])){
+				  if( $row_u['numero']<10){
+					 echo  substr(  $row_u['numero'],1);
+					   }else 
+					   {echo $row_u['numero'];
+					   }}?>"
+                         size="32" style=" background-color:#e7fbfe; padding-top:10px;  background-image: none; border-radius: 10px; height: 45px;"/>
             </div>
             <div class="col-lg-4 col-xs-4">
                 Prefijo
@@ -107,7 +113,18 @@
             </div>
            <div class="col-lg-4 col-xs-4">
                 	Nivel:
-             <input class="form-control"  type="text"  name="nivel"  value="<? if(isset($_POST['updatex'])){ echo $row_u['nivel'];}?>" style=" background-color:#e7fbfe; padding-top:10px;  background-image: none; border-radius: 10px; height: 45px;"/>
+                    
+                         <select class="form-control"  id="<? echo "seccion_sol".$cont;?>" name="nivel"   style=" background-color:#e7fbfe; padding-top:10px;  background-image: none; border-radius: 10px; height: 45px;" >
+                <option value="-">Ninguno</option>
+                 <option value="Mayor" <? if(isset($row_u['nivel'])&&$row_u['nivel']=="Mayor"){ ?> selected="selected" <? }?>>Mayor</option>
+               
+                <option value="menor" <? if(isset($row_u['nivel'])&&$row_u['nivel']=="menor"){ ?> selected="selected" <? }?>>Menor</option>
+                <option value="Recom"  <? if(isset($row_u['nivel'])&&$row_u['nivel']=="Recom"){ ?> selected="selected" <? }?>>Recomendacion</option>
+               
+              
+                </select>
+                    
+           
             </div>
             
             <div class="col-lg-12 col-xs-12">

@@ -74,24 +74,24 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 					<div class="row">
 						<div class="col-md-12">
                         
-<div class="panel panel-white">
-<div class="panel-heading clearfix"><br>
+<div class="panel panel-white" style="background-color: #ecfbe7;">
+<div class="panel-heading clearfix" style="background-color: #ecfbe7; "><br>
 
 <input type="hidden" id="ruta" name="ruta" value="<? echo "tabla.php?idsolicitud=".$row_solicitud['idsolicitud']."&seccion=1&idoperador=".$row_operador['idoperador']."";?>" />
 <input type="hidden" id="ruta2" name="ruta2" value="<? echo "tabla_anexo.php?idsolicitud=".$row_solicitud['idsolicitud']."&seccion=1&idoperador=".$row_operador['idoperador']."";?>" />
 <input type="hidden" id="ruta3" name="ruta3" value="<? echo "tabla_anexo_alm.php?idsolicitud=".$row_solicitud['idsolicitud']."&seccion=1&idoperador=".$row_operador['idoperador']."";?>" />
 <input type="hidden" id="ruta4" name="ruta4" value="<? echo "tabla_observaciones.php?idsolicitud=".$row_solicitud['idsolicitud']."&seccion=1&idoperador=".$row_operador['idoperador']."";?>" />
 
-	<div class="row" id="seccion1">
-		<div class="col-lg-12">
+	<div id="seccion0"   class="row"  style="background-color: #ecfbe7;">
+	<div class="col-lg-12">
 			<p style="font-size:25px; text-align:center;">Solicitud de certificación de producto</p>
 			<br/>
       <br/>
 		</div>
-		<div class="col-lg-2 col-md-2 col-xs-6 fechas">
+			<div class="col-lg-2 col-md-2 col-xs-6 fechas">
 			<p class="solicitud">Fecha de solicitud </p>
 		</div>
-		<div class="col-lg-2 col-md-2 col-xs-6 fechas" style="border-bottom:solid 1px #AAAAAA;">
+		<div class="col-lg-2 col-md-2 col-xs-6 fechas">
 			
 			<input  id="fecha1" name="fecha1"  disabled="disabled" type="text" placeholder=""  <? if(isset($row_solicitud['fecha'])){?>value="<? echo date('d/m/y',$row_solicitud['fecha']);?>"<? }else{ ?> value="<? echo date('d/m/y',time());?>"<? }?>  style="font-size: 18px; text-align:center; width:100%"/>
 			
@@ -103,7 +103,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
         <input type="hidden" name="fecha" id="fecha" value="<? echo $f?>"/>
 		</div>
 
-		<div class="col-lg-4 col-md-4 col-xs-4 fechas">
+		<div class="col-lg-4 col-md-4 col-xs-6 fechas">
 			<p class="solicitud">   Nombre de la persona que llena la solicitud: </p>
 		</div>
 		<div class="col-lg-3 col-md-6 col-xs-6 fechas">
@@ -360,7 +360,7 @@ echo'
 }
 
 ?>
-<?php include("seccion6.php");?>
+<?php  include("seccion6.php");?>
 <?php include("seccion7.php");?>
 
 <?php include("seccion8.php");

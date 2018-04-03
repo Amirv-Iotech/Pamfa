@@ -92,8 +92,9 @@
 						{?>
                         <form action="../informe/informes.php" method="post" >
       
-<button  type="submit" value="Regresar" class="btn btn-secondary"><i class="fa fa-caret-square-o-left" aria-hidden="true"></i>
- Regresar</button>            
+<button  type="submit" value="Regresar" class="btn btn-success"><i class="fa fa-caret-square-o-left" aria-hidden="true"></i>
+ Regresar</button> 
+ <input type="hidden" name="idformato1" value="<?php echo $_POST['idformato1']; ?>" />           
             </form> <? }?>
 					</div>
 					

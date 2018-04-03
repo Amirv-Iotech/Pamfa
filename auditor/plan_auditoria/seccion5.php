@@ -60,31 +60,31 @@
                       <div class="col-xs-6">
                            <label><input disabled  type="checkbox" <? if ($row_solicitud_esq['esq_tipo2_op1']!=NULL){?> checked="checked"<? }?>  value="1" id="esq1" name="esq1">GLOBALG A.P. Cadena de Custodia</label>
                       </div>
-                      <div class="col-xs-6">
+                     <? /* <div class="col-xs-6">
                           <label><input disabled  type="checkbox" <? if ($row_solicitud['idprimus']!=NULL){?> checked="checked"<? }?>  value="1" id="esq1" name="esq1">PrimusGFS</label>
-                      </div>
-                      <div class="col-xs-6">
-                          <label><input  disabled type="checkbox" <? if ($row_solicitud['idmex_pliego']!=NULL){?> checked="checked"<? }?>  value="1" id="esq1" name="esq1">Pliego de condiciones México Calidad Suprema</label>
+                      </div>*/?>
+                     <div class="col-xs-6">
+                          <label><input  disabled type="checkbox" <? if ($mcs==1){?> checked="checked"<? }?>  value="1" id="esq1" name="esq1">Pliego de condiciones México Calidad Suprema</label>
                       </div>
                       <div class="col-xs-12">
-                          <label><input  disabled type="checkbox" <? if ($row_solicitud['idsrrc']!=NULL){?> checked="checked"<? }?>  value="1" id="esq1" name="esq1">Sistema  Reduccion de Riesgos de contaminación</label>
+                          <label><input  disabled type="checkbox" <? if ($row_srrc['idsrrc']!=NULL){?> checked="checked"<? }?>  value="1" id="esq1" name="esq1">Sistema  Reduccion de Riesgos de contaminación</label>
                       </div>
                         <hr class="col-lg-12">
                     <div class="col-lg-6 col-xs-6">
                         <label>Número PGFS</label>
-                      <input placeholder="escribe aquí"  class="plan_input"  id="num_pgfs" name="num_pgfs" type="text"       title="Número " value="<? echo $row_plan_auditoria['num_pgfs'];?>"  />
+                      <input placeholder="escribe aquí"  class="plan_input"  id="num_pgfs" name="num_pgfs" type="text"       title="Número " value="<? if($row_solicitud['num_primus']!=NULL){echo $row_solicitud['num_primus'];}else {echo $row_plan_auditoria['num_pgfs'];}?>"  />
                     </div>
                     <div class="col-lg-6 col-xs-6">
                         <label>  N°. PAMFA(PC.MC/MEXICO G.A.P/SRRC)</label>
-                          <input placeholder="escribe aquí"  class="plan_input"  id="num_pamfa" name="num_pamfa" type="text"      title="Número " value="<? echo $row_plan_auditoria['num_pamfa'];?>"  />
+                          <input placeholder="escribe aquí"  class="plan_input"  id="num_pamfa" name="num_pamfa" type="text"      title="Número " value="<? if($row_solicitud['num_mex_cal_sup']!=NULL){echo $row_solicitud['num_mex_cal_sup'];}else { echo $row_plan_auditoria['num_pamfa'];}?>"  />
                     </div>
                     <div class="col-lg-6 col-xs-6">
                     <label>  Número GlobalGG. A.P.</label>
-                      <input placeholder="escribe aquí"  class="plan_input"  id="num_globalgg" name="num_globalgg" type="text"       title="Número " value="<? echo $row_plan_auditoria['num_globalgg'];?>"  />
+                      <input placeholder="escribe aquí"  class="plan_input"  id="num_globalgg" name="num_globalgg" type="text"       title="Número " value="<? if($row_solicitud['num_ggn']!=NULL){echo $row_solicitud['num_ggn'];}else {echo $row_plan_auditoria['num_globalgg'];}?>"  />
                     </div>
                     <div class="col-lg-6 col-xs-6">
                       <label>Número CoC</label>
-                      <input placeholder="escribe aquí"  class="plan_input"  id="num_coc" name="num_coc" type="text"      title="Número " value="<? echo $row_plan_auditoria['num_coc'];?>"  />
+                      <input placeholder="escribe aquí"  class="plan_input"  id="num_coc" name="num_coc" type="text"      title="Número " value="<? if($row_solicitud['num_coc']!=NULL){echo $row_solicitud['num_coc'];}else {echo $row_plan_auditoria['num_coc'];}?>"  />
                     </div>
                   </div>
                   <div class="col-lg-12 col-xs-12 " style="border:solid 2px #dbf573e6">

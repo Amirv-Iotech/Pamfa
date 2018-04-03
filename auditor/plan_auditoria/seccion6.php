@@ -7,7 +7,7 @@
         <div class="col-lg-12 col-xs-12" style="background-color: #dbf573e6; padding: 0px;">
                 <h3>Equipo Auditor</h3>
         </div>
-        <div class="col-lg-12 col-xs-12">
+        <? /*<div class="col-lg-12 col-xs-12">
         Auditor
              <select name="auditor" class="plan_input" onchange="guardarTabla(this)" >
               <option selected="true" disabled="disabled">Selecciona un Auditor...</option>
@@ -37,7 +37,7 @@
                <input type="hidden" name="idsolicitud" id="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
               <input type="hidden" name="seccion" value="6" />
                </form>   
-        </div>
+        </div>*/?>
         <div class="col-xs-12 col-lg-12" id="tabla_ajax">
           <?
             include('tabla.php');

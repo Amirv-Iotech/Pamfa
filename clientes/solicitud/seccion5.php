@@ -1,7 +1,12 @@
 <fieldset>
 </br>
-  <div id="seccion5"  class="row"  <? if($s5==1){?> style="background-color:#CF3" title="<? echo $ob5;  ?>" <? } else{?>style="background-color: #ecfbe7; <? }?>border: solid 1px #AAAAAA; border-bottom-width:2px; text-align:left;">
-    <div class="col-lg-12 col-sm-12" style="border: solid 1px #AAAAAA; text-align: center; background-color: #dbf573e6;">
+ <? if($dac=="formulario.php"){ if($st5==1){?> <button type="button" class="btn btn-danger collapsed btn-lg btn-block" data-toggle="collapse" data-target="#demo5" aria-expanded="false"><span  style="font-size:20px">  <? echo $c15."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OBSERVACIONES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";?><i class="material-icons" style="font-size: 25px;">arrow_downward</i></span></button>
+<div id="demo5" class="collapse" style="background:#FFF">
+<?  echo $ob5;  ?>
+</div>
+<? } }?>
+	<div  class="row" id="seccion5"   <? if($dac=="formulario.php"){ if($st5==1){?> style="border:3px solid #F00"<? } else{?>style="background-color: #ecfbe7; <? }}else{?> style="background-color: #ecfbe7;"<? }?>border: solid 1px #AAAAAA;">
+   <div class="col-lg-12 col-sm-12" style="border: solid 1px #AAAAAA; text-align: center; background-color: #dbf573e6;">
       <h4>Favor de seleccionar el esquema de certificación que usted esta solicitando:</h4>
     </div>      
     <div class="col-lg-12 col-sm-12" style="border: solid 1px #AAAAAA; text-align: center; background-color: #dbf573e6;">
@@ -113,7 +118,7 @@
       </div>
           
           <div class="col-lg-12 col-xs-12 campos2">
-            <div class="col-lg-10 col-xs-10 campos2" style="border: solid 1px #AAAAAA; min-height: 26px;">
+            <div class="col-lg-10 col-xs-9 campos2" style="border: solid 1px #AAAAAA; min-height: 26px;">
               <b>Declaración de producción paralela (PP) y propiedad paralela (PO)</b>
             </div>
             <div class="col-lg-1 col-xs-1 campos2" style="border: solid 1px #AAAAAA; height: 26px;">
@@ -124,7 +129,7 @@
             </div>
           </div>
           <div class="col-lg-12 col-xs-12 campos2">
-            <div class="col-lg-10 col-xs-10 campos2" style="border: solid 1px #AAAAAA;min-height: 26px;">
+            <div class="col-lg-10 col-xs-9 campos2" style="border: solid 1px #AAAAAA;min-height: 26px;">
                 <label for="preg6" >¿El producto se vende antes de la cosecha?</label>
             </div> 
             <div class="col-lg-1 col-xs-1 campos2" style="border: solid 1px #AAAAAA; height: 26px;">
@@ -135,7 +140,7 @@
             </div>
           </div>
           <div class="col-lg-12 col-xs-12 campos2">
-            <div class="col-lg-10 col-xs-10 campos2" style="border: solid 1px #AAAAAA; min-height: 26px;">
+            <div class="col-lg-10 col-xs-9 campos2" style="border: solid 1px #AAAAAA; min-height: 26px;">
                <label for="preg7" >¿La entidad legal realiza la producción  de ´producto certificado y no certificado, es decir produccion paralela?</label>
             </div> 
             <div class="col-lg-1 col-xs-1 campos2" style="border: solid 1px #AAAAAA; height: 26px;">
@@ -146,7 +151,7 @@
             </div>
           </div>
           <div class="col-lg-12 col-xs-12 campos2">
-            <div class="col-lg-10 col-xs-10 campos2" style="border: solid 1px #AAAAAA; min-height:26px;">
+            <div class="col-lg-10 col-xs-9 campos2" style="border: solid 1px #AAAAAA; min-height:26px;">
               <label for="preg8" >¿La entidad legal que produce el producto, compra el mismo producto a otros proveedores, es decir, propiedad paralela?</label>
             </div> 
             <div class="col-lg-1 col-xs-1 campos2" style="border: solid 1px #AAAAAA; height: 26px;">

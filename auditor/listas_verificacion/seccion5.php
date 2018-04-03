@@ -60,7 +60,7 @@ $totalRows_resp = mysql_num_rows($resp);
 </td>
 <tr>
 <td colspan="4" class="warning"> 
-<input class="plan_input" type="text" name="observacion" value="<?php echo $row_resp['observacion']; ?>" placeholder="Observacion" onchange="this.form.submit()" />
+<textarea class="plan_input" type="text" name="observacion"  placeholder="Observacion" onchange="this.form.submit()" ><?php echo $row_resp['observacion']; ?></textarea>
 <input type="hidden" name="idplan_auditoria" value="<?php echo $row_plan_auditoria['idplan_auditoria']; ?>" />
 <input type="hidden" name="idpregunta" value="<?php echo $row_pregunta['idpregunta']; ?>" />
 <input type="hidden" name="MM_insert" value="form1" />
@@ -88,7 +88,8 @@ $totalRows_resp = mysql_num_rows($resp);
 
 
 <strong>Escribe tus observaciones aquí:</strong>
-<input class="plan_input" type="text" name="observacion" value="<?php echo $row_resp['observacion']; ?>" placeholder="Observación" onchange="this.form.submit()" />
+<textarea class="plan_input" type="text" name="observacion"  placeholder="Observacion" onchange="this.form.submit()" ><?php echo $row_resp['observacion']; ?></textarea>
+
 <input type="hidden" name="idplan_auditoria" value="<?php echo $row_plan_auditoria['idplan_auditoria']; ?>" />
 <input type="hidden" name="idpregunta" value="<?php echo $row_pregunta['idpregunta']; ?>" />
 <input type="hidden" name="MM_insert" value="form1" />
@@ -147,7 +148,8 @@ $totalRows_resp = mysql_num_rows($resp);
 
 
 <strong>Escribe tu justificación aquí:</strong>
-<input class="plan_input" type="text" name="observacion" value="<?php echo $row_resp['observacion']; ?>" placeholder="Observación" onchange="this.form.submit()" />
+<textarea class="plan_input" type="text" name="observacion"  placeholder="Observacion" onchange="this.form.submit()" ><?php echo $row_resp['observacion']; ?></textarea>
+
 <input type="hidden" name="idplan_auditoria" value="<?php echo $row_plan_auditoria['idplan_auditoria']; ?>" />
 <input type="hidden" name="idpregunta" value="<?php echo $row_pregunta['idpregunta']; ?>" />
 <input type="hidden" name="MM_insert" value="form1" />
@@ -180,7 +182,8 @@ $totalRows_resp = mysql_num_rows($resp);
 
 
 <strong>Escribe tu justificación aquí:</strong>
-<input class="plan_input" type="text" name="observacion" value="<?php echo $row_resp['observacion']; ?>" placeholder="Observación" onchange="this.form.submit()" />
+<textarea class="plan_input" type="text" name="observacion"  placeholder="Observacion" onchange="this.form.submit()" ><?php echo $row_resp['observacion']; ?></textarea>
+
 <input type="hidden" name="idplan_auditoria" value="<?php echo $row_plan_auditoria['idplan_auditoria']; ?>" />
 <input type="hidden" name="idpregunta" value="<?php echo $row_pregunta['idpregunta']; ?>" />
 <input type="hidden" name="MM_insert" value="form1" />
@@ -227,7 +230,7 @@ $totalRows_resp = mysql_num_rows($resp);
 
 
 <strong>Escribe tus observaciones aquí:</strong>
-<input class="plan_input" type="text" name="observacion" value="<?php echo $row_resp['observacion']; ?>" placeholder="Observación" onchange="this.form.submit()" />
+<textarea class="plan_input" type="text" name="observacion"  placeholder="Observacion" onchange="this.form.submit()" ><?php echo $row_resp['observacion']; ?></textarea>
 <input type="hidden" name="idplan_auditoria" value="<?php echo $row_plan_auditoria['idplan_auditoria']; ?>" />
 <input type="hidden" name="idpregunta" value="<?php echo $row_pregunta['idpregunta']; ?>" />
 <input type="hidden" name="MM_insert" value="form1" />
@@ -285,7 +288,8 @@ if($_POST['idformato']==6   ||$_POST['idformato']==5 ||$_POST['idformato']==4 ){
 
 
 <strong>Escribe tu justificación aquí:</strong>
-<input class="plan_input" type="text" name="observacion" value="<?php echo $row_resp['observacion']; ?>" placeholder="Observación" onchange="this.form.submit()" />
+<textarea class="plan_input" type="text" name="observacion"  placeholder="Observacion" onchange="this.form.submit()" ><?php echo $row_resp['observacion']; ?></textarea>
+
 <input type="hidden" name="idplan_auditoria" value="<?php echo $row_plan_auditoria['idplan_auditoria']; ?>" />
 <input type="hidden" name="idpregunta" value="<?php echo $row_pregunta['idpregunta']; ?>" />
 <input type="hidden" name="MM_insert" value="form1" />

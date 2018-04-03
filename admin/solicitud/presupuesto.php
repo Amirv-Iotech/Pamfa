@@ -55,6 +55,11 @@ if(isset($_GET['idsolicitud'])){$_POST['idsolicitud']=$_GET['idsolicitud'];}
  ?>
 
 	        <div class="content"   >
+            <form action="../solicitud/solicitudes.php" method="post" target="_top" >
+      
+<button  type="submit" value="Regresar" class="btn btn-success"><i class="fa fa-caret-square-o-left" aria-hidden="true"></i>
+ Regresar</button>            
+            </form>
 	            <div class="container-fluid">
 	                <div class="row">
 	                    <div class="col-md-12">

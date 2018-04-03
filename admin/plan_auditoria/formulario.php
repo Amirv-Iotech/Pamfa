@@ -59,6 +59,22 @@ $row_operador= mysql_fetch_assoc($operador);
 $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error());
 $row_solicitud= mysql_fetch_assoc($solicitud);
 	
+	$query_srrc = "SELECT * FROM solicitud_srrc where idsolicitud='".$_POST['idsolicitud']."'";
+$srrc = mysql_query($query_srrc, $inforgan_pamfa) or die(mysql_error());
+$row_srrc= mysql_fetch_assoc($srrc);
+	
+	
+	$query_solicitud_mexcalsup = "SELECT * FROM solicitud_mexcalsup where idsolicitud='".$_POST['idsolicitud']."'";
+$solicitud_mexcalsup= mysql_query($query_solicitud_mexcalsup, $inforgan_pamfa) or die(mysql_error());
+$mcs=0;
+while($row_solicitud_mexcalsup= mysql_fetch_assoc($solicitud_mexcalsup))
+{
+	if ($row_solicitud_mexcalsup['idmex_alcance']!=NULL  || $row_solicitud_mexcalsup['idmex_pliego']!=NULL)
+	{
+		$mcs=1;
+	}
+}
+	
 	
 
 $query_cert_anterior = sprintf("SELECT * FROM cert_anterior WHERE idsolicitud=%s order by idcert_anterior asc limit 1", GetSQLValueString( $row_solicitud["idsolicitud"], "int"));
@@ -104,8 +120,8 @@ $row_alcance= mysql_fetch_assoc($alcance);
                     <input  disabled   class=" plan_input" id="nombre_legal" name="nombre_legal" type="text" title="Nombre completo" value="<? echo $row_operador['nombre_legal'];?>" /></div>
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">
-                    <label class="col-lg-3 col-xs-3">Dirección de la entidad legal: calle y número:</label>
-                    <div class="col-xs-9 col-lg-9">
+                    <label class="col-lg-3 col-xs-5">Dirección de la entidad legal: calle y número:</label>
+                    <div class="col-xs-7 col-lg-9">
                     <input disabled  class=" plan_input" id="direccion" name="direccion" value="<? echo $row_operador['direccion'];?>"  title="Dirección"  /></div>
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">

@@ -1,9 +1,9 @@
-
 <? 
+include_once("../Connections/mail.php");
 if(!empty($_POST['guardar1'])){
 	
 	
-	$insertSQL = sprintf("INSERT INTO operador (username,password,nombre_legal,nombre_representante,direccion,colonia,estado,pais,coordenadas,email,telefono,fax,rfc,dir_rfc,nombre_factura,email_factura,tel_factura,forma_pago,banco,digitos_tarjeta) VALUES ( %s, %s,%s, %s, %s, %s,%s, %s, %s, %s,%s, %s, %s, %s,%s, %s, %s, %s,%s,%s)",
+	$insertSQL = sprintf("INSERT INTO operador (username,password,nombre_legal,nombre_representante,direccion,colonia,municipio,estado,pais,cp,coordenadas,email,telefono,fax,rfc,dir_rfc,nombre_factura,email_factura,tel_factura,forma_pago,banco,digitos_tarjeta) VALUES ( %s, %s,%s, %s, %s, %s,%s, %s, %s, %s,%s, %s, %s, %s,%s, %s, %s, %s,%s,%s,%s,%s)",
 	
 	GetSQLValueString($_POST['rfc'], "text"),
 	GetSQLValueString("pamfa", "text"),
@@ -11,8 +11,10 @@ if(!empty($_POST['guardar1'])){
  GetSQLValueString($_POST['nombre_representante'], "text"),
  GetSQLValueString($_POST['direccion'], "text"),
  GetSQLValueString($_POST['colonia'], "text"),
+  GetSQLValueString($_POST['municipio'], "text"),
   GetSQLValueString($_POST['estado'], "text"),
  GetSQLValueString($_POST['pais'], "text"),
+  GetSQLValueString($_POST['cp'], "text"),
  GetSQLValueString($_POST['coordenadas'], "text"),
   GetSQLValueString($_POST['email'], "text"),
  GetSQLValueString($_POST['telefono'], "text"),
@@ -32,13 +34,15 @@ if(!empty($_POST['guardar1'])){
   $Result1 = mysql_query($insertSQL,$inforgan_pamfa) or die(mysql_error());
 }
 if(!empty($_POST['update1'])){
-		$insertSQL = sprintf("Update operador SET nombre_legal=%s,nombre_representante=%s,direccion=%s,colonia=%s,estado=%s,pais=%s,coordenadas=%s,email=%s,telefono=%s,fax=%s,rfc=%s,dir_rfc=%s,nombre_factura=%s,email_factura=%s,tel_factura=%s,forma_pago=%s,banco=%s,digitos_tarjeta=%s WHERE idoperador=%s",
+		$insertSQL = sprintf("Update operador SET nombre_legal=%s,nombre_representante=%s,direccion=%s,colonia=%s,municipio=%s,estado=%s,pais=%s,cp=%s,coordenadas=%s,email=%s,telefono=%s,fax=%s,rfc=%s,dir_rfc=%s,nombre_factura=%s,email_factura=%s,tel_factura=%s,forma_pago=%s,banco=%s,digitos_tarjeta=%s WHERE idoperador=%s",
  GetSQLValueString($_POST['nombre_legal'], "text"),
  GetSQLValueString($_POST['nombre_representante'], "text"),
  GetSQLValueString($_POST['direccion'], "text"),
  GetSQLValueString($_POST['colonia'], "text"),
+ GetSQLValueString($_POST['municipio'], "text"),
   GetSQLValueString($_POST['estado'], "text"),
  GetSQLValueString($_POST['pais'], "text"),
+ GetSQLValueString($_POST['cp'], "text"),
  GetSQLValueString($_POST['coordenadas'], "text"),
   GetSQLValueString($_POST['email'], "text"),
  GetSQLValueString($_POST['telefono'], "text"),
@@ -65,6 +69,29 @@ if(!empty($_POST['update_au'])){
 
 
   $Result1= mysql_query($insertSQL ,$inforgan_pamfa) or die(mysql_error());
+  
+  $cuerpo="<table class='table' border='1' cellpadding='5' cellspacing='1'>
+  <tr>
+    <th colspan='3' >Bienvenido</th>
+  </tr>
+  <tr>
+    <td rowspan='2'><img style='width:150px;' src='http://pamfa.net/images/pamfa.png'  alt=''></td>
+    <td colspan='2'><strong>Usuario:</strong> ".$_POST['usuario']."</td></tr>
+	<tr><td colspan='2'><strong>Contraseña<strong>: ".$_POST['pass_tem']."</td>
+  </tr>
+  <tr><td colspan='3'>Apartir de ahora puedes tener acceso a la plataforma dando click en este enlace <a href='http://pamfa.net/'>PAMFA</a></td></tr>
+  <tr><td colspan='3'><img style='width:400px;' src='http://pamfa.net/images/slogan.png'  alt=''></td></tr>
+</table>";
+  
+  $mail->AddAddress($_POST['correo']);
+
+        $mail->Subject = utf8_decode("aceptado");
+        $mail->Body = utf8_decode($cuerpo);
+        $mail->MsgHTML(utf8_decode($cuerpo));
+        // para enviar el correo
+        $mail->Send();
+        // limpiar la lista de correos que se van guardando
+        $mail->ClearAddresses();
 }
 if(!empty($_POST['eliminar1'])){
 	

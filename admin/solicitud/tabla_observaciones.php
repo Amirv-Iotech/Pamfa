@@ -95,22 +95,24 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
                                   
                                    <select class="form-control"  id="<? echo "seccion_sol".$cont;?>" name="seccion_sol" disabled="disabled"  >
                 <option value="-">Seleciona</option>
-                <option value="1" <? if($row_solicitud_obs['seccion_sol']==1){ ?> selected="selected" <? }?>>Seccion 1</option>
-                <option value="2"  <? if($row_solicitud_obs['seccion_sol']==2){ ?> selected="selected" <? }?>>Seccion 2</option>
-                <option value="3"  <? if($row_solicitud_obs['seccion_sol']==3){ ?> selected="selected" <? }?>>Seccion 3</option>
-                <option value="4"  <? if($row_solicitud_obs['seccion_sol']==4){ ?> selected="selected" <? }?>>Seccion 4</option>
-                <option value="5"  <? if($row_solicitud_obs['seccion_sol']==5){ ?> selected="selected" <? }?>>Seccion 5</option>
-                <option value="6"  <? if($row_solicitud_obs['seccion_sol']==6){ ?> selected="selected" <? }?>>Seccion 6</option>
-                <option value="7"  <? if($row_solicitud_obs['seccion_sol']==7){ ?> selected="selected" <? }?>>Seccion 7</option>
-                <option value="8"  <? if($row_solicitud_obs['seccion_sol']==8){ ?> selected="selected" <? }?>>Seccion 8</option>
-                <option value="9"  <? if($row_solicitud_obs['seccion_sol']==9){ ?> selected="selected" <? }?>>Seccion 9</option>
-                <option value="10"  <? if($row_solicitud_obs['seccion_sol']==10){ ?> selected="selected" <? }?>>Seccion 10</option>
-                <option value="11"  <? if($row_solicitud_obs['seccion_sol']==11){ ?> selected="selected" <? }?>>Seccion 11</option>
-                <option value="12"  <? if($row_solicitud_obs['seccion_sol']==12){ ?> selected="selected" <? }?>>Seccion 12</option>
-                <option value="13"  <? if($row_solicitud_obs['seccion_sol']==13){ ?> selected="selected" <? }?>>Seccion 13</option>
+                 <option value="1" <? if($row_solicitud_obs['seccion_sol']==0){ ?> selected="selected" <? }?>>Persona</option>
+               
+                <option value="1" <? if($row_solicitud_obs['seccion_sol']==1){ ?> selected="selected" <? }?>>Seccion 1-Inf. Cliente</option>
+                <option value="2"  <? if($row_solicitud_obs['seccion_sol']==2){ ?> selected="selected" <? }?>>Seccion 2- Nums. Anteriores</option>
+                <option value="3"  <? if($row_solicitud_obs['seccion_sol']==3){ ?> selected="selected" <? }?>>Seccion 3- Cert. Anterior</option>
+                <option value="4"  <? if($row_solicitud_obs['seccion_sol']==4){ ?> selected="selected" <? }?>>Seccion 4- Datos de facturación</option>
+                <option value="5"  <? if($row_solicitud_obs['seccion_sol']==5){ ?> selected="selected" <? }?>>Seccion 5- Globalg I.F.A Y CoC. </option>
+               
+                <option value="7"  <? if($row_solicitud_obs['seccion_sol']==7){ ?> selected="selected" <? }?>>Seccion 6- MCS</option>
+                <option value="8"  <? if($row_solicitud_obs['seccion_sol']==8){ ?> selected="selected" <? }?>>Seccion 7. SRRC</option>
+                <option value="9"  <? if($row_solicitud_obs['seccion_sol']==9){ ?> selected="selected" <? }?>>Seccion 8- Inf. Cultivos</option>
+                <option value="10"  <? if($row_solicitud_obs['seccion_sol']==10){ ?> selected="selected" <? }?>>Seccion 9- Inf. Empaque</option>
+                <option value="11"  <? if($row_solicitud_obs['seccion_sol']==11){ ?> selected="selected" <? }?>>Seccion 10- Inf. Comercialización</option>
+                <option value="12"  <? if($row_solicitud_obs['seccion_sol']==12){ ?> selected="selected" <? }?>>Seccion 11- Idiomas de formatos</option>
+                <option value="13"  <? if($row_solicitud_obs['seccion_sol']==13){ ?> selected="selected" <? }?>>Seccion 12- Acceso a datos</option>
                  <option value="14"  <? if($row_solicitud_obs['seccion_sol']==14){ ?> selected="selected" <? }?>>Anexo producción</option>
-                  <option value="13"  <? if($row_solicitud_obs['seccion_sol']==15){ ?> selected="selected" <? }?>>Anexo Almacén</option>
-                
+                  <option value="15"  <? if($row_solicitud_obs['seccion_sol']==15){ ?> selected="selected" <? }?>>Anexo Almacén</option>
+              
                 </select>
                               </td>
 
@@ -189,7 +191,8 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
 		 url:"cerebro.php",
 		 method:"POST",
 		 data:{idsolicitud_obs_a:idsolicitud_obs_a,actualiza_solicitud_obs:actualiza_solicitud_obs,observacion:observacion,seccion_sol:seccion_sol,fecha_obs:fecha_obs,estado:estado,idsolicitud:idsolicitud},
-		 success: function() {
+		 success: function(data) {
+			 alert(data);
 			 $("#tabla_ajax4").load(ruta4);
 		    }
 			 });

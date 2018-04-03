@@ -31,7 +31,15 @@ $query_solp2 = sprintf("SELECT * FROM solicitud_srrc where idsolicitud='".$row_s
 				}
 				
 				}?>
-  <div class="row" id="seccion10"  <? if ($sel2<1){?> style="display:none" <? }else {?> style="display:block"<? } ?> >
+                
+                 <? if ($dac=="formulario.php"){  if($st10==1){?> <button type="button" class="btn btn-danger collapsed btn-lg btn-block" data-toggle="collapse" data-target="#demo10" aria-expanded="false"><span  style="font-size:20px">  <? echo $ex."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OBSERVACIONES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";?><i class="material-icons" style="font-size: 25px;">arrow_downward</i></span></button>
+<div id="demo10" class="collapse" style="background:#FFF">
+<?  echo $ob10;  ?>
+</div>
+<? }} ?>
+	<div   class="row" id="seccion10"   <? if ($dac=="formulario.php"){  if($st10==1){?> style="border:3px solid #F00"<? } else{?>style="background-color: #ecfbe7; <?  }}else{?> style="background-color: #ecfbe7;"<? }?>border: solid 1px #AAAAAA;">
+  
+                
     <div class=" col-lg-12 col-xs-12">
       <form method="post" action="#seccion10">
       <div class=" col-lg-12 col-xs-12 campos2"  <? if($s10==1){?> style="background-color:#CF3" title="<? echo $ob10;  ?>"<? } else{?>style="background-color: #ecfbe7; <? }?> border: solid 1px #AAAAAA; border-bottom-width:2px;">

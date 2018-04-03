@@ -51,14 +51,17 @@
             <div class="row">
               <div align="center" class="col-md-12">
                
-			<img style="width:300px;" src="../images/pamfa.png" alt="">
-               
-              </div>
+			
+               <a href="../index.php"><img style="width:300px;" src="../images/pamfa.png"  alt=""> </a>
+                </div>
+
+              
               
               
              
 
             </div>
+        
           </div>
           <div class="col-lg-6">
               <form id="frm_administrador"  action="../Connections/autentificar.php" method="POST" >
@@ -76,17 +79,20 @@
                 </div>
                  
                   <input type="hidden"  class="form-control" name="clase_usuario" value="cliente" >
-
-                <div class="col-md-12 text-right">
-                  <button type="submit" class="btn| btn-primary cs-btn">Ingresar</button>  
+ <div class="col-md-6 col-xs-6 text-left">
+        
+                  <input type="button" class="btn btn-warning" onClick="document.location.href='../index.php'" value="REGRESAR"/> 
+                  
+                </div>
+                <div class="col-md-6 col-xs-6 text-right">
+                  <button type="submit" class="btn btn-info">Ingresar</button>  
                 </div>
                     
               </form>
-             
-
+            
           </div>
 
-        </div>
+        
       </div>
   </section>
 

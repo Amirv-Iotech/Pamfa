@@ -1,7 +1,13 @@
 <fieldset>
 </br>
-  <div  id="seccion8"  class="row"  <? if($s8==1){?> style="background-color:#CF3" title="<? echo $ob8;  ?>" <? } else{?>style="background-color: #ecfbe7; <? }?>border: solid 1px #AAAAAA; border-bottom-width:2px;">
-    
+
+ <? if ($dac=="formulario.php"){ if($st8==1){?> <button type="button" class="btn btn-danger collapsed btn-lg btn-block" data-toggle="collapse" data-target="#demo8" aria-expanded="false"><span  style="font-size:20px">  <? echo $c18."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OBSERVACIONES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";?><i class="material-icons" style="font-size: 25px;">arrow_downward</i></span></button>
+<div id="demo8" class="collapse" style="background:#FFF">
+<?  echo $ob8;  ?>
+</div>
+<? } }?>
+	<div   class="row" id="seccion8"   <? if ($dac=="formulario.php"){if($st8==1){?> style="border:3px solid #F00"<? } else{?>style="background-color: #ecfbe7; <?  }}else{?> style="background-color: #ecfbe7;"<? }?>border: solid 1px #AAAAAA;">
+  
       <div class="col-lg-12 col-xs-12 campos2">
           <div class="col-lg-12 col-xs-12 campos2" style="text-align: center;background-color: #dbf573e6; border: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
             <h4><b> Sistema de reducción de riesgos de comtaminación</b></h4>
@@ -52,5 +58,5 @@
           </div>
       </div>
     
-  </div>
+  
 </fieldset>

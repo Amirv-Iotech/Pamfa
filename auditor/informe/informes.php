@@ -118,7 +118,7 @@ $informe  = mysql_query($query_informe , $inforgan_pamfa) or die(mysql_error());
 	                                    	<th>Cliente</th>
 	                                    	
                                             <th></th>
-                                            <th>Estado</th>
+                                          
 											
 	                                    </thead>
 	                                    <tbody>

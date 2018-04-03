@@ -38,7 +38,7 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
  
 ?>
 <div class="table-responsive">
-<table class="table table-hover" title="<? echo $ob14;  ?>">
+<table class="table table-hover" >
 <thead>
   <th >
                     <label><strong>Nombre de la entidad legal que realiza la Manipulación de Producto.:</strong></label>
@@ -133,63 +133,63 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
                            
                             <tr>
                               <td> 
-              <input class="form-control inputsf" id="<? echo "pp1".$cont ?>" name="p1" placeholder=""type="text" value="<? if($row_anexo_e['p1']==NULL){ echo $row_operador['nombre_legal'];} else {echo $row_anexo_e['p1'];} ?>"  />
+              <input class="form-control inputsf" <? if($row_anexo_e['p1']!=NULL){?> disabled="disabled"<? }?> id="<? echo "pp1".$cont ?>" name="p1" placeholder=""type="text" value="<? if($row_anexo_e['p1']==NULL){ echo $row_operador['nombre_legal'];} else {echo $row_anexo_e['p1'];} ?>"  />
             
                               </td>
 
                            <td> 
-                                  <input class="form-control inputsf" id="<? echo "pp2".$cont ?>" name="p2" placeholder=""type="text" value="<? echo $row_anexo_e['p2']; ?>"  />
+                                  <input class="form-control inputsf" <? if($row_anexo_e['p2']!=NULL){?> disabled="disabled"<? }?> id="<? echo "pp2".$cont ?>" name="p2" placeholder=""type="text" value="<? echo $row_anexo_e['p2']; ?>"  />
                               </td>
 
 <td> 
-                                   <input class="form-control inputsf" id="<? echo "pp3".$cont ?>" name="p3" placeholder=""type="text" value="<? echo $row_anexo_e['p3']; ?>"  />
+                                   <input class="form-control inputsf" <? if($row_anexo_e['p3']!=NULL){?> disabled="disabled"<? }?> id="<? echo "pp3".$cont ?>" name="p3" placeholder=""type="text" value="<? echo $row_anexo_e['p3']; ?>"  />
                               </td>
 <td> 
-                                   <input class="form-control inputsf" id="<? echo "pp4".$cont ?>" name="p4" placeholder=""type="text" value="<? echo $row_anexo_e['p4']; ?>"  />                              </td>
+                                   <input class="form-control inputsf" <? if($row_anexo_e['p4']!=NULL){?> disabled="disabled"<? }?> id="<? echo "pp4".$cont ?>" name="p4" placeholder=""type="text" value="<? echo $row_anexo_e['p4']; ?>"  />                              </td>
 <td> 
-                                  <input class="form-control inputsf" id="<? echo "pp5".$cont ?>" name="p5" placeholder=""type="text" value="<? echo $row_anexo_e['p5']; ?>"  />
+                                  <input class="form-control inputsf" <? if($row_anexo_e['p5']!=NULL){?> disabled="disabled"<? }?> id="<? echo "pp5".$cont ?>" name="p5" placeholder=""type="text" value="<? echo $row_anexo_e['p5']; ?>"  />
                               </td>
 <td> 
-                                  <input class="form-control inputsf" id="<? echo "pp6".$cont ?>" name="p6" placeholder=""type="number" step="any" value="<? echo $row_anexo_e['p6']; ?>"  />
+                                  <input class="form-control inputsf" <? if($row_anexo_e['p6']!=NULL){?> disabled="disabled"<? }?> id="<? echo "pp6".$cont ?>" name="p6" placeholder=""type="number" step="any" value="<? echo $row_anexo_e['p6']; ?>"  />
                               </td>
 <td> 
-                                  <input class="form-control inputsf" id="<? echo "pp7".$cont ?>" name="p7" placeholder=""type="text" value="<? echo $row_anexo_e['p7']; ?>"  />
+                                  <input class="form-control inputsf" <? if($row_anexo_e['p7']!=NULL){?> disabled="disabled"<? }?> id="<? echo "pp7".$cont ?>" name="p7" placeholder=""type="text" value="<? echo $row_anexo_e['p7']; ?>"  />
                               </td>
 <td> 
-                                  <input class="form-control inputsf" id="<? echo "pp8".$cont ?>" name="p8" placeholder=""type="text" value="<? echo $row_anexo_e['p8']; ?>"  />
+                                  <input class="form-control inputsf" <? if($row_anexo_e['p8']!=NULL){?> disabled="disabled"<? }?> id="<? echo "pp8".$cont ?>" name="p8" placeholder=""type="text" value="<? echo $row_anexo_e['p8']; ?>"  />
                               </td>
 <td> 
-                                   <input class="form-control inputsf" id="<? echo "pp9".$cont ?>" name="p9" placeholder=""type="text" value="<? echo $row_anexo_e['p9']; ?>"  />
+                                   <input class="form-control inputsf" <? if($row_anexo_e['p9']!=NULL){?> disabled="disabled"<? }?> id="<? echo "pp9".$cont ?>" name="p9" placeholder=""type="text" value="<? echo $row_anexo_e['p9']; ?>"  />
                               </td>
 <td> 
-                                  <input class="form-control inputsf" id="<? echo "pp10".$cont ?>" name="p10" placeholder=""type="text" value="<? echo $row_anexo_e['p10']; ?>"  />
+                                  <input class="form-control inputsf" <? if($row_anexo_e['p10']!=NULL){?> disabled="disabled"<? }?> id="<? echo "pp10".$cont ?>" name="p10" placeholder=""type="text" value="<? echo $row_anexo_e['p10']; ?>"  />
                               </td>
 <td> 
-                                   <input class="form-control inputsf" id="<? echo "pp11".$cont ?>" name="p11" placeholder=""type="number" step="any" value="<? echo $row_anexo_e['p11']; ?>"  />
+                                   <input class="form-control inputsf" <? if($row_anexo_e['p11']!=NULL){?> disabled="disabled"<? }?> id="<? echo "pp11".$cont ?>" name="p11" placeholder=""type="number" step="any" value="<? echo $row_anexo_e['p11']; ?>"  />
                               </td>
 <td> 
-                                  <input class="form-control inputsf" id="<? echo "pp12".$cont ?>" name="p12" placeholder=""type="text" value="<? echo $row_anexo_e['p12']; ?>"  />
+                                  <input class="form-control inputsf" <? if($row_anexo_e['p12']!=NULL){?> disabled="disabled"<? }?> id="<? echo "pp12".$cont ?>" name="p12" placeholder=""type="text" value="<? echo $row_anexo_e['p12']; ?>"  />
                               </td>
 <td> 
-                                   <input class="form-control inputsf" id="<? echo "pp13".$cont ?>" name="p13" placeholder=""type="text" value="<? echo $row_anexo_e['p13']; ?>"  />
+                                   <input class="form-control inputsf" <? if($row_anexo_e['p13']!=NULL){?> disabled="disabled"<? }?> id="<? echo "pp13".$cont ?>" name="p13" placeholder=""type="text" value="<? echo $row_anexo_e['p13']; ?>"  />
                               </td>
 <td> 
-                                   <input class="form-control inputsf" id="<? echo "pp14".$cont ?>" name="p14" placeholder=""type="text" value="<? echo $row_anexo_e['p14']; ?>"  />
+                                   <input class="form-control inputsf" <? if($row_anexo_e['p14']!=NULL){?> disabled="disabled"<? }?> id="<? echo "pp14".$cont ?>" name="p14" placeholder=""type="text" value="<? echo $row_anexo_e['p14']; ?>"  />
                               </td>
 <td> 
-                                   <input class="form-control inputsf" id="<? echo "pp15".$cont ?>" name="p15" placeholder=""type="text" value="<? echo $row_anexo_e['p15']; ?>"  />
+                                   <input class="form-control inputsf" <? if($row_anexo_e['p15']!=NULL){?> disabled="disabled"<? }?> id="<? echo "pp15".$cont ?>" name="p15" placeholder=""type="text" value="<? echo $row_anexo_e['p15']; ?>"  />
                               </td>
 <td> 
-                                  <input class="form-control inputsf" id="<? echo "pp16".$cont ?>" name="p16" placeholder=""type="text" value="<? echo $row_anexo_e['p16']; ?>"  />
+                                  <input class="form-control inputsf" <? if($row_anexo_e['p16']!=NULL){?> disabled="disabled"<? }?> id="<? echo "pp16".$cont ?>" name="p16" placeholder=""type="text" value="<? echo $row_anexo_e['p16']; ?>"  />
                               </td>
 <td> 
-                                  <input class="form-control inputsf" id="<? echo "pp17".$cont ?>" name="p17" placeholder=""type="text" value="<? echo $row_anexo_e['p17']; ?>"  />
+                                  <input class="form-control inputsf" <? if($row_anexo_e['p17']!=NULL){?> disabled="disabled"<? }?> id="<? echo "pp17".$cont ?>" name="p17" placeholder=""type="text" value="<? echo $row_anexo_e['p17']; ?>"  />
                               </td>
 <td> 
-                                  <input class="form-control inputsf" id="<? echo "pp18".$cont ?>" name="p18" placeholder=""type="text" value="<? echo $row_anexo_e['p18']; ?>"  />
+                                  <input class="form-control inputsf" <? if($row_anexo_e['p18']!=NULL){?> disabled="disabled"<? }?> id="<? echo "pp18".$cont ?>" name="p18" placeholder=""type="text" value="<? echo $row_anexo_e['p18']; ?>"  />
                               </td>
 <td> 
-                                  <input class="form-control inputsf" id="<? echo "pp19".$cont ?>" name="p19" placeholder=""type="text" value="<? echo $row_anexo_e['p19']; ?>"  />
+                                  <input class="form-control inputsf" <? if($row_anexo_e['p19']!=NULL){?> disabled="disabled"<? }?> id="<? echo "pp19".$cont ?>" name="p19" placeholder=""type="text" value="<? echo $row_anexo_e['p19']; ?>"  />
                               </td>
 <? /*
                               <td>

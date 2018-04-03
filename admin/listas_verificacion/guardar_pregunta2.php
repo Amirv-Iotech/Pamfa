@@ -38,7 +38,7 @@ $editFormAction = $_SERVER['PHP_SELF'];
 if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
 }
-
+mysql_select_db($database_pamfa, $inforgan_pamfa);
 if (isset($_POST['idpregunta'])) {
 $query_resp="select count(*) as total from catalogos_respuestas where idplan_auditoria='".$_POST['idplan_auditoria']."' and idpregunta='".$_POST['idpregunta']."'";
 $resp=mysql_query($query_resp, $inforgan_pamfa) or die(mysql_error());

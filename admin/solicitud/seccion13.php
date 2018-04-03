@@ -1,5 +1,5 @@
 <fieldset><br/>
-  <div class="row">
+  <div class="row" id="seccion13">
     <div class="col-lg-12 col-xs-12">
       
         <div class="col-lg-12 col-xs-12">
@@ -10,7 +10,7 @@
                 <label for="num_total" >El cliente permite el ecceso de su nombre de la empresa y direccion al grupo de acceso de datos "Pública"</label>
             </div>
             <div class="col-lg-2 col-xs-2">
-                <input id="respuesta4"  <? if ($row_solicitud['respuesta4']=="Si"){?> checked="checked"<? }?> type="checkbox" value="Si" name="respuesta4">
+                <input id="respuesta4"  <? if ($row_solicitud['respuesta4']=="Si"){?> checked="checked"<? }?> type="radio" value="Si" name="respuesta4">
             </div>
         </div>
         <div class="col-lg-12 col-xs-12">
@@ -18,7 +18,7 @@
               <label for="num_unid_prod2" >El cliente no esta de acuerdo para conceder acceso de su nombre de la empresa y dirección al grupo de acceso de datos "Pública"</label>
             </div>
             <div class="col-lg-2 col-xs-2">
-                <input id="respuesta5"  <? if ($row_solicitud['respuesta5']=="Si"){?> checked="checked"<? }?> type="checkbox" value="Si" name="respuesta5">
+              <input id="respuesta4"  <? if ($row_solicitud['respuesta4']=="No"){?> checked="checked"<? }?> type="radio" value="No" name="respuesta4">
             </div>
             <? if($row_solicitud['terminada']==1){?>
           

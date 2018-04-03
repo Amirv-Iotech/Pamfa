@@ -177,16 +177,16 @@ $total=$tot_nc+$tot_ncm+$tot_nco;
 
             <form id="myform" action="#seccion1" method="post" class="form-horizontal" enctype="multipart/form-data">
                <div class="col-xs-12 col-lg-12" style="background-color: #dbf573e6; padding: 0px;">
-                  <h3 align="center">DATOS DEL CLIENTE</h3>
+                  <h3 align="center"> DEL CLIENTE</h3>
                   
                 </div>
                
-                <div class="col-lg-12 col-xs-12 datos">
+                <div class="col-lg-12 col-xs-12 ">
                     <label class="col-lg-3 col-xs-3">Expediente:</label>
                     <div class="col-lg-9 col-xs-9" >
                     <input  disabled   class=" plan_input" id="nombre_legal" name="nombre_legal" type="text"  value="<? echo $_POST['idsolicitud'];?>" /></div>
                 </div>
-                <div class="col-lg-12 col-xs-12 datos">
+                <div class="col-lg-12 col-xs-12 ">
                     <label class="col-lg-3 col-xs-3">Duración:</label>
                     <div class="col-xs-9 col-lg-9">
                     <input disabled  class=" plan_input" id="direccion" name="direccion" value="<? echo $row_inf['duracion']."Horas";?>"   /></div>
@@ -194,7 +194,7 @@ $total=$tot_nc+$tot_ncm+$tot_nco;
                
                
              
-                <div class="col-lg-12 col-xs-12 datos">                                
+                <div class="col-lg-12 col-xs-12 ">                                
                     <label class="col-lg-3 col-xs-3">Tipo de auditoria:</label>  
                     <div class="col-lg-9 col-xs-9">  
                     
@@ -246,7 +246,7 @@ if (stripos( $productos,$a1) === false) {
 					  
 					  }?>
                 
-                <div class="col-lg-12 col-xs-12 datos">
+                <div class="col-lg-12 col-xs-12 ">
                     <label class="col-lg-3 col-xs-3">Producto(s) presentes en la inspección</label>
                    
                       <div class="col-lg-9 col-xs-9">
@@ -254,7 +254,7 @@ if (stripos( $productos,$a1) === false) {
                       </div>
                 </div>
                 
-                  <div class="col-lg-12 col-xs-12 datos">
+                  <div class="col-lg-12 col-xs-12 ">
                     <label class="col-lg-3 col-xs-3">Rancho/PMU</label>
                    
                       <div class="col-lg-9 col-xs-9">

@@ -126,7 +126,11 @@ $row_alcance= mysql_fetch_assoc($alcance);
 
 ////////
 ?>
-<div class="content" >
+<br /><br /><br /><br />
+<div  >
+
+                     
+            
     <div class="row" id="form_plan_aud" style="background-color: #ecfbe7; padding: 0px;">
         <div class="col-lg-12 col-xs-12" style="padding: 0px;">
 
@@ -146,20 +150,20 @@ $row_alcance= mysql_fetch_assoc($alcance);
                     <input  disabled   class=" plan_input" id="nombre_legal" name="nombre_legal" type="text" title="Nombre completo" value="<? echo $row_operador['nombre_legal'];?>" /></div>
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">
-                    <label class="col-lg-3 col-xs-3">Dirección de la entidad legal: calle y número:</label>
-                    <div class="col-xs-9 col-lg-9">
+                    <label class="col-lg-3 col-xs-5">Dirección de la entidad legal: calle y número:</label>
+                    <div class="col-xs-7 col-lg-9">
                     <input disabled  class=" plan_input" id="direccion" name="direccion" value="<? echo $row_operador['direccion'].",".$row_operador['colonia'].",".$row_operador['cp'].",".$row_operador['municipio'].",".$row_operador['estado'];?>"  title="Dirección"  /></div>
                 </div>
                
                 <div class="col-lg-12 col-xs-12 datos">
-                    <label class="col-lg-3 col-xs-3">Nombre del representante legal:</label>
-                    <div class="col-lg-9 col-xs-9">
+                    <label class="col-lg-3 col-xs-5">Nombre del representante legal:</label>
+                    <div class="col-lg-9 col-xs-7">
                     <input disabled class="plan_input" id="email" name="email" type="text" value="<? echo $row_operador['nombre_representante'];?>"  title="Nombre " />
                     </div>
                 </div>
                  <div class="col-lg-12 col-xs-12 datos">
-                    <label class="col-lg-3 col-xs-3">Nombre de la persona responsable de implementar la norma:</label>
-                    <div class="col-lg-9 col-xs-9">
+                    <label class="col-lg-3 col-xs-7">Nombre de la persona responsable de implementar la norma:</label>
+                    <div class="col-lg-9 col-xs-5">
                     <input class="plan_input" id="port_tecnico" name="port_tecnico" type="text" value="<? echo $row_plan_auditoria['port_tecnico'];?>"  title="Nombre " onchange="guarda3()" />
                     </div>
                 </div>
@@ -235,29 +239,31 @@ if (stripos( $productos,$a1) === false) {
 					  $pmu=$pmu.$array2[$rr].",";
 					  
 					  }?>
+                      
+                      
+                      
+                      
                  <div class="col-lg-12 col-xs-12 ">                                
                     <label class="col-lg-3 col-xs-3">Opción y producto(s) del alcance:</label>  
                     <div class="col-lg-4 col-xs-4">  
-                   <textarea disabled class="plan_input" id="alcance" name="alcance" ><? echo $gap_esquema;?></textarea>
-                    </div>
+                   <textarea disabled class="plan_input" id="alcance" name="alcance" ><? if($_POST['idformato']==3 || $_POST['idformato']==4||$_POST['idformato']==5	||$_POST['idformato']==6){echo $mex_alcance;}else{ echo $gap_esquema;}?></textarea>
+                   
+                   </div>
                  
                      <div class="col-lg-5 col-xs-5">  
-                    <input disabled class="plan_input" id="pliego" name="pliego" type="text"  value="<? echo $row_plan_auditoria['alcance']; ;?>" />
+                    <input disabled class="plan_input" id="pliego" name="pliego" type="text"  value="<?  if($_POST['idformato']==3 || $_POST['idformato']==4||$_POST['idformato']==5	||$_POST['idformato']==6){echo $mex_pliego;}else{echo $row_plan_auditoria['alcance'];}?>" />
                     </div>
                 </div>
                 
                 <div class="col-lg-12 col-xs-12 datos">
-                    <label class="col-lg-3 col-xs-3">Producto(s) presentes en la inspección</label>
+                    <label class="col-lg-3 col-xs-5">Producto(s) presentes en la inspección</label>
                    
-                      <div class="col-lg-9 col-xs-9">
+                      <div class="col-lg-9 col-xs-7">
                       <input disabled class="plan_input" id="producto" name="producto" type="text" value="<? echo $productos;?>"  />
                       </div>
                 </div>
                
-                <div class="col-lg-12 col-xs-12">
-                </div>
-                <div class="col-lg-12 col-xs-12">
-                </div>
+                
             </form>
            <input id="idsolicitud" type="hidden" name="idsolicitud" value="<? echo $_POST['idsolicitud']; ?>" /> 
            
@@ -274,9 +280,9 @@ if (stripos( $productos,$a1) === false) {
         <div class="col-lg-12 col-xs-12" style="padding: 0px;">
 
 <div class="col-lg-12 col-xs-12 datos">
-                    <label class="col-lg-3 col-xs-3">PLAZO DE CIERRE DE NC
+                    <label class="col-lg-3 col-xs-5">PLAZO DE CIERRE DE NC
 (indicar plazo de cierre): </label>
-                    <div class="col-lg-9 col-xs-9">
+                    <div class="col-lg-9 col-xs-7">
                     <input  class="plan_input" id="nc_plazo" name="nc_plazo" type="text" value="<? echo $row_plan_auditoria['nc_plazo'];?>"  placeholder="RESUMEN DE NO CONFORMIDADES: El plazo de envío y cierre de las no conformidades es de ____ días.				
 "  onchange="guarda3()" />
                     </div>

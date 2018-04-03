@@ -33,9 +33,9 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
 
  	//consulta todos los cultivos
  $query_cultivos = sprintf("SELECT * FROM cultivos WHERE idsolicitud = %s", GetSQLValueString($row_solicitud["idsolicitud"], "int"));
- 
+ echo $query_cultivos;
 ?>
-<div class="table-responsive"  <? if($s9==1){?> style="background-color:#CF3" <? } else{?>style="background-color: #ecfbe7; <? }?> ">
+<div class="table-responsive" >
 <table class="table table-hover">
 <thead>
   <th>

@@ -66,9 +66,12 @@ $f=date('d/m/y',time());
   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
 }
 ///////fin
+$query_solicitud1 = "select idplan_auditoria from plan_auditoria where idsolicitud in(SELECT idsolicitud FROM solicitud where idoperador='".$_SESSION["idusuario"]."') and aprobado=1 ";
+$solicitud1 = mysql_query($query_solicitud1, $inforgan_pamfa) or die(mysql_error());
 
-$query_informe = "SELECT * FROM informe  ORDER BY idinforme DESC";
-$informe  = mysql_query($query_informe , $inforgan_pamfa) or die(mysql_error());
+
+
+
 
 
 
@@ -99,9 +102,14 @@ $informe  = mysql_query($query_informe , $inforgan_pamfa) or die(mysql_error());
 											
 	                                    </thead>
 	                                    <tbody>
-                                        <? while( $row_informe= mysql_fetch_assoc($informe))
+                                        <? while($row_solicitud1= mysql_fetch_assoc($solicitud1))
 										{
 											
+											$query_informe = "SELECT * FROM informe where idplan_auditoria='".$row_solicitud1['idplan_auditoria']."' ORDER BY idinforme DESC";
+$informe  = mysql_query($query_informe , $inforgan_pamfa) or die(mysql_error());
+
+ $row_informe= mysql_fetch_assoc($informe);
+ 
 											$query_solicitud = "SELECT * FROM solicitud where idsolicitud=(select idsolicitud from plan_auditoria where idplan_auditoria=(select idplan_auditoria from informe where idinforme='".$row_informe['idinforme']."')) ";
 $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error());
 $row_solicitud= mysql_fetch_assoc($solicitud);

@@ -1,9 +1,15 @@
 <fieldset>
 	</br>
 	
-	<div class="row" id="seccion4"   <? if($s4==1){?> style="background-color:#CF3" title="<? echo $ob4;  ?>"<? } else{?>style="background-color: #ecfbe7; <? }?>border: solid 1px #AAAAAA; border-bottom-width:2px;">
-		
-		<div class=" form-group col-lg-12 co-sm-12 campos" style="background-color: #dbf573e6; border: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
+    <? if($dac=="formulario.php"){ if($st4==1){?> <button type="button" class="btn btn-danger collapsed btn-lg btn-block" data-toggle="collapse" data-target="#demo4" aria-expanded="false"><span  style="font-size:20px">  <? echo $c14."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OBSERVACIONES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";?><i class="material-icons" style="font-size: 25px;">arrow_downward</i></span></button>
+<div id="demo4" class="collapse" style="background:#FFF">
+<?  echo $ob4;  ?>
+</div>
+<? } }?>
+	<div  class="row" id="seccion4"   <? if($dac=="formulario.php"){ if($st4==1){?> style="border:3px solid #F00"<? } else{?>style="background-color: #ecfbe7; <? }}else{?> style="background-color: #ecfbe7;"<? }?>border: solid 1px #AAAAAA;">
+
+
+    	<div class=" form-group col-lg-12 co-sm-12 campos" style="background-color: #dbf573e6; border: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
 			<b> Datos de Facturación</b>
 		</div>
 		

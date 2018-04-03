@@ -1,6 +1,14 @@
 <fieldset><br/>
-  <div clas="row" id="seccion12">
-    <div class="col-lg-12 col-xs-12 campos2"  <? if($s12==1){?> style="background-color:#CF3" title="<? echo $ob12;  ?>" <? } else{?>style="background-color: #ecfbe7; <? }?> border: solid 1px #AAAAAA; border-bottom-width:2px;">
+      <? if ($dac=="formulario.php"){  if($st12==1){?> <button type="button" class="btn btn-danger collapsed btn-lg btn-block" data-toggle="collapse" data-target="#demo12" aria-expanded="false"><span  style="font-size:20px">  <? echo $c112."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OBSERVACIONES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";?><i class="material-icons" style="font-size: 25px;">arrow_downward</i></span></button>
+<div id="demo12" class="collapse" style="background:#FFF">
+<?  echo $ob12;  ?>
+</div>
+<? } }?>
+	<div   class="row" id="seccion12"   <? if ($dac=="formulario.php"){  if($st12==1){?> style="border:3px solid #F00"<? } else{?>style="background-color: #ecfbe7; <? }}else{?> style="background-color: #ecfbe7;"<? }?>border: solid 1px #AAAAAA;">
+  
+   
+  
+    <div class="col-lg-12 col-xs-12 campos2" >
       <form method="post" action="#seccion12">
       <div class="col-lg-12" style="text-align: center;background-color: #dbf573e6; border: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
           <h4><b>Por favor indicar el idioma en que se realizará la auditoria y el idioma en que se realizará el informe</b></h4>
@@ -19,5 +27,9 @@
     </div>
   </div>
  
-  <button type="button"  name="anexo"id="anexo" <? if($s14==1){?>class="btn btn-warning"  title="<? echo $ob14;  ?>"<? } else{?>class="btn btn-info"<? }?> >Anexo producción</button>
-   <button type="button" name="anexo2" id="anexo2" <? if($s15==1){?>class="btn btn-warning" title="<? echo $ob15;  ?>"<? } else{?>class="btn btn-info"<? }?>>Anexo almacenamiento</button>
+  
+	
+  
+ 
+  <input type="button"  name="anexo"id="anexo" <? if($st14==1){?>class="btn btn-warning"  <? } else{?>class="btn btn-info"<? }?> value="Anexo producción"/>
+   <input type="button" name="anexo" id="anexo2" <? if($st15==1){?>class="btn btn-warning" <? } else{?>class="btn btn-info"<? }?> value="Anexo almacenamiento"/>

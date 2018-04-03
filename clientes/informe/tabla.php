@@ -49,7 +49,7 @@
                       
              
               <?php 
-              $query_vista1 = "SELECT * FROM rol_auditor where idrol=".$row_equipo['rol']."";
+              $query_vista1 = "SELECT * FROM rol_auditor where idrol='".$row_equipo['rol']."'";
               $vista1 = mysql_query($query_vista1, $inforgan_pamfa) or die(mysql_error());
 $row_vista1 = mysql_fetch_assoc($vista1);?>
 <input type="text" class="plan_input" disabled="disabled" value="<?php echo $row_vista1['rol'];?>" >

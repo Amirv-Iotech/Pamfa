@@ -41,7 +41,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
 mysql_select_db($database_pamfa, $inforgan_pamfa);
  include("includes/header.php");
- ?><iframe width="10" height="10" src="" frameborder="1"></iframe><? 
+ ?><iframe width="1" height="1" src="" frameborder="0"></iframe><? 
 if(isset($_POST['idsolicitud']))
 {
 	 $query_solicitud = sprintf("SELECT * FROM solicitud WHERE idsolicitud=%s order by idsolicitud asc limit 1", GetSQLValueString( $_POST['idsolicitud'], "int"));
@@ -51,7 +51,7 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
 }
 else{
 
-$query_solicitud2 = sprintf("SELECT * FROM solicitud WHERE idoperador=%s order by idsolicitud asc limit 1", GetSQLValueString( $_SESSION["idoperador"], "int"));
+$query_solicitud2 = sprintf("SELECT * FROM solicitud WHERE idoperador=%s order by idsolicitud desc limit 1", GetSQLValueString( $_SESSION["idoperador"], "int"));
 $solicitud2 = mysql_query($query_solicitud2, $inforgan_pamfa) or die(mysql_error());
 $total_solicitud2 = mysql_num_rows($solicitud2);
 
@@ -64,7 +64,8 @@ $sol = $row_s['id'];
 
 
 }
- else {$query_s = sprintf("SELECT Max(idsolicitud) as id FROM solicitud  WHERE idoperador=%s",GetSQLValueString($_SESSION["idoperador"], "text"));
+ else {
+	 $query_s = sprintf("SELECT Max(idsolicitud) as id FROM solicitud  WHERE idoperador=%s",GetSQLValueString($_SESSION["idoperador"], "text"));
   $s  = mysql_query($query_s , $inforgan_pamfa) or die(mysql_error());
 $row_s = mysql_fetch_assoc($s);  
 
@@ -72,7 +73,7 @@ $query_sa = sprintf("SELECT terminada FROM solicitud  WHERE idsolicitud=%s ",Get
   $sa  = mysql_query($query_sa , $inforgan_pamfa) or die(mysql_error());
 $row_sa = mysql_fetch_assoc($sa); 
 
-if($row_sa['terminada']==1 ){
+if($row_sa['terminada']==1  ){
   $sol=NULL;
 }else{
   $sol="1";
@@ -115,16 +116,24 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
  
  function obser($x,$y)
  {
-	 
-	 $lista="Observaciones:";
+	 $p=1;
+	 $pl="";
+	 $lista="<table class='table' border='1' cellpadding='1' cellspacing='5' ><tr><td><strong>N°</strong></td><td><strong>Observaciones</strong></td><td><strong>Fecha</strong></td><td><strong>Estado</strong></td></tr>";
 	 $query_obs = sprintf("SELECT * FROM solicitud_obs WHERE idsolicitud=%s and seccion_sol=%s ", GetSQLValueString(  $x, "int"),
 	 GetSQLValueString(  $y, "int"));
 $obs = mysql_query($query_obs, $GLOBALS['inforgan_pamfa']) or die(mysql_error());
-echo  $query_obs;
+
 while($row_obs= mysql_fetch_assoc($obs))
 {
-	$lista= $lista."\n".$row_obs['observacion'];
+	//$pl=$p.".-".$row_obs['observacion']."";
+	//$lista=$lista.$pl."<br>";
+	$e="";
+	if($row_obs['estado']==1){$e="Pendiente";}else{$e="Atendida";}
+	$pl="<tr><td>".$p."</td><td>".$row_obs['observacion']."</td><td>".$row_obs['fecha_obs']."</td><td>".$e."</td></tr>";
+	$lista=$lista.$pl;
+	$p++;
 }
+$lista=$lista."</table>";
 return $lista;
  }
  
@@ -144,123 +153,138 @@ while($row_obs= mysql_fetch_assoc($obs))
 	$c++;
 	
 }
+$a0="";
+$ex=0;
+$c10=0;$c11=0;$cl2=0;$c13=0;$c14=0;$c15=0;$cl6=0;$c17=0;$c18=0;$c19=0;$c111=0;$c112=0;$c113=0;$c114=0;$c115=0;
+$st0=0;$st1=0;$st2=0;$st3=0;$st4=0;$st5=0;$st6=0;$st7=0;$st8=0;$st9=0;$st10=0;$st11=0;$st12=0;$st13=0;$st14=0;$st15=0;
 
-$s1=0;$s2=0;$s3=0;$s4=0;$s5=0;$s6=0;$s7=0;$s8=0;$s9=0;$s10=0;$s11=0;$s12=0;$s13=0;$s14=0;$s15=0;
-$ob1=0;$ob2=0;$ob3=0;$ob4=0;$ob5=0;$ob6=0;$ob7=0;$ob8=0;$ob9=0;$ob10=0;$ob11=0;$ob12=0;$ob13=0;$ob14=0;$ob15=0;
+$s0=0;$s1=0;$s2=0;$s3=0;$s4=0;$s5=0;$s6=0;$s7=0;$s8=0;$s9=0;$s10=0;$s11=0;$s12=0;$s13=0;$s14=0;$s15=0;
+$ob0=0;$ob1=0;$ob2=0;$ob3=0;$ob4=0;$ob5=0;$ob6=0;$ob7=0;$ob8=0;$ob9=0;$ob10=0;$ob11=0;$ob12=0;$ob13=0;$ob14=0;$ob15=0;
 
 
 for($x=0;$x<$c;$x++)
 {
 	
+	if($array[$x]==0)
+	{
+			if($s0==0){$c10++;
+			$ob0=obser($row_solicitud["idsolicitud"],0);
+	
+	}
+		$st0=1;
+	
+	
+	}
 	
 	if($array[$x]==1)
 	{
-			if($s1==0){
+			if($s1==0){$c11++;
 	$ob1=obser($row_solicitud["idsolicitud"],1);
 	}
-		$s1=1;
+		$st1=1;
 	
 	
 	}
 	if($array[$x]==2)
 	{
-		if($s2==0){
+		if($s2==0){$c12++;
 	$ob2=obser($row_solicitud["idsolicitud"],2);
 	}
-		$s2=1;
+		$st2=1;
 	}
 	if($array[$x]==3)
 	{
-		if($s3==0){
+		if($s3==0){$c13++;
 	$ob3=obser($row_solicitud["idsolicitud"],3);
 	}
-		$s3=1;
+		$st3=1;
 	}
 	if($array[$x]==4)
 	{
-		if($s4==0){
+		if($s4==0){$c14++;
 	$ob4=obser($row_solicitud["idsolicitud"],4);
 	}
-		$s4=1;
+		$st4=1;
 	}
 	if($array[$x]==5)
 	{
-		if($s5==0){
+		if($s5==0){$c15++;
 	$ob5=obser($row_solicitud["idsolicitud"],5);
 	}
-		$s5=1;
+		$st5=1;
 	
 	}
 	if($array[$x]==6)
 	{
-		if($s6==0){
+		if($s6==0){$c16++;
 	$ob6=obser($row_solicitud["idsolicitud"],6);
 	}
-		$s6=1;
+		$st6=1;
 	}
 	if($array[$x]==7)
 	{
-		if($s7==0){
+		if($s7==0){$c17++;
 	$ob7=obser($row_solicitud["idsolicitud"],7);
 	}
-		$s7=1;
+		$st7=1;
 	}
 	if($array[$x]==8)
 	{
-		if($s8==0){
+		if($s8==0){$c18++;
 	$ob8=obser($row_solicitud["idsolicitud"],8);
 	}
-		$s8=1;
+		$st8=1;
 	}
 	if($array[$x]==9)
 	{
-		if($s9==0){
+		if($s9==0){$c19++;
 	$ob9=obser($row_solicitud["idsolicitud"],9);
 	}
-		$s9=1;
+		$st9=1;
 	}
 	if($array[$x]==10)
 	{
-		if($s10==0){
+		if($s10==0){$ex++;
 	$ob10=obser($row_solicitud["idsolicitud"],10);
 	}
-		$s10=1;
-	}
+		$st10=1;
+			}
 	if($array[$x]==11)
 	{
-		if($s11==0){
+		if($s11==0){$c111++;
 	$ob11=obser($row_solicitud["idsolicitud"],11);
 	}
-		$s11=1;
+		$st11=1;
 	}
 	if($array[$x]==12)
 	{
-		if($s12==0){
+		if($s12==0){$c112++;
 	$ob12=obser($row_solicitud["idsolicitud"],12);
 	}
-		$s12=1;
+		$st12=1;
 	}
 	if($array[$x]==13)
 	{
-		if($s13==0){
+		if($s13==0){$c113++;
 	$ob13=obser($row_solicitud["idsolicitud"],13);
 	}
-		$s13=1;
+		$st13=1;
 	}
 	if($array[$x]==14)
 	{
-		if($s14==0){
+		if($s14==0){$c114++;
 	$ob14=obser($row_solicitud["idsolicitud"],14);
 	}
-		$s14=1;
+		$st14=1;;
 	}
 	if($array[$x]==15)
 	{
-		if($s15==0){
+		if($s15==0){$c115++;
 	$ob15=obser($row_solicitud["idsolicitud"],15);
 	}
-		$s15=1;
+		$st15=1;
 	}
+	
 }
 
 
@@ -270,17 +294,26 @@ for($x=0;$x<$c;$x++)
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-md-12">
-                      
                         
-<div class="panel panel-white">
-<div class="panel-heading clearfix"><br>
+<div class="panel panel-white"   >
+<div class="panel-heading clearfix" style="background-color: #ecfbe7;" ><br>
 
 <input type="hidden" id="ruta" name="ruta" value="<? echo "tabla.php?idsolicitud=".$row_solicitud['idsolicitud']."&seccion=1&idoperador=".$row_operador['idoperador']."";?>" />
 <input type="hidden" id="ruta2" name="ruta2" value="<? echo "tabla_anexo.php?idsolicitud=".$row_solicitud['idsolicitud']."&seccion=1&idoperador=".$row_operador['idoperador']."";?>" />
 <input type="hidden" id="ruta3" name="ruta3" value="<? echo "tabla_anexo_alm.php?idsolicitud=".$row_solicitud['idsolicitud']."&seccion=1&idoperador=".$row_operador['idoperador']."";?>" />
+ 
+ <? if($st0==1){?> <button type="button" class="btn btn-danger collapsed btn-lg btn-block" data-toggle="collapse" data-target="#demo" aria-expanded="false"><span  style="font-size:20px">  <? echo $c10."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OBSERVACIONES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";?><i class="material-icons" style="font-size: 25px;">arrow_downward</i></span></button>
+ <div id="demo" class="collapse" style="background:#FFF">
+<?  echo $ob0;
+  ?>
+</div>
+<? } ?>
+ 
 
-	 <div id="seccion1"   class="row"  <? if($s1==1){?> style="background-color:#CF3" title="<? echo $ob1;  ?>"<? } else{?>style="background-color: #ecfbe7; <? }?>border: solid 1px #AAAAAA;">
+ <div id="seccion0"   class="row"  <? if($st0==1){?> style="border:3px solid #F00"<? } else{?>style="background-color: #ecfbe7; <? }?>">
+	
 		<div class="col-lg-12">
+        <br />
 			<p style="font-size:25px; text-align:center;">Solicitud de certificación de producto</p>
 			<br/>
       <br/>
@@ -300,7 +333,7 @@ for($x=0;$x<$c;$x++)
         <input type="hidden" name="fecha" id="fecha" value="<? echo $f?>"/>
 		</div>
 
-		<div class="col-lg-4 col-md-4 col-xs-4 fechas">
+		<div class="col-lg-4 col-md-4 col-xs-6 fechas">
 			<p class="solicitud">   Nombre de la persona que llena la solicitud: </p>
 		</div>
 		<div class="col-lg-3 col-md-6 col-xs-6 fechas">
@@ -318,7 +351,12 @@ for($x=0;$x<$c;$x++)
   <input type="hidden" id="fecha1" name="fecha1" value="<? echo time();?>" />
   
 	<fieldset> 
-    <div id="seccion2" class="row" title="<? echo $ob2;  ?>"  <? if($s1==1){?> style="background-color:#CF3" <? } else{?>style="background-color: #ecfbe7; <? }?>border: solid 1px #AAAAAA;">
+    <? if($st1==1){?> <button type="button" class="btn btn-danger collapsed btn-lg btn-block" data-toggle="collapse" data-target="#demo1" aria-expanded="false"><span  style="font-size:20px">  <? echo $c11."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OBSERVACIONES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";?><i class="material-icons" style="font-size: 25px;">arrow_downward</i></span></button>
+<div id="demo1" class="collapse" style="background:#FFF">
+<?  echo $ob1;  ?>
+</div>
+<? } ?>
+    <div id="seccion1" class="row"   <? if($st1==1){?>  style="border:3px solid #F00" <? } else{?>style="background-color: #ecfbe7; <? }?>border: solid 1px #AAAAAA;">
         <div class="col-md-12" style="text-align: center; background-color:#dbf573e6">
           <label class="solicitud">INFORMACIÓN DEL CLIENTE (Entidad legal y persona de contacto)</label>
         </div>
@@ -410,8 +448,12 @@ for($x=0;$x<$c;$x++)
     </fieldset>	
 
 <fieldset>
-
-	<div id="seccion2" class="row"  <? if($s2==1){?> style="background-color:#CF3" title="<? echo $ob2;  ?>" <? } else{?>style="background-color: #ecfbe7; <? }?>border: solid 1px #AAAAAA;">
+<? if($st2==1){?> <button type="button" class="btn btn-danger collapsed btn-lg btn-block" data-toggle="collapse" data-target="#demo2" aria-expanded="false"><span  style="font-size:20px">  <? echo $c12."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OBSERVACIONES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";?><i class="material-icons" style="font-size: 25px;">arrow_downward</i></span></button>
+<div id="demo2" class="collapse" style="background:#FFF">
+<?  echo $ob2;  ?>
+</div>
+<? } ?>
+	<div id="seccion2" class="row"  <? if($st2==1){?> style="border:3px solid #F00"<? } else{?>style="background-color: #ecfbe7; <? }?>border: solid 1px #AAAAAA;">
   
 	<div class=" form-group col-md-12 campos2" style="margin:0px;">
 		<div class="col-md-3 col-sm-6" style="padding: 0px 0px; border: solid 1px #AAAAAA;">
@@ -677,10 +719,8 @@ else
     });    
 });';?>
 			</script>
-<?php include("seccion13.php");
-?>
-
-
+            
+<?php include("seccion13.php");?>
 </div>
 </div>
 </div>
@@ -1026,12 +1066,41 @@ window.addEventListener("beforeunload", function(event) {
 });
 </script>
 <script type="text/javascript">
-function cambiar(){
+$(document).ready(function(){  
+  var inc=0;
+  var inc2=0;
+  
+    $("#terminada").click(function() {  
+	
+		 var respuesta4="";
+            var porNombre12=document.getElementsByName("respuesta4");
+            for(var i=0;i<porNombre12.length;i++)
+              {
+                if(porNombre12[i].checked){
+                respuesta4=porNombre12[i].value;
+				inc=1;}
+              } 
+		if(inc==1 || inc2==1){
+		
   var b=document.getElementById("terminada");
   b.value=1;
   location.href='../index.php';
+	
+		}
+		else{swal({
+  title: "Terminos de uso",
+  text: "Responda esta sección",
+  icon: "warning",
  
-}
+  dangerMode: true,
+})}
+    });  
+  
+ 
+});  
+              
+	
+
 </script>
 <script>
  function cambioSeccion(nId){
@@ -1070,7 +1139,8 @@ $('.error').hide();
                      url:"cerebro.php",  
                      method:"POST",
                     data:{producto:producto,num_productores:num_productores,num_fincas:num_fincas,ubicacion_unidad:ubicacion_unidad,coordenadas:coordenadas,periodo_cosecha:periodo_cosecha,superficie:superficie,libre_cubierto:libre_cubierto,cosecha_recoleccion:cosecha_recoleccion,empaque:empaque,num_trabajadores:num_trabajadores,idsolicitud:idsolicitud,insertar_prod:insertar_prod,idoperador:idoperador},
-		            	success: function() { 
+		            	success: function(data) { 
+						alert(data);
 		                        $('#tabla_ajax').load(ruta); //Recargamos la Tabla(Para que se muestren los Nuevos Resultados) 
 								$('#tabla_ajax2').load(ruta2);
 								$('#tabla_ajax3').load(ruta3); 

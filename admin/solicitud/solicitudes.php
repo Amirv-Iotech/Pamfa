@@ -104,12 +104,31 @@ $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error()
 	                                    	<th>Fecha solcitud</th>
                                             <th colspan="3">Contrato</th>
                                             <th></th>
+                                             <th>Observaciones</th>
                                             <th>Estado</th>
 											
 	                                    </thead>
 	                                    <tbody>
                                         <? while( $row_solicitud= mysql_fetch_assoc($solicitud))
 										{
+											////////////
+											
+											 
+ 
+$query_obs = sprintf("SELECT * FROM solicitud_obs WHERE idsolicitud=%s and estado=1 ", GetSQLValueString(  $row_solicitud["idsolicitud"], "int"));
+$obs = mysql_query($query_obs, $inforgan_pamfa) or die(mysql_error());
+
+
+$total = mysql_num_rows($obs)	;
+	
+
+
+											///////////
+											
+											
+											
+											
+											
 											$query_cliente = "SELECT nombre_legal FROM operador where idoperador='".$row_solicitud['idoperador']."'";
 $cliente = mysql_query($query_cliente, $inforgan_pamfa) or die(mysql_error());
 $row_cliente= mysql_fetch_assoc($cliente);
@@ -141,6 +160,37 @@ $row_cliente= mysql_fetch_assoc($cliente);
                                                  <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
                                                  
 </form></td>
+
+<td>
+                                          <button type="button" class="btn btn-info btn-lg" onclick="abrir(<? echo $row_solicitud['idsolicitud'];?>);" ><? if ($total==0){echo "Lista ";}else {echo $total;}?></button>
+
+</button>
+
+<div id="modal<? echo $row_solicitud['idsolicitud'];?>" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">OBSERVACIONES </h4>
+      </div>
+      <div class="modal-body">
+        <p><? echo  obser($row_solicitud['idsolicitud']);?></p>
+      </div>
+      <div class="modal-footer">
+        
+       
+        <form action="formulario.php" method="post"> <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-success" >Ver solicitud</button>
+      <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+</td>
 <? if($row_solicitud['autorizada']!=1)
 {?>
  <td>
@@ -156,14 +206,44 @@ $row_cliente= mysql_fetch_assoc($cliente);
 </button>
                                                  
 </form></td><? }?>
+
+ 
+
 												
 	                                        </tr>
+                                          
 										<? }?>
 	                                        
 	                                       
 	                                    </tbody>
 	                                </table>
+<? function obser($x)
+ {
+	 $p=1;
+	 $pl="";
+	 $lista="<table class='table' border='1' cellpadding='1' cellspacing='5' ><tr><td><strong>N°</strong></td><td><strong>Observaciones</strong></td><td><strong>Fecha</strong></td><td><strong>Estado</strong></td></tr>";
+	 
+	 for($a=0;$a<16;$a++){
+	 
+	 $query_obs = sprintf("SELECT * FROM solicitud_obs WHERE idsolicitud=%s and seccion_sol=%s ", GetSQLValueString(  $x, "int"),
+	 GetSQLValueString(  $a, "int"));
+$obs = mysql_query($query_obs, $GLOBALS['inforgan_pamfa']) or die(mysql_error());
 
+while($row_obs= mysql_fetch_assoc($obs))
+{
+	//$pl=$p.".-".$row_obs['observacion']."";
+	//$lista=$lista.$pl."<br>";
+	$e="";
+	if($row_obs['estado']==1){$e="Pendiente";}else{$e="Atendida";}
+	$pl="<tr><td>".$p."</td><td>".$row_obs['observacion']."</td><td>".$row_obs['fecha_obs']."</td><td>".$e."</td></tr>";
+	$lista=$lista.$pl;
+	$p++;
+}
+
+	 }///for
+$lista=$lista."</table>";
+return $lista;
+ }?>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -177,7 +257,12 @@ $row_cliente= mysql_fetch_assoc($cliente);
 	        </div>
 
 	<? include("includes/footer.php");?>      
-
+<script type="text/javascript">
+function abrir(x)
+{
+	$('#modal'+x).appendTo("body").modal('show');
+ 
+}</script>
 
 <script>
 $(document).ready(function(){

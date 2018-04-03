@@ -57,21 +57,21 @@ $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error()
 
 	        <div class="content">
 	            <div class="container-fluid">
-                <?
-                $query_solicitud2 = sprintf("SELECT * FROM solicitud WHERE idoperador=%s and terminada=2 order by idsolicitud asc limit 1", GetSQLValueString( $_SESSION["idoperador"], "int"));
+                <? 
+                $query_solicitud2 = sprintf("SELECT * FROM solicitud WHERE idoperador=%s and autorizada is  null order by idsolicitud desc limit 1", GetSQLValueString( $_SESSION["idoperador"], "int"));
 $solicitud2 = mysql_query($query_solicitud2, $inforgan_pamfa) or die(mysql_error());
 $total_solicitud2 = mysql_num_rows($solicitud2);
 
-if($total_solicitud2==0){
+
+
 
  ?> 
                  <form action="formulario.php" method="post">
-                                                 <button data-toggle="tooltip" title="Ver" type="submit" name="Ver"  value="1"class="btn btn-success"><i class="fa fa-plus-circle fa-4x" aria-hidden="true"></i></button>
+                                                 <button data-toggle="tooltip"  type="submit" name="Ver" <? if($total_solicitud2==1){?> disabled="disabled" title="Tiene una solicitud en progreso" <?  }else {?> title="Ver" <?  }?> value="1"class="btn btn-success"><i class="fa fa-plus-circle fa-4x" aria-hidden="true"></i></button>
                                                  
-</form><?
+</form>
 
 
-}?>
 	                <div class="row">
 	                    <div class="col-md-12">
 	                        <div class="card">

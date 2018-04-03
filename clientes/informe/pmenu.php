@@ -55,6 +55,12 @@ $plan_auditoria  = mysql_query($query_plan_auditoria , $inforgan_pamfa) or die(m
  ?>
 
 	        <div class="content">
+               <form action="../informe/informes.php" method="post" target="_parent">
+      
+<button  type="submit" value="Regresar" class="btn btn-success"><i class="fa fa-caret-square-o-left" aria-hidden="true"></i>
+ Regresar </button> 
+ <input type="hidden" name="idsolicitud" value="<?php echo $_POST['idsolicitud']; ?>" />     
+            </form>
 	            <div class="container-fluid">
 	                <div class="row">
 	                    <div class="col-md-12">
@@ -64,7 +70,7 @@ $plan_auditoria  = mysql_query($query_plan_auditoria , $inforgan_pamfa) or die(m
 	                                <p class="category">&nbsp;</p>
 	                            </div>
 	                            <div class="card-content table-responsive">
-                               <? if($_POST['idformato1']==3){?>
+                              
 	                                <table class="table">
                                     
 	                                    <thead >
@@ -84,21 +90,77 @@ $plan_auditoria  = mysql_query($query_plan_auditoria , $inforgan_pamfa) or die(m
 $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error());
 $row_solicitud= mysql_fetch_assoc($solicitud);
 
+$query_solicitud_m = "SELECT * FROM solicitud_mexcalsup where idsolicitud='".$row_plan_auditoria['idsolicitud']."' ";
+$solicitud_m = mysql_query($query_solicitud_m, $inforgan_pamfa) or die(mysql_error());
+$agua=0;
+$mango=0;
+$lm=0;
+$lp=0;
+
+while($row_solicitud_m= mysql_fetch_assoc($solicitud_m))
+{
+	if($row_solicitud_m['idmex_pliego']==4)
+	{
+		$agua++;
+	}
+	if($row_solicitud_m['idmex_pliego']==5)
+	{
+		$mango++;
+	}
+	if($row_solicitud_m['idmex_pliego']==7)
+	{
+		$lm++;
+	}
+	if($row_solicitud_m['idmex_pliego']==6)
+	{
+		$lp++;
+	}
+}
+
+
+
+
+$op1=0;
+$op2=0;
+$coc=0;
+$query_solicitud_esq = sprintf("SELECT * FROM solicitud_esquema WHERE idsolicitud=%s ", GetSQLValueString($row_plan_auditoria['idsolicitud'], "int"));
+$solicitud_esq = mysql_query($query_solicitud_esq, $inforgan_pamfa) or die(mysql_error());
+$row_solicitud_esq= mysql_fetch_assoc($solicitud_esq);
+if($row_solicitud_esq['esq_tipo1_op1']!=NULL)
+	{
+		$op1++;
+	}
+	
+	if($row_solicitud_esq['preg1_op2']!=NULL)
+	{
+		$op2++;
+	}
+	if($row_solicitud_esq['esq_tipo2_op1']!=NULL)
+	{
+		$coc++;
+	}
+	
+											
+
 									$query_cliente = "SELECT nombre_legal FROM operador where idoperador='".$row_solicitud['idoperador']."' ";
 $cliente = mysql_query($query_cliente, $inforgan_pamfa) or die(mysql_error());
 $row_cliente= mysql_fetch_assoc($cliente);
+
+
 											?>
 	                                        <tr>
 	                                        	<td><? echo $row_plan_auditoria['idsolicitud'];?></td>
 	                                        	<td><? echo $row_cliente['nombre_legal'];?></td> 
-	                                        <td>
+	                                       <? if($agua>0){?>
+                                            <td>
                                                 <form action="formulario.php" method="post">
                                                  <button data-toggle="tooltip" title="Ver" type="submit" name="Ver"  value="1"class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
                                                  <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
                                                    <input type="hidden" name="idformato" value="3" />
                                                     <input type="hidden" name="idinforme" value="<? echo $_POST['idinforme']; ?>" />
                                                    <input type="hidden" name="idplan_auditoria" value="<? echo $row_plan_auditoria['idplan_auditoria']; ?>" />
-</form></td>
+</form></td></td><? } else{?><td>NA</td> <? }?>
+<? if($mango>0){?>
  <td>
                                                 <form action="formulario.php" method="post">
                                                  <button data-toggle="tooltip" title="Ver" type="submit" name="Ver"  value="1"class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
@@ -106,7 +168,8 @@ $row_cliente= mysql_fetch_assoc($cliente);
                                                    <input type="hidden" name="idformato" value="6" />
                                                     <input type="hidden" name="idinforme" value="<? echo $_POST['idinforme']; ?>" />
                                                    <input type="hidden" name="idplan_auditoria" value="<? echo $row_plan_auditoria['idplan_auditoria']; ?>" />
-</form></td>
+</form></td><? } else{?><td>NA</td> <? }?>
+ <? if($lm>0){?>
  <td>
                                                 <form action="formulario.php" method="post">
                                                  <button data-toggle="tooltip" title="Ver" type="submit" name="Ver"  value="1"class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
@@ -114,7 +177,9 @@ $row_cliente= mysql_fetch_assoc($cliente);
                                                    <input type="hidden" name="idformato" value="4" />
                                                     <input type="hidden" name="idinforme" value="<? echo $_POST['idinforme']; ?>" />
                                                    <input type="hidden" name="idplan_auditoria" value="<? echo $row_plan_auditoria['idplan_auditoria']; ?>" />
-</form></td>
+</form></td><? } else{?><td>NA</td> <? }?>
+	
+	 <? if($lp>0){?>
  <td>
                                                 <form action="formulario.php" method="post">
                                                  <button data-toggle="tooltip" title="Ver" type="submit" name="Ver"  value="1"class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
@@ -122,7 +187,9 @@ $row_cliente= mysql_fetch_assoc($cliente);
                                                    <input type="hidden" name="idformato" value="3" />
                                                     <input type="hidden" name="idinforme" value="<? echo $_POST['idinforme']; ?>" />
                                                    <input type="hidden" name="idplan_auditoria" value="<? echo $row_plan_auditoria['idplan_auditoria']; ?>" />
-</form></td>
+</form></td><? } else{?><td>NA</td> <? }?>
+
+ <? if($op1>0){?>
  <td>
                                                 <form action="formulario.php" method="post">
                                                  <button data-toggle="tooltip" title="Ver" type="submit" name="Ver"  value="1"class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
@@ -130,7 +197,9 @@ $row_cliente= mysql_fetch_assoc($cliente);
                                                    <input type="hidden" name="idformato" value="1" />
                                                     <input type="hidden" name="idinforme" value="<? echo $_POST['idinforme']; ?>" />
                                                    <input type="hidden" name="idplan_auditoria" value="<? echo $row_plan_auditoria['idplan_auditoria']; ?>" />
-</form></td>
+</form></td><? } else{?><td>NA</td> <? }?>
+
+ <? if($op2>0){?>
  <td>
                                                 <form action="formulario.php" method="post">
                                                  <button data-toggle="tooltip" title="Ver" type="submit" name="Ver"  value="1"class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
@@ -138,7 +207,9 @@ $row_cliente= mysql_fetch_assoc($cliente);
                                                    <input type="hidden" name="idformato" value="2" />
                                                     <input type="hidden" name="idinforme" value="<? echo $_POST['idinforme']; ?>" />
                                                    <input type="hidden" name="idplan_auditoria" value="<? echo $row_plan_auditoria['idplan_auditoria']; ?>" />
-</form></td>
+</form></td><? } else{?><td>NA</td> <? }?>
+
+							 <? if($coc>0){?>
 
  <td>
                                                 <form action="formulario.php" method="post">
@@ -147,14 +218,14 @@ $row_cliente= mysql_fetch_assoc($cliente);
                                                    <input type="hidden" name="idformato" value="7" />
                                                     <input type="hidden" name="idinforme" value="<? echo $_POST['idinforme']; ?>" />
                                                    <input type="hidden" name="idplan_auditoria" value="<? echo $row_plan_auditoria['idplan_auditoria']; ?>" />
-</form></td>
+</form></td><? } else{?><td>NA</td> <? }?>	
 	
 	 </tr>
 	                                        
 	                                  
 	                                    </tbody>
 	                                </table>
-                                    <? }?>
+                                    
 
 	                            </div>
 	                        </div>

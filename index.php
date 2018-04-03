@@ -40,36 +40,27 @@
               </div>
 
               <div align="center" class="col-md-6">
-                  <img style="width:300px;" src="images/pamfa.png" alt=""> 
+                  <a href="index.php"><img style="width:300px;" src="images/pamfa.png" alt=""> </a>
               </div>
-              <div class="col-md-6">
-              <ul style="list-style-type: none">
-                <li><div class="col-md-12">
+              <div class="col-md-6 "  >
+             <div class="col-md-12" >
                 <a href="clientes/login.php">
-                  <div class="col-md-6 btn btn-warning btn-lg">Cliente </div></a>
-                </div></li>
-                <li><div class="col-md-12">
+                  <button class="col-md-6 col-xs-6 btn btn-warning btn-lg">Cliente </button></a>
+                </div>
+                <div class="col-md-12">
                   <a href="admin/login.php">
-                   <button class=" col-md-6 btn btn-success btn-lg">Administrador</button></a>
-                </div></li>
-                <li><div class="col-md-12">
-                  <a href="auditor/login.php"><button class=" col-md-6 btn btn-info btn-lg">Auditor</button>
-                </div></li>
-                 <li><div class="col-md-12">
-                  <a href="registro.php"><button class=" col-md-6 btn btn-info btn-lg">Nuevo cliente</button>
-                </div></li>
-                </ul>
+                   <button class=" col-md-6 col-xs-6 btn btn-success btn-lg">Administrador</button></a>
+                </div><div class="col-md-12">
+                  <a href="auditor/login.php"><button class=" col-md-6 col-xs-6 btn btn-info btn-lg">Auditor</button>
+                </div><div class="col-md-12">
+                  <a href="registro.php"><button class=" col-md-6 col-xs-6 btn btn-info btn-lg">Nuevo cliente</button>
+                </div>
               </div>
 
 
           </div>
       </div>
-      <div class="container">
-        <div class="row">
-
-
-        </div>
-      </div>
+     
   </section>
 
 

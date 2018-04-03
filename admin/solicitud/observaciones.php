@@ -24,21 +24,22 @@
              <div class="campos2 div4">
                <select class="form-control"  id="seccion_sol" name="seccion_sol"  >
                 <option value="-">Seleciona</option>
-                <option value="1" >Seccion 1</option>
-                <option value="2"  >Seccion 2</option>
-                <option value="3" >Seccion 3</option>
-                <option value="4"  >Seccion 4</option>
-                <option value="5" >Seccion 5</option>
-                <option value="6"  >Seccion 6</option>
-                <option value="7"  >Seccion 7</option>
-                <option value="8"  >Seccion 8</option>
-                <option value="9" >Seccion 9</option>
-                <option value="10"  >Seccion 10</option>
-                <option value="11" >Seccion 11</option>
-                <option value="12" >Seccion 12</option>
-                <option value="13" >Seccion 13</option>
-                  <option value="14" >Seccion 14</option>
-                <option value="15" >Seccion 15</option>
+                 <option value="0" >Persona</option>
+                <option value="1" >Seccion 1-Inf. Cliente</option>
+                <option value="2"  >Seccion 2- Nums. Anteriores</option>
+                <option value="3" >Seccion 3- Cert. Anterior</option>
+                <option value="4"  >Seccion 4- Datos de facturación</option>
+                <option value="5" >Seccion 5- Globalg I.F.A Y CoC. </option>
+                
+                <option value="7"  >Seccion 6- MCS</option>
+                <option value="8"  >Seccion 7. SRRC</option>
+                <option value="9" >Seccion 8- Inf. Cultivos</option>
+                <option value="10"  >Seccion 9- Inf. Empaque</option>
+                <option value="11" >Seccion 10- Inf. Comercialización</option>
+                <option value="12" >Seccion 11- Idiomas de formatos</option>
+                <option value="13" >Seccion 12- Acceso a datos</option>
+                  <option value="14" >Anexo producto</option>
+                <option value="15" >Anexo almacen</option>
                 
                 </select> </div>
             </div>

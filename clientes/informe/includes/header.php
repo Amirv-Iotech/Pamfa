@@ -2,8 +2,7 @@
 <? $dac = basename($_SERVER['PHP_SELF']);
 ?>
 <!doctype html>
-<html lang="en">
-<head>
+<html lang="en"><head>
 
 	<meta charset="utf-8" />
 	<link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
@@ -14,7 +13,10 @@
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
+<script src="../assets/js/jquery-3.1.0.min.js" type="text/javascript"></script>
 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	
     <!-- Bootstrap core CSS     -->
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -28,14 +30,7 @@
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
-   <style>.form-group .checkbox label,
-.form-group .radio label,
-.form-group label {
-  font-size: 14px;
-  line-height: 1.42857;
-  color: #333;
-  font-weight: 400;
-}</style> 
+  
 </head>
 
 <body>
@@ -46,7 +41,7 @@
 			<!--
 		        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
-		        Tip 2: you can also add an image using data-image tag
+		       hola
 		    -->
 
 			<div class="logo">
@@ -58,7 +53,7 @@
 
 	    	<div class="sidebar-wrapper">
 	            <ul class="nav">
-                <? if($dac=='index.php'){?><li class="active"><? }else{ ?> <li> <? }?>
+<li class="active">
 	                
 	                    <a href="../index.php">
 	                        <i class="material-icons">dashboard</i>
@@ -90,12 +85,18 @@
 						<a class="navbar-brand" href="#">PAMFA A.C. </a>
                          <? if($dac=='formulario.php')
 						{?>
-                        <form action="../informe/informes.php" method="post" >
+                      <form action="../informe/pmenu.php" method="post" >
       
-     <button  type="submit" value="Regresar" class="btn btn-secondary"><i class="fa fa-caret-square-o-left" aria-hidden="true"></i>
- Regresar</button>
-            
+<button  type="submit" value="Regresar" class="btn btn-success"><i class="fa fa-caret-square-o-left" aria-hidden="true"></i>
+ Regresar</button>    <input type="hidden" name="idsolicitud" value="<?php echo $_POST['idsolicitud']; ?>" />         
             </form> <? }?>
+            <button type="button" class="navbar-toggle" data-toggle="collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">PAMFA A.C. </a>
 					</div>
 					
 				</div>

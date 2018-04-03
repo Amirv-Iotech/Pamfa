@@ -146,16 +146,16 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 </div>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <div class="navbar-header">
+    <div class="navbar-header col-xs-12" >
      
     </div>
-    <ul class="nav navbar-nav">
+    <ul class="nav navbar-nav col-xs-4">
        <form action="" method="post">
     <input class="btn btn-warning navbar-btn" type="submit" value="Operadores"/>
     <input type="hidden" name="op" value="1"/>
     </form>
     </ul>
-     <ul class="nav navbar-nav">
+     <ul class="nav navbar-nav col-xs-3">
        <form action="" method="post">
     <input class="btn btn-warning navbar-btn" type="submit" value="Usuarios"/>
     <input type="hidden" name="op" value="6"/>
@@ -185,7 +185,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
     <input type="hidden" name="op" value="5"/>
     </form>
     </ul>*/?>
-    <ul class="nav navbar-nav">
+    <ul class="nav navbar-nav col-xs-4">
        <form action="" method="post">
     <input class="btn btn-warning navbar-btn" type="submit" value="CATALOGOS"/>
     <input type="hidden" name="op" value="7"/>

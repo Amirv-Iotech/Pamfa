@@ -52,6 +52,10 @@
               <input class="form-control" type="text" name="pais" value="<?  if(isset($_POST['update'])){echo $row_u['pais'];}?>"  size="32" />
             </div>
             <div class="col-lg-3 col-xs-6">
+              <label>C.P.:</label>
+              <input class="form-control" type="text" name="cp" value="<?  if(isset($_POST['update'])){echo $row_u['pais'];}?>"  size="32" />
+            </div>
+            <div class="col-lg-3 col-xs-6">
                 <label>Coordenadas:</label>
                 <input class="form-control"  type="text" name="coordenadas" value="<? if(isset($_POST['update'])){ echo $row_u['coordenadas'];}?>"  size="32" />
             </div>
@@ -132,12 +136,16 @@
   <div class="table-responsive">
     <table class="table table-bordered">
         <thead style="background-color: #07889B; color:white; " >
+         <th> Usuario:</th>
+          <th>Contraseña:</th>
           <th> Nombre de la entidad legal:</th>
           <th>Nombre del representante legal:</th>
           <th>Dirección:</th>
           <th>Colonia:</th>
+          <th>Municipio:</th>
           <th>Estado:</th>
           <th>Pais:</th>
+          <th>C.P.:</th>
           <th>Coordenadas:</th>
           <th>Email:</th>
           <th>Teléfono:</th>
@@ -163,12 +171,16 @@
 		  ?>
           
           <tr>
+          <td><label><? echo $row_u['username'];?></label></td>
+            <td><label><? echo $row_u['password'];?></label></td>
             <td><label><? echo $row_u['nombre_legal'];?></label></td>
             <td><label><? echo $row_u['nombre_representante'];?></label></td>
             <td><label><? echo $row_u['direccion'];?></label></td>
             <td><label><? echo $row_u['colonia'];?></label></td>
+             <td><label><? echo $row_u['municipio'];?></label></td>
             <td><label><? echo $row_u['estado'];?></label></td>
             <td><label><? echo $row_u['pais'];?></label></td>
+            <td><label><? echo $row_u['cp'];?></label></td>
             <td><label><? echo $row_u['coordenadas'];?></label></td>
             <td><label><? echo $row_u['email'];?></label></td>
             <td><label><? echo $row_u['telefono'];?></label></td>
@@ -213,12 +225,16 @@
   <div class="table-responsive">
     <table class="table table-bordered">
         <thead style="background-color: #07889B; color:white; " >
+         <th> Usuario:</th>
+          <th>Contraseña:</th>
           <th> Nombre de la entidad legal:</th>
           <th>Nombre del representante legal:</th>
           <th>Dirección:</th>
           <th>Colonia:</th>
+          <th>Municipio:</th>
           <th>Estado:</th>
           <th>Pais:</th>
+          <th>C.P.:</th>
           <th>Coordenadas:</th>
           <th>Email:</th>
           <th>Teléfono:</th>
@@ -231,7 +247,7 @@
           <th>Forma de pago:</th>
           <th>Banco:</th>
           <th>4 digitos tarjeta:</th>
-          <th>Editar</th>
+          <th>Editare</th>
           <th>Eliminar</th>
         </thead>
 
@@ -244,12 +260,16 @@
 		  ?>
           
           <tr>
+            <td><label><? echo $row_u['username'];?></label></td>
+            <td><label><? echo $row_u['password'];?></label></td>
             <td><label><? echo $row_u['nombre_legal'];?></label></td>
             <td><label><? echo $row_u['nombre_representante'];?></label></td>
             <td><label><? echo $row_u['direccion'];?></label></td>
             <td><label><? echo $row_u['colonia'];?></label></td>
+             <td><label><? echo $row_u['municipio'];?></label></td>
             <td><label><? echo $row_u['estado'];?></label></td>
             <td><label><? echo $row_u['pais'];?></label></td>
+            <td><label><? echo $row_u['cp'];?></label></td>
             <td><label><? echo $row_u['coordenadas'];?></label></td>
             <td><label><? echo $row_u['email'];?></label></td>
             <td><label><? echo $row_u['telefono'];?></label></td>
@@ -285,6 +305,11 @@
                   <input type="hidden" name="update_au" value="1" />
                   <input type="hidden" name="op" value="1" />
                 <input type="submit" value="Aceptar"/>
+                
+                 <input type="hidden" name="correo" value="<?php echo $row_u['email'];?>" />
+                  <input type="hidden" name="usuario" value="<?php echo $row_u['username'];?>" />
+                 
+                
                 </form>
             </td>
           </tr>

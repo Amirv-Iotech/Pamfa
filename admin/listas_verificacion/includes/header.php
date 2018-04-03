@@ -93,14 +93,23 @@
 				<div class="container-fluid">
 					<div class="navbar-header">
 						
-						<a class="navbar-brand" href="#">PAMFA A.C. </a>
-                        <? if($dac=='formulario.php')
+						<button type="button" class="navbar-toggle" data-toggle="collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+                        
+						<a class="navbar-brand" href="#">PAMFA A.C.</a>
+					 <? if($dac=='datos.php' ||$dac=='indice.php' || $dac=='notas.php'|| $dac=='politicas.php' || $dac=='portada.php')
 						{?>
-                        <form action="../plan_auditoria/plan_auditoria.php" method="post" >
+                        <form action="../listas_verificacion/listas_verif_menu.php" method="post" >
       
-      <button  type="submit" value="Regresar" class="btn btn-secondary"><i class="fa fa-caret-square-o-left" aria-hidden="true"></i>
+    <button  type="submit" value="Regresar" class="btn btn-success"><i class="fa fa-caret-square-o-left" aria-hidden="true"></i>
  Regresar</button>
-            
+             <input type="hidden" name="idsolicitud" value="<?php echo $_POST['idsolicitud']; ?>" />
+ <input type="hidden" name="idformato" value="<?php echo $_POST['idformato']; ?>" />
+ 
             </form> <? }?>
 					</div>
 					

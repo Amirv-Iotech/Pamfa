@@ -32,7 +32,7 @@
       <div class="col-lg-2 col-xs-4">
         <label data-toggle="tooltip" title="se deberá indicar detalladamente las actividades o documentos a revisar por áreas, rubros o secciones">Area / Actividad</label>
 
-       <input placeholder="escribe aquí"  class="plan_input"  id="actividad" name="actividad"        title="Actividad " type="text" value=""  />
+       <textarea placeholder="escribe aquí"  class="plan_input"  id="actividad" name="actividad"        title="Actividad " ></textarea>
 
       </div>
       <div class="col-lg-2 col-xs-4">
@@ -46,7 +46,7 @@
       <label>Auditor</label>
     
 
-         <select class="selectpicker" multiple="multiple" title="Selecciona.."  name="auditor2[]" id="auditor2"  >
+          <select class="selectpicker" multiple="multiple" title="Selecciona.."  name="auditor2[]" id="auditor2"  >
        
         <?php 
         $query_vista1 = "select idusuario, nombre,apellidos from usuario where idusuario in(SELECT idauditor FROM plan_auditoria_equipo where idplan_auditoria='".$sol."') ";

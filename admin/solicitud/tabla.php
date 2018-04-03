@@ -34,7 +34,7 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
  $query_cultivos = sprintf("SELECT * FROM cultivos WHERE idsolicitud = %s", GetSQLValueString($row_solicitud["idsolicitud"], "int"));
  
 ?>
-<div class="table-responsive">
+<div class="table-responsive" >
 <table class="table table-hover">
 <thead>
   <th>

@@ -12,9 +12,9 @@
               $mcs2 = mysql_query($query_mcs2, $inforgan_pamfa) or die(mysql_error());
               ?>
       <div class="col-lg-12 col-xs-12 campos2">
-        <div class="col-lg-4 col-xs-4 campos2">
+        <div class="col-lg-4 col-xs-12 campos2">
           <div class="col-lg-12 col-xs-12 campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA; text-align: center;">
-            <b> Alcance la certificación</b>
+         <b> Alcance la certificación</b>
           </div>
           <?
 		  
@@ -40,16 +40,16 @@
           <? $mcont2++; }?>
         </div>
 
-        <div class="col-lg-8 col-xs-8 campos2">
-          <div class="col-lg-12 col-xs-12 campos2">
+        <div class="col-lg-8 col-xs-12 campos2">
+        <div class="col-lg-12 col-xs-12 campos2">
           <div class="col-lg-12 col-xs-12 campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA; text-align: center;">
-              <b>Pliego de condiciones</b>
+               <b>Pliego de condiciones</b>
           </div>
             <?
 			$mcont=0;
             while($row_mcs2= mysql_fetch_assoc($mcs2))
             {
-              ?><div class="col-lg-3 col-xs-3 campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA;">
+              ?><div class="col-lg-3 col-xs-6 campos2" style=" padding: 0px 0px; border:solid 1px #AAAAAA;">
               <label><input id="<? echo"idmex_pliego".$mcont?>" <? if($sel_alc>1){ if (strstr ($sel_alc, $row_mcs2['idmex_cal_sup'])!== false){?> checked="checked"<? }}?>  type="checkbox" value="<? echo $row_mcs2['idmex_cal_sup'];?>" name="<? echo"idmex_pliego".$mcont?>"><? echo $row_mcs2['descripcion'];?></label></div>
               <?
            $mcont++; }?>

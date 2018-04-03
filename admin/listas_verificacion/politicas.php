@@ -95,8 +95,8 @@ if($row_pol['idplan_auditoria']==NULL)
                 </div>
                 
                 <div class="col-lg-12 col-xs-12 datos">
-                    <label  class="col-lg-3 col-xs-3">Nombre del administrador o dueño:</label>
-                    <div class="col-xs-9 col-lg-9">
+                    <label  class="col-lg-3 col-xs-5">Nombre del administrador o dueño:</label>
+                    <div class="col-xs-7 col-lg-9">
                     <input  disabled="disabled"   class=" plan_input" id="direccion" name="direccion" value="<? echo $row_operador['nombre_representante'];?>"  title="Dirección"  /></div>
                 </div>
                   <div class="col-lg-12 col-xs-12 datos">
@@ -225,7 +225,7 @@ La(s) siguiente(s) persona(s) son responsables por la inocuidad alimentaria		<br
                     </div> <div class="col-lg-12 col-xs-12 ">
                   
                     </div>
-                 <div class="col-lg-12 col-xs-12 datos ">
+                 <div class="col-lg-12 col-xs-12 ">
                     <label >La implementación de GLOBALG.A.P. se basa en la identificación de los riesgos y peligros.  Se revisarán anualmente las actividades de mitigación de estos riesgos para asegurar que las mismas continúan siendo apropiadas, adecuadas y eficaces.																													
 																													
 							

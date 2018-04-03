@@ -401,7 +401,7 @@ h2.title {
 }
 
 .text-primary {
-  color: #333;
+  color: #9c27b0;
 }
 
 .text-danger {
@@ -1502,10 +1502,10 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4 {
 }
 
 a {
-  color: #080808;
+  color: #9c27b0;
 }
 a:hover, a:focus {
-  color: #333;
+  color: #89229b;
   text-decoration: none;
 }
 a.text-info:hover, a.text-info:focus {
@@ -1754,7 +1754,7 @@ output {
 .form-control,
 .form-group .form-control {
   border: 0;
-  background-image: linear-gradient(#4caf50, #4caf50), linear-gradient(#D2D2D2, #D2D2D2);
+  background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#D2D2D2, #D2D2D2);
   background-size: 0 2px, 100% 1px;
   background-repeat: no-repeat;
   background-position: center bottom, center calc(100% - 1px);
@@ -1813,7 +1813,7 @@ output {
 }
 .form-group.is-focused .form-control {
   outline: none;
-  background-image: linear-gradient(#4caf50, #4caf50), linear-gradient(#D2D2D2, #D2D2D2);
+  background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#D2D2D2, #D2D2D2);
   background-size: 100% 2px, 100% 1px;
   box-shadow: none;
   transition-duration: 0.3s;
@@ -1926,14 +1926,14 @@ output {
 label {
   font-size: 14px;
   line-height: 1.42857;
-  color: #333;
+  color: #AAAAAA;
   font-weight: 400;
 }
 
 label.control-label {
   font-size: 11px;
   line-height: 1.07143;
-  color: #333;
+  color: #AAAAAA;
   font-weight: 400;
   margin: 16px 0 0 0;
 }
@@ -1973,7 +1973,7 @@ label.control-label {
 .form-group label {
   font-size: 14px;
   line-height: 1.42857;
-  color: #333;
+  color: #AAAAAA;
   font-weight: 400;
 }
 .form-group label.control-label {
@@ -2196,7 +2196,7 @@ select.form-control[multiple], .form-group.is-focused select.form-control[multip
   margin-bottom: 10px;
 }
 .form-horizontal label {
-  text-align:lefth;
+  text-align: right;
 }
 .form-horizontal label.control-label {
   margin: 0;

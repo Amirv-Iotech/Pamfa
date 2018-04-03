@@ -1,0 +1,37 @@
+#operador input{
+	background-color:#e7fbfe;
+	padding-top:10px; 
+	background-image: none;
+	border-radius: 10px;
+	height: : 45px;
+}
+#operador .campo1{
+	height: 60px;
+}
+#formulario label{
+	height: 40px;
+}
+.plan_input{
+	width: 100%;
+	padding: 8px 5px;
+	background-color: #ccefb4;
+	background-image: none;
+	border-radius: 11px;
+	outline:none;
+	border-width: 0px;
+}
+.datos{
+	height: 45px;
+}
+
+#form_ifa input{
+	background-color:#ccefb4;
+	padding-top:5px; 
+	padding-left: 10px;
+	background-image: none;
+	border-radius: 10px;
+	height: : 45px;
+}
+.div_centro{
+	text-align: center;
+}

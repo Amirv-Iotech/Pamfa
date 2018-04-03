@@ -16,6 +16,10 @@
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <!-- Bootstrap core CSS     -->
+    <script src="../assets/js/jquery-3.1.0.min.js" type="text/javascript"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
 
     <!--  Material Dashboard CSS    -->
@@ -44,7 +48,7 @@
 
 	<div class="wrapper">
 
-	    <div class="sidebar" data-color="green" data-image="../assets/img/sidebar-1.jpg">
+	    <div class="sidebar" data-color="green" data-image="../../assets/img/sidebar-1.jpg">
 			<!--
 		        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
@@ -88,13 +92,19 @@
 			<nav class="navbar navbar-transparent navbar-absolute">
 				<div class="container-fluid">
 					<div class="navbar-header">
-						
-						<a class="navbar-brand" href="#">PAMFA A.C. </a> <? if($dac=='formulario.php')
+					<button type="button" class="navbar-toggle" data-toggle="collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+                        
+						<a class="navbar-brand" href="#">PAMFA A.C.</a> <? if($dac=='formulario.php')
 						{?>
-                        <form action="../informe/informes.php" method="post" >
+                        <form action="../informe/pmenu.php" method="post" >
       
-<button  type="submit" value="Regresar" class="btn btn-secondary"><i class="fa fa-caret-square-o-left" aria-hidden="true"></i>
- Regresar</button>            
+<button  type="submit" value="Regresar" class="btn btn-success"><i class="fa fa-caret-square-o-left" aria-hidden="true"></i>
+ Regresar</button>    <input type="hidden" name="idsolicitud" value="<?php echo $_POST['idsolicitud']; ?>" />         
             </form> <? }?>
 					</div>
 					

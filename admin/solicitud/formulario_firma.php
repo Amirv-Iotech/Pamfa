@@ -46,8 +46,50 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   }
   return $theValue;
 }
-}
+}?>
+<!doctype html>
+<html lang="en">
+<head>
 
+	<meta charset="utf-8" />
+	<link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
+	<link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>PAMFA A.C.</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+    <!-- Bootstrap core CSS     -->
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+
+    <!--  Material Dashboard CSS    -->
+    <link href="../assets/css/material-dashboard.css" rel="stylesheet"/>
+
+    <!-- Malpika css -->
+    <link href="../assets/css/style_operador.css" rel="stylesheet"/>
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+   
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+  
+	<link href="../assets/css/solicitud.css" rel="stylesheet"/>
+     <link rel="stylesheet"  href="../assets/datatables/dataTables.bootstrap.css">
+      <link rel="stylesheet"  href="https://cdn.datatables.net/buttons/1.4.0/css/buttons.dataTables.min.css"  >
+      
+      
+ 
+</head>
+
+<body>
+<?
 if(isset($_GET['idsolicitud'])){$_POST['idsolicitud']=$_GET['idsolicitud'];}
 
 //consultar usuario actual
@@ -111,4 +153,50 @@ Firmar contrato
 </form>
 <? }
 else{ echo "Usuario no autorizado";} }?>
-<?
+<form action="../solicitud/solicitudes.php" method="post" target="_top" >
+      
+<button  type="submit" value="Regresar" class="btn btn-success"><i class="fa fa-caret-square-o-left" aria-hidden="true"></i>
+ Regresar</button>            
+            </form>
+</body>
+
+
+	<!--   Core JS Files   -->
+	<script src="../assets/js/jquery-3.1.0.min.js" type="text/javascript"></script>
+	<script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="../assets/js/material.min.js" type="text/javascript"></script>
+
+	<!--  Charts Plugin -->
+	<script src="../assets/js/chartist.min.js"></script>
+
+	<!--  Notifications Plugin    -->
+	<script src="../assets/js/bootstrap-notify.js"></script>
+
+	
+
+	<!-- Material Dashboard javascript methods -->
+	<script src="../assets/js/material-dashboard.js"></script>
+
+	<!-- Material Dashboard DEMO methods, don't include it in your project! -->
+	<!-- DataTables -->
+<script src="../assets/datatables/jquery.dataTables.min.js"></script>
+<script src="../assets/datatables/dataTables.bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"  ></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/dataTables.buttons.min.js"  ></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.flash.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"  ></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"  ></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.html5.min.js"  ></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.print.min.js"  ></script>
+  
+
+
+	<script type="text/javascript">
+    	$(document).ready(function(){
+
+			// Javascript method's body can be found in assets/js/demos.js
+        	demo.initDashboardPageCharts();
+
+    	});
+	</script>

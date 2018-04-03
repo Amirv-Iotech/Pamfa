@@ -716,7 +716,7 @@ if($_POST['actualiza_solicitud_obs']){
              GetSQLValueString($_POST['estado'], "text"),
 			GetSQLValueString($_POST["idsolicitud_obs_a"], "text"));
 		
-			
+		echo $insertSQL;	
   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
  
 	$query_obs = sprintf("SELECT * FROM solicitud_obs where idsolicitud=%s and estado=1",GetSQLValueString($_POST['idsolicitud'], "text"));

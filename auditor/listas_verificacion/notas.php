@@ -144,7 +144,7 @@ Se han agregado los criterios de cumplimiento a la Lista de Verificación para  
                     <div class="col-lg-1 col-xs-1" >
                      <input   type="checkbox" <? if ($row_notas['r2']==3){?> checked="checked"<? }?>  value="3" id="r2"  name="r2" onchange="guarda3()"/></div>
                 </div>
-                <div class="col-lg-12 col-xs-12 datos">
+                <div class="col-lg-12 col-xs-12 ">
                     <label  class="col-lg-7 col-xs-7">¿PARTICIPA EL PRODUCTOR EN EL PROGRAMA DE RECOMPENSAS NO-ANUNCIADAS? 
 </label>
   <label class="col-lg-2 col-xs-2">SI
@@ -165,7 +165,7 @@ Se han agregado los criterios de cumplimiento a la Lista de Verificación para  
                   
                 </div>
                 
-                  <div class="col-lg-12 col-xs-12 datos">
+                  <div class="col-lg-12 col-xs-12 ">
                     <label class="col-lg-6 col-xs-6">¿RECURRE EL PRODUCTOR A UN ASESOR? 
 </label>
                     <label class="col-lg-2 col-xs-2">SI
@@ -182,7 +182,7 @@ Se han agregado los criterios de cumplimiento a la Lista de Verificación para  
             
                   
                 </div>
-                 <div class="col-lg-12 col-xs-12 datos">
+                 <div class="col-lg-12 col-xs-12">
                     <label class="col-lg-6 col-xs-6">SI LA RESPUESTA ES SÍ, ¿ES EL ASESOR UN GLOBALG.A.P. LICENSED FARM ASSURER? 
 
 </label>
@@ -198,7 +198,7 @@ Se han agregado los criterios de cumplimiento a la Lista de Verificación para  
                      <input   type="checkbox" <? if ($row_notas['r5']==2){?> checked="checked"<? }?>  value="2" id="r5"  name="r5" onchange="guarda3()"/></div>
                         
                 </div>
-              <div class="col-lg-12 col-xs-12 datos">
+              <div class="col-lg-12 col-xs-12 ">
                     <label class="col-lg-6 col-xs-6">SI LA RESPUESTA ES SÍ, ¿CUÁL ES EL NOMBRE DEL FARM ASSURER? 
 </label>
                     
@@ -207,7 +207,7 @@ Se han agregado los criterios de cumplimiento a la Lista de Verificación para  
                    
                 </div>
              
-                  <div class="col-lg-12 col-xs-12 datos">
+                  <div class="col-lg-12 col-xs-12 ">
                     <label  class="col-lg-6 col-xs-6">¿ESTÁ EL PRODUCTOR REGISTRADO PARA LA PRODUCCIÓN PARALELA? 
 
 </label>
@@ -243,7 +243,7 @@ Se han agregado los criterios de cumplimiento a la Lista de Verificación para  
            
                   
                 </div> 
-                <div class="col-lg-12 col-xs-12 datos">
+                <div class="col-lg-12 col-xs-12 ">
                     <label class="col-lg-6 col-xs-6">SI LA RESPUESTA ES SÍ, ¿PARA QUÉ PRODUCTOS?
 
 
@@ -254,7 +254,7 @@ Se han agregado los criterios de cumplimiento a la Lista de Verificación para  
                     <input class="plan_input" type="text" name="productos1" id="productos1" value="<?php echo $row_notas['productos1']; ?>" placeholder="Productos" onchange="guarda3()" /></div>
                    
                 </div>
-               <div class="col-lg-12 col-xs-12 datos">
+               <div class="col-lg-12 col-xs-12 ">
                     <label class="col-lg-6 col-xs-6">¿EL PRODUCTOR COMPRA PRODUCTOS CERTIFICADOS DE FUENTES EXTERNAS?
 </label>
                     <label class="col-lg-2 col-xs-2">SI
@@ -266,13 +266,13 @@ Se han agregado los criterios de cumplimiento a la Lista de Verificación para  
                     <div class="col-lg-1 col-xs-1" >
                      <input   type="checkbox" <? if ($row_notas['r8']==2){?> checked="checked"<? }?>  value="2" id="r8"  name="r8" onchange="guarda3()"/></div> 
                 </div>
-                  <div class="col-lg-12 col-xs-12 datos">
+                  <div class="col-lg-12 col-xs-12">
                     <label class="col-lg-6 col-xs-6">SI LA RESPUESTA ES SÍ, ¿PARA QUÉ PRODUCTOS?
 </label>                   <div class="col-lg-6 col-xs-6" >
                     <input class="plan_input" type="text"  name="productos2" id="productos2" value="<?php echo $row_notas['productos2']; ?>" placeholder="Productos" onchange="guarda3()" /></div>
                    
                 </div>
-                 <div class="col-lg-12 col-xs-12 datos">
+                 <div class="col-lg-12 col-xs-12 ">
                     <label class="col-lg-6 col-xs-6">¿SE REALIZA LA INSPECCIÓN EN COMBINACIÓN CON ALGUNA OTRA NORMA O ADD-ON? 
 
 </label>
@@ -285,13 +285,13 @@ Se han agregado los criterios de cumplimiento a la Lista de Verificación para  
                     <div class="col-lg-1 col-xs-1" >
                      <input   type="checkbox" <? if ($row_notas['r9']==2){?> checked="checked"<? }?>  value="2" id="r9"  name="r9" onchange="guarda3()"/></div> 
                 </div>
-                  <div class="col-lg-12 col-xs-12 datos">
+                  <div class="col-lg-12 col-xs-12 ">
                     <label class="col-lg-6 col-xs-6">SI LA RESPUESTA ES SÍ, ¿PARA QUÉ PRODUCTOS?
 </label>                   <div class="col-lg-6 col-xs-6" >
                     <input class="plan_input" type="text"  name="productos3" id="productos3" value="<?php echo $row_notas['productos3']; ?>" placeholder="Productos"  onchange="guarda3()" /></div>
                    
                 </div>
-                 <div class="col-lg-12 col-xs-12 datos">
+                 <div class="col-lg-12 col-xs-12 ">
                     <label class="col-lg-6 col-xs-6">¿SE OBSERVÓ LA COSECHA DEL PRODUCTO DURANTE LA INSPECCIÓN? 
 
 </label>
@@ -304,13 +304,13 @@ Se han agregado los criterios de cumplimiento a la Lista de Verificación para  
                     <div class="col-lg-1 col-xs-1" >
                      <input   type="checkbox" <? if ($row_notas['r10']==2){?> checked="checked"<? }?>  value="2" id="r10"  name="r10" onchange="guarda3()"/></div> 
                 </div>
-                  <div class="col-lg-12 col-xs-12 datos">
+                  <div class="col-lg-12 col-xs-12">
                     <label class="col-lg-6 col-xs-6">SI LA RESPUESTA ES SÍ, ¿PARA QUÉ PRODUCTOS?
 </label>                   <div class="col-lg-6 col-xs-6" >
                     <input class="plan_input" type="text" name="productos4" id="productos4" value="<?php echo $row_notas['productos4']; ?>" placeholder="Productos" onchange="guarda3()"  /></div>
                    
                 </div>
-                 <div class="col-lg-12 col-xs-12 datos">
+                 <div class="col-lg-12 col-xs-12 ">
                     <label class="col-lg-6 col-xs-6">¿SE OBSERVÓ LA MANIPULACIÓN DEL PRODUCTO DURANTE LA INSPECCIÓN? 
 
 </label>
@@ -323,34 +323,34 @@ Se han agregado los criterios de cumplimiento a la Lista de Verificación para  
                     <div class="col-lg-1 col-xs-1" >
                      <input   type="checkbox" <? if ($row_notas['r11']==2){?> checked="checked"<? }?>  value="2" id="r11"  name="r11" onchange="guarda3()"/></div> 
                 </div>
-                  <div class="col-lg-12 col-xs-12 datos">
+                  <div class="col-lg-12 col-xs-12">
                     <label class="col-lg-6 col-xs-6">SI LA RESPUESTA ES SÍ, ¿PARA QUÉ PRODUCTOS?
 </label>                   <div class="col-lg-6 col-xs-6" >
                     <input class="plan_input" type="text" name="productos5" id="productos5" value="<?php echo $row_notas['productos5']; ?>" placeholder="Productos"  onchange="guarda3()" /></div>
                    
                 </div>
-                 <div class="col-lg-12 col-xs-12 datos">
+                 <div class="col-lg-12 col-xs-12 ">
                     <label class="col-lg-6 col-xs-6">LISTA DE TODOS LOS PRODUCTOS PRESENTADOS DURANTE LA INSPECCIÓN: 
 
 </label>                   <div class="col-lg-6 col-xs-6" >
                       <input class="plan_input" type="text" name="productos6" id="productos6" value="<?php echo $row_notas['productos6']; ?>" placeholder="Productos"  onchange="guarda3()" /></div>
                    
                 </div>
-                 <div class="col-lg-12 col-xs-12 datos">
+                 <div class="col-lg-12 col-xs-12 ">
                     <label class="col-lg-6 col-xs-6">LUGAR(ES) VISITADOS: 
 
 </label>                   <div class="col-lg-6 col-xs-6" >
                        <input class="plan_input" type="text" name="lugar" id="lugar" value="<?php echo $row_notas['lugar']; ?>" placeholder="Lugar"  onchange="guarda3()" /></div>
                    
                 </div>
-                 <div class="col-lg-12 col-xs-12 datos">
+                 <div class="col-lg-12 col-xs-12 ">
                     <label class="col-lg-6 col-xs-6">DURACIÓN DE LA INSPECCIÓN: 
 
 </label>                   <div class="col-lg-6 col-xs-6" >
                        <input class="plan_input" type="text" name="duracion" id="duracion" value="<?php echo $row_notas['duracion']; ?>" placeholder="Duración"  onchange="guarda3()" /></div>
                    
                 </div>
-                 <div class="col-lg-12 col-xs-12 datos">
+                 <div class="col-lg-12 col-xs-12 ">
                     <label class="col-lg-6 col-xs-6">CÁLCULO DEL 95% DE CUMPLIMIENTO DE LAS OBLIGACIONES MENORES: 
 
 </label>                   <div class="col-lg-6 col-xs-6" >
@@ -361,9 +361,9 @@ Se han agregado los criterios de cumplimiento a la Lista de Verificación para  
                     
                 
                 <div class="col-lg-12 col-xs-12 datos">
-                    <label  class="col-lg-3 col-xs-3"><strong>NOMBRE DEL PRODUCTOR:     
+                    <label  class="col-lg-3 col-xs-4"><strong>NOMBRE DEL PRODUCTOR:     
 </strong></label>
-                    <div class="col-xs-9 col-lg-9">
+                    <div class="col-xs-8 col-lg-9">
                     <input  disabled="disabled"   class=" plan_input" id="direccion" name="direccion" value="<? echo $row_operador['nombre_legal'];?>"  onchange="guarda3()" /></div>
                 </div>
                   <div class="col-lg-12 col-xs-12 datos">
@@ -372,13 +372,13 @@ Se han agregado los criterios de cumplimiento a la Lista de Verificación para  
                     <input      class=" plan_input" id="firma_op" name="firma_op" type="text" value="<? echo $row_notas['firma_op'];?>" onchange="guarda3()"/></div>
                 
             
-                    <label class="col-lg-1 col-xs-1">Fecha:</label>
-                    <div class="col-xs-5 col-lg-5">
+                    <label class="col-lg-1 col-xs-3">Fecha:</label>
+                    <div class="col-xs-3 col-lg-5">
                     <input    class=" plan_input" id="fecha_firma_op" name="fecha_firma_op" value="<? echo $row_notas['fecha_firma_op'];?>"  onchange="guarda3()"  /></div>
                 </div>
                  <div class="col-lg-12 col-xs-12 datos">
-                    <label  class="col-lg-3 col-xs-3"><strong>NOMBRE DEL INSPECTOR/AUDITOR:  </strong></label>
-                    <div class="col-xs-9 col-lg-9">
+                    <label  class="col-lg-3 col-xs-4"><strong>NOMBRE DEL INSPECTOR/AUDITOR:  </strong></label>
+                    <div class="col-xs-8 col-lg-9">
                     <input  disabled="disabled"   class=" plan_input" id="nombre_auditor" name="nombre_auditor" value="<? echo $row_operador['nombre_auditor'];?>"  title="Dirección"  /></div>
                 </div>
                   <div class="col-lg-12 col-xs-12 datos">
@@ -387,8 +387,8 @@ Se han agregado los criterios de cumplimiento a la Lista de Verificación para  
                     <input      class=" plan_input" id="firma_au" name="firma_au" type="text" value="<? echo $row_notas['firma_au'];?>" onchange="guarda3()"/></div>
                 
             
-                    <label class="col-lg-1 col-xs-1">Fecha:</label>
-                    <div class="col-xs-5 col-lg-5">
+                    <label class="col-lg-1 col-xs-3">Fecha:</label>
+                    <div class="col-xs-3 col-lg-5">
                     <input    class=" plan_input" id="fecha_firma_au" name="fecha_firma_au" value="<? echo $row_notas['fecha_firma_au'];?>"  onchange="guarda3()"  /></div>
                 </div>
             </form>

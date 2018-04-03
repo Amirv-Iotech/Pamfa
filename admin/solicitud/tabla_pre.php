@@ -178,55 +178,55 @@ $row_pres = mysql_fetch_assoc($pres );?>
 		   
             <td align="justify">Evaluación inicial </td>
             <form name="formulario1" id="formulario1" method="post" action=""   >
-			  <td align="center"> <input id="ev_ev" name="ev_ev" type="text" value="<?  echo $row_pres['ev_ev'];?>" onchange="this.form.submit()"  />
+			  <td align="center"> <input id="ev_ev" name="ev_ev" type="number" value="<?  echo $row_pres['ev_ev'];?>" onchange="this.form.submit()"  />
 </td>
-  <td align="center"> <input id="ev_in" name="ev_in" placeholder=""type="text" value="<?  echo $row_pres['ev_in'];?>" onchange="this.form.submit()"  />
+  <td align="center"> <input id="ev_in" name="ev_in" placeholder=""type="number" value="<?  echo $row_pres['ev_in'];?>" onchange="this.form.submit()"  />
 </td>
-  <td align="center"> <input  id="ev_seg" name="ev_seg" placeholder=""type="text" value="<?  echo $row_pres['ev_seg'];?>" onchange="this.form.submit()" />
+  <td align="center"> <input  id="ev_seg" name="ev_seg" placeholder=""type="number" value="<?  echo $row_pres['ev_seg'];?>" onchange="this.form.submit()" />
 </td>
-  <td align="center"> <input   id="ev_cuo" name="ev_cuo" placeholder=""type="text" value="<?  echo $row_pres['ev_cuo'];?>" onchange="this.form.submit()"  />
+  <td align="center"> <input   id="ev_cuo" name="ev_cuo" placeholder=""type="number" value="<?  echo $row_pres['ev_cuo'];?>" onchange="this.form.submit()"  />
 </td>
-  <td align="center"> <input   disabled="disabled" id="ev_tot" name="ev_tot" placeholder=""type="text" value="<?  echo $row_pres['ev_tot'];?>"  />
+  <td align="center"> <input   disabled="disabled" id="ev_tot" name="ev_tot" placeholder=""type="number" value="<?  echo $row_pres['ev_tot'];?>"  />
 </td>
 			  
          
 		  <tr>
             <td align="justify">Auditoria no anunciada </td>
-			  <td align="center"> <input   id="au_ev" name="au_ev" placeholder=""type="text" value="<?  echo $row_pres['au_ev'];?>" onchange="this.form.submit()" />
+			  <td align="center"> <input   id="au_ev" name="au_ev" placeholder=""type="number" value="<?  echo $row_pres['au_ev'];?>" onchange="this.form.submit()" />
 </td>
-  <td align="center"> <input   id="au_in" name="au_in" placeholder=""type="text" value="<?  echo $row_pres['au_in'];?>"   onchange="this.form.submit()"  />
+  <td align="center"> <input   id="au_in" name="au_in" placeholder=""type="number" value="<?  echo $row_pres['au_in'];?>"   onchange="this.form.submit()"  />
 </td>
-  <td align="center"> <input   id="au_seg" name="au_seg" placeholder=""type="text" value="<?  echo $row_pres['au_seg'];?>" onchange="this.form.submit()"  />
+  <td align="center"> <input   id="au_seg" name="au_seg" placeholder=""type="number" value="<?  echo $row_pres['au_seg'];?>" onchange="this.form.submit()"  />
 </td>
-  <td align="center"> <input   id="au_cuo" name="au_cuo" placeholder=""type="text" value="<?  echo $row_pres['au_cuo'];?>" onchange="this.form.submit()"  />
+  <td align="center"> <input   id="au_cuo" name="au_cuo" placeholder=""type="number" value="<?  echo $row_pres['au_cuo'];?>" onchange="this.form.submit()"  />
 </td>
-  <td align="center"> <input   disabled="disabled"  id="au_tot" name="au_tot" placeholder=""type="text" value="<?  echo $row_pres['au_tot'];?>"  />
+  <td align="center"> <input   disabled="disabled"  id="au_tot" name="au_tot" placeholder=""type="number" value="<?  echo $row_pres['au_tot'];?>"  />
 </td>
           </tr>
 		  <tr>
             <td align="justify">Auditoria extraordinaria para cierre de no conformidades </td>
-			  <td align="center"> <input   id="auex_ev" name="auex_ev" placeholder=""type="text" value="<?  echo $row_pres['auex_ev'];?>" onchange="this.form.submit()" />
+			  <td align="center"> <input   id="auex_ev" name="auex_ev" placeholder=""type="number" value="<?  echo $row_pres['auex_ev'];?>" onchange="this.form.submit()" />
 </td>
-  <td align="center"> <input   id="auex_in" name="auex_in" placeholder=""type="text" value="<?  echo $row_pres['auex_in'];?>" onchange="this.form.submit()" />
+  <td align="center"> <input   id="auex_in" name="auex_in" placeholder=""type="number" value="<?  echo $row_pres['auex_in'];?>" onchange="this.form.submit()" />
 </td>
-  <td align="center"> <input   id="auex_seg" name="auex_seg" placeholder=""type="text" value="<?  echo $row_pres['auex_seg'];?>" onchange="this.form.submit()" />
+  <td align="center"> <input   id="auex_seg" name="auex_seg" placeholder=""type="number" value="<?  echo $row_pres['auex_seg'];?>" onchange="this.form.submit()" />
 </td>
-  <td align="center"> <input   id="auex_cuo" name="auex_cuo" placeholder=""type="text" value="<?  echo $row_pres['auex_cuo'];?>" onchange="this.form.submit()"  />
+  <td align="center"> <input   id="auex_cuo" name="auex_cuo" placeholder=""type="number" value="<?  echo $row_pres['auex_cuo'];?>" onchange="this.form.submit()"  />
 </td>
-  <td align="center"> <input   disabled="disabled" id="auex_tot" name="auex_tot" placeholder=""type="text" value="<?  echo $row_pres['auex_tot'];?>"   />
+  <td align="center"> <input   disabled="disabled" id="auex_tot" name="auex_tot" placeholder=""type="number" value="<?  echo $row_pres['auex_tot'];?>"   />
 </td>
           </tr>
 		  <tr>
             <td align="justify">Auditoria por ampliación de alcance de certificación.</td>
-			 		  <td align="center"> <input   id="auam_ev" name="auam_ev" placeholder=""type="text" value="<?  echo $row_pres['auam_ev'];?>" onchange="this.form.submit()"  />
+			 		  <td align="center"> <input   id="auam_ev" name="auam_ev" placeholder=""type="number" value="<?  echo $row_pres['auam_ev'];?>" onchange="this.form.submit()"  />
 </td>
-  <td align="center"> <input   id="auam_in" name="auam_in" placeholder=""type="text" value="<?  echo $row_pres['auam_in'];?>" onchange="this.form.submit()" />
+  <td align="center"> <input   id="auam_in" name="auam_in" placeholder=""type="number" value="<?  echo $row_pres['auam_in'];?>" onchange="this.form.submit()" />
 </td>
-  <td align="center"> <input   id="auam_seg" name="auam_seg" placeholder=""type="text" value="<?  echo $row_pres['auam_seg'];?>" onchange="this.form.submit()"  />
+  <td align="center"> <input   id="auam_seg" name="auam_seg" placeholder=""type="number" value="<?  echo $row_pres['auam_seg'];?>" onchange="this.form.submit()"  />
 </td>
-  <td align="center"> <input   id="auam_cuo" name="auam_cuo" placeholder=""type="text" value="<?  echo $row_pres['auam_cuo'];?>" onchange="this.form.submit()" />
+  <td align="center"> <input   id="auam_cuo" name="auam_cuo" placeholder=""type="number" value="<?  echo $row_pres['auam_cuo'];?>" onchange="this.form.submit()" />
 </td>
-  <td align="center"> <input    disabled="disabled" id="auam_tot" name="auam_tot" placeholder=""type="text" value="<?  echo $row_pres['auam_tot'];?>" onchange="this.form.submit()" />
+  <td align="center"> <input    disabled="disabled" id="auam_tot" name="auam_tot" placeholder=""type="number" value="<?  echo $row_pres['auam_tot'];?>" onchange="this.form.submit()" />
 </td> 
 <td>
 <? //<input type="submit" name="guarda"  /> ?>

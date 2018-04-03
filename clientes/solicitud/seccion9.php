@@ -140,7 +140,16 @@ $query_solp1 = sprintf("SELECT * FROM solicitud_mexcalsup where idsolicitud='".$
 
 
 <!-- TABLA ======= TABLA=====-->
-<div class="col-lg-12 col-xs-12" style="background-color: #ecfbe7; border: solid 1px #AAAAAA; border-bottom-width:2px;" id="tabla_ajax" >
+
+ <? if ($dac=="formulario.php"){ if($st9==1){?> <button type="button" class="btn btn-danger collapsed btn-lg btn-block" data-toggle="collapse" data-target="#demo9" aria-expanded="false"><span  style="font-size:20px">  <? echo $c19."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OBSERVACIONES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";?><i class="material-icons" style="font-size: 25px;">arrow_downward</i></span></button>
+<div id="demo9" class="collapse" style="background:#FFF">
+<?  echo $ob9;  ?>
+</div>
+<? }} ?>
+	
+     
+
+<div class="col-lg-12 col-xs-12"   id="tabla_ajax"  class="row" id="seccion8"   <? if ($dac=="formulario.php"){ if($st8==1){?> style="border:3px solid #F00"<? } else{?>style="background-color: #ecfbe7;" <? }}else{?> style="background-color: #ecfbe7;"<? }?>>
 
           <?php
 

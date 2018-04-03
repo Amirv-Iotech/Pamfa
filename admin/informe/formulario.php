@@ -168,6 +168,7 @@ $total=$tot_nc+$tot_ncm+$tot_nco;
 
 ?>
 <div class="content">
+
     <div class="row" id="form_plan_aud" style="background-color: #ecfbe7; padding: 0px;">
         <div class="col-lg-12 col-xs-12" style="padding: 0px;">
 
@@ -247,9 +248,9 @@ if (stripos( $productos,$a1) === false) {
 					  }?>
                 
                 <div class="col-lg-12 col-xs-12 datos">
-                    <label class="col-lg-3 col-xs-3">Producto(s) presentes en la inspección</label>
+                    <label class="col-lg-3 col-xs-5">Producto(s) presentes en la inspección</label>
                    
-                      <div class="col-lg-9 col-xs-9">
+                      <div class="col-lg-9 col-xs-7">
                       <input disabled class="plan_input" id="producto" name="producto" type="text" value="<? echo $productos;?>"  />
                       </div>
                 </div>

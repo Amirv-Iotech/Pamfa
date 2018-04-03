@@ -50,7 +50,7 @@ if(isset($_POST['username'])){
     $password = $_POST['password'];
 
 
-      $LoginRS__query=sprintf("SELECT * FROM usuario WHERE username=%s AND password=%s",
+      $LoginRS__query=sprintf("SELECT * FROM usuario WHERE username=BINARY %s AND password=BINARY %s",
       GetSQLValueString($loginUsername, "text"), 
       GetSQLValueString($password, "text")); 
 	
@@ -98,7 +98,7 @@ if(isset($_POST['username'])){
     $password = $_POST['password'];
 
 
-      $LoginRS__query=sprintf("SELECT * FROM usuario WHERE username=%s AND password=%s and ( tipo=2 or tipo=3)",
+      $LoginRS__query=sprintf("SELECT * FROM usuario WHERE username=BINARY %s AND password= BINARY %s and ( tipo=2 or tipo=3)",
       GetSQLValueString($loginUsername, "text"), 
       GetSQLValueString($password, "text")); 
 	
@@ -151,7 +151,7 @@ if(isset($_POST['username'])){
     $password = $_POST['password'];
 
 
-      $LoginRS__query=sprintf("SELECT * FROM operador WHERE username=%s AND password=%s",
+      $LoginRS__query=sprintf("SELECT * FROM operador WHERE username=BINARY %s AND password=BINARY %s",
       GetSQLValueString($loginUsername, "text"), 
       GetSQLValueString($password, "text")); 
 	

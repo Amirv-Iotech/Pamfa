@@ -118,7 +118,7 @@ while($row_tab = mysql_fetch_assoc($tab)){
              
                   </td>
                   <td><input type="time" name="<? echo "h_fin".$row_tab['idlista_portada'].""?>" id="<? echo "h_fin".$row_tab['idlista_portada'].""?>" value="<? echo $row_tab['h_fin'];?>" onchange="<? echo "guardarTabla2(".$row_tab['idlista_portada'].")"?>" /></td>
-               <td>diferencia=  <? echo RestarHoras($row_tab['h_inicio'],$row_tab['h_fin']); ?> 
+               
              <? 
 			 
 			 //$diftotal=$diftotal+RestarHoras($row_tab['h_inicio'],$row_tab['h_fin']); 
@@ -142,7 +142,7 @@ while($row_tab = mysql_fetch_assoc($tab)){
         $cont++;    }
 		$tot=round($horas,0).":".$mins;
 		?>
-    <tr><td>dif total=<? echo $tot ?></td></tr>
+    
    <input id="duracion" type="hidden" name="duracion" value="<? echo $tot;?>"/>
           </tbody>
       </table>
