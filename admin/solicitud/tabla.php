@@ -1,6 +1,6 @@
 
 <?php require_once('../../Connections/inforgan_pamfa.php');
- include("cerebro.php");
+ //include("cerebro.php");
   $sol="";
   if($_GET["idsolicitud"])
   {$sol=$_GET["idsolicitud"];
@@ -23,7 +23,7 @@ $sol=$row_s ['id'];
 
 
   }
-$query_solicitud = sprintf("SELECT * FROM solicitud WHERE idsolicitud=%s ", GetSQLValueString( $sol, "int"));
+$query_solicitud = "SELECT * FROM solicitud WHERE idsolicitud='".$sol."'";
 $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error());
 $row_solicitud= mysql_fetch_assoc($solicitud);
 
@@ -31,7 +31,7 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
 
 
  	//consulta todos los cultivos
- $query_cultivos = sprintf("SELECT * FROM cultivos WHERE idsolicitud = %s", GetSQLValueString($row_solicitud["idsolicitud"], "int"));
+ $query_cultivos = "SELECT * FROM cultivos WHERE idsolicitud ='".$row_solicitud["idsolicitud"]."'";;
  
 ?>
 <div class="table-responsive" >

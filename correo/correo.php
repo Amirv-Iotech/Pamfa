@@ -1,5 +1,6 @@
 <?
 include_once("../Connections/mail.php");
+
  
  echo __FILE__;
 //dirección del correo

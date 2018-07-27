@@ -115,72 +115,62 @@ $row_alcance= mysql_fetch_assoc($alcance);
                     <p><b>DATOS DEL CLIENTE</b></p>
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">
-                    <label class="col-lg-3 col-xs-3">Razón social:</label>
-                    <div class="col-lg-9 col-xs-9" >
+                    <label class="col-lg-2 col-xs-3">Razón social:</label>
+                    <div class="col-lg-10 col-xs-9" >
                     <input  disabled   class=" plan_input" id="nombre_legal" name="nombre_legal" type="text" title="Nombre completo" value="<? echo $row_operador['nombre_legal'];?>" /></div>
                 </div>
                 <div class="col-lg-12 col-xs-12 datos">
-                    <label class="col-lg-3 col-xs-5">Dirección de la entidad legal: calle y número:</label>
-                    <div class="col-xs-7 col-lg-9">
+                    <label class="col-lg-2 col-xs-5">Dirección,calle y número:</label>
+                    <div class="col-xs-4 col-lg-4">
                     <input disabled  class=" plan_input" id="direccion" name="direccion" value="<? echo $row_operador['direccion'];?>"  title="Dirección"  /></div>
-                </div>
-                <div class="col-lg-12 col-xs-12 datos">
-                    <label class="col-lg-3 col-xs-3">Colonia:</label>
-                    <div class="col-lg-9 col-xs-9">
+                    <label class="col-lg-1 col-xs-3">Colonia:</label>
+                    <div class="col-lg-2 col-xs-9">
                     <input disabled class="plan_input" id="colonia" name="colonia" value="<? echo $row_operador['colonia'];?>"  title="Colonia " />
                     </div>
-                </div>
-                <div class="col-lg-12 col-xs-12 datos">
-                    <label class="col-lg-3 col-xs-3">C.P.:</label>
-                    <div class="col-lg-9 col-xs-9">
+                     <label class="col-lg-1 col-xs-3">C.P.:</label>
+                    <div class="col-lg-2 col-xs-9">
                     <input  disabled class="plan_input" id="cp" name="cp" type="text" title="Codigo postal " value="<? echo $row_operador['cp'];?>"  />
                     </div>
                 </div>
+               
+                
                 <div class="col-lg-12 col-xs-12 datos">
-                     <label class="col-lg-3 col-xs-3">Municipio:</label>
-                     <div class="col-lg-9 col-xs-9">
+                     <label class="col-lg-2 col-xs-3">Municipio:</label>
+                     <div class="col-lg-4 col-xs-9">
                       <input disabled class="plan_input" id="municipio" name="municipio" type="text" title="Estado " value="<? echo $row_operador['municipio'];?>" />
                       </div>
-                </div>
-                <div class="col-lg-12 col-xs-12 datos">
-                      <label class="col-lg-3 col-xs-3">Estado:</label>
-                      <div class="col-lg-9 col-xs-9">
+                      <label class="col-lg-2 col-xs-3">Estado:</label>
+                      <div class="col-lg-4 col-xs-9">
                       <input disabled class="plan_input" id="estado" name="estado" type="text" title="Estado " value="<? echo $row_operador['estado'];?>" />
                       </div>
                 </div>
+               
                 <div class="col-lg-12 col-xs-12 datos">
-                    <label class="col-lg-3 col-xs-3">Teléfono:</label>
-                    <div class="col-lg-9 col-xs-9">
+                    <label class="col-lg-2 col-xs-3">Teléfono/Fax:</label>
+                    <div class="col-lg-4 col-xs-9">
                     <input disabled class="plan_input" id="telefono" name="telefono" type="text" title="Telefono " value="<? echo $row_operador['telefono'];?>"  />
                     </div>
-                </div>
-                <div class="col-lg-12 col-xs-12 datos">
-                    <label class="col-lg-3 col-xs-3">Correo Electrónico:</label>
-                    <div class="col-lg-9 col-xs-9">
+                    <label class="col-lg-2 col-xs-3">Email:</label>
+                    <div class="col-lg-4 col-xs-9">
                    
                     
                      <input disabled class="plan_input" id="nombre_representante" name="nombre_representante" type="text" value="<? echo $row_operador['email'];?>"  title="Email" />
                     </div>
                 </div>
+                
                 <div class="col-lg-12 col-xs-12 datos">
-                    <label class="col-lg-3 col-xs-3">Nombre del representante legal:</label>
+                    <label class="col-lg-3 col-xs-3">Nombre del representante autorizado de la empresa:</label>
                     <div class="col-lg-9 col-xs-9">
                     <input disabled class="plan_input" id="email" name="email" type="text" value="<? echo $row_operador['nombre_representante'];?>"  title="Nombre " />
                     </div>
                 </div>
-                <div class="col-lg-12 col-xs-12 datos">
-                    
-                   
-                   
-                </div>
+               
                 <div class="col-lg-12 col-xs-12 datos">                                
-                    <label class="col-lg-3 col-xs-3">Centro de manipulación:</label>  
-                    <div class="col-lg-9 col-xs-9">  
+                    <label class="col-lg-2 col-xs-3">Centro de manipulación:</label>  
+                    <div class="col-lg-4 col-xs-9">  
                     <input disabled class="plan_input" id="procesadora" name="procesadora" type="text" title="Estado " value="<? echo $row_procesadora['empresa'];?>" />
                     </div>
-                </div>
-                <div class="col-lg-12 col-xs-12 datos">
-                    <label class="col-lg-3 col-xs-3">Producto:</label>
+                    <label class="col-lg-2 col-xs-3">Producto:</label>
                     <?  $query_prod = sprintf("SELECT * FROM cultivos WHERE idsolicitud=%s order by idcultivos", GetSQLValueString( $_POST["idsolicitud"], "int"));
                       $prod = mysql_query($query_prod, $inforgan_pamfa) or die(mysql_error());
 					  
@@ -215,22 +205,22 @@ if (stripos( $productos,$a1) === false) {
                       }
 					 
 					  }?>
-                      <div class="col-lg-9 col-xs-9">
+                      <div class="col-lg-4 col-xs-9">
                       <input disabled class="plan_input" id="producto" name="producto" type="text" title="Telefono " value="<? echo $productos;?>"  />
                       </div>
                 </div>
+               
                 <div class="col-lg-12 col-xs-12 datos">
-                    <label class="col-lg-3 col-xs-3">Fecha_emision:</label>
-                     <div class="col-lg-9 col-xs-9">
+                    <label class="col-lg-2 col-xs-3">Fecha_emision:</label>
+                     <div class="col-lg-4 col-xs-9">
                      <input class="plan_input" id="fecha_emision" name="fecha_emision" type="date" value="<? echo $row_plan_auditoria['fecha_emision'];?>"  title="Nombre " />
                     </div>
-                </div>
-                <div class="col-lg-12 col-xs-12 datos">
-                    <label class="col-lg-3 col-xs-3">Fecha_auditoria:</label>
-                    <div class="col-lg-9 col-xs-9">
+                    <label class="col-lg-2 col-xs-3">Fecha_auditoria:</label>
+                    <div class="col-lg-4 col-xs-9">
                     <input type="date" placeholder="" class="plan_input" id="fecha_auditoria" name="fecha_auditoria" value="<? echo $row_plan_auditoria['fecha_auditoria'];?>"  title="Nombre " />
                     </div>
                 </div>
+               
                 <div class="col-lg-12 col-xs-12 datos" >
                     <input id="idsolicitud" type="hidden" name="idsolicitud" value="<? echo $_POST['idsolicitud']; ?>" /><input type="hidden" name="idoperador" value="<? echo $row_operador['idoperador']; ?>" />
                   
@@ -247,10 +237,25 @@ if (stripos( $productos,$a1) === false) {
 </div>
 <?php  include("seccion5.php");?>
 <?php  include("seccion6.php");?>
+<input class="btn btn-info" type="button" name="anexo" value="Mas información..." id="anexo" />
 <?php  include("seccion7.php");?>
 
 <?php include("includes/footer.php");?>
 
+<script type="text/javascript"> 
+
+ <? echo '
+
+$(document).ready(function(){  
+    $("#anexo").click(function() { '; echo '
+ if (!$("#mas").is(":visible"))
+   $("#mas").show();
+else   
+   $("#mas").hide();';
+	echo ' 
+    });    
+});';?>
+			</script>
 <script>
 window.addEventListener("beforeunload", function(event) {    
 var procesadora =$('#procesadora').val();

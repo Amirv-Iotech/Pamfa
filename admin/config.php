@@ -51,7 +51,9 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
+<script src="assets/js/jquery-3.1.0.min.js" type="text/javascript"></script>
 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -66,7 +68,15 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
     <link rel="stylesheet"  href="assets/datatables/dataTables.bootstrap.css">
-   
+     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript">
+function abrir(x)
+{
+	$('#modal'+x).appendTo("body").modal('show');
+ 
+}</script>
+
+
 </head>
 
 <body>
@@ -119,7 +129,13 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 				<div class="container-fluid">
 					<div class="navbar-header">
 						
-						<a class="navbar-brand" href="#">PAMFA A.C. </a>
+						<button type="button" class="navbar-toggle" data-toggle="collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">PAMFA A.C.</a>
                         <? if($dac=='formulario.php')
 						{?>
                         <form action="../solicitud/solicitudes.php" method="post" >
@@ -223,43 +239,14 @@ else if(!empty($_POST['op'])&&$_POST['op']==7){include('configuracion/catalogos.
 
 						
 			
-			<footer class="footer">
-				<div class="container-fluid">
-					<nav class="pull-left">
-						<ul>
-							<li>
-								<a href="#">
-									Home
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									Company
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									Portfolio
-								</a>
-							</li>
-							<li>
-								<a href="#">
-								   Blog
-								</a>
-							</li>
-						</ul>
-					</nav>
-					
-				</div>
-			</footer>
+			
 		</div>
 	</div>
 
 </body>
 
 	<!--   Core JS Files   -->
-	<script src="assets/js/jquery-3.1.0.min.js" type="text/javascript"></script>
-	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+	
 	<script src="assets/js/material.min.js" type="text/javascript"></script>
 
 	<!--  Charts Plugin -->
@@ -313,14 +300,19 @@ else if(!empty($_POST['op'])&&$_POST['op']==7){include('configuracion/catalogos.
     });
   });
 </script>	
-<script type="text/javascript"> 
+
+            <script type="text/javascript"> 
 
  <? echo '
 
 $(document).ready(function(){  
     $("#todos").click(function() { '; echo '
  if (!$("#tabla2").is(":visible"))
+ {
    $("#tabla2").show();
+    $("#insert").hide();
+	$("#espera").hide();
+ }
 else   
    $("#tabla2").hide();';
 	echo ' 
@@ -334,7 +326,11 @@ else
 $(document).ready(function(){  
     $("#insertar").click(function() { '; echo '
  if (!$("#insert").is(":visible"))
+ {
    $("#insert").show();
+    $("#tabla2").hide();
+	$("#espera").hide();
+ }
 else   
    $("#insert").hide();';
 	echo ' 
@@ -348,11 +344,17 @@ else
 $(document).ready(function(){  
     $("#late").click(function() { '; echo '
  if (!$("#espera").is(":visible"))
+ {
    $("#espera").show();
+   $("#insert").hide();
+     $("#tabla2").hide();}
 else   
    $("#espera").hide();';
 	echo ' 
     });    
 });';?>
 			</script>
+           
+
+
 </html>

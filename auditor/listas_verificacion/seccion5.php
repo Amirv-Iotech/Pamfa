@@ -48,7 +48,7 @@ $totalRows_resp = mysql_num_rows($resp);
 
 <tr >
 <td  align="rigth"><? if($row_pregunta['numero']<10){ echo $row_pregunta['prefijo'].substr($row_pregunta['numero'],1);}else {echo $row_pregunta['prefijo'].$row_pregunta['numero'];}?></td>
-<td colspan="3"><?php echo $row_pregunta['texto'];?></td>	 
+<td colspan="3"><?php echo $row_pregunta['texto']; if ($row_resp['respuesta']!=NULL) {echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class='material-icons'>done_all</i>";} ?>?></td>	 
 <form target="destino"  action="guardar_pregunta2.php" name="<?php echo $row_pregunta['idpregunta'];?>" method="post" id="<?php echo $row_pregunta['idpregunta'];?>">
 <td rowspan="2" class="warning">
 <select   onchange="this.form.submit()" class="plan_input" name="respuesta">
@@ -73,7 +73,7 @@ $totalRows_resp = mysql_num_rows($resp);
 
 <tr class="info">
 <td  align="rigth"><? if($row_pregunta['numero']<10){ echo $row_pregunta['prefijo'].substr($row_pregunta['numero'],1);}else {echo $row_pregunta['prefijo'].$row_pregunta['numero'];}?></td>
-<td colspan="3"><?php echo $row_pregunta['texto'];?></td>	 
+<td colspan="3"><?php echo $row_pregunta['texto']; if ($row_resp['respuesta']!=NULL) {echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class='material-icons'>done_all</i>";} ?>?></td>	 
 <form target="destino"  action="guardar_pregunta2.php" name="<?php echo $row_pregunta['idpregunta'];?>" method="post" id="<?php echo $row_pregunta['idpregunta'];?>"> 
 <td  rowspan="2"class="warning">
 <select  onchange="this.form.submit()" class="plan_input" name="respuesta">
@@ -115,7 +115,7 @@ $totalRows_resp = mysql_num_rows($resp);
 
 <tr >
 <td  align="rigth"><? echo $row_pregunta['prefijo'].substr($row_pregunta['numero'],1);?></td>
-<td colspan="6"><strong><? if($row_pregunta['ban']==NULL){ echo utf8_encode( $row_pregunta['texto']);} else {  echo $row_pregunta['texto'];} ?></strong></td>	 
+<td colspan="6"><strong><? if($row_pregunta['ban']==NULL){ echo utf8_encode( $row_pregunta['texto']); if ($row_resp['respuesta']!=NULL) {echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class='material-icons'>done_all</i>";}} else {  echo $row_pregunta['texto']; if ($row_resp['respuesta']!=NULL) {echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class='material-icons'>done_all</i>";} } ?></strong></td>	 
 <? /*<form target="destino"  action="guardar_pregunta2.php" name="<?php echo $row_pregunta['idpregunta'];?>" method="post" id="<?php echo $row_pregunta['idpregunta'];?>">
 
 <tr>
@@ -131,7 +131,7 @@ $totalRows_resp = mysql_num_rows($resp);
 
 <tr class="info">
 <td  align="rigth"><? echo $row_pregunta['prefijo'].substr($row_pregunta['numero'],1);?></td>
-<td colspan="3"><? if($row_pregunta['ban']==NULL){ echo utf8_encode( $row_pregunta['texto']);} else {  echo $row_pregunta['texto'];} ?></td>	
+<td colspan="3"><? if($row_pregunta['ban']==NULL){ echo utf8_encode( $row_pregunta['texto']); if ($row_resp['respuesta']!=NULL) {echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class='material-icons'>done_all</i>";} } else {  echo $row_pregunta['texto']; if ($row_resp['respuesta']!=NULL) {echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class='material-icons'>done_all</i>";} } ?></td>	
 <td colspan="1" rowspan="2"><?php echo $row_pregunta['nivel'];?></td>  
 <form target="destino"  action="guardar_pregunta2.php" name="<?php echo $row_pregunta['idpregunta'];?>" method="post" id="<?php echo $row_pregunta['idpregunta'];?>"> 
 <td  rowspan="2" colspan="1" class="warning">
@@ -162,7 +162,7 @@ $totalRows_resp = mysql_num_rows($resp);
 <tr class="info">
 <td  align="rigth"><? echo $row_pregunta['prefijo'].substr($row_pregunta['numero'],1);?></td>
 
-<td colspan="2"><? if($row_pregunta['ban']==NULL){ echo utf8_encode( $row_pregunta['texto']);} else {  echo $row_pregunta['texto'];} ?></td>	
+<td colspan="2"><? if($row_pregunta['ban']==NULL){ echo utf8_encode( $row_pregunta['texto']); if ($row_resp['respuesta']!=NULL) {echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class='material-icons'>done_all</i>";} } else {  echo $row_pregunta['texto']; if ($row_resp['respuesta']!=NULL) {echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class='material-icons'>done_all</i>";} } ?></td>	
 <td colspan="2" rowspan="1"><? if($row_pregunta['ban']==NULL){ echo utf8_encode($row_pregunta['criterio']);} else { echo $row_pregunta['criterio'];}?></td> 
 <td colspan="1" rowspan="1"><?php echo $row_pregunta['nivel'];?></td> 
 <form target="destino"  action="guardar_pregunta2.php" name="<?php echo $row_pregunta['idpregunta'];?>" method="post" id="<?php echo $row_pregunta['idpregunta'];?>"> 
@@ -207,7 +207,7 @@ $totalRows_resp = mysql_num_rows($resp);
 
 <tr >
 <td  align="rigth"><? echo $row_pregunta['prefijo'].substr($row_pregunta['numero'],1);?></td>
-<td colspan="4"><? if($row_pregunta['ban']==NULL){ echo utf8_encode( $row_pregunta['texto']);} else {  echo $row_pregunta['texto'];} ?></td>	 
+<td colspan="4"><? if($row_pregunta['ban']==NULL){ echo utf8_encode( $row_pregunta['texto']); if ($row_resp['respuesta']!=NULL) {echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class='material-icons'>done_all</i>";} } else {  echo $row_pregunta['texto']; if ($row_resp['respuesta']!=NULL) {echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class='material-icons'>done_all</i>";} } ?></td>	 
 
      
 
@@ -215,7 +215,7 @@ $totalRows_resp = mysql_num_rows($resp);
 
 <tr class="info">
 <td  align="rigth"><? echo $row_pregunta['prefijo'].substr($row_pregunta['numero'],1);?></td>
-<td colspan="3"><? if($row_pregunta['ban']==NULL){ echo utf8_encode( $row_pregunta['texto']);} else {  echo $row_pregunta['texto'];} ?></td>	 
+<td colspan="3"><? if($row_pregunta['ban']==NULL){ echo utf8_encode( $row_pregunta['texto']); if ($row_resp['respuesta']!=NULL) {echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class='material-icons'>done_all</i>";} } else {  echo $row_pregunta['texto']; if ($row_resp['respuesta']!=NULL) {echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class='material-icons'>done_all</i>";} } ?></td>	 
 <form target="destino"  action="guardar_pregunta2.php" name="<?php echo $row_pregunta['idpregunta'];?>" method="post" id="<?php echo $row_pregunta['idpregunta'];?>"> 
 <td  rowspan="2" colspan="1"class="warning">
 <select  onchange="this.form.submit()" class="plan_input" name="respuesta">
@@ -255,7 +255,7 @@ if($_POST['idformato']==6   ||$_POST['idformato']==5 ||$_POST['idformato']==4 ){
 
 <tr >
 <td  align="rigth"><? echo $row_pregunta['prefijo'].substr($row_pregunta['numero'],1);?></td>
-<td colspan="6"><strong><? if($row_pregunta['ban']==NULL){ echo utf8_encode( $row_pregunta['texto']);} else {  echo $row_pregunta['texto'];} ?></strong></td>	 
+<td colspan="6"><strong><? if($row_pregunta['ban']==NULL){ echo utf8_encode( $row_pregunta['texto']); if ($row_resp['respuesta']!=NULL) {echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class='material-icons'>done_all</i>";} } else {  echo $row_pregunta['texto']; if ($row_resp['respuesta']!=NULL) {echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class='material-icons'>done_all</i>";} } ?></strong></td>	 
 <? /*<form target="destino"  action="guardar_pregunta2.php" name="<?php echo $row_pregunta['idpregunta'];?>" method="post" id="<?php echo $row_pregunta['idpregunta'];?>">
 
 <tr>
@@ -271,7 +271,7 @@ if($_POST['idformato']==6   ||$_POST['idformato']==5 ||$_POST['idformato']==4 ){
 
 <tr class="info">
 <td  align="rigth"><? echo $row_pregunta['prefijo'].substr($row_pregunta['numero'],1);?></td>
-<td colspan="3"><? if($row_pregunta['ban']==NULL){ echo utf8_encode( $row_pregunta['texto']);} else {  echo $row_pregunta['texto'];} ?></td>	
+<td colspan="3"><? if($row_pregunta['ban']==NULL){ echo utf8_encode( $row_pregunta['texto']); if ($row_resp['respuesta']!=NULL) {echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class='material-icons'>done_all</i>";} } else {  echo $row_pregunta['texto']; if ($row_resp['respuesta']!=NULL) {echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class='material-icons'>done_all</i>";} } ?></td>	
 
 <form target="destino"  action="guardar_pregunta2.php" name="<?php echo $row_pregunta['idpregunta'];?>" method="post" id="<?php echo $row_pregunta['idpregunta'];?>"> 
 <td  rowspan="2" colspan="1" class="warning">

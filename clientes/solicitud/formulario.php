@@ -754,27 +754,14 @@ window.addEventListener("beforeunload", function(event) {
             var post_idcert_anterior = $('#idcert_anterior').val();
 
                   //Seccion 5
-           var esq_tipo1_op10="";
-            var porNombre=document.getElementsByName("esq_tipo1_op10");
+           var esq_tipo1_op1="";
+            var porNombre=document.getElementsByName("esq_tipo1_op1");
             for(var i=0;i<porNombre.length;i++)
               {
                 if(porNombre[i].checked){
-                esq_tipo1_op10=porNombre[i].value;}
+                esq_tipo1_op1=porNombre[i].value;}
               }
-			   var esq_tipo1_op11="";
-            var porNombre=document.getElementsByName("esq_tipo1_op11");
-            for(var i=0;i<porNombre.length;i++)
-              {
-                if(porNombre[i].checked){
-                esq_tipo1_op11=porNombre[i].value;}
-              }
-			   var esq_tipo1_op12="";
-            var porNombre=document.getElementsByName("esq_tipo1_op12");
-            for(var i=0;i<porNombre.length;i++)
-              {
-                if(porNombre[i].checked){
-                esq_tipo1_op12=porNombre[i].value;}
-              }
+			 
 
 
             //var esq_tipo1_op1 = $('#esq_tipo1_op1').val();
@@ -784,20 +771,14 @@ window.addEventListener("beforeunload", function(event) {
             var preg1_tipo2 = $('#preg1_tipo2').val();
             var preg2_tipo2 = $('#preg2_tipo2').val();
 			
-		 var esq_tipo2_op10="";
-            var porNombre2=document.getElementsByName("esq_tipo2_op10");
+		 var esq_tipo2_op1="";
+            var porNombre2=document.getElementsByName("esq_tipo2_op1");
             for(var i=0;i<porNombre2.length;i++)
               {
                 if(porNombre2[i].checked){
-                esq_tipo2_op10=porNombre2[i].value;}
+                esq_tipo2_op1=porNombre2[i].value;}
               }
-			   var esq_tipo2_op11="";
-            var porNombre2=document.getElementsByName("esq_tipo2_op11");
-            for(var i=0;i<porNombre2.length;i++)
-              {
-                if(porNombre2[i].checked){
-                esq_tipo2_op11=porNombre2[i].value;}
-              }
+			  
 
 			
             //var esq_tipo2_op1 = $('#esq_tipo2_op1').val();
@@ -1054,7 +1035,7 @@ window.addEventListener("beforeunload", function(event) {
                 $.ajax({  
                      url:"cerebro.php",  
                      method:"POST",
-                   data:{persona:post_persona, seccion:seccion, idoperador:post_idoperador, idsolicitud:post_idsolicitud, fecha:post_fecha, personal:post_personal, num_ggn:post_num_ggn, num_gln:post_num_gln, num_coc:post_num_coc, num_mex_cal_sup:post_num_mex_cal_sup, num_primus:post_num_primus, num_senasica:post_num_senasica, responsable:post_responsable,organismo:post_organismo, fecha_inicio:post_fecha_inicio, fecha_fin:post_fecha_fin, idcert_anterior:post_idcert_anterior, esq_tipo1_op10: esq_tipo1_op10,esq_tipo1_op11: esq_tipo1_op11,esq_tipo1_op12: esq_tipo1_op12, preg1_op2:preg1_op2, preg2_op2:preg2_op2, preg3_op2:preg3_op2,  preg1_tipo2:preg1_tipo2, preg2_tipo2:preg2_tipo2, preg3_tipo2:preg3_tipo2, esq_tipo2_op10:esq_tipo2_op10,esq_tipo2_op11:esq_tipo2_op11, preg4_tipo2:preg4_tipo2, preg5_tipo2:preg5_tipo2, preg61:preg61,preg62:preg62, preg71:preg71, preg72:preg72, preg81:preg81,preg82:preg82, idsolicitud_esquema:idsolicitud_esquema,primus0:primus0,primus1:primus1,primus2:primus2,primus3:primus3,primus4:primus4,primus5:primus5,primus6:primus6, idmex_pliego0:idmex_pliego0,idmex_pliego1:idmex_pliego1,idmex_pliego2:idmex_pliego2,idmex_pliego3:idmex_pliego3, idmex_alcance0:idmex_alcance0,idmex_alcance1:idmex_alcance1, idsrrc0:idsrrc0,idsrrc1:idsrrc1,idsrrc2:idsrrc2,idsrrc3:idsrrc3,idsrrc4:idsrrc4, srrc_preg1:srrc_preg1, srrc_preg2:srrc_preg2, empresa:empresa, rfc2:rfc2, direccion:direccion, direccion2:direccion2, cp:cp, tel:tel, idprocesadora:idprocesadora, inf_comercializacion:inf_comercializacion, idioma_aud:idioma_aud, idioma_inf:idioma_inf, respuesta4:respuesta4, respuesta5:respuesta5, terminada:terminada},
+                   data:{persona:post_persona, seccion:seccion, idoperador:post_idoperador, idsolicitud:post_idsolicitud, fecha:post_fecha, personal:post_personal, num_ggn:post_num_ggn, num_gln:post_num_gln, num_coc:post_num_coc, num_mex_cal_sup:post_num_mex_cal_sup, num_primus:post_num_primus, num_senasica:post_num_senasica, responsable:post_responsable,organismo:post_organismo, fecha_inicio:post_fecha_inicio, fecha_fin:post_fecha_fin, idcert_anterior:post_idcert_anterior, esq_tipo1_op1: esq_tipo1_op1, preg1_op2:preg1_op2, preg2_op2:preg2_op2, preg3_op2:preg3_op2,  preg1_tipo2:preg1_tipo2, preg2_tipo2:preg2_tipo2, preg3_tipo2:preg3_tipo2, esq_tipo2_op1:esq_tipo2_op1, preg4_tipo2:preg4_tipo2, preg5_tipo2:preg5_tipo2, preg61:preg61,preg62:preg62, preg71:preg71, preg72:preg72, preg81:preg81,preg82:preg82, idsolicitud_esquema:idsolicitud_esquema,primus0:primus0,primus1:primus1,primus2:primus2,primus3:primus3,primus4:primus4,primus5:primus5,primus6:primus6, idmex_pliego0:idmex_pliego0,idmex_pliego1:idmex_pliego1,idmex_pliego2:idmex_pliego2,idmex_pliego3:idmex_pliego3, idmex_alcance0:idmex_alcance0,idmex_alcance1:idmex_alcance1, idsrrc0:idsrrc0,idsrrc1:idsrrc1,idsrrc2:idsrrc2,idsrrc3:idsrrc3,idsrrc4:idsrrc4, srrc_preg1:srrc_preg1, srrc_preg2:srrc_preg2, empresa:empresa, rfc2:rfc2, direccion:direccion, direccion2:direccion2, cp:cp, tel:tel, idprocesadora:idprocesadora, inf_comercializacion:inf_comercializacion, idioma_aud:idioma_aud, idioma_inf:idioma_inf, respuesta4:respuesta4, respuesta5:respuesta5, terminada:terminada},
                      dataType:"text",  
                      success:function(data)  
                      {   

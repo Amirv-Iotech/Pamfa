@@ -50,7 +50,7 @@
 
 			<div class="logo">
 				<a href="" class="simple-text">
-			<img style="width:100px;" src="../images/pamfa.png" alt="">
+			<img style="width:200px;" src="../images/pamfa.png" alt="">
 
 				</a>
 			</div>

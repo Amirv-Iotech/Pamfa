@@ -39,24 +39,65 @@
                   </div>
               </div>
 
-              <div align="center" class="col-md-6">
-                  <a href="index.php"><img style="width:300px;" src="images/pamfa.png" alt=""> </a>
+              <div align="center" class="col-lg-6">
+                  <a href="index.php"><img style="width:600px;" src="images/pamfa.png" alt=""> </a>
               </div>
-              <div class="col-md-6 "  >
-             <div class="col-md-12" >
+             <div class="col-lg-6 col-xs-12 " align="center">  
+             
+             
+            <div class="col-lg-12  col-sm-12 col-xs-12 " align="center">
+             	<div class="col-lg-1 col-sm-3 col-xs-2 " align="center">
+             	</div>
+              <div class="col-lg-10 col-sm-6 col-xs-8 " >
+            
                 <a href="clientes/login.php">
-                  <button class="col-md-6 col-xs-6 btn btn-warning btn-lg">Cliente </button></a>
+                  <button class="col-1g-12 col-xs-12 btn btn-warning btn-lg">Cliente </button></a>
                 </div>
-                <div class="col-md-12">
-                  <a href="admin/login.php">
-                   <button class=" col-md-6 col-xs-6 btn btn-success btn-lg">Administrador</button></a>
-                </div><div class="col-md-12">
-                  <a href="auditor/login.php"><button class=" col-md-6 col-xs-6 btn btn-info btn-lg">Auditor</button>
-                </div><div class="col-md-12">
-                  <a href="registro.php"><button class=" col-md-6 col-xs-6 btn btn-info btn-lg">Nuevo cliente</button>
+               <div class="col-lg-1 col-sm-3  col-xs-2 " align="center">
+             	</div>
                 </div>
-              </div>
+                
+  			            <div class="col-lg-12  col-sm-12 col-xs-12 " align="center">
+             	<div class="col-lg-1 col-sm-3 col-xs-2 " align="center">
+             	</div>
+              <div class="col-lg-10 col-sm-6 col-xs-8 " >
 
+                         <a href="admin/login.php">
+                   <button class=" col-md-12 col-xs-12 btn btn-success btn-lg">Administrador</button></a>
+                </div>
+                  
+               <div class="col-lg-1 col-sm-3  col-xs-2 " align="center">
+             	</div>
+                </div>
+ 		          <div class="col-lg-12  col-sm-12 col-xs-12 " align="center">
+             	<div class="col-lg-1 col-sm-3 col-xs-2 " align="center">
+             	</div>
+              <div class="col-lg-10 col-sm-6 col-xs-8 " >
+            
+  
+            
+        <a href="auditor/login.php"><button class=" col-md-12 col-xs-12 btn btn-info btn-lg">Auditor</button></a>
+                </div>
+               <div class="col-lg-1 col-sm-3  col-xs-2 " align="center">
+             	</div>
+                </div>
+             
+           
+                     <div class="col-lg-12  col-sm-12 col-xs-12 " align="center">
+             	<div class="col-lg-1 col-sm-3 col-xs-2 " align="center">
+             	</div>
+              <div class="col-lg-10 col-sm-6 col-xs-8 " >
+            
+  
+            
+                  <a href="registro.php"><button class=" col-md-12 col-xs-12 btn btn-info btn-lg">Nuevo cliente</button></a>
+             </div>
+             <div class="col-lg-1 col-sm-3  col-xs-2 " align="center">
+             	</div>
+                </div>
+             
+              
+</div>
 
           </div>
       </div>
@@ -67,4 +108,4 @@
 
 </body>
 
-</html>
+  </html>

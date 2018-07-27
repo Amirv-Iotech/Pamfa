@@ -14,19 +14,18 @@
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
+<script src="../assets/js/jquery-3.1.0.min.js" type="text/javascript"></script>
 
-    <!-- Bootstrap core CSS     -->
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-
+      <!-- Bootstrap core CSS     -->
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+    
 
     <!--  Material Dashboard CSS    -->
     <link href="../assets/css/material-dashboard.css" rel="stylesheet"/>
 
     <!-- Malpika css -->
-    <link href="../assets/css/style_operador.css" rel="stylesheet"/>
-
+   
     <!--  CSS for Demo Purpose, don't include it in your project     -->
    
 
@@ -38,7 +37,8 @@
      <link rel="stylesheet"  href="../assets/datatables/dataTables.bootstrap.css">
       <link rel="stylesheet"  href="https://cdn.datatables.net/buttons/1.4.0/css/buttons.dataTables.min.css"  >
       
-      
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  
  
 </head>
 
@@ -55,7 +55,7 @@
 
 			<div class="logo">
 				<a href="" class="simple-text">
-			<img style="width:100px;" src="../../images/pamfa.png" alt="">
+			<img style="width:200px;" src="../../images/pamfa.png" alt="">
 
 				</a>
 			</div>

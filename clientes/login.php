@@ -16,6 +16,9 @@
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
+<script src="assets/js/jquery-3.1.0.min.js" type="text/javascript"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
     <!-- Bootstrap core CSS     -->
@@ -30,10 +33,31 @@
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
  <body>
-</header>
+<?
+ $dac = $_SERVER["REQUEST_URI"];
+ $findme   = '=si';
+$pos = strpos($dac, $findme);
+
+if ($pos === false) {
+	
+   
+} else {?>
+    <script type="text/javascript">
+	
+swal({
+  title: "Datos incorectos",
+  text: "Intentar nuevamente",
+  icon: "warning",
+ 
+  dangerMode: true,
+})
+</script><?
+}
+ ?>
   <section class="service" id="sesion"> <!-- SECCIÓN LOGIN.PHP  -->
       <div class="container">
           <div class="row">
@@ -47,13 +71,12 @@
       </div>
       <div class="container">
         <div class="row">
-          <div class="col-lg-4">
+         <div class="col-lg-6">
             <div class="row">
               <div align="center" class="col-md-12">
                
-			
-               <a href="../index.php"><img style="width:300px;" src="../images/pamfa.png"  alt=""> </a>
-                </div>
+			 <a href="../index.php"><img style="width:600px;" src="../images/pamfa.png"  alt=""> </a> 
+              </div>
 
               
               

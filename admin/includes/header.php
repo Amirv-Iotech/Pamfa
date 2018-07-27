@@ -20,7 +20,7 @@
   	
 
 
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="../../assets/css/demo.css" rel="stylesheet" />
@@ -57,7 +57,7 @@
 
 			<div class="logo">
 				<a href="" class="simple-text">
-			<img style="width:100px;" src="../../../images/pamfa.png" alt="">
+			<img style="width:200px;" src="../../../images/pamfa.png" alt="">
 
 				</a>
 			</div>

@@ -21,11 +21,11 @@
                   <?
                     if($row_esquema['opcion']==1)
                   {?>
-                  <input   type="checkbox" <? if ($row_solicitud_esq['esq_tipo1_op1']==$row_esquema['idesquema']){?> checked="checked"<? }?>  value="<? echo $row_esquema['idesquema'];?>" id="<? echo "esq_tipo1_op1".$esq?>"  name="<? echo "esq_tipo1_op1".$esq?>"/><? echo $row_esquema['esquema'];?>
+                  <input   type="radio" <? if ($row_solicitud_esq['esq_tipo1_op1']==$row_esquema['idesquema']){?> checked="checked"<? }?>  value="<? echo $row_esquema['idesquema'];?>" id="<? echo "esq_tipo1_op1".$esq?>"  name="esq_tipo1_op1"/><? echo $row_esquema['esquema'];?>
                   <? }?></div><?
 				  $esq++;
-                }
-        ?>        
+                }$esq++;
+        ?>        <input   type="radio"   value="" id="<? echo "esq_tipo1_op1".$esq?>"  name="esq_tipo1_op1"/>Ninguno
       </div>
       <div class="col-lg-6 col-sm-6 campos2" style="min-height: 158px;">
         <div class="col-lg-12 col-sm-12 campos2" style="border: solid 1px #AAAAAA; text-align: center;">
@@ -88,11 +88,11 @@
                   {
             ?>
                     <div class="col-lg-6 col-xs-6 campos2" style="border: solid 1px #AAAAAA;">
-                      <label><input   type="checkbox"  <?php if ($row_solicitud_esq['esq_tipo2_op1']==$row_esquema['idesquema']){?> checked="checked"<? }?> value="<? echo $row_esquema['idesquema'];?>"  name="<? echo "esq_tipo2_op1".$esq2?>" id="<? echo "esq_tipo2_op1".$esq2?>" /><? echo $row_esquema['esquema'];?></label>
+                      <label><input   type="radio"  <?php if ($row_solicitud_esq['esq_tipo2_op1']==$row_esquema['idesquema']){?> checked="checked"<? }?> value="<? echo $row_esquema['idesquema'];?>"  name="esq_tipo2_op1" id="<? echo "esq_tipo2_op1".$esq2?>" /><? echo $row_esquema['esquema'];?></label>
                     </div>
                 <? }
 				$esq2++;
-                }?>
+                }$esq2++;?> <input   type="radio"   value="" id="<? echo "esq_tipo2_op1".$esq2?>"  name="esq_tipo2_op1"/>Ninguno
           </div>
           <div class="form-group col-lg-6 col-xs-6 campos2">
             <div class="col-lg-12 col-xs-12 campos2" style="border: solid 1px #AAAAAA; min-height: 51px;">

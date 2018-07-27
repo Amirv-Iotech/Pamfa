@@ -58,16 +58,16 @@ $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error()
 	        <div class="content">
 	            <div class="container-fluid">
                 <? 
-                $query_solicitud2 = sprintf("SELECT * FROM solicitud WHERE idoperador=%s and autorizada is  null order by idsolicitud desc limit 1", GetSQLValueString( $_SESSION["idoperador"], "int"));
+                $query_solicitud2 = sprintf("SELECT * FROM solicitud WHERE idoperador=%s and autorizada is  null and terminada is not null order by idsolicitud desc limit 1", GetSQLValueString( $_SESSION["idoperador"], "int"));
 $solicitud2 = mysql_query($query_solicitud2, $inforgan_pamfa) or die(mysql_error());
 $total_solicitud2 = mysql_num_rows($solicitud2);
 
 
 
 
- ?> 
+ ?> <br /><br /><br />
                  <form action="formulario.php" method="post">
-                                                 <button data-toggle="tooltip"  type="submit" name="Ver" <? if($total_solicitud2==1){?> disabled="disabled" title="Tiene una solicitud en progreso" <?  }else {?> title="Ver" <?  }?> value="1"class="btn btn-success"><i class="fa fa-plus-circle fa-4x" aria-hidden="true"></i></button>
+                                                 <button data-toggle="tooltip"  type="submit" name="Ver" <? if($total_solicitud2==1){?> class="btn btn-default" disabled="disabled" title="Tiene una solicitud en progreso" <?  }else {?> title="Ver" <?  }?> value="1"class="btn btn-success"><i class="fa fa-plus-circle fa-4x" aria-hidden="true"> </i>NUEVA</button>
                                                  
 </form>
 

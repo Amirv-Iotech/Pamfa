@@ -130,7 +130,7 @@ $query_solp1 = sprintf("SELECT * FROM solicitud_mexcalsup where idsolicitud='".$
                
                 <input type="hidden" id="idoperador" name="idoperador" value="<? echo $row_operador['idoperador']; ?>" />
                 <div class=" col-xs-12 campos2" style="position: absolute; bottom: 35%; text-align: center;">
-                <input type="button" value="agregar" name="agregar" id="agregar"  />
+                <input type="button" value="agregar" name="agregar20" id="agregar20"  />
                 </div>
             </div>
         </div>

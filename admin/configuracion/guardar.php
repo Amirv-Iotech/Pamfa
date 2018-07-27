@@ -1,5 +1,6 @@
 <? 
 include_once("../Connections/mail.php");
+
 if(!empty($_POST['guardar1'])){
 	
 	
@@ -93,7 +94,7 @@ if(!empty($_POST['update_au'])){
         // limpiar la lista de correos que se van guardando
         $mail->ClearAddresses();
 }
-if(!empty($_POST['eliminar1'])){
+if( !empty($_POST['eliminar1'])){
 	
 $insertSQL = "DELETE FROM operador WHERE idoperador=".$_POST['idoperador']."";
   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());

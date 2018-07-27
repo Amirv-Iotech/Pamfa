@@ -156,7 +156,7 @@ $mpdf->WriteHTML('
 		<td colspan="2" ><table ><tr>
 		<td align="right" width="375" ></td>
 		<td align="CENTER" width="300"  style="border-width: 5px;border: solid; border-color: RED;" bgcolor="RED"><font color="white" face="Comic Sans MS,arial"><h2 align="center">Fecha de impresión</h2></font></td>
-		<td align="CENTER" width="200" style="border: 5px; border: solid; border-color: RED;" bgcolor="#FFFFFF" ><font c face="Comic Sans MS,arial"><h2 align="center">'.$fi3.'</h2></font></td>
+		<td align="CENTER" width="200" style="border: 5px; border: solid; border-color: RED;" bgcolor="#FFFFFF" ><font  face="Comic Sans MS,arial"><h2 align="center">'.$fi3.'</h2></font></td>
 		<td width="35" style="border-width: 5px;border: solid  red" bgcolor="RED"></td>
 		</tr>
 		</table></td></tr>
@@ -168,7 +168,7 @@ $mpdf->WriteHTML('
 		<td colspan="2" ><table ><tr>
 		<td align="right" width="190" ></td>
 		<td align="CENTER" width="170"  style="border-width: 5px;border: solid; border-color: RED;" bgcolor="RED"><font color="white" face="Comic Sans MS,arial"><h2 align="center">Valido desde</h2></font></td>
-		<td align="CENTER" width="200" style="border: 5px; border: solid; border-color: RED;" bgcolor="#FFFFFF" ><font c face="Comic Sans MS,arial"><h2 align="center">'.$fi.'</h2></font></td>
+		<td align="CENTER" width="200" style="border: 5px; border: solid; border-color: RED;" bgcolor="#FFFFFF" ><font face="Comic Sans MS,arial"><h2 align="center">'.$fi.'</h2></font></td>
 		
 		<td align="CENTER" width="120"  style="border-width: 5px;border: solid; border-color: RED;" bgcolor="RED"><font color="white" face="Comic Sans MS,arial"><h2 align="center">Hasta </h2></font></td>
 		<td align="CENTER" width="200" style="border: 5px; border: solid; border-color: RED;" bgcolor="#FFFFFF" ><font  face="Comic Sans MS,arial"><h2 align="center">'.$fi2.'</h2></font></td>

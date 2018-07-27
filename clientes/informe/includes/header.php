@@ -46,7 +46,7 @@
 
 			<div class="logo">
 				<a href="" class="simple-text">
-			<img style="width:100px;" src="../../images/pamfa.png" alt="">
+			<img style="width:200px;" src="../../images/pamfa.png" alt="">
 
 				</a>
 			</div>
@@ -82,7 +82,7 @@
 				<div class="container-fluid">
 					<div class="navbar-header">
 						
-						<a class="navbar-brand" href="#">PAMFA A.C. </a>
+						
                          <? if($dac=='formulario.php')
 						{?>
                       <form action="../informe/pmenu.php" method="post" >

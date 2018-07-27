@@ -1,4 +1,4 @@
-<fieldset><br/>
+<fieldset>
   <div clas="row" id="seccion12">
     <div class="col-lg-12 col-xs-12 campos2" style="background-color: #ecfbe7; border: solid 1px #AAAAAA; border-bottom-width:2px;">
       <form method="post" action="#seccion12">
@@ -18,6 +18,5 @@
       </form>
     </div>
   </div>
-  <input type="button" name="anexo" value="Anexo producción" id="anexo" />
-   <input type="button" name="anexo" value="Anexo almacenamiento" id="anexo2" />
+  
 </fieldset>

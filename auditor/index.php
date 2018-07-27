@@ -14,10 +14,10 @@ include('includes/header.php');
 					    <div class="col-lg-3 col-md-6 col-sm-6">
 							<div class="card card-stats">
 								<div class="card-header" data-background-color="blue">
-									<i class="material-icons">book</i>
+								<a href="../auditor/plan_auditoria/plan_auditoria.php">	<i class="material-icons">book</i></a>
 								</div>
 								<div class="card-content">
-									<p class="category">Ver</p>
+									<a href="../auditor/plan_auditoria/plan_auditoria.php"><p class="category">Ver</p></a>
 									<h3 class="title"><a href="../auditor/plan_auditoria/plan_auditoria.php">Plan Auditoria</a></h3>
 								</div>
 								
@@ -27,10 +27,10 @@ include('includes/header.php');
                       <div class="col-lg-3 col-md-6 col-sm-6">
 							<div class="card card-stats">
 								<div class="card-header" data-background-color="green">
-									<i class="material-icons">list</i>
+									<a href="listas_verificacion/listas_verif_pmenu.php"><i class="material-icons">list</i></a>
 								</div>
 								<div class="card-content">
-									<p class="category">Ver</p>
+								<a href="listas_verificacion/listas_verif_pmenu.php">	<p class="category">Ver</p></a>
 								<h3 class="title"><a href="listas_verificacion/listas_verif_pmenu.php">Listas de verificación</a></h3>
 								</div>
 								
@@ -44,10 +44,10 @@ include('includes/header.php');
 }</style>
 							<div class="card card-stats">
 								<div class="card-header" data-background-color="#ffdd00">
-									<i class="material-icons">content_paste</i>
+									<a href="../auditor/informe/informes.php"><i class="material-icons">content_paste</i></a>
 								</div>
 								<div class="card-content">
-									<p class="category">Ver</p>
+									<a href="../auditor/informe/informes.php"><p class="category">Ver</p></a>
 									<h3 class="title"><a href="../auditor/informe/informes.php">Informes</a></h3>
 								</div>
 								

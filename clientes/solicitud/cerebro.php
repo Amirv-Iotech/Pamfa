@@ -276,22 +276,17 @@ $total_solicitud = mysql_num_rows($solicitud);
 if($total_solicitud<1)
 {
 
-  $e="";
-	 for($x=0;$x<3;$x++)
-{
-	if($_POST['esq_tipo1_op1'.$x]!=NULL)
-	{
-	$e=	$_POST['esq_tipo1_op1'.$x];
-	}
-}
+ $e="";
+		if($_POST['esq_tipo1_op1']!=NULL)
+	$e=	$_POST['esq_tipo1_op1'];
+	
 $e2="";
- for($x=0;$x<2;$x++)
-{
-	if($_POST['esq_tipo2_op1'.$x]!=NULL)
+ 
+	if($_POST['esq_tipo2_op1']!=NULL)
 	{
-	$e2=	$_POST['esq_tipo2_op1'.$x];
+	$e2=	$_POST['esq_tipo2_op1'];
 	}
-}
+
 $p1="";
 if($_POST['preg61']!=NULL)
 	{
@@ -330,21 +325,16 @@ if($_POST['preg81']!=NULL)
 }
 else{
 	$e="";
-	 for($x=0;$x<3;$x++)
-{
-	if($_POST['esq_tipo1_op1'.$x]!=NULL)
-	{
-	$e=	$_POST['esq_tipo1_op1'.$x];
-	}
-}
+		if($_POST['esq_tipo1_op1']!=NULL)
+	$e=	$_POST['esq_tipo1_op1'];
+	
 $e2="";
- for($x=0;$x<2;$x++)
-{
-	if($_POST['esq_tipo2_op1'.$x]!=NULL)
+ 
+	if($_POST['esq_tipo2_op1']!=NULL)
 	{
-	$e2=	$_POST['esq_tipo2_op1'.$x];
+	$e2=	$_POST['esq_tipo2_op1'];
 	}
-}
+
 $p1="";
 if($_POST['preg61']!=NULL)
 	{

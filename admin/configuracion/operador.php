@@ -157,6 +157,7 @@
           <th>Teléfono factura:</th>
           <th>Forma de pago:</th>
           <th>Banco:</th>
+    
           <th>4 digitos tarjeta:</th>
           <th>Editar</th>
           <th>Eliminar</th>
@@ -194,25 +195,221 @@
             <td><label><? echo $row_u['banco'];?></label></td>
             <td><label><? echo $row_u['digitos_tarjeta'];?></label></td>
             <td>      
-                <form method="post" action="">
+               
                   <input type="hidden" name="idoperador" value="<?php echo $row_u['idoperador'];?>" />
                   <input type="hidden" name="update" value="1" />
                   <input type="hidden" name="op" value="1" />
-                  <input type="image" name="imageField2" id="imageField2" src="../images/editar.png" title="Editar"  style="padding-top: 0px; border-radius: 0px; width: 25px; height: 25px;"/>
-                </form>
+                  <input type="image" name="imageField2" id="imageField2" src="../images/editar.png" title="Editar"  style="padding-top: 0px; border-radius: 0px; width: 25px; height: 25px;" onclick="abrir(<? echo $row_u['idoperador'];?>);" />
+               
+                  <div id="modal<? echo $row_u['idoperador'];?>" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+       <div class="col-lg-12 col-xs-12" style="text-align: center; background-color: #07889B">
+            <h5><b style="color:white">ACTUALIZAR INFORMACIÓN</b></h5>
+        </div>
+      </div>
+      <div class="modal-body">
+       <form action="" method="post">
+             <? 
+            
+                $query_t= "SELECT  * FROM operador where idoperador=".$row_u['idoperador']."";
+                $t = mysql_query($query_t, $inforgan_pamfa) or die(mysql_error());
+                $row_t = mysql_fetch_assoc($t);  
+			         
+              
+            ?>
+        
+		<div class="row">
+        <div class="col-lg-12 col-xs-12" id="formulario" >
+            <div class="col-lg-4 col-xs-6">
+              <label>Nombre de la entidad legal:</label>
+              <input class="form-control" required type="text" name="nombre_legal" value="<? echo $row_t['nombre_legal'];?>"  size="32" />
+            </div>
+            <div class="col-lg-4 col-xs-6">
+               <label> Nombre del representante legal:</label>
+                <input class="form-control" required type="text" name="nombre_representante" value="<?  echo $row_t['nombre_representante'];?>"  size="32" />
+            </div>
+            <div class="col-lg-4 col-xs-6">
+               <label>Direccion:</label>
+              <input class="form-control" type="text" name="direccion" value="<? echo $row_t['direccion'];?>"  size="32" />
+            </div>
+            </div>
+          
+        </div>
+        <div class="row">
+
+        <div class="col-lg-12 col-xs-12">
+          <div class="col-lg-4 col-xs-6">
+                <label>Colonia:</label>
+                <input class="form-control"  type="text" name="colonia" value="<? echo $row_t['colonia'];?>"  size="32" />
+            </div>
+            <div class="col-lg-4 col-xs-6">
+               <label>Municipio:</label>
+              <input class="form-control"  type="text" name="municipio" value="<? echo $row_t['municipio'];?>"  size="32" />
+            </div>
+            <div class="col-lg-4 col-xs-6">
+                <label>Estado:</label>
+                <input class="form-control"  type="text" name="estado" value="<? echo $row_t['estado'];?>"  size="32" />
+            </div>
+           
+           
+        </div>
+ </div>
+        <div class="row">
+        <div class="col-lg-12 col-xs-12">
+         <div class="col-lg-3 col-xs-6">
+              <label>Pais:</label>
+              <input class="form-control" type="text" name="pais" value="<? echo $row_t['pais'];?>"  size="32" />
+            </div>
+         <div class="col-lg-4 col-xs-6">
+              <label>C.P.:</label>
+              <input class="form-control" type="text" name="cp" value="<? echo $row_t['pais'];?>"  size="32" />
+            </div>
+            <div class="col-lg-4 col-xs-6">
+                <label>Coordenadas:</label>
+                <input class="form-control"  type="text" name="coordenadas" value="<? echo $row_t['coordenadas'];?>"  size="32" />
+            </div>
+           
+        </div>
+ </div>
+        <div class="row">
+        <div class="col-lg-12 col-xs-12">
+                    <div class="col-lg-3 col-xs-6">
+                <label>Email:</label>
+                <input class="form-control"  type="text" name="email" value="<? echo $row_t['email'];?>"  size="32" />
+            </div>
+
+         <div class="col-lg-3 col-xs-6">
+                <label>Teléfono:</label>
+                <input class="form-control"  type="text" name="telefono" value="<? echo $row_t['telefono'];?>"  size="32" />
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <label>Fax:</label>
+                <input class="form-control"  type="text" name="fax" value="<? echo $row_t['fax'];?>"  size="32" />
+            </div>
+           <div class="col-lg-3 col-xs-6">
+                <label>R.F.C.:</label>
+                <input class="form-control"  type="text" name="rfc" value="<? echo $row_t['rfc'];?>"  size="32" />
+            </div>
+           
+        </div>
+ </div>
+        <div class="row">
+        <div class="col-lg-12 col-xs-12">
+         
+         <div class="col-lg-6 col-xs-6">
+                <label>Direcion en el R.F.C.: </label>
+                <input class="form-control"  type="text" name="dir_rfc" value="<? echo $row_t['dir_rfc'];?>"  size="32" />
+            </div>
+            <div class="col-lg-6 col-xs-6">
+                <label>Nombre de contacto factura:</label>
+                <input class="form-control"  type="text" name="nombre_factura" value="<? echo $row_t['nombre_factura'];?>"  size="32" />
+            </div>
+           
+            </div>
+             </div>
+        <div class="row">
+             <div class="col-lg-12 col-xs-12">
+              <div class="col-lg-6 col-xs-6">
+               <label> Email de factura:</label>
+                <input class="form-control"  type="text" name="email_factura" value="<? echo $row_t['email_factura'];?>"  size="32" />
+            </div>
+            <div class="col-lg-6 col-xs-6">
+                <label>Teléfono de contacto factura:</label>
+                <input class="form-control"  type="text" name="tel_factura" value="<? echo $row_t['tel_factura'];?>"  size="32" />
+            </div>
+           
+            </div>
+             </div>
+        <div class="row">
+             <div class="col-lg-12 col-xs-12">
+              <div class="col-lg-4 col-xs-6">
+                <label>Forma de pago:</label>
+                <input class="form-control"  type="text" name="forma_pago" value="<? echo $row_t['forma_pago'];?>"  size="32" />
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <label>Banco:</label>
+                <input class="form-control"  type="text" name="banco" value="<? echo $row_t['banco'];?>"  size="32" />
+            </div>
+            <div class="col-lg-5 col-xs-6">
+                <label>4 ultimos digitos de tarjeta:</label>
+                <input class="form-control"  type="text" name="digitos_tarjeta" value="<? echo $row_t['digitos_tarjeta'];?>"  size="32" />
+            </div>
+           
+        </div>
+ </div>
+       
+   
+
+      </div>
+      <div class="modal-footer">
+       
+       
+        <input type="hidden" name="update1" value="1" />
+                <input type="hidden" name="idoperador" value="<?php echo $row_u['idoperador'];?>" />
+                
+                  <input type="hidden" name="op" value="1" />
+        <div class="col-lg-12 col-xs-12">
+          <div class="col-lg-9 col-xs-6 text-right">
+         <input type="button" class="btn btn-danger" data-dismiss="modal" value="X"/>  
+         </div>
+              <div class="col-lg-3 col-xs-6 text-right"  >
+          <input  class="btn btn-success" type="submit" value="Actualizar" />
+          </div>
+          
+            
+         </div>
+        </form>
+        
+      </div>
+    </div>
             </td>
             <td>
-                <form   method="post" action="">
+         
+                <form   method="post" action="" id="borra<?php echo $row_u['idoperador'];?>" > 
                   <input type="hidden" name="idoperador" value="<?php echo $row_u['idoperador'];?>" />
                   <input type="hidden" name="eliminar1" value="1" />
                    <input type="hidden" name="op" value="1" />
                   <input type="image" name="imageField2" id="imageField2" src="../images/delete.png" title="Eliminar" style="padding-top: 0px; border-radius: 0px; width: 25px; height: 25px;" />
                 </form>
+             <script>
+    document.querySelector('#borra<?php echo $row_u['idoperador'];?>').addEventListener('submit', function(e) {
+      var form = this;
+      
+      e.preventDefault();
+      
+     swal({
+   title: "Esta seguro?",
+          text: "El operador se eliminará!",
+          icon: "warning",
+  buttons: [
+            'Cancelar',
+            'Eliminar'
+          ],
+          dangerMode: true,
+})
+.then(function(isConfirm)  {
+  if (isConfirm) {
+ 
+   
+    form.submit();
+     
+  }
+});
+
+    });
+	
+  </script> 
             </td>
           </tr>
-          
-        <? }?>
-        </tbody>
+        
+
+        <? }
+		?>    </tbody>
     </table>
   </div>
   </div>
@@ -247,7 +444,7 @@
           <th>Forma de pago:</th>
           <th>Banco:</th>
           <th>4 digitos tarjeta:</th>
-          <th>Editare</th>
+          <th>Aceptar</th>
           <th>Eliminar</th>
         </thead>
 
@@ -312,6 +509,14 @@
                 
                 </form>
             </td>
+            <td>
+                <form   method="post" action="">
+                  <input type="hidden" name="idoperador" value="<?php echo $row_u['idoperador'];?>" />
+                  <input type="hidden" name="eliminar1" value="1" />
+                   <input type="hidden" name="op" value="1" />
+                  <input type="image" name="imageField2" id="imageField2" src="../images/delete.png" title="Eliminar" style="padding-top: 0px; border-radius: 0px; width: 25px; height: 25px;" />
+                </form>
+            </td>
           </tr>
           
         <? }?>
@@ -322,3 +527,4 @@
   
 </div>
 </div> 
+ 

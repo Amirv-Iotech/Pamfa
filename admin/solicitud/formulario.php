@@ -62,6 +62,19 @@ $query_solicitud_esq = sprintf("SELECT * FROM solicitud_esquema WHERE idsolicitu
 $solicitud_esq = mysql_query($query_solicitud_esq, $inforgan_pamfa) or die(mysql_error());
 $row_solicitud_esq= mysql_fetch_assoc($solicitud_esq);
 
+
+$query_solicitud_hm = sprintf("SELECT * FROM solicitud_hm WHERE idsolicitud=%s order by idsolicitud_hm asc limit 1", GetSQLValueString($row_solicitud["idsolicitud"], "int"));
+$solicitud_hm = mysql_query($query_solicitud_hm, $inforgan_pamfa) or die(mysql_error());
+$row_solicitud_hm= mysql_fetch_assoc($solicitud_hm);
+
+$query_sol_origen = sprintf("SELECT * FROM solicitud_origen WHERE idsolicitud=%s order by idsolicitud_origen asc limit 1", GetSQLValueString($row_solicitud["idsolicitud"], "int"));
+$sol_origen = mysql_query($query_sol_origen, $inforgan_pamfa) or die(mysql_error());
+$row_sol_origen= mysql_fetch_assoc($sol_origen);
+
+$query_mcs_p2 = sprintf("SELECT * FROM solicitud_mcs WHERE idsolicitud=%s order by idsolicitud asc limit 1", GetSQLValueString($row_solicitud["idsolicitud"], "int"));
+$mcs_p2 = mysql_query($query_mcs_p2, $inforgan_pamfa) or die(mysql_error());
+$row_mcs_p2= mysql_fetch_assoc($mcs_p2);
+
 $query_procesadora = sprintf("SELECT * FROM procesadora WHERE idsolicitud=%s order by idprocesadora asc limit 1", GetSQLValueString( $row_solicitud["idsolicitud"], "int"));
 $procesadora = mysql_query($query_procesadora, $inforgan_pamfa) or die(mysql_error());
 $row_procesadora= mysql_fetch_assoc($procesadora);
@@ -211,7 +224,15 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
         </div>
       </div> <!-- /ROW-->
     </fieldset>	
-
+    <div class="row" >
+  <div class="form-group col-lg-12 col-md-12 col-sm-12 campos" style="border-right: solid 0px #AAAAAA; margin-right: 0px; margin-left: 0px;">
+        <div class="col-lg-3 col-sm-3 campos">
+        	<label for="fax" class="form-label"><strong>Producto por certificar:</strong></label></div>
+        	<div class="col-lg-9 col-sm-9 campos">
+        	<textarea class="form-control inputsf" name="fax"><? echo  $row_operador['fax'];?></textarea>>
+        	</div>
+    		</div>
+            </div>
 <fieldset>
 	<div id="seccion2" class="row" style="background-color: #ecfbe7; border: solid 1px #AAAAAA;">
   
@@ -356,6 +377,8 @@ echo'
 		
 	});}
 	 });  ';?>
+	 
+	 
 			</script><? 
 }
 
@@ -447,8 +470,6 @@ include("seccion9.php");
 
 <?php include("seccion10.php");?>
 <?php include("seccion11.php");?>
-<?php include("seccion12.php");?>
-
 <?php include("anexo_producto.php");?>
 <script type="text/javascript"> 
 
@@ -481,6 +502,11 @@ else
     });    
 });';?>
 			</script>
+            <?php include("seccion15.php");?>
+            <?php include("seccion16.php");?>
+<?php include("seccion12.php");?>
+
+
             
 <?php include("seccion13.php");
 
@@ -535,14 +561,14 @@ window.addEventListener("beforeunload", function(event) {
             var post_idcert_anterior = $('#idcert_anterior').val();
 
                   //Seccion 5
-            var esq_tipo1_op10="";
-            var porNombre=document.getElementsByName("esq_tipo1_op10");
+            var esq_tipo1_op1="";
+            var porNombre=document.getElementsByName("esq_tipo1_op1");
             for(var i=0;i<porNombre.length;i++)
               {
                 if(porNombre[i].checked){
-                esq_tipo1_op10=porNombre[i].value;}
+                esq_tipo1_op1=porNombre[i].value;}
               }
-			   var esq_tipo1_op11="";
+			   /*var esq_tipo1_op11="";
             var porNombre=document.getElementsByName("esq_tipo1_op11");
             for(var i=0;i<porNombre.length;i++)
               {
@@ -556,7 +582,7 @@ window.addEventListener("beforeunload", function(event) {
                 if(porNombre[i].checked){
                 esq_tipo1_op12=porNombre[i].value;}
               }
-
+*/
             //var esq_tipo1_op1 = $('#esq_tipo1_op1').val();
             var preg1_op2 = $('#preg1_op2').val();
             var preg2_op2 = $('#preg2_op2').val();
@@ -564,14 +590,14 @@ window.addEventListener("beforeunload", function(event) {
             var preg1_tipo2 = $('#preg1_tipo2').val();
             var preg2_tipo2 = $('#preg2_tipo2').val();
 			
-			 var esq_tipo2_op10="";
-            var porNombre2=document.getElementsByName("esq_tipo2_op10");
+			 var esq_tipo2_op1="";
+            var porNombre2=document.getElementsByName("esq_tipo2_op1");
             for(var i=0;i<porNombre2.length;i++)
               {
                 if(porNombre2[i].checked){
-                esq_tipo2_op10=porNombre2[i].value;}
+                esq_tipo2_op1=porNombre2[i].value;}
               }
-			   var esq_tipo2_op11="";
+			 /*  var esq_tipo2_op11="";
             var porNombre2=document.getElementsByName("esq_tipo2_op11");
             for(var i=0;i<porNombre2.length;i++)
               {
@@ -579,7 +605,7 @@ window.addEventListener("beforeunload", function(event) {
                 esq_tipo2_op11=porNombre2[i].value;}
               }
 
-			
+			*/
             //var esq_tipo2_op1 = $('#esq_tipo2_op1').val();
 			
 			 var preg3_tipo2="";
@@ -740,6 +766,34 @@ window.addEventListener("beforeunload", function(event) {
 			if(porNombrex12.checked){
                 idmex_pliego3=porNombrex12.value;}
 				
+				 var idmex_pliego4="";
+            var porNombrexx12=document.getElementById("idmex_pliego4");
+			if(porNombrexx12.checked){
+                idmex_pliego4=porNombrexx12.value;}
+				
+				 var idmex_pliego5="";
+            var porNombrexx13=document.getElementById("idmex_pliego5");
+			if(porNombrexx13.checked){
+                idmex_pliego5=porNombrexx13.value;}
+				
+				 var evaluacion="";
+            var porNombrev=document.getElementsByName("evaluacion");
+            for(var i=0;i<porNombrev.length;i++)
+              {
+                if(porNombrev[i].checked){
+                evaluacion=porNombrev[i].value;}
+              }
+			    var documento = $('#documento').val();
+				
+				 var muestreo="";
+            var porNombrem=document.getElementsByName("muestreo");
+            for(var i=0;i<porNombrem.length;i++)
+              {
+                if(porNombrem[i].checked){
+                muestreo=porNombrem[i].value;}
+              }
+			   var trazabilidad = $('#trazabilidad').val();
+				
 			/*
 			 var idmex_pliego="";
             var porNombre9=document.getElementsByName("idmex_pliego");
@@ -829,15 +883,31 @@ window.addEventListener("beforeunload", function(event) {
             //var respuesta4 = $('#respuesta4').val();
             //var respuesta5 = $('#respuesta5').val();
             var terminada = 1;
+			
+			
+			//seccion 15
+			 var prod_hm = $('#prod_hm').val();
+            var desc_hm = $('#desc_hm').val();
+		/// seccion16
+		 var den_or="";
+            var porNombres=document.getElementsByName("den_or");
+            for(var i=0;i<porNombres.length;i++)
+              {
+                if(porNombres[i].checked){
+                den_or=porNombres[i].value;}
+              }
+			
             {  
                 $.ajax({  
                      url:"cerebro.php",  
                      method:"POST",
-                     data:{persona:post_persona, seccion:seccion, idoperador:post_idoperador, idsolicitud:post_idsolicitud, fecha:post_fecha, personal:post_personal, num_ggn:post_num_ggn, num_gln:post_num_gln, num_coc:post_num_coc, num_mex_cal_sup:post_num_mex_cal_sup, num_primus:post_num_primus, num_senasica:post_num_senasica, responsable:post_responsable,organismo:post_organismo, fecha_inicio:post_fecha_inicio, fecha_fin:post_fecha_fin, idcert_anterior:post_idcert_anterior, esq_tipo1_op10: esq_tipo1_op10,esq_tipo1_op11: esq_tipo1_op11,esq_tipo1_op12: esq_tipo1_op12, preg1_op2:preg1_op2, preg2_op2:preg2_op2, preg3_op2:preg3_op2,  preg1_tipo2:preg1_tipo2, preg2_tipo2:preg2_tipo2, preg3_tipo2:preg3_tipo2, esq_tipo2_op10:esq_tipo2_op10,esq_tipo2_op11:esq_tipo2_op11, preg4_tipo2:preg4_tipo2, preg5_tipo2:preg5_tipo2, preg61:preg61,preg62:preg62, preg71:preg71, preg72:preg72, preg81:preg81,preg82:preg82, idsolicitud_esquema:idsolicitud_esquema,primus0:primus0,primus1:primus1,primus2:primus2,primus3:primus3,primus4:primus4,primus5:primus5,primus6:primus6, idmex_pliego0:idmex_pliego0,idmex_pliego1:idmex_pliego1,idmex_pliego2:idmex_pliego2,idmex_pliego3:idmex_pliego3, idmex_alcance0:idmex_alcance0,idmex_alcance1:idmex_alcance1, idsrrc0:idsrrc0,idsrrc1:idsrrc1,idsrrc2:idsrrc2,idsrrc3:idsrrc3,idsrrc4:idsrrc4, srrc_preg1:srrc_preg1, srrc_preg2:srrc_preg2, empresa:empresa, rfc2:rfc2, direccion:direccion, direccion2:direccion2, cp:cp, tel:tel, idprocesadora:idprocesadora, inf_comercializacion:inf_comercializacion, idioma_aud:idioma_aud, idioma_inf:idioma_inf, respuesta4:respuesta4, respuesta5:respuesta5, terminada:terminada},
+                     data:{persona:post_persona, seccion:seccion, idoperador:post_idoperador, idsolicitud:post_idsolicitud, fecha:post_fecha, personal:post_personal, num_ggn:post_num_ggn, num_gln:post_num_gln, num_coc:post_num_coc, num_mex_cal_sup:post_num_mex_cal_sup, num_primus:post_num_primus, num_senasica:post_num_senasica, responsable:post_responsable,organismo:post_organismo, fecha_inicio:post_fecha_inicio, fecha_fin:post_fecha_fin, idcert_anterior:post_idcert_anterior, esq_tipo1_op1: esq_tipo1_op1,preg1_op2:preg1_op2, preg2_op2:preg2_op2, preg3_op2:preg3_op2,  preg1_tipo2:preg1_tipo2, preg2_tipo2:preg2_tipo2, preg3_tipo2:preg3_tipo2, esq_tipo2_op1:esq_tipo2_op1, preg4_tipo2:preg4_tipo2, preg5_tipo2:preg5_tipo2, preg61:preg61,preg62:preg62, preg71:preg71, preg72:preg72, preg81:preg81,preg82:preg82, idsolicitud_esquema:idsolicitud_esquema,primus0:primus0,primus1:primus1,primus2:primus2,primus3:primus3,primus4:primus4,primus5:primus5,primus6:primus6, idmex_pliego0:idmex_pliego0,idmex_pliego1:idmex_pliego1,idmex_pliego2:idmex_pliego2,idmex_pliego3:idmex_pliego3,idmex_pliego4:idmex_pliego4,idmex_pliego5:idmex_pliego5, idmex_alcance0:idmex_alcance0,idmex_alcance1:idmex_alcance1, idsrrc0:idsrrc0,idsrrc1:idsrrc1,idsrrc2:idsrrc2,idsrrc3:idsrrc3,idsrrc4:idsrrc4, srrc_preg1:srrc_preg1, srrc_preg2:srrc_preg2, empresa:empresa, rfc2:rfc2, direccion:direccion, direccion2:direccion2, cp:cp, tel:tel, idprocesadora:idprocesadora, inf_comercializacion:inf_comercializacion, idioma_aud:idioma_aud, idioma_inf:idioma_inf, respuesta4:respuesta4, respuesta5:respuesta5,prod_hm:prod_hm,desc_hm:desc_hm,den_or:den_or,evaluacion:evaluacion,documento:documento,muestreo:muestreo,trazabilidad:trazabilidad,terminada:terminada},
                      dataType:"text",  
                      success:function(data)  
                      {   
-                          event.returnValue = "AnthonySS";
+                         alert(data);
+						  console.log(data);
+						  
    }  
                 });  
            }
@@ -863,8 +933,8 @@ $(document).ready(function() {
 
 $('.error').hide();
 
-	$("#agregar").click(function() {
-	
+	$("#agregar20").click(function() {
+	alert("ppkndnoidno");
 		        var producto = $('#producto').val();
             var num_productores = $('#num_productores').val();
             var num_fincas= $('#num_fincas').val();
@@ -883,17 +953,26 @@ $('.error').hide();
 			var ruta = $('#ruta').val();
 			var ruta2 = $('#ruta2').val();
 			var ruta3 = $('#ruta3').val();
+			alert(ruta);
+
+alert(ruta2);
+
+alert(ruta3);
 			 var idoperador = $('#idoperador').val();
 			
 	  
                 $.ajax({  
                      url:"cerebro.php",  
                      method:"POST",
-                    data:{producto:producto,num_productores:num_productores,num_fincas:num_fincas,ubicacion_unidad:ubicacion_unidad,coordenadas:coordenadas,periodo_cosecha:periodo_cosecha,superficie:superficie,libre_cubierto:libre_cubierto,cosecha_recoleccion:cosecha_recoleccion,empaque:empaque,num_trabajadores:num_trabajadores,idsolicitud:idsolicitud,insertar_prod:insertar_prod,idoperador:idoperador},
+                    data:{producto:producto,num_productores:num_productores,num_fincas:num_fincas,ubicacion_unidad:ubicacion_unidad,coordenadas:coordenadas,periodo_cosecha:periodo_cosecha,superficie:superficie,libre_cubierto:libre_cubierto,cosecha_recoleccion:cosecha_recoleccion,empaque:empaque,num_trabajadores:num_trabajadores,idsolicitud:idsolicitud,insertar_prod:1,idoperador:idoperador},
 		            	success: function() { 
-		                        $('#tabla_ajax').load(ruta); //Recargamos la Tabla(Para que se muestren los Nuevos Resultados) 
+						alert(data);
+						
+		                         //Recargamos la Tabla(Para que se muestren los Nuevos Resultados) 
 								$('#tabla_ajax2').load(ruta2);
 								$('#tabla_ajax3').load(ruta3); 
+								$('#tabla_ajax').load(ruta);
+								
 								
 		    }
 		});

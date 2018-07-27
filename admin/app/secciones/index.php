@@ -14,10 +14,10 @@ include('../../includes/header.php');
 						<div class="col-lg-3 col-md-6 col-sm-6">
 							<div class="card card-stats">
 								<div class="card-header" data-background-color="orange">
-<i class="fa fa-cogs" aria-hidden="true"></i>
+<a href="../../config.php"><i class="fa fa-cogs" aria-hidden="true"></i></a>
 								</div>
 								<div class="card-content">
-									<p class="category">Menù</p>
+								<a href="../../config.php">	<p class="category">Menù</p></a>
 									<h3 class="title"><a href="../../config.php">Configuración</a></h3>
 								</div>
 								<? /*<div class="card-footer">
@@ -30,10 +30,10 @@ include('../../includes/header.php');
 						<div class="col-lg-3 col-md-6 col-sm-6">
 							<div class="card card-stats">
 								<div class="card-header" data-background-color="green">
-         							<i class="material-icons">content_copy</i>
+         							<a href="../../solicitud/solicitudes.php"><i class="material-icons">content_copy</i></a>
 								</div>
 								<div class="card-content">
-									<p class="category">Ver</p>
+									<a href="../../solicitud/solicitudes.php"><p class="category">Ver</p></a>
 									<h3 class="title"><a href="../../solicitud/solicitudes.php">Solicitudes</a></h3>
 								</div>
 								<? /*<div class="card-footer">
@@ -46,10 +46,10 @@ include('../../includes/header.php');
                         <div class="col-lg-3 col-md-6 col-sm-6">
 							<div class="card card-stats">
 								<div class="card-header" data-background-color="blue">
-									<i class="material-icons">book</i>
+									<a href="../../plan_auditoria/plan_auditoria.php"><i class="material-icons">book</i></a>
 								</div>
 								<div class="card-content">
-									<p class="category">Ver</p>
+									<a href="../../plan_auditoria/plan_auditoria.php"><p class="category">Ver</p></a>
 									<h3 class="title"><a href="../../plan_auditoria/plan_auditoria.php">Plan Auditoria</a></h3>
 								</div>
 								<? /*<div class="card-footer">
@@ -62,10 +62,10 @@ include('../../includes/header.php');
                         <div class="col-lg-3 col-md-6 col-sm-6">
 							<div class="card card-stats">
 								<div class="card-header" data-background-color="red">
-									<i class="material-icons">assignment</i>
+									<a href="../../listas_verificacion/listas_verif_pmenu.php"><i class="material-icons">assignment</i></a>
 								</div>
 								<div class="card-content">
-									<p class="category">Ver</p>
+								<a href="../../listas_verificacion/listas_verif_pmenu.php"><p class="category">Ver</p></a>
 									<h3 class="title"><a href="../../listas_verificacion/listas_verif_pmenu.php">Listas de verificación</a></h3>
 								</div>
 								<? /*<div class="card-footer">
@@ -81,10 +81,10 @@ include('../../includes/header.php');
 }</style>
 							<div class="card card-stats">
 								<div class="card-header" data-background-color="#ffdd00">
-									<i class="material-icons">content_paste</i>
+									<a href="../../informe/informes.php"><i class="material-icons">content_paste</i></a>
 								</div>
 								<div class="card-content">
-									<p class="category">Ver</p>
+								<a href="../../informe/informes.php">	<p class="category">Ver</p></a>
 									<h3 class="title"><a href="../../informe/informes.php">Informes</a></h3>
 								</div>
 								<? /*<div class="card-footer">

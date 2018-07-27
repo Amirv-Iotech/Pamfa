@@ -164,13 +164,21 @@ $row_cert= mysql_fetch_assoc($cert);
       <th>Pliego</th>
     </thead>
     <tbody>
-      <? $query_mex = sprintf("SELECT descripcion FROM mex_cal_sup WHERE idmex_cal_sup=%s  ", GetSQLValueString( $row_solicitud['idmex_alcance'], "int"));
-$mex= mysql_query($query_mex, $inforgan_pamfa) or die(mysql_error());
-$row_mex= mysql_fetch_assoc($mex);
+      <? $query_m = sprintf("SELECT idmex_alcance FROM solicitud_mexcalsup WHERE idsolicitud=%s and idmex_alcance is not null ", GetSQLValueString( $row_solicitud['idsolicitud'], "int"));
+            $m= mysql_query($query_m, $inforgan_pamfa) or die(mysql_error());
+            $row_m= mysql_fetch_assoc($m);
 
-$query_mexp = sprintf("SELECT descripcion FROM mex_cal_sup WHERE idmex_cal_sup=%s  ", GetSQLValueString( $row_solicitud['idmex_pliego'], "int"));
-$mexp= mysql_query($query_mexp, $inforgan_pamfa) or die(mysql_error());
-$row_mexp= mysql_fetch_assoc($mexp);
+ $query_m2 = sprintf("SELECT idmex_pliego FROM solicitud_mexcalsup WHERE idsolicitud=%s  and idmex_pliego is not null ", GetSQLValueString( $row_solicitud['idsolicitud'], "int"));
+            $m2= mysql_query($query_m2, $inforgan_pamfa) or die(mysql_error());
+            $row_m2= mysql_fetch_assoc($m2);
+			
+			
+			  $query_mex = sprintf("SELECT descripcion FROM mex_cal_sup WHERE idmex_cal_sup=%s  ", GetSQLValueString( $row_m['idmex_alcance'], "int"));
+            $mex= mysql_query($query_mex, $inforgan_pamfa) or die(mysql_error());
+            $row_mex= mysql_fetch_assoc($mex);
+            $query_mexp = sprintf("SELECT descripcion FROM mex_cal_sup WHERE idmex_cal_sup=%s  ", GetSQLValueString( $row_m2['idmex_pliego'], "int"));
+            $mexp= mysql_query($query_mexp, $inforgan_pamfa) or die(mysql_error());
+            $row_mexp= mysql_fetch_assoc($mexp);
     
 ?>
    

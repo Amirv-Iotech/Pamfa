@@ -1,5 +1,12 @@
 
-<?php require_once('../../Connections/inforgan_pamfa.php'); ?>
+<?php 
+$dac = basename($_SERVER['PHP_SELF']);
+if($dac=='rev.php'){
+	include_once('../../Connections/mail.php');
+}
+
+ require_once('../../Connections/inforgan_pamfa.php');?>
+
 <?php
 error_reporting(0);
 mysql_select_db($database_pamfa, $inforgan_pamfa);
@@ -55,6 +62,80 @@ if($_GET['persona'])
 
 if ($_POST['seccion']==1) {
 	
+	
+	//seccion 15
+
+if($_POST['prod_hm']!=NULL)
+	{
+	
+	$query_hm = sprintf("SELECT * FROM solicitud_hm where idsolicitud=%s ",GetSQLValueString($_POST['idsolicitud'], "text"));
+$hm = mysql_query($query_hm , $inforgan_pamfa) or die(mysql_error());
+
+$total_hm = mysql_num_rows($hm);
+
+
+if($total_hm>0){
+
+$insertSQL6 = sprintf("update solicitud_hm set productos=%s,descripcion=%s WHERE  idsolicitud=%s",
+			GetSQLValueString($_POST['prod_hm'], "text"),
+             GetSQLValueString($_POST['desc_hm'], "text"),
+			
+            
+			 GetSQLValueString($_POST['idsolicitud'], "int"));
+
+
+}
+
+else{
+	
+	$insertSQL6 = sprintf("insert into solicitud_hm (idsolicitud,productos,descripcion) VALUES (%s,%s, %s)",
+            
+             GetSQLValueString($_POST['idsolicitud'], "text"),
+			 GetSQLValueString($_POST['prod_hm'], "text"),
+			GetSQLValueString($_POST["desc_hm"], "text"));
+}
+						  
+$Result1 = mysql_query($insertSQL6, $inforgan_pamfa) or die(mysql_error());
+	
+	
+}
+	
+	/////denomiaciopn de origen
+	if($_POST['den_or']!=NULL)
+	{
+	
+	$query_origen = sprintf("SELECT * FROM solicitud_origen where idsolicitud=%s ",GetSQLValueString($_POST['idsolicitud'], "text"));
+$origen = mysql_query($query_origen , $inforgan_pamfa) or die(mysql_error());
+
+$total_origen = mysql_num_rows($origen);
+
+
+if($total_origen>0){
+
+$insertSQL6 = sprintf("update solicitud_origen set idden_origen=%s WHERE  idsolicitud=%s",
+			GetSQLValueString($_POST['den_or'], "text"),
+           //  GetSQLValueString($_POST['anexo'], "text"),
+			
+            
+			 GetSQLValueString($_POST['idsolicitud'], "int"));
+
+
+}
+
+else{
+	
+	$insertSQL6 = sprintf("insert into solicitud_origen (idsolicitud,idden_origen) VALUES (%s,%s)",
+            
+             GetSQLValueString($_POST['idsolicitud'], "text"),
+			 GetSQLValueString($_POST['den_or'], "text"));
+}
+						  
+$Result1 = mysql_query($insertSQL6, $inforgan_pamfa) or die(mysql_error());
+	
+	
+}
+	
+	////////////
 if($_GET['band'])
 {
 $query_s = sprintf("SELECT Max(idsolicitud) as id FROM solicitud  WHERE idoperador=%s",GetSQLValueString($_POST['idoperador'], "text"));
@@ -145,9 +226,37 @@ if($total_solicitud==1){
      
      $Result7 = mysql_query($insertSQL7, $inforgan_pamfa) or die(mysql_error());
      }
+	 //////////complemento mcs
+	 if($_POST['idmex_alcance'.$x])
+     {
+		 $query_mcs = sprintf("SELECT * FROM solicitud_mcs where idsolicitud=%s ",GetSQLValueString($_POST['idsolicitud'], "text"));
+$mcs  = mysql_query($query_mcs , $inforgan_pamfa) or die(mysql_error());
+
+$total_mcs = mysql_num_rows($mcs);
+if($total_mcs>0)
+{ $insertSQL7 = sprintf("update solicitud_mcs set evaluacion=%s,documento=%s,muestreo=%s,trazabilidad=%s WHERE idsolicitud=%s",
+ 
+	 GetSQLValueString($_POST['evaluacion'], "text"),                    
+     GetSQLValueString($_POST['documento'], "text"),
+	  GetSQLValueString($_POST['muestreo'], "text"),                    
+     GetSQLValueString($_POST['trazabilidad'], "text"),
+	  GetSQLValueString($_POST['idsolicitud'], "int"));
+	}else {
+          $insertSQL7 = sprintf("insert into solicitud_mcs (idsolicitud,evaluacion,documento,muestreo,trazabilidad) VALUES (%s,%s, %s,%s, %s)",
+                             
+     GetSQLValueString($_POST['idsolicitud'], "int"), 
+	 GetSQLValueString($_POST['evaluacion'], "text"),                    
+     GetSQLValueString($_POST['documento'], "text"),
+	  GetSQLValueString($_POST['muestreo'], "text"),                    
+     GetSQLValueString($_POST['trazabilidad'], "text"));
+      
+}
+     $Result7 = mysql_query($insertSQL7, $inforgan_pamfa) or die(mysql_error());
+     }
+	 /////
      }
      
-     for($x=0;$x<4;$x++)
+     for($x=0;$x<6;$x++)
 {
      if($_POST['idmex_pliego'.$x])
      {
@@ -278,20 +387,15 @@ $total_solicitud = mysql_num_rows($solicitud);
 if($total_solicitud<1)
 {
 	  $e="";
-	 for($x=0;$x<3;$x++)
-{
-	if($_POST['esq_tipo1_op1'.$x]!=NULL)
-	{
-	$e=	$_POST['esq_tipo1_op1'.$x];
+if($_POST['esq_tipo1_op1']!=NULL)
+	{	 
+$e=	$_POST['esq_tipo1_op1'];
 	}
-}
 $e2="";
- for($x=0;$x<2;$x++)
-{
-	if($_POST['esq_tipo2_op1'.$x]!=NULL)
+
+	if($_POST['esq_tipo2_op1']!=NULL)
 	{
-	$e2=	$_POST['esq_tipo2_op1'.$x];
-	}
+	$e2=	$_POST['esq_tipo2_op1'];
 }
 $p1="";
 if($_POST['preg61']!=NULL)
@@ -331,21 +435,16 @@ if($_POST['preg81']!=NULL)
 }
 else{
 	$e="";
-	 for($x=0;$x<3;$x++)
-{
-	if($_POST['esq_tipo1_op1'.$x]!=NULL)
-	{
-	$e=	$_POST['esq_tipo1_op1'.$x];
-	}
-}
+		if($_POST['esq_tipo1_op1']!=NULL)
+	$e=	$_POST['esq_tipo1_op1'];
+	
 $e2="";
- for($x=0;$x<2;$x++)
-{
-	if($_POST['esq_tipo2_op1'.$x]!=NULL)
+ 
+	if($_POST['esq_tipo2_op1']!=NULL)
 	{
-	$e2=	$_POST['esq_tipo2_op1'.$x];
+	$e2=	$_POST['esq_tipo2_op1'];
 	}
-}
+
 $p1="";
 if($_POST['preg61']!=NULL)
 	{
@@ -691,7 +790,24 @@ $insertSQL6 = sprintf("insert into solicitud_obs (idsolicitud, observacion,secci
 						  
 $Result1 = mysql_query($insertSQL6, $inforgan_pamfa) or die(mysql_error());
 
+$query_obs = sprintf("SELECT * FROM solicitud_obs where idsolicitud=%s and estado=1",GetSQLValueString($_POST['idsolicitud'], "text"));
+$obs  = mysql_query($query_obs , $inforgan_pamfa) or die(mysql_error());
 
+$total_obs = mysql_num_rows($obs);
+if($total_obs>0)
+{
+	$_POST['terminada']=2;
+}
+else{ $_POST['terminada']=1;
+}
+
+	$insertSQL13 = sprintf("update solicitud set terminada=%s WHERE idsolicitud=%s",
+           
+			  GetSQLValueString($_POST['terminada'], "text"),									
+	GetSQLValueString($_POST['idsolicitud'], "int")); 
+	   $Result13 = mysql_query($insertSQL13, $inforgan_pamfa) or die(mysql_error());
+
+	
 
 }
 
@@ -754,3 +870,133 @@ $row_o = mysql_fetch_assoc($o);
   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
  
 }
+if(!empty($_POST['mail'])){
+		$insertSQL = sprintf("Update operador SET password=%s WHERE idoperador=%s",
+ GetSQLValueString($_POST['pass_tem'], "text"),
+  GetSQLValueString($_POST['idoperador'], "text"));
+
+
+  $Result1= mysql_query($insertSQL ,$inforgan_pamfa) or die(mysql_error());
+  
+  $cuerpo="<table class='table' border='1' cellpadding='5' cellspacing='1'>
+  <tr>
+    <th colspan='3' >Bienvenido</th>
+  </tr>
+  <tr>
+    <td rowspan='2'><img style='width:150px;' src='http://pamfa.net/images/pamfa.png'  alt=''></td>
+    <td colspan='2'><strong>Usuario:</strong> ".$_POST['usuario']."</td></tr>
+	<tr><td colspan='2'><strong>Contraseña<strong>: ".$_POST['pass_tem']."</td>
+  </tr>
+  <tr><td colspan='3'>Apartir de ahora puedes tener acceso a la plataforma dando click en este enlace <a href='http://pamfa.net/'>PAMFA</a></td></tr>
+  <tr><td colspan='3'><img style='width:400px;' src='http://pamfa.net/images/slogan.png'  alt=''></td></tr>
+</table>";
+   
+  $mail->AddAddress($_POST['correo']);
+
+        $mail->Subject = utf8_decode("acdo");
+        $mail->Body = utf8_decode($cuerpo);
+        $mail->MsgHTML(utf8_decode($cuerpo));
+        // para enviar el correo 
+		$url = '../../docs/docs_enviados/apelaciones.pdf';
+$mail->addAttachment($url,'solicitud.pdf');
+        
+        $mail->Send();
+        // limpiar la lista de correos que se van guardando
+        $mail->ClearAddresses();
+}
+
+if($_POST['idanexo_p']){
+	
+	
+	 $insertSQL = sprintf("UPDATE anexo_p SET p1=%s,p2=%s,p3=%s,p4=%s,p5=%s,p6=%s,p7=%s,p8=%s,p9=%s,p10=%s,p11=%s,p12=%s,p13=%s,p14=%s,p15=%s,p16=%s,p17=%s,p18=%s,p19=%s WHERE idanexo_p=%s",
+             GetSQLValueString($_POST['p1'], "text"),
+			 GetSQLValueString($_POST['p2'],"text"),
+			 GetSQLValueString($_POST['p3'], "text"),
+			 GetSQLValueString($_POST['p4'], "text"),
+			 GetSQLValueString($_POST['p5'], "text"),
+			 GetSQLValueString($_POST['p6'], "text"),
+			 GetSQLValueString($_POST['p7'], "text"),
+			 GetSQLValueString($_POST['p8'], "text"),
+			 GetSQLValueString($_POST['p9'], "text"),
+			 GetSQLValueString($_POST['p10'], "text"),
+			 GetSQLValueString($_POST['p11'], "text"),
+			 GetSQLValueString($_POST['p12'], "text"),
+			 GetSQLValueString($_POST['p13'], "text"),
+			 GetSQLValueString($_POST['p14'], "text"),
+			 GetSQLValueString($_POST['p15'], "text"),
+			 GetSQLValueString($_POST['p16'], "text"),
+			 GetSQLValueString($_POST['p17'], "text"),
+			 GetSQLValueString($_POST['p18'], "text"),
+			 GetSQLValueString($_POST['p19'], "text"),
+            
+             GetSQLValueString($_POST['idanexo_p'], "int"));
+			print_r ( $insertSQL);
+  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
+}
+if($_POST['seccion']==100){
+	
+		$query_rev = sprintf("SELECT * FROM solicitud_rev where idsolicitud=%s ",GetSQLValueString($_POST['idsolicitud'], "text"));
+$rev  = mysql_query($query_rev , $inforgan_pamfa) or die(mysql_error());
+
+$total_rev = mysql_num_rows($rev);
+if($total_rev>0)
+{
+	$insertSQL = sprintf("UPDATE solicitud_rev SET p1=%s,obs1=%s,p2=%s,obs2=%s,p3=%s,obs3=%s,p4=%s,obs4=%s,p5=%s,obs5=%s,p6=%s,obs6=%s,p7=%s,obs7=%s,p8=%s,obs8=%s,p9=%s,p10=%s,p11=%s,p12=%s WHERE idsolicitud=%s",
+             GetSQLValueString($_POST['p1'], "text"),
+			 GetSQLValueString($_POST['obs1'], "text"),
+			 GetSQLValueString($_POST['p2'], "text"),
+			 GetSQLValueString($_POST['obs2'], "text"),
+			 GetSQLValueString($_POST['p3'], "text"),
+			 GetSQLValueString($_POST['obs3'], "text"),
+			 GetSQLValueString($_POST['p4'], "text"),
+			 GetSQLValueString($_POST['obs4'], "text"),
+			 GetSQLValueString($_POST['p5'], "text"),
+			 GetSQLValueString($_POST['obs5'], "text"),
+			 GetSQLValueString($_POST['p6'], "text"),
+			 GetSQLValueString($_POST['obs6'], "text"),
+			 GetSQLValueString($_POST['p7'], "text"),
+			 GetSQLValueString($_POST['obs7'], "text"),
+			 GetSQLValueString($_POST['p8'], "text"),
+			 
+			 GetSQLValueString($_POST['obs8'], "text"),
+			  GetSQLValueString($_POST['p9'], "text"),
+			   GetSQLValueString($_POST['p10'], "text"),
+			    GetSQLValueString($_POST['p11'], "text"),
+				 GetSQLValueString($_POST['p12'], "text"),
+				 
+			 GetSQLValueString($_POST['idsolicitud'], "int"));
+			
+}
+else{ 
+$insertSQL = sprintf("INSERT INTO solicitud_rev(p1,obs1,p2,obs2,p3,obs3,p4,obs4,p5,obs5,p6,obs6,p7,obs7,p8,obs8,p9,p10,p11,p12,idsolicitud) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+            GetSQLValueString($_POST['p1'], "text"),
+			 GetSQLValueString($_POST['obs1'], "text"),
+			 GetSQLValueString($_POST['p2'], "text"),
+			 GetSQLValueString($_POST['obs2'], "text"),
+			 GetSQLValueString($_POST['p3'], "text"),
+			 GetSQLValueString($_POST['obs3'], "text"),
+			 GetSQLValueString($_POST['p4'], "text"),
+			 GetSQLValueString($_POST['obs4'], "text"),
+			 GetSQLValueString($_POST['p5'], "text"),
+			 GetSQLValueString($_POST['obs5'], "text"),
+			 GetSQLValueString($_POST['p6'], "text"),
+			 GetSQLValueString($_POST['obs6'], "text"),
+			 GetSQLValueString($_POST['p7'], "text"),
+			 GetSQLValueString($_POST['obs7'], "text"),
+			 GetSQLValueString($_POST['p8'], "text"),
+			 GetSQLValueString($_POST['obs8'], "text"),
+			 GetSQLValueString($_POST['p9'], "text"),
+			 GetSQLValueString($_POST['p10'], "text"),
+			 GetSQLValueString($_POST['p11'], "text"),
+			 GetSQLValueString($_POST['p12'], "text"),
+			
+            
+             GetSQLValueString($_POST['idsolicitud'], "int"));
+}
+
+	
+			
+  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
+}
+
+ 

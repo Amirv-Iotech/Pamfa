@@ -174,7 +174,7 @@ $GLOBALS['mpdf']->WriteHTML('
       </tr>
       
         </table>
-		<br>');
+		');
 }
 
 $mpdf->WriteHTML('
@@ -187,7 +187,7 @@ body,td,th {
 </style>
 </head>
 <body>');encabezado();
-$mpdf->WriteHTML('
+$mpdf->WriteHTML('<br>
 		 <table width="100%"  cellspacing="5" >
           <tr>
             <td align="left">Fecha:  '.$row_sol['fecha_autorizo'].'</td>
@@ -201,7 +201,7 @@ $mpdf->WriteHTML('
 </td>
           </tr>
         </table>
-		<br>
+		
 		 <table width="100%"  cellspacing="5" >
           <tr>
             <td align="left">DECLARACIONES</td>
@@ -218,7 +218,7 @@ $mpdf->WriteHTML('
  
           </tr>
         </table>
-		<br>
+		
 		 <table width="100%"  cellspacing="5" >
         
           <tr>
@@ -229,7 +229,7 @@ $mpdf->WriteHTML('
             <td align="justify">b)	Declaran ambas partes, a través de sus representantes, que se reconocen mutuamente lo manifestado en las declaraciones precedentes y que es su voluntad celebrar el presente contrato remitiéndose al efecto a lo dispuesto en las siguientes:
 </td></tr>
 
-        </table><br>
+        </table>
 		 <table width="100%"  cellspacing="5" >
           
           <tr>
@@ -249,6 +249,8 @@ $mpdf->WriteHTML('
 			  <td align="center"> '); if($row_total_sol_mexcalsup>0){$mpdf->WriteHTML('X'); $normas=$normas." MEXICO CALIDAD SUPREMA,"; }else{$mpdf->WriteHTML('');} $mpdf->WriteHTML('</td>
 			    <td align="center">'); if($row_total_sol_srrc>0){$mpdf->WriteHTML('X'); $normas=$normas." SISTEMA DE REDUCCIÓN DE CONTAMINACIÓN,"; }else{$mpdf->WriteHTML('');} $mpdf->WriteHTML('</td>
 				  <td align="center">'); if($row_total_sol_primus>0){$mpdf->WriteHTML('X'); $normas=$normas." PrimusGFS,"; }else{$mpdf->WriteHTML('');} $mpdf->WriteHTML(' </td>
+				   <td align="center">'); if($row_total_sol_srrc>0){$mpdf->WriteHTML('X'); $normas=$normas." SISTEMA DE REDUCCIÓN DE CONTAMINACIÓN,"; }else{$mpdf->WriteHTML('');} $mpdf->WriteHTML('</td>
+				  <td align="center">'); if($row_total_sol_primus>0){$mpdf->WriteHTML('X'); $normas=$normas." PrimusGFS,"; }else{$mpdf->WriteHTML('');} $mpdf->WriteHTML(' </td>
           </tr>
 		   <tr>
             <td align="justify"> ( ');if($row_sol_esquema['esq_tipo1_op1']!=NULL){$mpdf->WriteHTML('X'); }$mpdf->WriteHTML('      ) GlobalG.A.P. IFA <br> ('); if($row_sol_esquema['esq_tipo2_op1']!=NULL){$mpdf->WriteHTML('X');} $mpdf->WriteHTML('      ) GlobalG.A.P. Cadena de Custodia.</td>
@@ -257,14 +259,12 @@ $mpdf->WriteHTML('
 </td>
 			    <td align="center"> SRRC/SENASICA</td>
 				  <td align="center"> PrimusGFS</td>
+				  <td align="center"> Hecho en México</td>
+				  <td align="center"> Denominación de origen</td>
           </tr>
 		
       
-        </table><br>VERIFICACIÓN Y CERTIFICACIÓN PAMFA A.C.<br>
-ORGANISMO DE CERTIFICACIÓN DE PRODUCTO
-		');
-		$mpdf->AddPage();
-		encabezado();
+        </table>');
 		$alcances="";
 		$cont=0;
 		
@@ -311,11 +311,20 @@ $primus= mysql_query($query_primus, $inforgan_pamfa) or die(mysql_error());
 		$tam=strlen($alcances);
 		$alcances=substr($alcances,0,($tam-(($cont*2)+2)));
 		$mpdf->WriteHTML('
-
-		 <table width="100%"  cellspacing="5" >
+		<table width="100%"  cellspacing="5" >
           <tr>
             <td align="left">Específicamente en el siguiente alcance: <u>'.$alcances.' </u>.</td>
-          </tr>
+          </tr></table>
+		  <br>VERIFICACIÓN Y CERTIFICACIÓN PAMFA A.C.<br>
+ORGANISMO DE CERTIFICACIÓN DE PRODUCTO
+		');
+		$mpdf->AddPage();
+		encabezado();
+		
+		$mpdf->WriteHTML('
+
+		 <table width="100%"  cellspacing="5" >
+          
         
           <tr>
             <td align="justify">V.	“El Cliente” declara ser una persona moral o física con los siguientes datos: <u>'.$row_operador['nombre_legal'].', RFC: '.$row_operador['rfc'].', '.$row_operador['direccion'].', '.$row_operador['colonia'].', '.$row_operador['municipio'].', '.$row_operador['estado'].', CP: '.$row_operador['cp'].'</u> y que su representante autorizado tiene la capacidad para obligarla en los términos de este instrumento. 
@@ -346,7 +355,7 @@ $primus= mysql_query($query_primus, $inforgan_pamfa) or die(mysql_error());
  
           </tr>
         </table>
-		<br>
+		
 		 <table width="100%"  cellspacing="5" >
           <tr>
             <td align="left">DECLARACIONES</td>
@@ -363,283 +372,122 @@ $primus= mysql_query($query_primus, $inforgan_pamfa) or die(mysql_error());
  
           </tr>
 		   <tr>
-            <td align="justify">IV.	La cantidad que de común acuerdo pactan las partes a favor de “El organismo de certificación” y a cargo de “el cliente” por sus servicios de certificación de producto, de conformidad con el presupuesto de servicios, con las siguientes:<br> Propuesta económica
+            <td align="justify">IV.	La cantidad que de común acuerdo pactan las partes a favor de “El organismo de certificación” y a cargo de “el cliente” por sus servicios de certificación de producto, de conformidad con el presupuesto de servicios.<br>Anexo CER.RG.03
+
+
 </td></tr>
 
         </table>
-		 <table width="100%" border="1"  >
-          
+		 <table width="100%"  cellspacing="5" >
+        
           <tr>
-            <td align="center">Tipo de servicio </td>
-			  <td align="center"> Evaluación</td>
-			    <td align="center">Informe </td>
-				  <td align="center">Seguimiento y cierre de NC</td>
-				   <td align="center">Cuota anual del certificado </td>
-				  <td align="center">Total a pagar</td>
+		   
+		   <td align="left">Notas: Para GLOBALG.A.P..</td>
+		   </tr><tr>
+		    
+            <td align="justify">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.	La cuota anual cubre los gastos para el registro en la base de datos GlobalG.A.P.  En caso de existir un GGN o número CoC, el no comunicarlo a VERIFICACION Y CERTIFICACION PAMFA A.C., el reglamento general de GLOBALG.A.P. establece una sanción de 100 €(EUROS) para un auditor individual bajo la opción 1; y de 500€ (EUROS) para un grupo de productores bajo la opción 2, sobre la tarifa de registro.  </td>
           </tr>
-		   <tr>
-            <td align="justify">Evaluación inicial </td>
-			  <td align="center">'.$row_pres['ev_ev'].'
-</td>
-			    <td align="center">'.$row_pres['ev_in'].'</td>
-				  <td align="center">'.$row_pres['ev_seg'].'</td>
-				   <td align="center">'.$row_pres['ev_cuo'].'</td>
-				  <td align="center">'.$row_pres['ev_tot'].'</td>
-          </tr>
-		  <tr>
-            <td align="justify">Auditoria no anunciada </td>
-			   <td align="center">'.$row_pres['au_ev'].'
-</td>
-			    <td align="center">'.$row_pres['au_in'].'</td>
-				  <td align="center">'.$row_pres['au_seg'].'</td>
-				   <td align="center">'.$row_pres['au_cuo'].'</td>
-				  <td align="center">'.$row_pres['au_tot'].'</td>
-          </tr>
-		  <tr>
-            <td align="justify">Auditoria extraordinaria para cierre de no conformidades </td>
-			  <td align="center">'.$row_pres['au_ev'].'
-</td>
-			    <td align="center">'.$row_pres['auex_in'].'</td>
-				  <td align="center">'.$row_pres['auex_seg'].'</td>
-				   <td align="center">'.$row_pres['auex_cuo'].'</td>
-				  <td align="center">'.$row_pres['auex_tot'].'</td>
-          </tr>
-		  <tr>
-            <td align="justify">Auditoria por ampliación de alcance de certificación.</td>
-			   <td align="center">'.$row_pres['auam_ev'].'
-</td>
-			    <td align="center">'.$row_pres['auam_in'].'</td>
-				  <td align="center">'.$row_pres['auam_seg'].'</td>
-				   <td align="center">'.$row_pres['auam_cuo'].'</td>
-				  <td align="center">'.$row_pres['auam_tot'].'</td>
-          </tr>
-	
-        </table>
-	VERIFICACIÓN Y CERTIFICACIÓN PAMFA A.C.
+          <tr>
+            <td align="justify">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.	La auditoría no anunciada se realizará bajo la Opción 1 al 10% del número total de productores certificados. En caso de ser necesaria esta auditoria se avisará con un plazo máximo de 48 horas de anticipación. 
+</td></tr><tr>
+            <td align="justify">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.	En caso de que PAMFA determine necesaria otra visita a sitio para comprobar la resolución de no conformidades, se originará un cargo extra. 
+</td></tr></table>
+		 
+	<br>VERIFICACIÓN Y CERTIFICACIÓN PAMFA A.C.<br>
 ORGANISMO DE CERTIFICACIÓN DE PRODUCTO
 
 		');
 		$mpdf->AddPage();
 		encabezado();
 		$mpdf->WriteHTML('
+		 
+		
+		
+		
 		 <table width="100%"  cellspacing="5" >
-        
-          <tr>
-		   <td width="2%"  align="left" rowspan="1"></td>
-		   <td align="left">Notas: Para GLOBALG.A.P..</td>
-		   </tr><tr>
-		    <td width="10%"  align="left" rowspan="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td align="justify">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.	La cuota anual cubre los gastos para el registro en la base de datos GlobalG.A.P.  En caso de existir un GGN o número CoC, el no comunicarlo a VERIFICACION Y CERTIFICACION PAMFA A.C., el reglamento general de GLOBALG.A.P. establece una sanción de 100 €. </td>
+           <tr>
+		    
+            <td align="justify">información proporcionada por el representante autorizado es la declarada en la Solicitud de certificación de producto (CER.RG.01) y Anexo CER.RG.01   </td>
+          </tr>
+		   <tr>
+            <td align="justify">V.	La duración del contrato será una mínima de un año para todos los esquemas de certificación excepto para SRRC (cultivos perennes e instalaciones, la cual es de 2 años) y máxima de 4 años para los esquemas de certificación GlobalG.A.P., PrimusGFS, México Calidad Suprema y SRRC/SENASICA, transcurrido ese tiempo se renovará el contrato.  De acuerdo a lo convenido entre ambas partes. 
+</td></tr>
+
+        </table>
+		 <table width="100%"  cellspacing="5" >
+         <tr>
+            <td align="justify">VI.	La disolución del contrato podrá hacerse si existe previo acuerdo por escrito de “el cliente” y aceptado por “El organismo de certificación”. Los daños y prejuicios que pudieran causar las partes, serán a cargo de quien inicie la rescisión.  </td>
           </tr>
           <tr>
-            <td align="justify">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.	La auditoría no anunciada se realizará bajo la Opción 1 al 10% del número total de productores certificados. En caso de ser necesaria esta auditoria se avisará con un plazo máximo de 48 horas de anticipación. 
+            <td align="justify">VII.	“El cliente” acepta recibir auditorias no anunciadas (ó de vigilancia) cuando así lo indique el esquema de certificación, si sale sorteado. De negarse por más de dos veces “El organismo de certificación” puede suspender el certificado del cliente.  
+</td></tr>
+<tr>
+<td align="justify">VIII.	En caso de cancelación o suspensión del servicio, “el cliente” se obliga a cumplir lo establecido en las regulaciones aplicadas a cada uno de los esquemas de certificación.
+</td>
+ 
+          </tr>
+		   <tr>
+            <td align="justify">IX.	Ante una cancelación o suspensión “el cliente” de cambiar de organismo de certificación se obliga a informar al nuevo organismo de certificación de su estatus. El Organismo de Certificación que elija “el cliente” podrá pedir informes a “El organismo de certificación”  de la situación en la que se encuentra la no conformidad motivo de la suspensión o cancelación de la certificación.  
 </td></tr>
  <tr>
-            <td align="justify">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.	La auditoría extraordinaria para el módulo IFA se realizará en alguno de los siguientes casos: 
-</td></tr>
-
-        </table> 
-		
-		 <table width="100%"  cellspacing="5" >
-        
-         <tr>
-		    <td width="20%"   align="right" rowspan="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td align="justify">a.	 15 no conformidades menores y 10 no conformidades mayores.  </td>
+            <td align="justify">X.	“El cliente “se obliga a no ceder los derechos y obligaciones a terceras personas.  </td>
           </tr>
           <tr>
-            <td align="justify">b.	15 no conformidades mayores
+            <td align="justify">XI.	“El cliente” se obliga a cumplir con los requisitos de los documentos normativos y Acuerdo de sublicencia y certificación de los esquemas de certificación: GlobalG.A.P., México Calidad Suprema, PrimusGFS y Sistema de Reducción de Riesgos de Contaminación según aplique, en la versión vigente. 
 </td></tr>
 <tr>
-            <td align="justify">c.	20 no conformidades menores. 
-</td></tr>
- 
-
-        </table> 
-		 <table width="100%"  cellspacing="5" >
-        
-         <tr>
-		    <td width="10%"  align="left" rowspan="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td align="justify">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.	No está incluido el IVA.  </td>
-          </tr>
-		   <tr>
-		    <td width="5%"  align="left" rowspan="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td align="justify">La información proporcionada por el representante autorizado es la siguiente:   </td>
-          </tr>
-        
-
-        </table> 
-		 <table width="100%" border="1"  >
-          
-          <tr>
-            <td align="rigth">Nombre y dirección del centro de Manipulación de Producto  </td>
-			  <td align="rigth">Productos manipulados</td>
-			    <td align="rigth">Número total de trabajadores fijos y temporales </td>
-				  <td align="rigth">Países donde se envía o enviaran el producto y estimación del volumen</td>
-				   <td align="rigth">Fecha de inicio de operaciones</td>
-				  <td align="rigth">Propiedad paralela (PP)/ producción paralela (PO)</td>
-				   <td align="rigth">Subcontrataciones indicar el tipo de servicio)</td>
-          </tr>'); while($row_emp= mysql_fetch_assoc($emp))
-		  {
-		  $mpdf->WriteHTML('
-		   <tr>
-            <td align="center">'.$row_emp['p2'].' </td>
-			  <td align="center">'.$row_emp['p1'].'
+<td align="justify">XII.	 “El organismo de certificación” declara que cuando reciba un informe, ya sea de mal uso de la marca de conformidad o de un riesgo de peligro involucrado con el producto que ostentan la marca de conformidad y la validez del informe debe investigarse. Cuando se haya establecido que ocurrió un mal uso “El organismo de certificación” determinará el alcance del mal uso del producto y “el cliente” se obliga a implementar las acciones correctivas que “El organismo de certificación” le solicite.
 </td>
-			    <td align="center">'.$row_emp['p6'].'</td>
-				  <td align="center">'.$row_emp['p9'].'</td>
-				   <td align="center">'.$row_emp['p12'].'</td>
-				  <td align="center">'.$row_emp['p14'].'</td>
-				   <td align="center">'.$row_emp['p18'].'</td>
-          </tr>');}$mpdf->WriteHTML('
-		 
-	
-        </table>
-		<br>VERIFICACIÓN Y CERTIFICACIÓN PAMFA A.C.<br>
-ORGANISMO DE CERTIFICACIÓN DE PRODUCTO');
-$mpdf->AddPage();
-		encabezado();
-		$mpdf->WriteHTML('
-		
-		 <table width="100%" border="1"  >
-          <tr>
-            <td align="rigth" colspan="11">Información de los cultivos:
  
-</td>
-			</tr>
-          <tr>
-            <td align="rigth">Producto  </td>
-			  <td align="rigth">Núm productores</td>
-			    <td align="rigth">Propiedad paralela (PP)/ producción paralela (PO)  </td>
-				  <td align="rigth">Subcontrataciones indicar el tipo de servicio</td>
-				   <td align="rigth">Número y nombre de emplazamientos</td>
-				  <td align="rigth">Superficie (ha)</td>
-				   <td align="rigth">Aire libre /cubierto</td>
-				   <td align="rigth">Periodo de cosecha</td>
-				   <td align="rigth">Estimación de rendimiento  (ton/ha)</td>
-				  <td align="rigth">Cosecha (s/n)</td>
-				   <td align="rigth">Empaque (s/n)</td>
           </tr>
-		  '); while($row_pro= mysql_fetch_assoc($pro))
-		  {
-			  $query_cul = sprintf("SELECT * FROM cultivos WHERE idcultivos=%s", GetSQLValueString(  $row_pro["idcultivo"], "int"));
-$cul= mysql_query($query_cul, $inforgan_pamfa) or die(mysql_error());
-$row_cul= mysql_fetch_assoc($cul);
-$cosecha="";
-$empaque="";
-if($row_cul['cosecha_recoleccion']==1){$cosecha="Si";} else {$cosecha="No";}
-if($row_cul['empaque']==1){$empaque="Si";} else {$empaque="No";}
-
-		  $mpdf->WriteHTML('
-		   <tr>
-            <td align="center">'.$row_pro['p9'].' </td>
-			  <td align="center">'.$row_cul['num_productores'].'</td>
-			    <td align="center">'.$row_pro['p15'].' </td>
-				  <td align="center">'.$row_pro['p18'].' </td>
-				   <td align="center">'.$row_pro['p3'].' </td>
-				  <td align="center">'.$row_pro['p12'].' </td>
-				   <td align="center">'.$row_pro['p11'].' </td>
-				    <td align="center">'.$row_pro['p14'].'  </td>
-			  <td align="center">'.$row_pro['p13'].' </td>
-			    <td align="center">'.$cosecha.'</td>
-				  <td align="center">'.$empaque.'</td>
-          </tr>
-		 
-	 ');}  $mpdf->WriteHTML('
-        </table>
-		<br>
-		 <table width="100%"  cellspacing="5" >
-         <tr>
-            <td align="justify">V.	Los gastos por concepto de Viáticos no son incluidos en el costo del servicio. </td>
+		  
+<tr>
+            <td align="justify"><br>XIII.	“El organismo de certificación” declara que podrá ejercer las acciones legales necesarias cuando se haga mal uso de marca y/o comercializar un producto certificado peligroso.  </td>
           </tr>
           <tr>
-            <td align="justify">VI.	Los costos del servicio se obligan a mantenerse por un periodo de 30 días naturales desde la fecha de su envío al “cliente”. 
+            <td align="justify">XIV.	“El cliente” se obliga a recibir auditorías extraordinarias en el caso de que se requiera por cierre de no conformidades o por auditorias no anunciadas cuando el esquema de certificación lo especifique.
 </td></tr>
 <tr>
-<td align="justify">VII.	El pago se realizará 50% al momento de aceptar la cotización del servicio y el 50% adicional antes de iniciar la auditoría. 
+<td align="justify">XV.	“El cliente” se obliga a informar a “El organismo de certificación” si se encuentra involucrado en una alerta sanitaria (producto peligroso) y/o alguna modificación al producto certificado. 
 </td>
  
           </tr>
 		   <tr>
-            <td align="justify">VIII.	La duración del contrato será una mínima de un año para todos los esquemas de certificación excepto para SRRC (cultivos perennes e instalaciones, la cual es de 2 años) y máxima de 4 años para los esquemas de certificación GlobalG.A.P., PrimusGFS, México Calidad Suprema y SRRC/SENASICA, transcurrido ese tiempo se renovará el contrato.  De acuerdo a lo convenido entre ambas partes. 
-</td></tr>
-
-        </table>
-		<br>VERIFICACIÓN Y CERTIFICACIÓN PAMFA A.C.<br>
+            <td align="justify">XVI.	Las quejas o apelaciones que “el cliente” haga deben ser relacionadas al alcance de la certificación. 
+</td></tr><tr>
+            <td align="justify">XVII.	Como parte de sus actividades “El organismo de certificación” mantiene actualizado en su página electrónica la base de datos de sus productos certificados. Si “el cliente” no estuviera de acuerdo en que “El organismo de certificación” publique sus datos, “el cliente” debe informar por escrito libre para que no se tengan en su base de datos.  </td>
+          </tr>
+          </table>
+		
+		
+		 
+		
+		VERIFICACIÓN Y CERTIFICACIÓN PAMFA A.C.<br>
 ORGANISMO DE CERTIFICACIÓN DE PRODUCTO');
 
 $mpdf->AddPage();
 		encabezado();
 		$mpdf->WriteHTML('
 		 <table width="100%"  cellspacing="5" >
-         <tr>
-            <td align="justify">IX.	La disolución del contrato podrá hacerse si existe previo acuerdo por escrito de “el cliente” y aceptado por “El organismo de certificación”. Los daños y prejuicios que pudieran causar las partes, serán a cargo de quien inicie la rescisión.  </td>
-          </tr>
-          <tr>
-            <td align="justify">X.	“El cliente” acepta recibir auditorias no anunciadas (ó de vigilancia) cuando así lo indique el esquema de certificación, si sale sorteado. De negarse por más de dos veces “El organismo de certificación” puede suspender el certificado del cliente.  
+		
+         
+ <tr>
+            <td align="justify">XVIII.	Durante una testificación al personal del Organismo de Certificación por la entidad de acreditación o por los dueños del esquema, “El cliente” tendrá durante la inspección al personal de la entidad de acreditación o de los dueños del esquema, sin que éstos (la entidad de acreditación o dueños del esquema) influyan sobre los resultados de la inspección. 
 </td></tr>
 <tr>
-<td align="justify">XI.	En caso de cancelación o suspensión del servicio, “el cliente” se obliga a cumplir lo establecido en las regulaciones aplicadas a cada uno de los esquemas de certificación.
+<td align="justify">XIX.	Las partes en este acto convienen en que EL PRESTADOR DEL SERVICIO no puede ceder o transferir, total o parcialmente, a terceros, las obligaciones o derechos que adquiere por virtud de este. Contrato, sin el consentimiento previo y por escrito del “cliente”.
 </td>
  
           </tr>
 		   <tr>
-            <td align="justify">XII.	Ante una cancelación o suspensión “el cliente” de cambiar de organismo de certificación se obliga a informar al nuevo organismo de certificación de su estatus. El Organismo de Certificación que elija “el cliente” podrá pedir informes a “El organismo de certificación”  de la situación en la que se encuentra la no conformidad motivo de la suspensión o cancelación de la certificación.  
-</td></tr>
- <tr>
-            <td align="justify">XIII.	“El cliente “se obliga a no ceder los derechos y obligaciones a terceras personas.  </td>
+            <td align="justify">XX.	Para el caso específico de los SRRC/SENASICA, el Representante Legal es la única persona que podrá firmar el dictamen de verificación o en su defecto otra persona con poder notariado. </td>
           </tr>
           <tr>
-            <td align="justify">XIV.	“El cliente” se obliga a cumplir con los requisitos de los documentos normativos y Acuerdo de sublicencia y certificación de los esquemas de certificación: GlobalG.A.P., México Calidad Suprema, PrimusGFS y Sistema de Reducción de Riesgos de Contaminación según aplique, en la versión vigente. 
+            <td align="justify">XXI.	CONFIDENCIALIDAD.
 </td></tr>
-<tr>
-<td align="justify">XV.	 “El organismo de certificación” declara que cuando reciba un informe, ya sea de mal uso de la marca de conformidad o de un riesgo de peligro involucrado con el producto que ostentan la marca de conformidad y la validez del informe debe investigarse. Cuando se haya establecido que ocurrió un mal uso “El organismo de certificación” determinará el alcance del mal uso del producto y “el cliente” se obliga a implementar las acciones correctivas que “El organismo de certificación” le solicite.
-</td>
- 
-          </tr>
 		  
-<tr>
-            <td align="justify"><br>XVI.	“El organismo de certificación” declara que podrá ejercer las acciones legales necesarias cuando se haga mal uso de marca y/o comercializar un producto certificado peligroso.  </td>
-          </tr>
-          <tr>
-            <td align="justify">XVII.	“El cliente” se obliga a recibir auditorías extraordinarias en el caso de que se requiera por cierre de no conformidades o por auditorias no anunciadas cuando el esquema de certificación lo especifique.
-</td></tr>
-<tr>
-<td align="justify">XVIII.	“El cliente” se obliga a informar a “El organismo de certificación” si se encuentra involucrado en una alerta sanitaria (producto peligroso) y/o alguna modificación al producto certificado. 
-</td>
- 
-          </tr>
-		   <tr>
-            <td align="justify">XIX.	Las quejas o apelaciones que “el cliente” haga deben ser relacionadas al alcance de la certificación. 
-</td></tr>
- <tr>
-            <td align="justify">XX.	Como parte de sus actividades “El organismo de certificación” mantiene actualizado en su página electrónica la base de datos de sus productos certificados. Si “el cliente” no estuviera de acuerdo en que “El organismo de certificación” publique sus datos, “el cliente” debe informar por escrito libre para que no se tengan en su base de datos.  </td>
-          </tr>
-          <tr>
-            <td align="justify">XXI.	Durante una testificación al personal del Organismo de Certificación por la entidad de acreditación o por los dueños del esquema, “El cliente” tendrá durante la inspección al personal de la entidad de acreditación o de los dueños del esquema, sin que éstos (la entidad de acreditación o dueños del esquema) influyan sobre los resultados de la inspección. 
-</td></tr>
-<tr>
-<td align="justify">XXII.	Las partes en este acto convienen en que EL PRESTADOR DEL SERVICIO no puede ceder o transferir, total o parcialmente, a terceros, las obligaciones o derechos que adquiere por virtud de este. Contrato, sin el consentimiento previo y por escrito del “cliente”.
-</td>
- 
-          </tr>
-		  
-        </table>');
-		
-$mpdf->AddPage();
-		encabezado();
-		$mpdf->WriteHTML('
-		
-		
-		 <table width="100%"  cellspacing="5" >
-         <tr>
-            <td align="justify">XXIII.	Para el caso específico de los SRRC/SENASICA, el Representante Legal es la única persona que podrá firmar el dictamen de verificación o en su defecto otra persona con poder notariado. </td>
-          </tr>
-          <tr>
-            <td align="justify">XXIV.	CONFIDENCIALIDAD.
-</td></tr>
-
         </table>
-		 <table width="100%"  cellspacing="5" >
+		<table width="100%"  cellspacing="5" >
         
          <tr>
 		    <td width="10%"  align="left" rowspan="5"></td>
@@ -662,8 +510,7 @@ $mpdf->AddPage();
             <td align="justify">e)	Con independencia de lo anteriormente estipulado, la siguiente información no será considerada como confidencial para los efectos de lo estipulado en esta cláusula: </td>
           </tr>
          
-        </table> 
-		
+        </table>
 		 <table width="100%"  cellspacing="5" >
         
          <tr>
@@ -676,39 +523,35 @@ $mpdf->AddPage();
 <tr>
             <td align="justify">3.	Cualquier información que eventualmente fuere del dominio público y que hubiere sido legítimamente revelada , no derivado de alguna violación o incumplimiento de la parte receptora respecto de sus obligaciones adquiridas en este Contrato. 
 </td></tr>
- <tr>
-		   
-            <td align="justify">4.	Asimismo, las partes convienen en este acto en que mantendrán la obligación de confidencialidad estipulada en esta cláusula en todo momento, durante y posterior a la vigencia de este contrato, a menos que reciba la autorización previa y por escrito de la parte respectiva.</td>
-          </tr>
-         
- 
-
-        </table> 
-		<br>VERIFICACIÓN Y CERTIFICACIÓN PAMFA A.C.<br>
+ </table>
+ VERIFICACIÓN Y CERTIFICACIÓN PAMFA A.C.<br>
 ORGANISMO DE CERTIFICACIÓN DE PRODUCTO');
-
+		
+		
 $mpdf->AddPage();
 		encabezado();
 		$mpdf->WriteHTML('
 		 <table width="100%"  cellspacing="5" >
         
          <tr>
-		    <td width="15%"   align="right" rowspan="2"></td>
+		    <td width="15%"   align="right" rowspan="6"></td>
+		
+		   
+            <td align="justify">4.	Asimismo, las partes convienen en este acto en que mantendrán la obligación de confidencialidad estipulada en esta cláusula en todo momento, durante y posterior a la vigencia de este contrato, a menos que reciba la autorización previa y por escrito de la parte respectiva.</td>
+          </tr>
+		  <tr>
+		   
              <td align="justify">5.	Las partes convienen que en caso de violación o incumplimiento a las obligaciones estipuladas en esta cláusula, la parte que incumpla se obliga a pagar a la parte afectada los daños y perjuicios que llegare a ocasionarle, sin perjuicio de la responsabilidad penal en la que también pudiere incurrir.
 
 
 </td>
           </tr>
-         
-        
-
-        </table> 
-		
-		 <table width="100%"  cellspacing="5" >
+		</table>
+		<table width="100%"  cellspacing="5" >
          
          
           <tr>
-            <td align="justify">XXV.	“El cliente” se obliga a tomar  todas las medidas necesarias para:
+            <td align="justify">XXII.	“El cliente” se obliga a tomar  todas las medidas necesarias para:
 </td></tr>
 
         </table>
@@ -728,29 +571,29 @@ $mpdf->AddPage();
           </tr>
 		 
         </table>
-		 <table width="100%"  cellspacing="5" >
+		<table width="100%"  cellspacing="5" >
          
          
           <tr>
-            <td align="justify">XXVI.	“El cliente” se obliga a no utilizar su certificación de producto de manera que ocasione mala reputación para “El organismo de certificación” y no hará ninguna declaración relacionada con su certificado de producto que “El organismo de certificación” pueda considerar engañosa o no autorizada. 
+            <td align="justify">XXIII.	“El cliente” se obliga a no utilizar su certificación de producto de manera que ocasione mala reputación para “El organismo de certificación” y no hará ninguna declaración relacionada con su certificado de producto que “El organismo de certificación” pueda considerar engañosa o no autorizada. 
 </td></tr>
 <tr>
-            <td align="justify">XXVII.	inmediatamente después de suspender, retirar o finalizar la certificación, “el cliente” se obliga a dejar de utilizarla en todo el material publicitario que contenga alguna referencia a ella, y deberá emprender las acciones exigidas por el esquema de certificación (por ejemplo, la devolución de los documentos de la certificación y cualquier otra medida que se requiera.
+            <td align="justify">XXIV.	inmediatamente después de suspender, retirar o finalizar la certificación, “el cliente” se obliga a dejar de utilizarla en todo el material publicitario que contenga alguna referencia a ella, y deberá emprender las acciones exigidas por el esquema de certificación (por ejemplo, la devolución de los documentos de la certificación y cualquier otra medida que se requiera.
 </td></tr>
 <tr>
-            <td align="justify">XXVIII.	Si “el cliente” suministra copias de los documentos de certificación a otros, se obliga a realizar la reproducción total de los documentos o según lo especifique el esquema de certificación de acuerdo a su alcance.  
+            <td align="justify">XXV.	Si “el cliente” suministra copias de los documentos de certificación a otros, se obliga a realizar la reproducción total de los documentos o según lo especifique el esquema de certificación de acuerdo a su alcance.  
 </td></tr>
 <tr>
-            <td align="justify">XXIX.	“El cliente” al hacer referencia a su certificación de productos en medios de comunicación tales como documentos, folletos o publicidad, “el cliente” se obliga a cumplir con los requisitos de “El organismo de certificación” y los especificados por el esquema de certificación de acuerdo a su alcance. 
+            <td align="justify">XXVI.	“El cliente” al hacer referencia a su certificación de productos en medios de comunicación tales como documentos, folletos o publicidad, “el cliente” se obliga a cumplir con los requisitos de “El organismo de certificación” y los especificados por el esquema de certificación de acuerdo a su alcance. 
 </td></tr>
 <tr>
-            <td align="justify">XXX.	“El cliente” se obliga a cumplir con todos los requisitos que estipule el esquema de certificación con relación al uso de las marcas de conformidad y a la información relacionada con el producto.
+            <td align="justify">XXVII.	“El cliente” se obliga a cumplir con todos los requisitos que estipule el esquema de certificación con relación al uso de las marcas de conformidad y a la información relacionada con el producto.
 </td></tr>
 <tr>
-            <td align="justify">XXXI.	“El cliente” se obliga a conservar registro de todas las quejas conocidas con respecto al cumplimiento de los requisitos del alcance de su certificación y a poner tales registros a disposición de “El organismo de certificación” cuando se le solicite. Y:  
+            <td align="justify">XXVIII.	“El cliente” se obliga a conservar registro de todas las quejas conocidas con respecto al cumplimiento de los requisitos del alcance de su certificación y a poner tales registros a disposición de “El organismo de certificación” cuando se le solicite. Y:  
 </td></tr>
 
-        </table> 
+        </table>
 		 <table width="100%"  cellspacing="5" >
         
          <tr>
@@ -764,21 +607,27 @@ $mpdf->AddPage();
 		  
 		 
         </table>
+		
+		<br>VERIFICACIÓN Y CERTIFICACIÓN PAMFA A.C.<br>
+ORGANISMO DE CERTIFICACIÓN DE PRODUCTO');
+
+$mpdf->AddPage();
+		encabezado();
+		$mpdf->WriteHTML('
+		
+		 
+		  
+		
 		 <table width="100%"  cellspacing="5" >
          
          
           <tr>
-            <td align="justify">XXXII.	 “El cliente” se obliga a informar a “el organismo de certificación, sin retraso, acerca de los cambios que puedan afectar a su capacidad para cumplir con los requisitos del alcance de su certificación. 
+            <td align="justify">XXIX.	 “El cliente” se obliga a informar a “el organismo de certificación, sin retraso, acerca de los cambios que puedan afectar a su capacidad para cumplir con los requisitos del alcance de su certificación. 
 </td></tr>
 
          
 
         </table>
-		');
-
-$mpdf->AddPage();
-		encabezado();
-		$mpdf->WriteHTML(' 
 		 <table width="100%"  cellspacing="5" >
         
          <tr>
@@ -814,7 +663,7 @@ $mpdf->AddPage();
          
          
           <tr>
-            <td align="justify">XXXIII.	 DOMICILIO PARA NOTIFICACIONES Y AVISOS.
+            <td align="justify">XXX.	 DOMICILIO PARA NOTIFICACIONES Y AVISOS.
 </td></tr>
  <tr>
             <td align="justify">Las notificaciones y avisos que las partes deban darse con relación a este contrato, se harán por escrito y deberán ser enviadas por correo certificado con acuse de recibo, o por cualquier otro medio que asegure que el destinatario la reciba.
@@ -838,7 +687,8 @@ $mpdf->AddPage();
           </tr>
 		  
 		 
-        </table><br><br>
+        </table>
+		<br><br>
 		 <table width="100%"  cellspacing="5" >
         
          <tr>
@@ -871,6 +721,144 @@ Representante autorizado
 
 
 </td></tr>
-        </table> ');
-$mpdf->Output();
+        </table>
+		<br>VERIFICACIÓN Y CERTIFICACIÓN PAMFA A.C.<br>
+ORGANISMO DE CERTIFICACIÓN DE PRODUCTO');
+
+$mpdf->AddPage();
+		encabezado();
+		$mpdf->WriteHTML('<br><br><strong> 	Anexo Cotización de servicio (CER.RG.03)	</strong><br>
+		
+		 <table width="100%"   class="table" border="1" >
+		 <tr><td colspan="2">
+        Uruapan,Michoacán a:</td>
+		</tr>
+		<tr>
+		<td  colspan="2">
+        <h4><b>Datos del cliente</b></h4>
+      </td>
+     <tr><td>
+       Nombre de la empresa </td><td>
+       
+      </td>
+      </tr>
+      <tr >
+       <td >
+       Dirección operativa </td>
+        <td>
+      </td>
+      </tr>
+      <tr >
+       <td >
+       Producto y variedad </td>
+        <td>
+      </td>
+      </tr>
+	  <tr>
+       <td>
+        persona de contacto </td>
+		<td>
+      </td>
+      </tr>
+	  <tr>
+       <td>
+        Telefono y/o celular </td>
+        <td>
+      </td>
+      </tr><tr >
+       <td >
+        Email</td>
+        <td>
+      </td>
+      </tr>
+	  </table>
+	  <br>
+        <p>
+       <strong> El siguiente presupuesto tiene una vigencia de 30 días naturales posteriores a la fecha de emisión.</strong> 
+</p><br>
+<table class="table table-hover" border="1" width="100%"  cellspacing="5">
+          <tr>
+            <td>Cantidad
+            </td>
+            <td>Concepto
+            </td>
+            <td>Esquema
+            </td>
+            <td>Costo unitario
+            </td>
+           
+          </tr>
+
+       
+            ');
+           /* $query_agenda = sprintf("SELECT * FROM agenda where idplan_auditoria='".$sol."'");
+                $agenda = mysql_query($query_agenda, $inforgan_pamfa) or die(mysql_error());
+                $total_agenda = mysql_num_rows($agenda);
+              $cont=0;
+              while($row_agenda= mysql_fetch_assoc($agenda))*/
+                {
+                
+            $mpdf->WriteHTML('
+            <tr>
+              <td>'.$row_agenda['fecha'].'</td>
+              <td>'.$row_agenda['horario'].'</td>
+              <td>'. $row_agenda['actividad'].'</td>
+              <td>'.$row_agenda['responsable'].'</td>
+             
+              
+            </tr>
+			');}$mpdf->WriteHTML('
+          
+      </table>
+	  <br>
+				   Especificaciones:<br>
+
+•	La cotización incluye auditoria anunciada y no anunciada en caso que así lo requiera el esquema de certificación.<br>
+•	Para orgánico incluye revisión de plan orgánico.<br>
+•	No incluye viáticos de auditor.<br>
+•	En caso de requerir factura se agregara el IVA (16%)<br>
+•	Las condiciones de pago serán 100% al momento de aceptar la cotización.<br>
+•	Esta cotización está sujeta a cambios si el alcance cambia al momento de realizar la auditoria.<br>
+•	La cancelación del servicio programado tendrá una penalización de 20% del costo total.<br>
+•	Esta cotización está realizada en MXN pero, los costos posteriores a 30 días pueden variar en realización a la fluctuación del dólar y/o euro de acuerdo al esquema.<br><br>
+<br>VERIFICACIÓN Y CERTIFICACIÓN PAMFA A.C.<br>
+ORGANISMO DE CERTIFICACIÓN DE PRODUCTO');
+
+$mpdf->AddPage();
+		encabezado();
+		$mpdf->WriteHTML('
+Nota:<br>
+1.	La cuota anual cubre los gastos para el registro en la base de datos GlobalG.A.P.  El cliente debe informar a VERIFICACION Y CERTIFICACION PAMFA  sobre cualquier GGN, LGN o Numero CoC existente o caducado, y sobre cualquier actividad previa de verificación/inspección/auditoria o certificación/aprobación en su organización, incluyendo resultados. Su no comunicación redundará un costo extra  de 100 € (Euros), para un productor individual bajo la opción 1; y de 500 € (Euros), para un grupo de productores bajo la opción 2, sobre la tarifa de registro.";
+<br>
+2.	"No tiene un costo adicional la emisión del certificado" y se emitirá cuando se haya dado cumplimiento con los requisitos de la certificación.<br>
+
+3.	SRRC - VERIFICACION Y CERTIFICACION PAMFA A.C. emitirá el dictamen de verificación e informe de evaluación de la conformidad, la dependencia  en este momento es quien decide sobre la certificación.
+
+
+<br><br>
+DATOS BANCARIOS:<br>
+VERIFICACION Y CERTIFICACION PAMFA A.C.<br>
+BANCO: BANBAJIO<br>
+CUENTA: 19005552<br>
+CLABE: 03 05 28 90 00 1114 8626<br>
+REFERENCIA: ORGANISMO DE CERTIFICACIÓN.<br><br>
+ <table width="100%"  cellspacing="5" >
+ <tr><td width="33%"></td><td width="33%" align="center">_________________________________<br>VERIFICACIÓN Y CERTIFICACIÓN <br>
+PAMFA A.C
+</td><td width="33%"></td></tr>
+ </table>
+Estimado cliente, una vez aceptada la propuesta por favor envíe el comprobante del depósito o transferencia a los siguientes correos coordinacion@pamfa.com.mx y contapamfa@outlook.com<br><br>
+
+
+Aceptación del servicio<br><br>
+
+
+Nombre y firma: _____________________<br><br>
+
+
+Fecha: _______________<br><br>
+
+		<br>VERIFICACIÓN Y CERTIFICACIÓN PAMFA A.C.<br>
+ORGANISMO DE CERTIFICACIÓN DE PRODUCTO');
+$mpdf->Output('contrato.pdf','I');
 exit();?>            

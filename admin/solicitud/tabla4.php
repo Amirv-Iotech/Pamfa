@@ -1,5 +1,5 @@
 <?php require_once('../../Connections/inforgan_pamfa.php');
- include("cerebro.php");
+ 
  $sol="";
   if($_GET["idplan_auditoria"])
   {$sol=$_GET["idplan_auditoria"];
@@ -17,72 +17,56 @@
   
  ?>
  <form method="post" action="#seccion6"><br />
-      <div class="col-lg-12 col-xs-12" style="background-color: #dbf573e6; padding: 0px;">
-          <h3>Agenda de trabajo general:</h3>
-      </div>
-      <div class="col-lg-2 col-xs-4">
-      <label>fecha</label>
-       <input placeholder="escribe aquí"  class="plan_input" id="fecha" name="fecha"        title="Fecha " type="date" value=""  />
-      </div>
-      <div class="col-lg-2 col-xs-4">
-      <label>Horario</label>
-       <input placeholder="escribe aquí"  class="plan_input" id="horario" name="horario"        title="Horario " type="text" value=""  />
-
-      </div>
-      <div class="col-lg-2 col-xs-4">
-       
-        
-        <label data-toggle="tooltip" data-placement="top" title="se deberá indicar detalladamente las actividades o documentos a revisar por áreas, rubros o secciones.">Area / Actividad <i class="material-icons">help_outline</i> </label>
-
-       <textarea placeholder="escribe aquí"  class="plan_input"  id="actividad" name="actividad"        title="Actividad " ></textarea>
-
-      </div>
-      <div class="col-lg-2 col-xs-4">
-      <label>Responsable por Parte del cliente</label>
-       <input placeholder="escribe aquí"  class="plan_input"  id="responsable" name="responsable"        title="Responsable " type="text" value=""  />
-
-      </div>
-      <div class="col-lg-2 col-xs-4">
-           
-
-      <label>Auditor</label>
-    
-
-         <select class="selectpicker" multiple="multiple" title="Selecciona.."  name="auditor2[]" id="auditor2"  >
-       
-        <?php 
-        $query_vista1 = "select idusuario, nombre,apellidos from usuario where idusuario in(SELECT idauditor FROM plan_auditoria_equipo where idplan_auditoria='".$sol."') ";
-        $vista1 = mysql_query($query_vista1,  $inforgan_pamfa) or die(mysql_error());
-        while($row_vista1 = mysql_fetch_assoc($vista1)){
-        ?>
-        <option  value="<?php echo $row_vista1['nombre']." ".$row_vista1['apellidos'];?>"><?php echo $row_vista1['nombre']." ".$row_vista1['apellidos'];?></option>
-        <?php }?>
-        </select>
-       
-      </div>
-      <div class="col-lg-2 col-xs-4">
-        <input type="hidden" name="idplan_auditoria" value="<? echo $sol; ?>" />           <input type="hidden" name="idsolicitud" id="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+     
+     
+     
+      
+       <table class='table' border='1' cellpadding='1' cellspacing='5'>
+                    <tr>
+                    <td>Cantidad 
+</td>
+                    <td> Concepto
+                    </td>
+					
+					 <td>Esquema
+</td>
+                   <td> Costo unitario
+                    </td>
+                   </tr>
+                   <tr><td>
+                    <input placeholder="escribe aquí"  class="form-control inputsf"  id="responsable" name="responsable"        title="Responsable " type="text" value=""  /></td>
+                    <td>
+                    <input placeholder="escribe aquí"  class="form-control inputsf"  id="responsable" name="responsable"        title="Responsable " type="text" value=""  /></td>
+                    <td>
+                    <input placeholder="escribe aquí"  class="form-control inputsf"  id="responsable" name="responsable"        title="Responsable " type="text" value=""  /></td>
+                    <td>
+                    <input placeholder="escribe aquí"  class="form-control inputsf"  id="responsable" name="responsable"        title="Responsable " type="text" value=""  /></td>
+                    
+                    <td>
+                    <input type="hidden" name="idplan_auditoria" value="<? echo $sol; ?>" />           <input type="hidden" name="idsolicitud" id="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
         <input type="hidden" id="insertar" name="insertar" value="1" />
         <input type="hidden" name="seccion" value="7" />
         <input type="button" value="agregar" name="agregar" id="agregar"  />
 
-
-      </div>
+</td>
+                    </tr>
+				   </table>
+      
+     
     </form>
       <div class="col-xs-12 col-lg-12">
       <div class="table-responsive">
       <table class="table table-hover">
           <thead>
-            <th>Fecha
+            <th>Cantidad
             </th>
-            <th>Horario
+            <th>Concepto
             </th>
-            <th>Actividad
+            <th>Esquema
             </th>
-            <th>Responsable
+            <th>Costo unitario
             </th>
-            <th>Auditor
-            </th>
+           
           </thead>
 
           <tbody>
@@ -100,7 +84,7 @@
               <td><? echo $row_agenda['horario'];?></td>
               <td><? echo $row_agenda['actividad'];?></td>
               <td><? echo $row_agenda['responsable'];?></td>
-              <td><? echo $row_agenda['auditor'];?></td>
+             
               <td>
               <form id="form3" name="form3" method="post" action="#seccion7">
                   <input type="hidden" id"eliminar" name="eliminar" value="1" />

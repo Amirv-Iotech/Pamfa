@@ -1,9 +1,12 @@
 <fieldset>
-  <div class="row" id="seccion5" style="background-color: #ecfbe7; border:solid 2px #dbf573e6">
-      <form method="post" action="">
-        <div class="col-lg-12 col-xs-12">
+ 
+  <div class="row" id="seccion5"  style="background-color: #ecfbe7; padding: 0px;">
+      
+         <div class="col-lg-12 col-xs-12" style="padding: 0px;">
+         <form method="post" action="">
             <div class="col-lg-12 col-xs-12" style="background-color: #dbf573e6; padding: 0px;">
-            <h3>Datos de la auditoria</h3>
+            
+            <h3 align="center">Datos de la auditoria</h3>
             </div>
             <div class="col-xs-12 col-lg-12" style="padding: 0px;">
                 <div class="col-lg-6 col-xs-6" style="border:solid 2px #dbf573e6">
@@ -69,6 +72,12 @@
                       <div class="col-xs-12">
                           <label><input  disabled type="checkbox" <? if ($row_srrc['idsrrc']!=NULL){?> checked="checked"<? }?>  value="1" id="esq1" name="esq1">Sistema  Reduccion de Riesgos de contaminación</label>
                       </div>
+                      <div class="col-xs-12">
+                          <label><input  disabled type="checkbox" <? if ($row_srrc['idsrrc']!=NULL){?> checked="checked"<? }?>  value="1" id="esq1" name="esq1">Hecho en México</label>
+                      </div>
+                      <div class="col-xs-12">
+                          <label><input  disabled type="checkbox" <? if ($row_srrc['idsrrc']!=NULL){?> checked="checked"<? }?>  value="1" id="esq1" name="esq1">Denominación de origen</label>
+                      </div>
                         <hr class="col-lg-12">
                     <div class="col-lg-6 col-xs-6">
                         <label>Número PGFS</label>
@@ -87,6 +96,7 @@
                       <input placeholder="escribe aquí"  class="plan_input"  id="num_coc" name="num_coc" type="text"      title="Número " value="<? if($row_solicitud['num_coc']!=NULL){echo $row_solicitud['num_coc'];}else {echo $row_plan_auditoria['num_coc'];}?>"  />
                     </div>
                   </div>
+                  
                   <div class="col-lg-12 col-xs-12 " style="border:solid 2px #dbf573e6">
                     <div class="col-lg-6 col-xs-6">
                       <label>Producto(s):</label>
@@ -129,4 +139,5 @@
       </form>
       <input type="hidden" name="idplan_auditoria" id="idplan_auditoria" value="<? echo $row_plan_auditoria['idplan_auditoria']; ?>" />
   </div>
+  
 </fieldset>

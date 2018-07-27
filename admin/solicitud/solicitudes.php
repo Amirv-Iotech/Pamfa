@@ -102,10 +102,13 @@ $solicitud = mysql_query($query_solicitud, $inforgan_pamfa) or die(mysql_error()
 	                                    	<th>Id</th>
 	                                    	<th>Cliente</th>
 	                                    	<th>Fecha solcitud</th>
-                                            <th colspan="3">Contrato</th>
-                                            <th></th>
+                                            <th>Solicitud</th>
+                                            
                                              <th>Observaciones</th>
+                                              <th> Revision y decisión</th>
                                             <th>Estado</th>
+                                            <th colspan="3">Contrato</th>
+                                            
 											
 	                                    </thead>
 	                                    <tbody>
@@ -136,35 +139,19 @@ $row_cliente= mysql_fetch_assoc($cliente);
 	                                        <tr>
 	                                        	<td><? echo $row_solicitud['idsolicitud'];?></td>
 	                                        	<td><? echo $row_cliente['nombre_legal'];?></td>
-	                                        	<td><? echo date('d/m/y',$row_solicitud['fecha']);?></td> <td bgcolor="#CCFF66">
-                                                <form action="../../docs/contrato.php" method="post">
-                                                 <button data-toggle="tooltip" title="Ver" type="submit" name="Ver"  value="1" class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
-                                                 <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
-                                                 
-</form></td>
- <td bgcolor="#CCFF66">
-                                                <form action="presupuesto.php" method="post">
-                                                 <button data-toggle="tooltip" title="Presupuesto" type="submit" name="Ver"  value="1" class="btn btn-success"><i class="fa fa-dollar " aria-hidden="true"></i></button>
-                                                 <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
-                                                 
-</form></td>
- <td bgcolor="#CCFF66">
-                                                <form action="contrato_firma.php" method="post">
-                                                 <button data-toggle="tooltip" title="firmar" type="submit" name="Ver"  value="1" class="btn btn-success"><i class="fa fa-pencil " aria-hidden="true"></i></button>
-                                                 <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
-                                                 
-</form></td>
-                                                <td>
+	                                        	<td><? echo date('d/m/y',$row_solicitud['fecha']);?></td> 
+                                                  <td>
                                                 <form action="formulario.php" method="post">
                                                  <button data-toggle="tooltip" title="Ver" type="submit" name="Ver"  value="1" class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
                                                  <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
                                                  
 </form></td>
 
-<td>
-                                          <button type="button" class="btn btn-info btn-lg" onclick="abrir(<? echo $row_solicitud['idsolicitud'];?>);" ><? if ($total==0){echo "Lista ";}else {echo $total;}?></button>
 
-</button>
+<td>
+                                          <button type="button" <? if ($total==0){?> class="btn btn-info btn-lg" <? }else {?>class="btn btn-warning btn-lg" <? }?> onclick="abrir(<? echo $row_solicitud['idsolicitud'];?>);" ><? if ($total==0){?><i class="material-icons">done_all</i><? }else {echo $total;}?></button>
+
+
 
 <div id="modal<? echo $row_solicitud['idsolicitud'];?>" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -191,11 +178,17 @@ $row_cliente= mysql_fetch_assoc($cliente);
   </div>
 </div>
 </td>
+ <td>
+                                                <form action="rev.php" method="post">
+                                                 <button data-toggle="tooltip" title="Ver" type="submit" name="Ver"  value="1" class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                                                 <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+                                                 
+</form></td>
 <? if($row_solicitud['autorizada']!=1)
 {?>
  <td>
                                                 <form action="" method="post">
-                                                 <button data-toggle="tooltip" title="Autorizar" type="submit" name="autorizar"  value="1"class="btn btn-danger"><i class="fa fa-check-circle-o" aria-hidden="true"></i></button>
+                                                 <button data-toggle="tooltip" title="Autorizar" <? if ($total>0){?> disabled="disabled" <? }?>type="submit" name="autorizar"  value="1"class="btn btn-danger"><i class="fa fa-check-circle-o" aria-hidden="true"></i></button>
                                                  <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
                                                  
 </form></td><? } else {?>
@@ -206,6 +199,28 @@ $row_cliente= mysql_fetch_assoc($cliente);
 </button>
                                                  
 </form></td><? }?>
+                                                
+                                                
+                                                
+                                                <td bgcolor="#CCFF66">
+                                                <form action="../../docs/contrato.php" method="post" target="_blank">
+                                                 <button data-toggle="tooltip" title="Ver" type="submit" name="Ver"  value="1" class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                                                 <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+                                                 
+</form></td>
+ <td bgcolor="#CCFF66">
+                                                <form action="presupuesto.php" method="post">
+                                                 <button data-toggle="tooltip" title="Presupuesto" type="submit" name="Ver"  value="1" class="btn btn-success"><i class="fa fa-dollar " aria-hidden="true"></i></button>
+                                                 <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+                                                 
+</form></td>
+ <td bgcolor="#CCFF66">
+                                                <form action="contrato_firma.php" method="post">
+                                                 <button data-toggle="tooltip" title="firmar" type="submit" name="Ver"  value="1" class="btn btn-success"><i class="fa fa-pencil " aria-hidden="true"></i></button>
+                                                 <input type="hidden" name="idsolicitud" value="<? echo $row_solicitud['idsolicitud']; ?>" />
+                                                 
+</form></td>
+                                              
 
  
 
@@ -234,7 +249,7 @@ while($row_obs= mysql_fetch_assoc($obs))
 	//$pl=$p.".-".$row_obs['observacion']."";
 	//$lista=$lista.$pl."<br>";
 	$e="";
-	if($row_obs['estado']==1){$e="Pendiente";}else{$e="Atendida";}
+	if($row_obs['estado']==1){$e="<strong><font color='red'>Pendiente</font></strong>";}else{$e="<font color='green'>Atendida</font>";}
 	$pl="<tr><td>".$p."</td><td>".$row_obs['observacion']."</td><td>".$row_obs['fecha_obs']."</td><td>".$e."</td></tr>";
 	$lista=$lista.$pl;
 	$p++;

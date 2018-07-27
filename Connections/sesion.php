@@ -22,7 +22,8 @@ $pos = strpos($dac, $findme);
 	 if($_SESSION["tipo"]=='admin')
 	 {
 	if(($_SESSION["autentificado"]==false)|| ($pos==false)){
-		header("Location: login.php");
+		echo "lknlddddddddkn";
+				header("Location: login.php");
 	}
 	 }
 	
