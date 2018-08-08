@@ -44,6 +44,9 @@ mysql_select_db($database_pamfa, $inforgan_pamfa);
  include("cerebro.php");?>
 <?php
 
+if($_GET["idsolicitud"]){
+	$_POST["idsolicitud"]=$_GET["idsolicitud"];}
+	
 $query_operador = sprintf("SELECT * FROM operador WHERE idoperador=(select idoperador from solicitud where idsolicitud=%s)", GetSQLValueString( $_POST["idsolicitud"], "int"));
 $operador = mysql_query($query_operador, $inforgan_pamfa) or die(mysql_error());
 $row_operador= mysql_fetch_assoc($operador);
@@ -94,15 +97,20 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 <input type="hidden" id="ruta2" name="ruta2" value="<? echo "tabla_anexo.php?idsolicitud=".$row_solicitud['idsolicitud']."&seccion=1&idoperador=".$row_operador['idoperador']."";?>" />
 <input type="hidden" id="ruta3" name="ruta3" value="<? echo "tabla_anexo_alm.php?idsolicitud=".$row_solicitud['idsolicitud']."&seccion=1&idoperador=".$row_operador['idoperador']."";?>" />
 <input type="hidden" id="ruta4" name="ruta4" value="<? echo "tabla_observaciones.php?idsolicitud=".$row_solicitud['idsolicitud']."&seccion=1&idoperador=".$row_operador['idoperador']."";?>" />
+<input type="hidden" id="rutax" name="rutax" value="<? echo "tabla3.php?idsolicitud=".$row_solicitud['idsolicitud']."&seccion=1&idoperador=".$row_operador['idoperador']."";?>" />
+
+<input type="hidden" id="rutay" name="rutay" value="<? echo "formulario.php?idsolicitud=".$row_solicitud['idsolicitud']."&seccion=1&idoperador=".$row_operador['idoperador']."&#eval";?>" />
+<input type="hidden" id="rutaz" name="rutaz" value="<? echo "formulario.php?idsolicitud=".$row_solicitud['idsolicitud']."&seccion=1&idoperador=".$row_operador['idoperador']."&#den";?>" />
 
 	<div id="seccion0"   class="row"  style="background-color: #ecfbe7;">
 	<div class="col-lg-12">
 			<p style="font-size:25px; text-align:center;">Solicitud de certificación de producto</p>
 			<br/>
-      <br/>
+     <i class="material-icons">filter_1</i>
 		</div>
 			<div class="col-lg-2 col-md-2 col-xs-6 fechas">
-			<p class="solicitud">Fecha de solicitud </p>
+			
+            <p class="solicitud" >Fecha de solicitud </p>
 		</div>
 		<div class="col-lg-2 col-md-2 col-xs-6 fechas">
 			
@@ -136,7 +144,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
 	<fieldset> 
     <div id="seccion1" class="row" style="border: solid 1px #AAAAAA; background-color: #ecfbe7">
         <div class="col-md-12" style="text-align: center; background-color:#dbf573e6">
-          <label class="solicitud">INFORMACIÓN DEL CLIENTE (Entidad legal y persona de contacto)</label>
+        <p  align="left"><i class="material-icons">filter_2</i></p> <p  align="center"> <label  class="solicitud">INFORMACIÓN DEL CLIENTE (Entidad legal y persona de contacto)</label></p> 
         </div>
     		<div class="col-lg-12 col-ms-12 campos" style="border-top: solid 1px #AAAAAA; border-bottom: solid 1px #AAAAAA;">
       		<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6 campos" style="border-right: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
@@ -177,7 +185,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
             	<div class="col-lg-8 col-sm-8">
             	<input disabled="disabled" class="form-control inputsf" name="cp" type="text" title="Codigo postal " value="<?php echo $row_operador['cp'];?>"  />
       	     </div>
-    		  </div>
+   		    </div>
     		<div class="form-group col-lg-4 col-md-4 col-sm-4 campos" style="border-right: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;" >
         	<label for="colonia" class="form-label col-lg-4 col-sm-4">Colonia:</label>
         	<div class="col-lg-8 col-sm-4">
@@ -212,7 +220,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
         	<div class="col-lg-4 col-sm-4">
         	<input disabled="disabled" class="form-control inputsf" name="telefono" type="text" 			title="Telefono " value="<? echo  $row_operador['telefono'];?>"  />
     	    </div>
-    		</div>
+   		  </div>
 
         <div class="form-group col-lg-3 col-md-3 col-sm-3 campos" style="border-right: solid 0px #AAAAAA; margin-right: 0px; margin-left: 0px;">
         <div class="col-lg-4 col-sm-4 campos">
@@ -220,7 +228,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
         	<div class="col-lg-8 col-sm-8 campos">
         	<input disabled="disabled" class="form-control inputsf" name="fax" value="<? echo  $row_operador['fax'];?>" title="Fax "  />
         	</div>
-    		</div>
+   		  </div>
         </div>
       </div> <!-- /ROW-->
     </fieldset>	
@@ -229,7 +237,7 @@ $row_procesadora= mysql_fetch_assoc($procesadora);
         <div class="col-lg-3 col-sm-3 campos">
         	<label for="fax" class="form-label"><strong>Producto por certificar:</strong></label></div>
         	<div class="col-lg-9 col-sm-9 campos">
-        	<textarea class="form-control inputsf" name="fax"><? echo  $row_operador['fax'];?></textarea>>
+        	<textarea class="form-control inputsf" name="prod" id="prod"><? echo  $row_solicitud['producto'];?></textarea>
         	</div>
     		</div>
             </div>
@@ -896,17 +904,19 @@ window.addEventListener("beforeunload", function(event) {
                 if(porNombres[i].checked){
                 den_or=porNombres[i].value;}
               }
-			
+			  
+			  
+			 var prod = $('#prod').val();
+			 var cdfi = $('#cdfi').val();
             {  
                 $.ajax({  
                      url:"cerebro.php",  
                      method:"POST",
-                     data:{persona:post_persona, seccion:seccion, idoperador:post_idoperador, idsolicitud:post_idsolicitud, fecha:post_fecha, personal:post_personal, num_ggn:post_num_ggn, num_gln:post_num_gln, num_coc:post_num_coc, num_mex_cal_sup:post_num_mex_cal_sup, num_primus:post_num_primus, num_senasica:post_num_senasica, responsable:post_responsable,organismo:post_organismo, fecha_inicio:post_fecha_inicio, fecha_fin:post_fecha_fin, idcert_anterior:post_idcert_anterior, esq_tipo1_op1: esq_tipo1_op1,preg1_op2:preg1_op2, preg2_op2:preg2_op2, preg3_op2:preg3_op2,  preg1_tipo2:preg1_tipo2, preg2_tipo2:preg2_tipo2, preg3_tipo2:preg3_tipo2, esq_tipo2_op1:esq_tipo2_op1, preg4_tipo2:preg4_tipo2, preg5_tipo2:preg5_tipo2, preg61:preg61,preg62:preg62, preg71:preg71, preg72:preg72, preg81:preg81,preg82:preg82, idsolicitud_esquema:idsolicitud_esquema,primus0:primus0,primus1:primus1,primus2:primus2,primus3:primus3,primus4:primus4,primus5:primus5,primus6:primus6, idmex_pliego0:idmex_pliego0,idmex_pliego1:idmex_pliego1,idmex_pliego2:idmex_pliego2,idmex_pliego3:idmex_pliego3,idmex_pliego4:idmex_pliego4,idmex_pliego5:idmex_pliego5, idmex_alcance0:idmex_alcance0,idmex_alcance1:idmex_alcance1, idsrrc0:idsrrc0,idsrrc1:idsrrc1,idsrrc2:idsrrc2,idsrrc3:idsrrc3,idsrrc4:idsrrc4, srrc_preg1:srrc_preg1, srrc_preg2:srrc_preg2, empresa:empresa, rfc2:rfc2, direccion:direccion, direccion2:direccion2, cp:cp, tel:tel, idprocesadora:idprocesadora, inf_comercializacion:inf_comercializacion, idioma_aud:idioma_aud, idioma_inf:idioma_inf, respuesta4:respuesta4, respuesta5:respuesta5,prod_hm:prod_hm,desc_hm:desc_hm,den_or:den_or,evaluacion:evaluacion,documento:documento,muestreo:muestreo,trazabilidad:trazabilidad,terminada:terminada},
+                     data:{persona:post_persona, seccion:seccion, idoperador:post_idoperador, idsolicitud:post_idsolicitud, fecha:post_fecha, personal:post_personal,prod:prod,num_ggn:post_num_ggn, num_gln:post_num_gln, num_coc:post_num_coc, num_mex_cal_sup:post_num_mex_cal_sup, num_primus:post_num_primus, num_senasica:post_num_senasica, responsable:post_responsable,organismo:post_organismo, fecha_inicio:post_fecha_inicio, fecha_fin:post_fecha_fin,cdfi:cdfi, idcert_anterior:post_idcert_anterior, esq_tipo1_op1: esq_tipo1_op1,preg1_op2:preg1_op2, preg2_op2:preg2_op2, preg3_op2:preg3_op2,  preg1_tipo2:preg1_tipo2, preg2_tipo2:preg2_tipo2, preg3_tipo2:preg3_tipo2, esq_tipo2_op1:esq_tipo2_op1, preg4_tipo2:preg4_tipo2, preg5_tipo2:preg5_tipo2, preg61:preg61,preg62:preg62, preg71:preg71, preg72:preg72, preg81:preg81,preg82:preg82, idsolicitud_esquema:idsolicitud_esquema,primus0:primus0,primus1:primus1,primus2:primus2,primus3:primus3,primus4:primus4,primus5:primus5,primus6:primus6, idmex_pliego0:idmex_pliego0,idmex_pliego1:idmex_pliego1,idmex_pliego2:idmex_pliego2,idmex_pliego3:idmex_pliego3,idmex_pliego4:idmex_pliego4,idmex_pliego5:idmex_pliego5, idmex_alcance0:idmex_alcance0,idmex_alcance1:idmex_alcance1, idsrrc0:idsrrc0,idsrrc1:idsrrc1,idsrrc2:idsrrc2,idsrrc3:idsrrc3,idsrrc4:idsrrc4, srrc_preg1:srrc_preg1, srrc_preg2:srrc_preg2, empresa:empresa, rfc2:rfc2, direccion:direccion, direccion2:direccion2, cp:cp, tel:tel, idprocesadora:idprocesadora, inf_comercializacion:inf_comercializacion, idioma_aud:idioma_aud, idioma_inf:idioma_inf, respuesta4:respuesta4, respuesta5:respuesta5,prod_hm:prod_hm,desc_hm:desc_hm,den_or:den_or,evaluacion:evaluacion,documento:documento,muestreo:muestreo,trazabilidad:trazabilidad,terminada:terminada},
                      dataType:"text",  
                      success:function(data)  
                      {   
-                         alert(data);
-						  console.log(data);
+                        alert(data); 
 						  
    }  
                 });  
@@ -934,7 +944,7 @@ $(document).ready(function() {
 $('.error').hide();
 
 	$("#agregar20").click(function() {
-	alert("ppkndnoidno");
+	
 		        var producto = $('#producto').val();
             var num_productores = $('#num_productores').val();
             var num_fincas= $('#num_fincas').val();
@@ -953,11 +963,7 @@ $('.error').hide();
 			var ruta = $('#ruta').val();
 			var ruta2 = $('#ruta2').val();
 			var ruta3 = $('#ruta3').val();
-			alert(ruta);
-
-alert(ruta2);
-
-alert(ruta3);
+		
 			 var idoperador = $('#idoperador').val();
 			
 	  
@@ -966,7 +972,7 @@ alert(ruta3);
                      method:"POST",
                     data:{producto:producto,num_productores:num_productores,num_fincas:num_fincas,ubicacion_unidad:ubicacion_unidad,coordenadas:coordenadas,periodo_cosecha:periodo_cosecha,superficie:superficie,libre_cubierto:libre_cubierto,cosecha_recoleccion:cosecha_recoleccion,empaque:empaque,num_trabajadores:num_trabajadores,idsolicitud:idsolicitud,insertar_prod:1,idoperador:idoperador},
 		            	success: function() { 
-						alert(data);
+						
 						
 		                         //Recargamos la Tabla(Para que se muestren los Nuevos Resultados) 
 								$('#tabla_ajax2').load(ruta2);

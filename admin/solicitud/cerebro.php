@@ -164,7 +164,9 @@ if($total_solicitud==1){
 	 $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
 
 //seccion2
-	$insertSQL2 = sprintf("update solicitud set num_ggn=%s,num_gln=%s,num_coc=%s,num_mex_cal_sup=%s,num_primus=%s,num_senasica=%s,responsable=%s,personal=%s WHERE idsolicitud=%s",
+	$insertSQL2 = sprintf("update solicitud set producto=%s,cdfi=%s,num_ggn=%s,num_gln=%s,num_coc=%s,num_mex_cal_sup=%s,num_primus=%s,num_senasica=%s,responsable=%s,personal=%s WHERE idsolicitud=%s",
+	 GetSQLValueString($_POST['prod'], "text"),
+	  GetSQLValueString($_POST['cdfi'], "text"),
  GetSQLValueString($_POST['num_ggn'], "text"),
              GetSQLValueString($_POST['num_gln'], "text"),
 			 GetSQLValueString($_POST['num_coc'], "text"),
@@ -999,4 +1001,13 @@ $insertSQL = sprintf("INSERT INTO solicitud_rev(p1,obs1,p2,obs2,p3,obs3,p4,obs4,
   $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
 }
 
- 
+  if($_POST['idanexo_mcs']){
+	 
+	
+	$insertSQL = sprintf("delete from medicion_mexcalsup where idmedicion=%s ",
+ GetSQLValueString($_POST['idanexo_mcs'], "text"));
+echo $insertSQL ;
+  $Result1 = mysql_query($insertSQL, $inforgan_pamfa) or die(mysql_error());
+  
+  
+}

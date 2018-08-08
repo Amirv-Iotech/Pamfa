@@ -31,7 +31,7 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
 
 
  	//consulta todos los cultivos
- $query_cultivos = sprintf("SELECT * FROM equipo_solicitud WHERE idsolicitud = %s", GetSQLValueString($row_solicitud["idsolicitud"], "int"));
+ $query_cultivos = sprintf("SELECT * FROM medicion_mexcalsup WHERE idsolicitud = %s", GetSQLValueString($row_solicitud["idsolicitud"], "int"));
  
 ?>
 <div class="table-responsive" >
@@ -71,10 +71,18 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
                               </td>
 
                               <td>
-                                  <label> <? echo $row_cultivos['num_productores']; ?> </label>
+                                  <label> <form target="_blank" id="form4" name="form4" method="post" action="docs/<?php echo $row_cultivos['anexo1'];?>">
+                                     <? if($row_cultivos['anexo1']!=NULL){?>
+<input type="submit" name="button3" id="button3" value="Consultar" title="Ver " /><? } else {echo "Ninguno";}?>
+
+</form></label>
                               </td>
                               <td>
-                                                        <label><? echo $row_cultivos['num_fincas']; ?></label>
+                                                        <label><form target="_blank" id="form4" name="form4" method="post"  action="docs/<?php echo $row_cultivos['anexo2'];?>">
+                                                        
+                                                        <? if($row_cultivos['anexo2']!=NULL){?>
+<input type="submit" name="button3" id="button3" value="Consultar" title="Ver " /><? } else {echo "Ninguno";}?>
+</form></label>
 
                               </td>
 
@@ -86,31 +94,28 @@ $row_solicitud= mysql_fetch_assoc($solicitud);
                           <input type="hidden" id="idcultivos" name="idcultivos" value="<? echo $row_cultivos['idcultivos']; ?>" />
                            <input type="hidden" id="<?php echo 'empaque'.$cont; ?>" name="empaque" value="<? echo $row_a['empaque']; ?>" />
                                 
-                          <button type="button"   name="borrar2" id="<?php echo 'borrar'.$cont; ?>" value="<?php echo $row_cultivos['idcultivos']; ?>" onclick="<?php echo 'el2'.$cont.'()'?>" >Eliminar</button>
+                          <button type="button"   name="borrar2" id="<?php echo 'borrar'.$cont; ?>" value="<?php echo $row_cultivos['idmedicion']; ?>" onclick="<?php echo 'elmcs'.$cont.'()'?>" >Eliminar</button>
                          </form>
                          
                               </td>
                             </tr>                                               
 
 <script>
-	<?php echo 'function el2'.$cont.'(){
-	 var idcultivos = $("#borrar'.$cont.'").val();
-	 var eliminar = $("#eliminar").val();
-	 var empaque = $("#empaque'.$cont.'").val();
+	<?php echo 'function elmcs'.$cont.'(){
+	 var idanexo_mcs = $("#borrar'.$cont.'").val();
 	
-	 var ruta = $("#ruta").val();
-	  var ruta2 = $("#ruta2").val();
-	   var ruta3 = $("#ruta3").val();
+	
+	 var ruta = $("#rutax").val();
+	  
 	 $.ajax({
 		 url:"cerebro.php",
 		 method:"POST",
-		 data:{idcultivos:idcultivos,empaque:empaque},
-		 success: function() {
-			 $("#tabla_ajax").load(ruta);
+		 data:{idanexo_mcs:idanexo_mcs},
+		 success: function(data) {
+			
+			
+			  $("#tabla_ajax").load(ruta); 
 			 
-			  
-			    $("#tabla_ajax2").load(ruta2);
-				 $("#tabla_ajax3").load(ruta3);
 			 }
 			 });
 			 }';

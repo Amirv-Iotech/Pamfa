@@ -61,19 +61,21 @@ function progressHandler(event){
 	}
 	var percent = (event.loaded / event.total) * 100;
 	_("progressBar").value = Math.round(percent);
-	_("status").innerHTML ="Cargando "+ Math.round(percent)+"% ... Espere";
+	_("status3").innerHTML ="Cargando "+ Math.round(percent)+"% ... Espere";
 }
 function completeHandler(event){
-	_("status").innerHTML = event.target.responseText;
+	 var ruta = $("#rutaz").val();
+	_("status3").innerHTML = event.target.responseText;
 	_("progressBar").value = 0;
-	location.reload(true);
+	//location.reload(true);
+	 location.href=""+ruta+""; 
 	//document.getElementById("upload_form").focus();
 }
 function errorHandler(event){
-	_("status").innerHTML = "Falla en Envio";
+	_("status3").innerHTML = "Falla en Envio";
 }
 function abortHandler(event){
-	_("status").innerHTML = "Envio Abortado";
+	_("status3").innerHTML = "Envio Abortado";
 }';?>
 </script>
 <? if($row_sol_origen['anexo']==NULL){
@@ -84,7 +86,7 @@ function abortHandler(event){
   
   <input type="button" value="Subir" onClick="<? echo 'uploadFile('.$_POST['idsolicitud'].')';?>">
   <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
-  <h3 id="status"></h3>
+  <h3 id="status3"></h3>
  <? /// <p id="loaded_n_total"></p>?>
 </form> <? }else{?><form target="_blank" id="form4" name="form4" method="post" action="docs/<?php echo $row_sol_origen['anexo'];?>">
 <input type="submit" name="button3" id="button3" value="Consultar" title="Ver " />

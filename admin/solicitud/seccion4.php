@@ -74,10 +74,10 @@
 <fieldset> 
     <div id="seccionx" class="row" style="border: solid 1px #AAAAAA; background-color: #ecfbe7">
        
-    		<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 campos" style="border-right: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
+    		<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 fechas" style="border-right: solid 1px #AAAAAA; margin-right: 0px; margin-left: 0px;">
             <label for="nombre_legal" class="form-label col-lg-12 col-md-12 col-sm-12 col-xs-12">Favor de indicar el uso del CFDI:</label>
   			  <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 campos">
-          	<input disabled="disabled" class="inputsf form-control" name="nombre_legal" type="text" 	title="Nombre completo " value="<? echo $row_operador['nombre_legal'];?>"  />
+          	<input  style="font-size: 18px; text-align:center; width:100%" name="cdfi"  id="cdfi" type="text" 	title=" " value="<? echo $row_solicitud['cdfi'];?>"  />
       	   </div>
   			
 
